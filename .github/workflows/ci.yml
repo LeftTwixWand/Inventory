@@ -26,15 +26,15 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.5
       with: 
          nuget-version: latest
-    
-    - name: Restore Nuget packages
-      run: nuget restore Inventory.sln
-      
+
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
       with:
-        vs-prerelease: true
-        
+        vs-version: 17.0
+
+    - name: Restore Nuget packages
+      run: nuget restore Inventory.sln
+              
     - name: Build
       run: msbuild Inventory.sln
           -t:rebuild
