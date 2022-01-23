@@ -12,10 +12,13 @@ env:
 jobs:
   build:
   
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
@@ -26,13 +29,10 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.5
       with: 
          nuget-version: latest
-    
+
     - name: Restore Nuget packages
       run: nuget restore Inventory.sln
-      
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1       
-  
+              
     - name: Build
       run: msbuild Inventory.sln
           -t:rebuild
