@@ -31,8 +31,10 @@ jobs:
       run: nuget restore Inventory.sln
       
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1       
-  
+      uses: microsoft/setup-msbuild@v1.1
+      with:
+        vs-version: 17.x
+        
     - name: Build
       run: msbuild Inventory.sln
           -t:rebuild
