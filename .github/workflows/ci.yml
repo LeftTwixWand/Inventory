@@ -28,7 +28,7 @@ jobs:
          nuget-version: latest
     
     - name: Restore Nuget packages
-      run: nuget restore *.sln
+      run: nuget restore Inventory.sln
       
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1       
