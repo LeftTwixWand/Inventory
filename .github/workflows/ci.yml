@@ -12,16 +12,13 @@ env:
 jobs:
   build:
   
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
-      with:
-        vs-version: 17.1.0
-        vs-prerelease: true
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
