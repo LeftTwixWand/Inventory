@@ -17,6 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      with:
+        vs-version: '17.0'
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -26,11 +31,6 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.5
       with: 
          nuget-version: latest
-
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
-      with:
-        vs-version: 17.0
 
     - name: Restore Nuget packages
       run: nuget restore Inventory.sln
