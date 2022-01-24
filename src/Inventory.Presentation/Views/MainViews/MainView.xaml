@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Inventory.Presentation.Views.MainViews.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel, IsDesignTimeCreatable=True}">
+
+    <Page.DataContext>
+        <mainViewModels:MainViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Grid>
+        <Button
+            Content="{x:Bind ViewModel.ButtonText, Mode=OneWay}"
+            Command="{x:Bind ViewModel.ChangeTextCommand}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
+    </Grid>
+</Page>
