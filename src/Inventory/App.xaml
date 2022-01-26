@@ -6,6 +6,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+
+                <!-- Register custom styles from the Presentation layer -->
+                <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/StylesRegistration.xaml"/>
+                
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->

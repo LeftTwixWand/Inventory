@@ -13,11 +13,11 @@
         <mainViewModels:MainViewModel x:Name="ViewModel"/>
     </Page.DataContext>
 
-    <Grid>
-        <Button
-            Content="{x:Bind ViewModel.ButtonText, Mode=OneWay}"
-            Command="{x:Bind ViewModel.ChangeTextCommand}"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center" />
-    </Grid>
+    <NavigationView
+        Style="{StaticResource NavigationViewStyle}">
+
+        <Frame />
+
+    </NavigationView>
+    
 </Page>

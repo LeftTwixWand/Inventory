@@ -8,6 +8,8 @@
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
+    <None Remove="Styles\StylesRegistration.xaml" />
     <None Remove="Views\MainViews\MainView.xaml" />
     <None Remove="Windows\MainWindows\MainWindow.xaml" />
   </ItemGroup>
@@ -33,6 +35,18 @@
 
   <ItemGroup>
     <Page Update="Windows\MainWindows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\NavigationView\NavigationViewStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\StylesRegistration.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
