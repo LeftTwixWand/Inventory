@@ -14,5 +14,5 @@ public interface IBusinessRule
     /// Chek, that business rule is broken.
     /// </summary>
     /// <returns>True, when rule is broken.</returns>
-    bool IsBroken();
+    bool BrokenWhen();
 }

@@ -38,7 +38,7 @@ public abstract class Entity
             throw new ArgumentNullException(nameof(rule));
         }
 
-        if (rule.IsBroken())
+        if (rule.BrokenWhen())
         {
             throw new BusinessRuleValidationException(rule);
         }
