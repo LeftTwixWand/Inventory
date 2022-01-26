@@ -8,5 +8,5 @@ public interface IRequestIdentity
     /// <summary>
     /// Unique identifyier of request.
     /// </summary>
-    Guid Id { get; }
+    Guid RequestId { get; }
 }

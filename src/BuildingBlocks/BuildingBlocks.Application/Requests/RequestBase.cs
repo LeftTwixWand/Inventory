@@ -8,14 +8,14 @@ namespace BuildingBlocks.Application.Requests;
 public abstract record RequestBase : IRequest, IRequestIdentity
 {
     /// <inheritdoc/>
-    public Guid Id { get; private set; }
+    public Guid RequestId { get; private set; }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RequestBase"/> class.
     /// </summary>
-    public RequestBase()
+    protected RequestBase()
     {
-        Id = Guid.NewGuid();
+        RequestId = Guid.NewGuid();
     }
 
     /// <summary>
@@ -24,7 +24,7 @@ public abstract record RequestBase : IRequest, IRequestIdentity
     /// <param name="id">External identifier of the request.</param>
     protected RequestBase(Guid id)
     {
-        Id = id;
+        RequestId = id;
     }
 }
 
@@ -36,12 +36,12 @@ public abstract record RequestBase : IRequest, IRequestIdentity
 public abstract record RequestBase<TResult> : IRequest<TResult>, IRequestIdentity
 {
     /// <inheritdoc/>
-    public Guid Id { get; private set; }
+    public Guid RequestId { get; private set; }
 
     /// <inheritdoc cref="RequestBase()"/>
     protected RequestBase()
     {
-        Id = Guid.NewGuid();
+        RequestId = Guid.NewGuid();
     }
 
     /// <summary>
@@ -50,6 +50,6 @@ public abstract record RequestBase<TResult> : IRequest<TResult>, IRequestIdentit
     /// <param name="id"><inheritdoc cref="RequestBase(Guid)" path="/param"/></param>
     protected RequestBase(Guid id)
     {
-        Id = id;
+        RequestId = id;
     }
 }
