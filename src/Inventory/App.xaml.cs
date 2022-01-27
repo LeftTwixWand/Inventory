@@ -1,4 +1,5 @@
-﻿using Inventory.Presentation.Windows.MainWindows;
+﻿using Inventory.Prerequisite.Win32.WindowIconLoaders;
+using Inventory.Presentation.Windows.MainWindows;
 using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -11,7 +12,7 @@ namespace Inventory;
 /// </summary>
 public partial class App : Microsoft.UI.Xaml.Application
 {
-    private Window _window;
+    private Window? window;
 
     /// <summary>
     /// Initializes the singleton application object.  This is the first line of authored code
@@ -29,7 +30,12 @@ public partial class App : Microsoft.UI.Xaml.Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
-        _window = new MainWindow();
-        _window.Activate();
+        window = new MainWindow()
+        {
+            Title = "Inventory",
+        };
+        window.LoadIcon(@"Assets\Icons\WindowIcon.ico");
+
+        window.Activate();
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
@@ -12,6 +12,7 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
+    <ApplicationIcon>Assets\Icons\WindowIcon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,13 +21,13 @@
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
-    <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.196" />
+    <PackageReference Include="PInvoke.User32" Version="0.7.104" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -42,5 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Inventory.Presentation\Inventory.Presentation.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Icons\" />
   </ItemGroup>
 </Project>
