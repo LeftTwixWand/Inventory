@@ -71,6 +71,7 @@ dotnet_diagnostic.SA1000.severity = silent
 dotnet_diagnostic.SA1601.severity = silent
 dotnet_diagnostic.SA1011.severity=silent
 dotnet_diagnostic.SA1602.severity=silent
+dotnet_diagnostic.SA0001.severity = none
 
 [*.{cs,vb}]
 #### Naming styles ####
