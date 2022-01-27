@@ -11,7 +11,7 @@ internal class DiscountCanNotBeMoreThanHundredPercentRule : IBusinessRule
         _discount = discount;
     }
 
-    public string Message => "Discount can not be more thanh undred percent!";
+    public string Message => "Discount can not be more than hundred percent!";
 
     public bool BrokenWhen()
     {
