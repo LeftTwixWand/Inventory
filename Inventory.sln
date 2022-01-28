@@ -16,19 +16,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{1A8350DF-2A13-4409-9523-6B021409BC8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Domain", "src\BuildingBlocks\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj", "{7B803910-2406-4FA6-A130-6C9A1A7DB8AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Domain", "src\BuildingBlocks\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj", "{7B803910-2406-4FA6-A130-6C9A1A7DB8AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Application", "src\BuildingBlocks\BuildingBlocks.Application\BuildingBlocks.Application.csproj", "{3A6F2E10-84FC-4367-8748-9BE7F2CF605E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingBlocks.Application", "src\BuildingBlocks\BuildingBlocks.Application\BuildingBlocks.Application.csproj", "{3A6F2E10-84FC-4367-8748-9BE7F2CF605E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Domain", "src\Inventory.Domain\Inventory.Domain.csproj", "{83C94D32-00AC-4178-8620-B09857668B66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Domain", "src\Inventory.Domain\Inventory.Domain.csproj", "{83C94D32-00AC-4178-8620-B09857668B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Database", "src\Persistence\Inventory.Database\Inventory.Database.csproj", "{C6A467AE-00D7-48B0-B3F0-3FA7AA608457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Database", "src\Persistence\Inventory.Database\Inventory.Database.csproj", "{C6A467AE-00D7-48B0-B3F0-3FA7AA608457}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Application", "src\Inventory.Application\Inventory.Application.csproj", "{BF21B3F7-A768-43BC-A24E-F89EC6AB19D3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Infrastructure", "src\Inventory.Infrastructure\Inventory.Infrastructure.csproj", "{3CC95852-EECC-4699-8126-2B47061F60D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inventory.Presentation", "src\Inventory.Presentation\Inventory.Presentation.csproj", "{741D0F99-0066-4727-A654-E11AC5CEC1A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingBlocks.Infrastructure", "src\BuildingBlocks\BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj", "{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,6 +180,22 @@ Global
 		{741D0F99-0066-4727-A654-E11AC5CEC1A6}.Release|x64.Build.0 = Release|Any CPU
 		{741D0F99-0066-4727-A654-E11AC5CEC1A6}.Release|x86.ActiveCfg = Release|Any CPU
 		{741D0F99-0066-4727-A654-E11AC5CEC1A6}.Release|x86.Build.0 = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|arm64.Build.0 = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|x64.Build.0 = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Debug|x86.Build.0 = Debug|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|arm64.ActiveCfg = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|arm64.Build.0 = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|x64.ActiveCfg = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|x64.Build.0 = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|x86.ActiveCfg = Release|Any CPU
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,6 +211,7 @@ Global
 		{BF21B3F7-A768-43BC-A24E-F89EC6AB19D3} = {57174B20-5FD5-419E-A1DC-21E286478DAC}
 		{3CC95852-EECC-4699-8126-2B47061F60D4} = {57174B20-5FD5-419E-A1DC-21E286478DAC}
 		{741D0F99-0066-4727-A654-E11AC5CEC1A6} = {57174B20-5FD5-419E-A1DC-21E286478DAC}
+		{3C7FD6A0-937D-4D51-8556-F8C7CF2779DD} = {BB07F830-610C-4FEF-918B-831985EF76A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57EAA8B8-0338-401B-8E2C-D2F6B0EFFD4A}

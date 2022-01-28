@@ -8,7 +8,7 @@ public interface IUnitOfWork
 {
     /// <summary>
     /// Logical finishing of a domain operation.
-    /// <para>By default, it rises all the domain events from domain entity objects.</para>
+    /// <para>By default, it rises all the domain events from domain entity objects. And saves changes, made in the repositories.</para>
     /// </summary>
     /// <param name="cancellationToken">Cancellation token for operation discarding.</param>
     /// <returns>Status of operation.</returns>
