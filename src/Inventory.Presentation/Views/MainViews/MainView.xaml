@@ -6,17 +6,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel, IsDesignTimeCreatable=True}">
-
+ 
     <Page.DataContext>
         <mainViewModels:MainViewModel x:Name="ViewModel"/>
     </Page.DataContext>
 
     <NavigationView
-        Style="{StaticResource NavigationViewStyle}">
+        Style="{StaticResource NavigationViewStyle}" >
 
-        <Frame />
+        <Frame x:Name="frame" />
 
     </NavigationView>
     
