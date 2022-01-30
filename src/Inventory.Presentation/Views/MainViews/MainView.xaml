@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
     mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel, IsDesignTimeCreatable=True}">
- 
+    xmlns:extensions="using:Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions"
+    xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels">
+
     <Page.DataContext>
         <mainViewModels:MainViewModel x:Name="ViewModel"/>
     </Page.DataContext>
@@ -15,8 +15,37 @@
     <NavigationView
         Style="{StaticResource NavigationViewStyle}" >
 
-        <Frame x:Name="frame" />
+        <!--extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel"-->
+        <NavigationView.MenuItems>
+            <NavigationViewItem Content="Home" extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel" >
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Home.png" ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="Customers">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Customers.png" ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="Orders">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Order.png" ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="Products">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Lamp.png" ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem Content="Activity Log">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Warning.png" ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.MenuItems>
 
+        <Frame x:Name="frame" />
+        
     </NavigationView>
-    
+
 </Page>

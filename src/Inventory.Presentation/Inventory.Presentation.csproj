@@ -9,6 +9,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\Icons\Customers.png" />
+    <None Remove="Assets\Icons\Home.png" />
+    <None Remove="Assets\Icons\Lamp.png" />
+    <None Remove="Assets\Icons\Order.png" />
+    <None Remove="Assets\Icons\Warning.png" />
     <None Remove="Styles\Grid\PageGridStyle.xaml" />
     <None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
     <None Remove="Styles\Page\PageStyle.xaml" />
