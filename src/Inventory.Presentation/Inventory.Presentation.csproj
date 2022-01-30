@@ -9,8 +9,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\Icons\Customers.png" />
+    <None Remove="Assets\Icons\Home.png" />
+    <None Remove="Assets\Icons\Lamp.png" />
+    <None Remove="Assets\Icons\Order.png" />
+    <None Remove="Assets\Icons\Warning.png" />
+    <None Remove="Converters\ConvertersRegistration.xaml" />
+    <None Remove="Styles\DashboardView\PartsStyle.xaml" />
+    <None Remove="Styles\Grid\PageGridStyle.xaml" />
     <None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
+    <None Remove="Styles\Page\PageStyle.xaml" />
     <None Remove="Styles\StylesRegistration.xaml" />
+    <None Remove="Views\DashboardViews\DashboardView.xaml" />
+    <None Remove="Views\DashboardViews\Parts\CustomerPane.xaml" />
     <None Remove="Views\MainViews\MainView.xaml" />
     <None Remove="Windows\MainWindows\MainWindow.xaml" />
   </ItemGroup>
@@ -26,6 +37,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Inventory.Application\Inventory.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Converters\ConvertersRegistration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +65,36 @@
 
   <ItemGroup>
     <Page Update="Styles\StylesRegistration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\DashboardViews\DashboardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\Page\PageStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\Grid\PageGridStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\DashboardViews\Parts\CustomerPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\DashboardView\PartsStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

@@ -5,7 +5,10 @@
     
     <ResourceDictionary.MergedDictionaries>
 
+        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/DashboardView/PartsStyle.xaml"/>
+        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/Grid/PageGridStyle.xaml"/>
         <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/NavigationView/NavigationViewStyle.xaml"/>
+        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/Page/PageStyle.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 
