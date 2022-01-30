@@ -44,7 +44,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Inventory.Presentation\Inventory.Presentation.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Icons\" />
-  </ItemGroup>
 </Project>

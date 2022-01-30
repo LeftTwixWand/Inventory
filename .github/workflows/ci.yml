@@ -2,10 +2,15 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+      - master
+      - dev
+      - feature
   pull_request:
-    branches: [ master ]
-
+    branches: 
+      - master
+      - dev
+      - feature
 env:
   BuildConfiguration: Release
   
