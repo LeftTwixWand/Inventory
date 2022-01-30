@@ -13,6 +13,7 @@
     </Page.DataContext>
 
     <NavigationView
+        Header="{x:Bind ViewModel.ButtonText, Mode=OneWay}"
         Style="{StaticResource NavigationViewStyle}" >
 
         <!--extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel"-->
