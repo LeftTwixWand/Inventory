@@ -7,10 +7,10 @@ namespace Inventory.Infrastructure.Decorators.UnitOfWork;
 internal sealed class UnitOfWorkCommandHandlerDecorator<T> : ICommandHandler<T>
        where T : ICommand
 {
-    private readonly ICommandHandler<T> _decorated;
+    private readonly IRequestHandler<T> _decorated;
     private readonly IUnitOfWork _unitOfWork;
 
-    public UnitOfWorkCommandHandlerDecorator(ICommandHandler<T> decorated, IUnitOfWork unitOfWork)
+    public UnitOfWorkCommandHandlerDecorator(IRequestHandler<T> decorated, IUnitOfWork unitOfWork)
     {
         _decorated = decorated;
         _unitOfWork = unitOfWork;

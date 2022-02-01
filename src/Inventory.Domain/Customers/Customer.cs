@@ -5,7 +5,7 @@ namespace Inventory.Domain.Customers;
 
 public class Customer : Entity
 {
-    public Customer(
+    private Customer(
         int id,
         string firstName,
         string lastName,

@@ -8,7 +8,7 @@ using Serilog.Events;
 namespace Inventory.Infrastructure.Decorators.Logging;
 
 internal sealed class LoggingRequestHandlerDecorator<TRequest> : IRequestHandler<TRequest>
-         where TRequest : RequestBase
+        where TRequest : RequestBase
 {
     private readonly ILogger _logger;
     private readonly IRequestHandler<TRequest> _decorated;
@@ -25,17 +25,15 @@ internal sealed class LoggingRequestHandlerDecorator<TRequest> : IRequestHandler
 
         try
         {
-            _logger.Information("Executing request {@Request}", request);
-
+            _logger.Information("Executing command {@Command}", request);
             var result = await _decorated.Handle(request, cancellationToken);
-
-            _logger.Information("Request executed successful, result {Result}", result);
+            _logger.Information("Command executed successful, result {Result}", result);
 
             return result;
         }
         catch (Exception exception)
         {
-            _logger.Error(exception, "Request processing failed");
+            _logger.Error(exception, "Command processing failed");
             throw;
         }
     }
@@ -51,7 +49,7 @@ internal sealed class LoggingRequestHandlerDecorator<TRequest> : IRequestHandler
 
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            logEvent.AddOrUpdateProperty(new LogEventProperty("Context", new ScalarValue($"Request:{_request.RequestId}")));
+            logEvent.AddOrUpdateProperty(new LogEventProperty("Context", new ScalarValue($"Command:{_request.RequestId}")));
         }
     }
 }
