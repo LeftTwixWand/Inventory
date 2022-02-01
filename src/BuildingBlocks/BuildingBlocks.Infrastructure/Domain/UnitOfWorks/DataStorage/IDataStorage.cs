@@ -1,11 +1,11 @@
-﻿namespace BuildingBlocks.Infrastructure.Domain.UnitOfWorks.DataStorageDispatching;
+﻿namespace BuildingBlocks.Infrastructure.Domain.UnitOfWorks.DataStorage;
 
 /// <summary>
 /// Encapsulation of the current data storage.
 /// <para/>
 /// Needed for saving the data, that was added through the repositories.
 /// </summary>
-public interface IDataStorageDispatcher
+public interface IDataStorage
 {
     /// <summary>
     /// Saves the data, that was added through the repositories.
