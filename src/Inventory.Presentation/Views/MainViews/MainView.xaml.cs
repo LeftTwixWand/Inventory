@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.ViewModels.MainViewModels;
+using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -13,5 +15,8 @@ public sealed partial class MainView : Page
     public MainView()
     {
         InitializeComponent();
+        MainViewModel = Ioc.Default.GetRequiredService<MainViewModel>();
     }
+
+    public MainViewModel MainViewModel { get; private set; }
 }
