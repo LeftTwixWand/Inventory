@@ -18,6 +18,6 @@ public partial class MainViewModel : ObservableObject
     private void ChangeText()
     {
         _mediator.Send(new CreateNewProductCommand("My name"));
-        _mediator.Send(new CreateNewProductCommandResult("My name"));
+        _mediator.Send(new CreateNewProductWithResultCommand("My name"));
     }
 }

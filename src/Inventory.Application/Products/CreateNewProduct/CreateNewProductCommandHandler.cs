@@ -12,9 +12,9 @@ public sealed class CreateNewProductCommandHandler : ICommandHandler<CreateNewPr
     }
 }
 
-public sealed class CreateNewProductCommandResultHandler : ICommandHandler<CreateNewProductCommandResult, string>
+public sealed class CreateNewProductCommandResultHandler : ICommandHandler<CreateNewProductWithResultCommand, string>
 {
-    public Task<string> Handle(CreateNewProductCommandResult request, CancellationToken cancellationToken)
+    public Task<string> Handle(CreateNewProductWithResultCommand request, CancellationToken cancellationToken)
     {
         return Task.FromResult(request.Name);
     }

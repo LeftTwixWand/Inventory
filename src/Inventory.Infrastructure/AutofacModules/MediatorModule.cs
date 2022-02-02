@@ -14,7 +14,6 @@ public sealed class MediatorModule : Module
 
         var openHandlerTypes = new[]
         {
-            typeof(IRequestHandler<>),
             typeof(IRequestHandler<,>),
             typeof(INotificationHandler<>),
             typeof(IValidator<>),

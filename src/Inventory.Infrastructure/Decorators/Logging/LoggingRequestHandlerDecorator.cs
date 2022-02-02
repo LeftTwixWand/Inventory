@@ -7,49 +7,51 @@ using Serilog.Events;
 
 namespace Inventory.Infrastructure.Decorators.Logging;
 
-internal sealed class LoggingRequestHandlerDecorator<TRequest> : IRequestHandler<TRequest>
-        where TRequest : RequestBase
+internal sealed class LoggingRequestHandlerDecorator<TRequest, TResult> : IRequestHandler<TRequest, TResult>
+    where TRequest : IIdentifiableRequest<TResult>
 {
     private readonly ILogger _logger;
-    private readonly IRequestHandler<TRequest> _decorated;
+    private readonly IRequestHandler<TRequest, TResult> _decorated;
 
-    public LoggingRequestHandlerDecorator(ILogger logger, IRequestHandler<TRequest> decorated)
+    public LoggingRequestHandlerDecorator(ILogger logger, IRequestHandler<TRequest, TResult> decorated)
     {
         _logger = logger;
         _decorated = decorated;
     }
 
-    public async Task<Unit> Handle(TRequest request, CancellationToken cancellationToken)
+    public async Task<TResult> Handle(TRequest request, CancellationToken cancellationToken)
     {
         using var pushResult = LogContext.Push(new RequestLogEnricher(request));
 
         try
         {
-            _logger.Information("Executing command {@Command}", request);
+            _logger.Information("Executing request {@Request}", request);
+
             var result = await _decorated.Handle(request, cancellationToken);
-            _logger.Information("Command executed successful, result {Result}", result);
+
+            _logger.Information("Request executed successful, result {Result}", result);
 
             return result;
         }
         catch (Exception exception)
         {
-            _logger.Error(exception, "Command processing failed");
+            _logger.Error(exception, "Request processing failed");
             throw;
         }
     }
 
     private sealed class RequestLogEnricher : ILogEventEnricher
     {
-        private readonly RequestBase _request;
+        private readonly IIdentifiableRequest<TResult> _request;
 
-        public RequestLogEnricher(RequestBase request)
+        public RequestLogEnricher(IIdentifiableRequest<TResult> request)
         {
             _request = request;
         }
 
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            logEvent.AddOrUpdateProperty(new LogEventProperty("Context", new ScalarValue($"Command:{_request.RequestId}")));
+            logEvent.AddOrUpdateProperty(new LogEventProperty("Context", new ScalarValue($"Request:{_request.RequestId}")));
         }
     }
 }
