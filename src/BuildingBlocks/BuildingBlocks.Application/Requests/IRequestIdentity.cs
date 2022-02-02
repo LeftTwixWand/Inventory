@@ -1,9 +1,12 @@
-﻿namespace BuildingBlocks.Application.Requests;
+﻿using MediatR;
+
+namespace BuildingBlocks.Application.Requests;
 
 /// <summary>
-/// Add unique identifyier for request.
+/// Adds unique identifyier for request.
 /// </summary>
-public interface IRequestIdentity
+/// <typeparam name="TResult">Return type.</typeparam>
+public interface IIdentifiableRequest<out TResult> : IRequest<TResult>
 {
     /// <summary>
     /// Unique identifyier of request.

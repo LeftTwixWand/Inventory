@@ -1,4 +1,6 @@
-﻿using Inventory.Presentation.Views.DashboardViews;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.ViewModels.MainViewModels;
+using Inventory.Presentation.Views.DashboardViews;
 using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -14,6 +16,8 @@ public sealed partial class MainView : Page
     public MainView()
     {
         InitializeComponent();
-        frame.Navigate(typeof(DashboardView));
+        MainViewModel = Ioc.Default.GetRequiredService<MainViewModel>();
     }
+
+    public MainViewModel MainViewModel { get; private set; }
 }

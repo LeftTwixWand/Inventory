@@ -11,7 +11,7 @@ public class Order : Entity, IAggregateRoot
 {
     private readonly List<OrderItem> _orderItems = new();
 
-    public Order(
+    private Order(
         int id,
         string shipAddress,
         string shipCity,
