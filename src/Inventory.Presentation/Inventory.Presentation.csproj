@@ -13,6 +13,7 @@
     <None Remove="Assets\Icons\Home.png" />
     <None Remove="Assets\Icons\Lamp.png" />
     <None Remove="Assets\Icons\Order.png" />
+    <None Remove="Assets\Icons\Settings.png" />
     <None Remove="Assets\Icons\Warning.png" />
     <None Remove="Converters\ConvertersRegistration.xaml" />
     <None Remove="Styles\DashboardView\PartsStyle.xaml" />

@@ -5,7 +5,7 @@
     <Style x:Key="NavigationViewStyle" TargetType="NavigationView">
         <Setter Property="Background" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
         <Setter Property="IsTitleBarAutoPaddingEnabled" Value="True" />
-        <Setter Property="IsSettingsVisible" Value="True" />
+        <Setter Property="IsSettingsVisible" Value="False" />
         <Setter Property="IsBackButtonVisible" Value="Collapsed" />
         <Setter Property="IsBackEnabled" Value="False" />
         <Setter Property="CompactModeThresholdWidth" Value="640" />
