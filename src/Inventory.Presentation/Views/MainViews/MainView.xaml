@@ -9,7 +9,7 @@
     xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels">
 
     <NavigationView
-        Header="{x:Bind ViewModel.ButtonText, Mode=OneWay}"
+        Header="Header"
         Style="{StaticResource NavigationViewStyle}" >
 
         <!--extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel"-->
