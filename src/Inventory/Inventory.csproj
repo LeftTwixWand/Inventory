@@ -55,7 +55,4 @@
     <ProjectReference Include="..\Inventory.Presentation\Inventory.Presentation.csproj" />
     <ProjectReference Include="..\Persistence\Inventory.Database\Inventory.Database.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Icons\" />
-  </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Inventory.Application.ViewModels.MainViewModels;
+using Inventory.Presentation.Views.DashboardViews;
 using Microsoft.UI.Xaml.Controls;
 
 // To learn more about WinUI, the WinUI project structure,
