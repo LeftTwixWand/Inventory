@@ -4,11 +4,31 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:panes="using:Inventory.Presentation.Views.DashboardViews.Panes" 
+    xmlns:dashboardViewModels="using:Inventory.Application.ViewModels.DashboardViewModels" 
+    d:DataContext="{d:DesignInstance Type=dashboardViewModels:DashboardViewModel}"
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
-    <GridView>
+    <Page.DataContext>
+        <dashboardViewModels:DashboardViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <GridView 
+        ItemContainerStyle="{StaticResource SpasingGridViewItemStyle}" >
+
+        <panes:CustomerPane
+            Width="600"
+            ItemsSource="{x:Bind ViewModel.Customers, Mode=OneWay}" />
         
+        <panes:CustomerPane
+            Width="600"
+            ItemsSource="{x:Bind ViewModel.Customers, Mode=OneWay}" />
+
+        <panes:CustomerPane
+            Width="600"
+            ItemsSource="{x:Bind ViewModel.Customers, Mode=OneWay}" />
+
     </GridView>
 
 </Page>

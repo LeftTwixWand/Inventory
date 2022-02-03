@@ -16,13 +16,14 @@
     <None Remove="Assets\Icons\Settings.png" />
     <None Remove="Assets\Icons\Warning.png" />
     <None Remove="Converters\ConvertersRegistration.xaml" />
-    <None Remove="Styles\DashboardView\PartsStyle.xaml" />
+    <None Remove="Styles\DashboardView\DashboardStyle.xaml" />
+    <None Remove="Styles\DashboardView\PaneStyle.xaml" />
     <None Remove="Styles\Grid\PageGridStyle.xaml" />
     <None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
     <None Remove="Styles\Page\PageStyle.xaml" />
     <None Remove="Styles\StylesRegistration.xaml" />
     <None Remove="Views\DashboardViews\DashboardView.xaml" />
-    <None Remove="Views\DashboardViews\Parts\CustomerPane.xaml" />
+    <None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
     <None Remove="Views\MainViews\MainView.xaml" />
     <None Remove="Windows\MainWindows\MainWindow.xaml" />
   </ItemGroup>
@@ -38,6 +39,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Inventory.Application\Inventory.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\DashboardView\DashboardStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
@@ -95,7 +102,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Styles\DashboardView\PartsStyle.xaml">
+    <Page Update="Styles\DashboardView\PaneStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

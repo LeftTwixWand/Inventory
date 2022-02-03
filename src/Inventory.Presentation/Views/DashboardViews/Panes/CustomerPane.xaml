@@ -1,0 +1,66 @@
+﻿<UserControl
+    x:Class="Inventory.Presentation.Views.DashboardViews.Panes.CustomerPane"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:models="using:Inventory.Application.Customers.Models"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+
+        <DataTemplate x:Key="HeaderTemplate" x:DataType="models:CustomerModel">
+            <Border Margin="4" BorderBrush="{ThemeResource AppBarItemForegroundThemeBrush}" BorderThickness="0,0,0,1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="10*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Text="Customer ID" Style="{StaticResource DashboardPartColumnHeaderStyle}" />
+                    <TextBlock Grid.Column="2" Text="Name" Style="{StaticResource DashboardPartColumnHeaderStyle}" />
+                    <TextBlock Grid.Column="3" Text="Email" Style="{StaticResource DashboardPartColumnHeaderStyle}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemTemplate" x:DataType="models:CustomerModel">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="6*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" Margin="1" Padding="1">
+                    <!--<PersonPicture ProfilePicture="{x:Bind ThumbnailSource, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" />-->
+                    <!--<PersonPicture/>-->
+                </Border>
+                <TextBlock Grid.Column="1" Text="{x:Bind CustomerID}" Style="{StaticResource DashboardPartColumnValueStyle}" />
+                <TextBlock Grid.Column="2" Text="{x:Bind FullName}" Style="{StaticResource DashboardPartColumnValueStyle}" />
+                <TextBlock Grid.Column="3" Text="{x:Bind EmailAddress}" Style="{StaticResource DashboardPartColumnValueStyle}" />
+            </Grid>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Latest customers" FontSize="18" Margin="6,0"/>
+
+        <ListView Grid.Row="2"
+                  ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
+                  HeaderTemplate="{StaticResource HeaderTemplate}"
+                  ItemTemplate="{StaticResource ItemTemplate}"
+                  ItemContainerStyle="{StaticResource DashboardPartRowItemStyle}"
+                  IsHitTestVisible="False"/>
+
+    </Grid>
+
+</UserControl>

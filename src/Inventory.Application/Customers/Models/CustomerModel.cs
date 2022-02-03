@@ -12,7 +12,7 @@ public class CustomerModel : ObservableObject
 
     public string EmailAddress { get; set; } = string.Empty;
 
-    public object ThumbnailSource { get; set; } = string.Empty;
+    public object? ThumbnailSource { get; set; }
 
     public string FullName => $"{FirstName} {LastName}";
 }
