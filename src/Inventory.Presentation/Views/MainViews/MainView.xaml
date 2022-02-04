@@ -9,7 +9,7 @@
     xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels">
 
     <NavigationView
-        Header="Header"
+        Header="Dashboard"
         Style="{StaticResource NavigationViewStyle}" >
 
         <!--extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel"-->
@@ -41,8 +41,16 @@
             </NavigationViewItem>
         </NavigationView.MenuItems>
 
+        <NavigationView.FooterMenuItems>
+            <NavigationViewItem Content="Settings">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Settings.png" ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+        </NavigationView.FooterMenuItems>
+
         <Frame x:Name="frame" />
-        
+
     </NavigationView>
 
 </Page>
