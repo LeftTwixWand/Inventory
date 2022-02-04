@@ -17,6 +17,7 @@ public sealed partial class MainView : Page
     {
         InitializeComponent();
         MainViewModel = Ioc.Default.GetRequiredService<MainViewModel>();
+        frame.Navigate(typeof(DashboardView));
     }
 
     public MainViewModel MainViewModel { get; private set; }
