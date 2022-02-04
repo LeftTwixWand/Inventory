@@ -21,11 +21,16 @@
             Height="270"
             Width="600"
             ItemsSource="{x:Bind ViewModel.Customers, Mode=OneWay}" />
-        
+
         <panes:OrdersPane
             Height="270"
             Width="600"
             ItemsSource="{x:Bind ViewModel.Orders, Mode=OneWay}" />
+
+        <panes:ProductsPane
+            Height="270"
+            Width="600"
+            ItemsSource="{x:Bind ViewModel.Products, Mode=OneWay}" />
 
     </GridView>
 

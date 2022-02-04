@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Inventory.Application.Products.CreateNewProduct;
 
-//[Inject]
+// [Inject]
 public sealed class CreateNewProductCommandHandler : ICommandHandler<CreateNewProductCommand>
 {
     public Task<Unit> Handle(CreateNewProductCommand request, CancellationToken cancellationToken)
