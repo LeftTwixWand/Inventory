@@ -24,6 +24,7 @@
     <None Remove="Styles\StylesRegistration.xaml" />
     <None Remove="Views\DashboardViews\DashboardView.xaml" />
     <None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
+    <None Remove="Views\DashboardViews\Panes\OrdersPane.xaml" />
     <None Remove="Views\MainViews\MainView.xaml" />
     <None Remove="Windows\MainWindows\MainWindow.xaml" />
   </ItemGroup>
@@ -39,6 +40,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Inventory.Application\Inventory.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\DashboardViews\Panes\OrdersPane.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>
