@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
 
@@ -9,11 +10,11 @@ namespace Inventory.Presentation.Converters;
 
 public sealed class ObjectToImageConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, string language)
+    public object? Convert(object value, Type targetType, object parameter, string language)
     {
-        if (value is null)
+        if (value is ImageSource imageSource)
         {
-            return new BitmapImage(new Uri("ms-appx:///Inventory.Presentation/Assets/Icons/Customers.png"));
+            return imageSource;
         }
 
         if (value is byte[] bytes)
@@ -21,7 +22,12 @@ public sealed class ObjectToImageConverter : IValueConverter
             return ImageFromBytes(bytes).GetAwaiter().GetResult();
         }
 
-        throw new NotSupportedException("The current value type in sot supported");
+        if (value is string path)
+        {
+            return path;
+        }
+
+        return null;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, string language)
