@@ -9,12 +9,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Assets\Icons\Add.png" />
+    <None Remove="Assets\Icons\Cancel.png" />
     <None Remove="Assets\Icons\Customers.png" />
+    <None Remove="Assets\Icons\Delete.png" />
+    <None Remove="Assets\Icons\Edit.png" />
     <None Remove="Assets\Icons\Home.png" />
     <None Remove="Assets\Icons\Lamp.png" />
     <None Remove="Assets\Icons\Order.png" />
     <None Remove="Assets\Icons\Settings.png" />
     <None Remove="Assets\Icons\Warning.png" />
+    <None Remove="Controls\CustomCommandBars\CustomCommandBar.xaml" />
+    <None Remove="Controls\CustomGridViews\CustomGridView.xaml" />
     <None Remove="Converters\ConvertersRegistration.xaml" />
     <None Remove="Styles\DashboardView\DashboardStyle.xaml" />
     <None Remove="Styles\DashboardView\PaneStyle.xaml" />
@@ -26,7 +32,7 @@
     <None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
     <None Remove="Views\DashboardViews\Panes\OrdersPane.xaml" />
     <None Remove="Views\MainViews\MainView.xaml" />
-    <None Remove="Views\Products\ProductsView.xaml" />
+    <None Remove="Views\ProductsViews\ProductsView.xaml" />
     <None Remove="Windows\MainWindows\MainWindow.xaml" />
   </ItemGroup>
 
@@ -116,7 +122,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Views\Products\ProductsView.xaml">
+    <Page Update="Controls\CustomGridViews\CustomGridView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Controls\CustomCommandBars\CustomCommandBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\ProductsViews\ProductsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
