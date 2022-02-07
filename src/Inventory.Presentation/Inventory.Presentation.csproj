@@ -20,7 +20,6 @@
     <None Remove="Assets\Icons\Settings.png" />
     <None Remove="Assets\Icons\Warning.png" />
     <None Remove="Controls\CustomCommandBars\CustomCommandBar.xaml" />
-    <None Remove="Controls\CustomGridViews\CustomGridView.xaml" />
     <None Remove="Converters\ConvertersRegistration.xaml" />
     <None Remove="Styles\DashboardView\DashboardStyle.xaml" />
     <None Remove="Styles\DashboardView\PaneStyle.xaml" />
@@ -37,8 +36,10 @@
   </ItemGroup>
 
   <ItemGroup>
+      <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
       <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
       <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.196" />
+      <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.8" />
       <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -117,12 +118,6 @@
 
   <ItemGroup>
     <Page Update="Styles\DashboardView\PaneStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Controls\CustomGridViews\CustomGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

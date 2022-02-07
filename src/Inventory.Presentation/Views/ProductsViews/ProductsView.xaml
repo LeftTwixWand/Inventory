@@ -1,14 +1,68 @@
-﻿<UserControl
+﻿<Page
     x:Class="Inventory.Presentation.Views.ProductsViews.ProductsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
-    mc:Ignorable="d">
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars" 
+    xmlns:productsViewModels="using:Inventory.Application.ViewModels.ProductsViewModels" 
+    xmlns:models="using:Inventory.Application.Products.Models" 
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
+    d:DataContext="{d:DesignInstance Type=productsViewModels:ProductsViewModel}"
+    mc:Ignorable="d"
+    Style="{StaticResource PageStyle}">
+
+    <Page.Resources>
+
+        <DataTemplate x:Name="ProductItemTemplate" x:DataType="models:ProductModel">
+            <Grid Height="220" Width="200" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="3*" />
+                </Grid.RowDefinitions>
+
+                <Image
+                    Grid.Row="0"
+                    Stretch="Uniform"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Source="{x:Bind ThumbnailSource, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" />
+
+                <StackPanel Grid.Row="1" Margin="6">
+                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" FontSize="12" FontWeight="SemiBold"/>
+                    <TextBlock Text="{x:Bind CategoryName, Mode=OneWay}" FontSize="12"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
 
     <Grid>
-        <customCommandBars:CustomCommandBar/>
-    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-</UserControl>
+        <customCommandBars:CustomCommandBar 
+            Grid.Row="0"
+            CommandBarMode="AddEditRemove"
+            Visibility="Collapsed"
+            AddCommand="{x:Bind ViewModel.AddNewCommand}" />
+
+        <GridView
+            Grid.Row="1"
+            IsItemClickEnabled="True"
+            SelectionMode="Single"
+            ItemTemplate="{StaticResource ProductItemTemplate}"
+            ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+            SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}">
+
+            <interactivity:Interaction.Behaviors>
+                <interactivityCore:EventTriggerBehavior EventName="ItemClick">
+                    <interactivityCore:InvokeCommandAction Command="{x:Bind ViewModel.ItemClickCommand}" />
+                </interactivityCore:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+
+        </GridView>
+    </Grid>
+</Page>

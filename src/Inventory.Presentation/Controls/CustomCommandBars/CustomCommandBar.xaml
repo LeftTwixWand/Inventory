@@ -4,18 +4,38 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:triggers="using:CommunityToolkit.WinUI.UI.Triggers"
+    xmlns:enums="using:Inventory.Presentation.Controls.CustomCommandBars.Enums"
     mc:Ignorable="d">
+
+    <!--<VisualStateManager.VisualStateGroups>
+        <VisualStateGroup >
+            <VisualState x:Name="CommandBarAddEditDeleteMode">
+                <VisualState.StateTriggers>
+                    <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}" >
+                        <triggers:IsEqualStateTrigger.To>
+                            <enums:CommandBarMode>AddEditRemove</enums:CommandBarMode>
+                        </triggers:IsEqualStateTrigger.To>
+                    </triggers:IsEqualStateTrigger>
+                </VisualState.StateTriggers>
+                <VisualState.Setters>
+                    <Setter Target="addButton.Visibility" Value="Collapsed" />
+                    <Setter Target="editButton.Visibility" Value="Collapsed" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>-->
 
     <CommandBar
         Height="46"
         DefaultLabelPosition="Right">
 
-        <AppBarButton Label="Add" HorizontalAlignment="Left">
+        <AppBarButton Name="addButton" Label="Add" HorizontalAlignment="Left" Command="{x:Bind AddCommand}">
             <AppBarButton.Icon>
                 <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Add.png" ShowAsMonochrome="False"/>
             </AppBarButton.Icon>
         </AppBarButton>
-        <AppBarButton Label="Edit" HorizontalAlignment="Left">
+        <AppBarButton Name="editButton" Label="Edit" HorizontalAlignment="Left">
             <AppBarButton.Icon>
                 <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Edit.png" ShowAsMonochrome="False"/>
             </AppBarButton.Icon>
