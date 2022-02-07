@@ -6,8 +6,8 @@ namespace Inventory.Application.ViewModels.BaseViewModels;
 
 public class BaseViewModel : ObservableObject
 {
-    protected readonly IMediator _mediator;
-    protected readonly INavigationService _navigationService;
+    private readonly IMediator _mediator;
+    private readonly INavigationService _navigationService;
 
     public BaseViewModel(IMediator mediator, INavigationService navigationService)
     {
@@ -16,4 +16,8 @@ public class BaseViewModel : ObservableObject
     }
 
     public virtual string HeaderText => string.Empty;
+
+    protected IMediator Mediator => _mediator;
+
+    protected INavigationService NavigationService => _navigationService;
 }
