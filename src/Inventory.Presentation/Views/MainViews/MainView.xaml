@@ -13,7 +13,7 @@
     <NavigationView
         Header="Dashboard"
         Style="{StaticResource NavigationViewStyle}" >
-
+        
         <!--extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel"-->
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Home" extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel" >

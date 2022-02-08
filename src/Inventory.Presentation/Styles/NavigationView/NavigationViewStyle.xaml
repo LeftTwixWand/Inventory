@@ -13,6 +13,7 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="AlwaysShowHeader" Value="True" />
         <Setter Property="IsPaneToggleButtonVisible" Value="True" />
+        <Setter Property="AlwaysShowHeader" Value="True" />
     </Style>
 
 </ResourceDictionary>
