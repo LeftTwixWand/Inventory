@@ -1,7 +1,7 @@
 ﻿namespace Inventory.Presentation.Controls.CustomCommandBars.Enums;
 
-internal enum CommandBarMode : byte
+public enum CommandBarMode
 {
-    AddEditRemove,
+    AddEditDelete,
     CancelSave,
 }

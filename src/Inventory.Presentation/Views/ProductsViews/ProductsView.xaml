@@ -16,6 +16,7 @@
     <Page.Resources>
 
         <DataTemplate x:Name="ProductItemTemplate" x:DataType="models:ProductModel">
+   
             <Grid Height="220" Width="200" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*" />
@@ -33,6 +34,7 @@
                     <TextBlock Text="{x:Bind CategoryName, Mode=OneWay}" FontSize="12"/>
                 </StackPanel>
             </Grid>
+        
         </DataTemplate>
 
     </Page.Resources>
@@ -43,11 +45,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <customCommandBars:CustomCommandBar 
+        <customCommandBars:CustomCommandBar
             Grid.Row="0"
-            CommandBarMode="AddEditRemove"
-            Visibility="Collapsed"
-            AddCommand="{x:Bind ViewModel.AddNewCommand}" />
+            AddCommand="{x:Bind ViewModel.AddNewCommand}"/>
 
         <GridView
             Grid.Row="1"
