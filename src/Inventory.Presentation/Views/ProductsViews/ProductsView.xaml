@@ -45,9 +45,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <customCommandBars:CustomCommandBar
-            Grid.Row="0"
-            AddCommand="{x:Bind ViewModel.AddNewCommand}"/>
+        <customCommandBars:CustomCommandBar Grid.Row="0"/>
 
         <GridView
             Grid.Row="1"

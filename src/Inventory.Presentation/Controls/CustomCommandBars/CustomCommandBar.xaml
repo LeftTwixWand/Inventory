@@ -49,26 +49,26 @@
                 <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Add.png" ShowAsMonochrome="False"/>
             </AppBarButton.Icon>
         </AppBarButton>
-        <AppBarButton x:Name="editButton" Label="Edit" HorizontalAlignment="Left">
+        <AppBarButton x:Name="editButton" Label="Edit" HorizontalAlignment="Left" Command="{x:Bind EditCommand}">
             <AppBarButton.Icon>
                 <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Edit.png" ShowAsMonochrome="False"/>
             </AppBarButton.Icon>
         </AppBarButton>
-        <AppBarButton x:Name="cancelButton" Label="Cancel" HorizontalAlignment="Left">
+        <AppBarButton x:Name="cancelButton" Label="Cancel" HorizontalAlignment="Left" Command="{x:Bind CancelCommand}">
             <AppBarButton.Icon>
                 <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Cancel.png" ShowAsMonochrome="False"/>
             </AppBarButton.Icon>
         </AppBarButton>
-        <AppBarButton x:Name="saveButton" Label="Save" HorizontalAlignment="Left">
+        <AppBarButton x:Name="saveButton" Label="Save" HorizontalAlignment="Left" Command="{x:Bind CancelCommand}">
             <AppBarButton.Icon>
                 <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Save.png" ShowAsMonochrome="False"/>
             </AppBarButton.Icon>
         </AppBarButton>
-        <AppBarButton x:Name="deleteButton" Label="Delete" HorizontalAlignment="Left">
+        <AppBarButton x:Name="deleteButton" Label="Delete" HorizontalAlignment="Left" Command="{x:Bind DeleteCommand}">
             <AppBarButton.Icon>
                 <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Delete.png" ShowAsMonochrome="False"/>
             </AppBarButton.Icon>
         </AppBarButton>
-        
+
     </CommandBar>
 </UserControl>
