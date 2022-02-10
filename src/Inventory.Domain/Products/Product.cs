@@ -13,8 +13,7 @@ public class Product : Entity
         decimal dealerPrice,
         decimal discount,
         string? description,
-        byte[]? picture,
-        byte[]? pictureThumbnail)
+        byte[]? picture)
     {
         Id = id;
         Name = name;
@@ -23,7 +22,6 @@ public class Product : Entity
         DealerPrice = dealerPrice;
         Discount = discount;
         Picture = picture;
-        PictureThumbnail = pictureThumbnail;
         Category = default!;
     }
 
@@ -41,8 +39,6 @@ public class Product : Entity
 
     public byte[]? Picture { get; private set; }
 
-    public byte[]? PictureThumbnail { get; private set; }
-
     public Category Category { get; private set; }
 
     public static Product Create(
@@ -52,12 +48,11 @@ public class Product : Entity
         Category category,
         decimal discount = 0,
         string? description = default,
-        byte[]? picture = default,
-        byte[]? pictureThumbnail = default)
+        byte[]? picture = default)
     {
         CheckRule(new NameMustNotBeEmptyRyle(name));
 
-        return new Product(0, name, listPrice, dealerPrice, discount, description, picture, pictureThumbnail)
+        return new Product(0, name, listPrice, dealerPrice, discount, description, picture)
         {
             Category = category,
         };
