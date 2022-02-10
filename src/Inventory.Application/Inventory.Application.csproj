@@ -22,4 +22,8 @@
     <ProjectReference Include="..\Inventory.Domain\Inventory.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\BaseViewModels\Extensions\" />
+  </ItemGroup>
+
 </Project>

@@ -31,10 +31,10 @@ public class DashboardViewModel : ObservableObject
 
     public IList<ProductModel> Products { get; private set; } = new List<ProductModel>()
     {
-        new ProductModel { ProdcutID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
-        new ProductModel { ProdcutID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
-        new ProductModel { ProdcutID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
-        new ProductModel { ProdcutID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
-        new ProductModel { ProdcutID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
+        new ProductModel { ProductID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
+        new ProductModel { ProductID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
+        new ProductModel { ProductID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
+        new ProductModel { ProductID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
+        new ProductModel { ProductID = 23423523, Name = "Super mega pro lamp", Price = 9999.990M },
     };
 }

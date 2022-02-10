@@ -6,10 +6,10 @@ using MediatR;
 
 namespace Inventory.Application.ViewModels.BaseViewModels;
 
-public abstract partial class GenericViewModel<TModel> : BaseViewModel
+public abstract partial class GenericCollectionViewModel<TModel> : BaseViewModel
     where TModel : ObservableObject
 {
-    public GenericViewModel(IMediator mediator, INavigationService navigationService)
+    public GenericCollectionViewModel(IMediator mediator, INavigationService navigationService)
         : base(mediator, navigationService)
     {
     }
@@ -17,8 +17,6 @@ public abstract partial class GenericViewModel<TModel> : BaseViewModel
     public TModel? SelectedItem { get; set; } = default;
 
     public ObservableCollection<TModel> Items { get; set; } = new();
-
-    public ObservableCollection<TModel> SelectedItems { get; private set; } = new();
 
     [ICommand]
     protected abstract void ItemClick();
