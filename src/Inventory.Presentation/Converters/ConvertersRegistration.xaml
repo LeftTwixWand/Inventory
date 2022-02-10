@@ -8,5 +8,6 @@
     <local:ObjectToImageConverter x:Key="ObjectToImageConverter" />
     <local:DateTimeFormatConverter x:Key="DateTimeFormatConverter"/>
     <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+    <local:DecimalConverter x:Key="DecimalConverter"/>
     
 </ResourceDictionary>

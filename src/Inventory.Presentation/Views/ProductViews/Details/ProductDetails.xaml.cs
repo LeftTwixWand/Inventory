@@ -2,14 +2,14 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace Inventory.Presentation.Views.ProductViews.Cards;
+namespace Inventory.Presentation.Views.ProductViews.Details;
 
-public sealed partial class ProductCard : UserControl
+public sealed partial class ProductDetails : UserControl
 {
     public static readonly DependencyProperty ViewModelProperty =
-        DependencyProperty.Register(nameof(ViewModel), typeof(ProductViewModel), typeof(ProductCard), new PropertyMetadata(null));
+        DependencyProperty.Register(nameof(ViewModel), typeof(ProductViewModel), typeof(ProductView), new PropertyMetadata(null));
 
-    public ProductCard()
+    public ProductDetails()
     {
         InitializeComponent();
     }

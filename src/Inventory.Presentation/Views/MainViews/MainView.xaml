@@ -8,7 +8,7 @@
     xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
     xmlns:extensions="using:Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions"
     xmlns:views1="using:Inventory.Presentation.Views.ProductViews"
-    xmlns:views="using:Inventory.Presentation.Views.DashboardViews"
+    xmlns:views="using:Inventory.Presentation.Views.DashboardViews" xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
     d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel, IsDesignTimeCreatable=True}" >
 
     <NavigationView
@@ -56,7 +56,7 @@
 
         <!--<views:DashboardView/>-->
         <views1:ProductView/>
-        
+
     </NavigationView>
 
 </Page>

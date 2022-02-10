@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Data;
 
 namespace Inventory.Presentation.Converters;
 
-internal class NullToVisibilityConverter : IValueConverter
+internal sealed class NullToVisibilityConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
