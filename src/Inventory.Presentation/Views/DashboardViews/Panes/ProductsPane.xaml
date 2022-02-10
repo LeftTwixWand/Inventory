@@ -35,12 +35,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Grid.Column="0" 
-                       Source="{x:Bind ThumbnailSource, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" 
+                       Source="{x:Bind Picture, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" 
                        Height="31"
                        Stretch="Uniform"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center" />
-                <TextBlock Grid.Column="1" Text="{x:Bind ProdcutID}" Style="{StaticResource DashboardPartColumnValueStyle}" />
+                <TextBlock Grid.Column="1" Text="{x:Bind ProductID}" Style="{StaticResource DashboardPartColumnValueStyle}" />
                 <TextBlock Grid.Column="2" Text="{x:Bind Name}" Style="{StaticResource DashboardPartColumnValueStyle}" />
                 <TextBlock Grid.Column="3" Text="{x:Bind Price}" Style="{StaticResource DashboardPartColumnValueStyle}" />
             </Grid>

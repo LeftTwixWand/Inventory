@@ -7,7 +7,8 @@
     mc:Ignorable="d"
     xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
     xmlns:extensions="using:Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions"
-    xmlns:views="using:Inventory.Presentation.Views.ProductsViews"
+    xmlns:views1="using:Inventory.Presentation.Views.ProductViews"
+    xmlns:views="using:Inventory.Presentation.Views.DashboardViews"
     d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel, IsDesignTimeCreatable=True}" >
 
     <NavigationView
@@ -52,8 +53,10 @@
         </NavigationView.FooterMenuItems>
 
         <!--<Frame x:Name="frame" />-->
-        <views:ProductsView/>
 
+        <!--<views:DashboardView/>-->
+        <views1:ProductView/>
+        
     </NavigationView>
 
 </Page>

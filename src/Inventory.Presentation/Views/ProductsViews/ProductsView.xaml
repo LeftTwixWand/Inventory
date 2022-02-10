@@ -27,7 +27,7 @@
                     Grid.Row="0"
                     Stretch="Uniform"
                     HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Source="{x:Bind ThumbnailSource, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" />
+                    Source="{x:Bind Picture, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" />
 
                 <StackPanel Grid.Row="1" Margin="6">
                     <TextBlock Text="{x:Bind Name, Mode=OneWay}" FontSize="12" FontWeight="SemiBold"/>
