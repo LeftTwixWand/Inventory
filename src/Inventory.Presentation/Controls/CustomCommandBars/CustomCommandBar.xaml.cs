@@ -32,37 +32,37 @@ internal sealed partial class CustomCommandBar : UserControl
 
     public CommandBarMode CommandBarMode
     {
-        get { return (CommandBarMode)GetValue(CommandBarModeProperty); }
-        set { SetValue(CommandBarModeProperty, value); }
+        get => (CommandBarMode)GetValue(CommandBarModeProperty);
+        set => SetValue(CommandBarModeProperty, value);
     }
 
     public ICommand AddCommand
     {
-        get { return (ICommand)GetValue(AddCommandProperty); }
-        set { SetValue(AddCommandProperty, value); }
+        get => (ICommand)GetValue(AddCommandProperty);
+        set => SetValue(AddCommandProperty, value);
     }
 
     public ICommand EditCommand
     {
-        get { return (ICommand)GetValue(EditCommandProperty); }
-        set { SetValue(EditCommandProperty, value); }
+        get => (ICommand)GetValue(EditCommandProperty);
+        set => SetValue(EditCommandProperty, value);
     }
 
     public ICommand CancelCommand
     {
-        get { return (ICommand)GetValue(CancelCommandProperty); }
-        set { SetValue(CancelCommandProperty, value); }
+        get => (ICommand)GetValue(CancelCommandProperty);
+        set => SetValue(CancelCommandProperty, value);
     }
 
     public ICommand SaveCommand
     {
-        get { return (ICommand)GetValue(SaveCommandProperty); }
-        set { SetValue(SaveCommandProperty, value); }
+        get => (ICommand)GetValue(SaveCommandProperty);
+        set => SetValue(SaveCommandProperty, value);
     }
 
     public ICommand DeleteCommand
     {
-        get { return (ICommand)GetValue(DeleteCommandProperty); }
-        set { SetValue(DeleteCommandProperty, value); }
+        get => (ICommand)GetValue(DeleteCommandProperty);
+        set => SetValue(DeleteCommandProperty, value);
     }
 }

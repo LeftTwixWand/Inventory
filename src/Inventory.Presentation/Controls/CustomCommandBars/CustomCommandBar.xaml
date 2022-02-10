@@ -14,6 +14,20 @@
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="CommandBarModeVisualState">
+                <VisualState x:Name="EditDeleteMode">
+                    <VisualState.StateTriggers>
+                        <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}" >
+                            <triggers:IsEqualStateTrigger.To>
+                                <enums:CommandBarMode>EditDelete</enums:CommandBarMode>
+                            </triggers:IsEqualStateTrigger.To>
+                        </triggers:IsEqualStateTrigger>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="addButton.Visibility" Value="Collapsed" />
+                        <Setter Target="cancelButton.Visibility" Value="Collapsed" />
+                        <Setter Target="saveButton.Visibility" Value="Collapsed" />
+                    </VisualState.Setters>
+                </VisualState>
                 <VisualState x:Name="AddEditDeleteMode">
                     <VisualState.StateTriggers>
                         <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}" >
