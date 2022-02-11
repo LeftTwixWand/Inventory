@@ -13,7 +13,7 @@
 
     <NavigationView
         Header="Dashboard"
-        Style="{StaticResource NavigationViewStyle}" >
+        Style="{StaticResource NavigationViewStyle}" ItemInvoked="NavigationView_ItemInvoked">
         
         <!--extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel"-->
         <NavigationView.MenuItems>
@@ -52,10 +52,7 @@
             </NavigationViewItem>
         </NavigationView.FooterMenuItems>
 
-        <!--<Frame x:Name="frame" />-->
-
-        <!--<views:DashboardView/>-->
-        <views1:ProductView/>
+        <Frame x:Name="frame" />
 
     </NavigationView>
 
