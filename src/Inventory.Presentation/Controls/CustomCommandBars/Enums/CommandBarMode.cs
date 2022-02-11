@@ -2,6 +2,7 @@
 
 internal enum CommandBarMode
 {
+    EditDelete,
     AddEditDelete,
     CancelSave,
 }

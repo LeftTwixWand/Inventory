@@ -2,6 +2,7 @@
 using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.MainViewModels;
 using Inventory.Application.ViewModels.ProductsViewModels;
+using Inventory.Application.ViewModels.ProductViewModels;
 
 namespace Inventory.AutofacModules;
 
@@ -13,5 +14,6 @@ internal class NavigationModule : Module
 
         builder.RegisterType<MainViewModel>().InstancePerDependency();
         builder.RegisterType<ProductsViewModel>().InstancePerDependency();
+        builder.RegisterType<ProductViewModel>().InstancePerDependency();
     }
 }

@@ -8,7 +8,7 @@ using Windows.Storage.Streams;
 
 namespace Inventory.Presentation.Converters;
 
-public sealed class ObjectToImageConverter : IValueConverter
+internal sealed class ObjectToImageConverter : IValueConverter
 {
     public object? Convert(object value, Type targetType, object parameter, string language)
     {

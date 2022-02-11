@@ -27,12 +27,16 @@
     <None Remove="Styles\Grid\PageGridStyle.xaml" />
     <None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
     <None Remove="Styles\Page\PageStyle.xaml" />
+    <None Remove="Styles\ProductView\ProductViewStyle.xaml" />
     <None Remove="Styles\StylesRegistration.xaml" />
     <None Remove="Views\DashboardViews\DashboardView.xaml" />
     <None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
     <None Remove="Views\DashboardViews\Panes\OrdersPane.xaml" />
     <None Remove="Views\MainViews\MainView.xaml" />
     <None Remove="Views\ProductsViews\ProductsView.xaml" />
+    <None Remove="Views\ProductViews\Cards\ProductCard.xaml" />
+    <None Remove="Views\ProductViews\Details\ProductDetails.xaml" />
+    <None Remove="Views\ProductViews\ProductView.xaml" />
     <None Remove="Windows\MainWindows\MainWindow.xaml" />
   </ItemGroup>
 
@@ -52,6 +56,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Styles\ProductView\ProductViewStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
     <Page Update="Views\DashboardViews\Panes\OrdersPane.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +138,24 @@
 
   <ItemGroup>
     <Page Update="Views\ProductsViews\ProductsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\ProductViews\ProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\ProductViews\Cards\ProductCard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Views\ProductViews\Details\ProductDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

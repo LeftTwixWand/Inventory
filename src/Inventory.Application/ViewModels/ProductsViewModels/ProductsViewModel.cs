@@ -6,20 +6,20 @@ using MediatR;
 
 namespace Inventory.Application.ViewModels.ProductsViewModels;
 
-public partial class ProductsViewModel : GenericViewModel<ProductModel>
+public partial class ProductsViewModel : GenericCollectionViewModel<ProductModel>
 {
     public ProductsViewModel(IMediator mediator, INavigationService navigationService)
         : base(mediator, navigationService)
     {
         Items = new ObservableCollection<ProductModel>(new()
         {
-            new ProductModel() { ProdcutID = 1, Name = "Name1", CategoryName = "Category name1" },
-            new ProductModel() { ProdcutID = 1, Name = "Name2", CategoryName = "Category name1" },
-            new ProductModel() { ProdcutID = 1, Name = "Name3", CategoryName = "Category name1" },
-            new ProductModel() { ProdcutID = 1, Name = "Name4", CategoryName = "Category name1" },
-            new ProductModel() { ProdcutID = 1, Name = "Name5", CategoryName = "Category name1" },
-            new ProductModel() { ProdcutID = 1, Name = "Name6", CategoryName = "Category name1" },
-            new ProductModel() { ProdcutID = 1, Name = "Name7", CategoryName = "Category name1" },
+            new ProductModel() { ProductID = 1, Name = "Name1", CategoryName = "Category name1" },
+            new ProductModel() { ProductID = 1, Name = "Name2", CategoryName = "Category name1" },
+            new ProductModel() { ProductID = 1, Name = "Name3", CategoryName = "Category name1" },
+            new ProductModel() { ProductID = 1, Name = "Name4", CategoryName = "Category name1" },
+            new ProductModel() { ProductID = 1, Name = "Name5", CategoryName = "Category name1" },
+            new ProductModel() { ProductID = 1, Name = "Name6", CategoryName = "Category name1" },
+            new ProductModel() { ProductID = 1, Name = "Name7", CategoryName = "Category name1" },
         });
     }
 
