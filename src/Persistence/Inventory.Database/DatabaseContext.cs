@@ -1,4 +1,5 @@
 ﻿using Inventory.Domain.Categories;
+using Inventory.Domain.Products;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,8 @@ public class DatabaseContext : DbContext
 
     internal DbSet<Category> Categories => Set<Category>();
 
+    internal DbSet<Product> Products => Set<Product>();
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (optionsBuilder.IsConfigured == false)
@@ -32,7 +35,6 @@ public class DatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
     }
 }

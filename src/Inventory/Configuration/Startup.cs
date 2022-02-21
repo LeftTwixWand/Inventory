@@ -1,25 +1,20 @@
 ﻿using System;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.AutofacModules;
 using Inventory.AutofacModules;
 using Inventory.Database.AutofacModules;
 using Inventory.Infrastructure.AutofacModules;
 
-namespace Inventory;
+namespace Inventory.Configuration;
 
-internal sealed class Startup
+internal static class Startup
 {
-    internal static void Initialize()
-    {
-        Ioc.Default.ConfigureServices(ConfigureServices());
-    }
-
-    private static IServiceProvider ConfigureServices()
+    internal static IServiceProvider ConfigureServices()
     {
         var builder = new ContainerBuilder();
 
-        // builder.RegisterModule<ActivationModule>();
+        builder.RegisterModule<ActivationModule>();
 
         builder.RegisterModule<NavigationModule>();
 
@@ -29,7 +24,9 @@ internal sealed class Startup
 
         builder.RegisterModule<ProcessingModule>();
 
-        builder.RegisterModule<DatabaseModule>();
+        builder.RegisterModule(
+            new DatabaseModule(
+                DatabaseConfiguration.GetOprions()));
 
         return new AutofacServiceProvider(builder.Build());
     }
