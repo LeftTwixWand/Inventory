@@ -13,6 +13,14 @@
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
+    <interactivity:Interaction.Behaviors>
+        <interactivityCore:EventTriggerBehavior EventName="Loaded">
+            <interactivityCore:EventTriggerBehavior.Actions>
+                <interactivityCore:InvokeCommandAction Command="{x:Bind ViewModel.OnLoadCommand}" />
+            </interactivityCore:EventTriggerBehavior.Actions>
+        </interactivityCore:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
+
     <Page.Resources>
 
         <DataTemplate x:Name="ProductItemTemplate" x:DataType="models:ProductModel">
@@ -52,7 +60,7 @@
             IsItemClickEnabled="True"
             SelectionMode="Single"
             ItemTemplate="{StaticResource ProductItemTemplate}"
-            ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+            ItemsSource="{x:Bind ViewModel.Items, Mode=TwoWay}"
             SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}">
 
             <interactivity:Interaction.Behaviors>

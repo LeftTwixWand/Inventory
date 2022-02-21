@@ -37,7 +37,6 @@
     <None Remove="Views\ProductViews\Cards\ProductCard.xaml" />
     <None Remove="Views\ProductViews\Details\ProductDetails.xaml" />
     <None Remove="Views\ProductViews\ProductView.xaml" />
-    <None Remove="Windows\MainWindows\MainWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,12 +77,6 @@
 
   <ItemGroup>
     <Page Update="Views\MainViews\MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Update="Windows\MainWindows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
