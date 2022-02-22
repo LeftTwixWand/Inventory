@@ -7,7 +7,7 @@ namespace Inventory.Prerequisite.Win32.WindowIconLoaders;
 
 internal static class WindowIconLoader
 {
-    internal static void LoadIcon(this Window window, string iconPath)
+    internal static void LoadIcon(Window window, string iconPath)
     {
         Guard.IsNotNullOrEmpty(iconPath, nameof(iconPath));
 
