@@ -7,10 +7,12 @@
 
         <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/DashboardView/DashboardStyle.xaml"/>
         <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/DashboardView/PaneStyle.xaml"/>
+        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/FontSize/_FontSizes.xaml" />
         <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/Grid/PageGridStyle.xaml"/>
         <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/NavigationView/NavigationViewStyle.xaml"/>
         <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/Page/PageStyle.xaml"/>
         <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/ProductView/ProductViewStyle.xaml"/>
+        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/Thickness/_Thicknesses.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 

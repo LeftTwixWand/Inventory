@@ -7,16 +7,21 @@
     mc:Ignorable="d"
     xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
     xmlns:extensions="using:Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions"
-    xmlns:views="using:Inventory.Presentation.Views.ProductsViews"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity" 
+    xmlns:behaviors="using:Inventory.Presentation.Behaviors.NavigationViewHeader"
     d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel, IsDesignTimeCreatable=True}" >
 
     <NavigationView
-        Header="Dashboard"
+        x:Name="navigationView"
+        IsBackButtonVisible="Visible"
+        IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+        SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
+        Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
         Style="{StaticResource NavigationViewStyle}" >
-        
-        <!--extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel"-->
+
         <NavigationView.MenuItems>
-            <NavigationViewItem Content="Home" extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel" >
+            <NavigationViewItem Content="Home" 
+                extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel" >
                 <NavigationViewItem.Icon>
                     <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Home.png" ShowAsMonochrome="False"/>
                 </NavigationViewItem.Icon>
@@ -31,7 +36,8 @@
                     <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Order.png" ShowAsMonochrome="False"/>
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem Content="Products">
+            <NavigationViewItem Content="Products"
+                extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.ProductsViewModels.ProductsViewModel" >
                 <NavigationViewItem.Icon>
                     <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Lamp.png" ShowAsMonochrome="False"/>
                 </NavigationViewItem.Icon>
@@ -51,10 +57,33 @@
             </NavigationViewItem>
         </NavigationView.FooterMenuItems>
 
-        <!--<Frame x:Name="frame" />-->
+        <NavigationView.HeaderTemplate>
+            <DataTemplate>
+                <Grid>
+                    <TextBlock
+                        Text="{Binding}"
+                        Style="{ThemeResource TitleTextBlockStyle}"
+                        Margin="{StaticResource SmallLeftRightMargin}" />
+                </Grid>
+            </DataTemplate>
+        </NavigationView.HeaderTemplate>
 
-        <!--<views:DashboardView/>-->
-        <views:ProductsView/>
+        <interactivity:Interaction.Behaviors>
+            <behaviors:NavigationViewHeaderBehavior
+                DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+                <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <TextBlock Text="{Binding}" 
+                                       Style="{ThemeResource TitleTextBlockStyle}"
+                                       Margin="{StaticResource SmallLeftRightMargin}"/>
+                        </Grid>
+                    </DataTemplate>
+                </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
+            </behaviors:NavigationViewHeaderBehavior>
+        </interactivity:Interaction.Behaviors>
+
+        <Frame x:Name="frame" />
 
     </NavigationView>
 

@@ -24,11 +24,13 @@
     <None Remove="Converters\ConvertersRegistration.xaml" />
     <None Remove="Styles\DashboardView\DashboardStyle.xaml" />
     <None Remove="Styles\DashboardView\PaneStyle.xaml" />
+    <None Remove="Styles\FontSize\_FontSizes.xaml" />
     <None Remove="Styles\Grid\PageGridStyle.xaml" />
     <None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
     <None Remove="Styles\Page\PageStyle.xaml" />
     <None Remove="Styles\ProductView\ProductViewStyle.xaml" />
     <None Remove="Styles\StylesRegistration.xaml" />
+    <None Remove="Styles\Thickness\_Thicknesses.xaml" />
     <None Remove="Views\DashboardViews\DashboardView.xaml" />
     <None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
     <None Remove="Views\DashboardViews\Panes\OrdersPane.xaml" />
@@ -56,6 +58,9 @@
 
   <ItemGroup>
     <Page Update="Styles\ProductView\ProductViewStyle.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Styles\Thickness\_Thickness.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="Views\DashboardViews\Panes\OrdersPane.xaml">
@@ -149,6 +154,18 @@
 
   <ItemGroup>
     <Page Update="Views\ProductViews\Details\ProductDetails.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\TextBlock\TextBlock.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\Thinck\Thick.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
