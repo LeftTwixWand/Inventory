@@ -8,9 +8,13 @@ public sealed partial class MainView : Page
 {
     public MainView()
     {
+        ViewModel = Ioc.Default.GetRequiredService<MainViewModel>();
+
         InitializeComponent();
-        MainViewModel = Ioc.Default.GetRequiredService<MainViewModel>();
+
+        ViewModel.NavigationService.Frame = frame;
+        ViewModel.NavigationViewService.Initialize(navigationView);
     }
 
-    public MainViewModel MainViewModel { get; set; }
+    public MainViewModel ViewModel { get; }
 }

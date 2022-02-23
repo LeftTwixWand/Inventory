@@ -2,9 +2,10 @@
 using AxisUNO.Shared.Services.Activation.Handlers;
 using BuildingBlocks.Application.Services.Activation.Handlers;
 using Inventory.Application.Services.Activation;
+using Inventory.Services.Activation;
 using Microsoft.UI.Xaml;
 
-namespace Inventory.Application.AutofacModules;
+namespace Inventory.AutofacModules;
 
 public sealed class ActivationModule : Module
 {

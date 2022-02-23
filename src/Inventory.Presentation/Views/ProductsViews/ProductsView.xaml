@@ -11,6 +11,8 @@
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
     d:DataContext="{d:DesignInstance Type=productsViewModels:ProductsViewModel}"
     mc:Ignorable="d"
+    xmlns:behaviors="using:Inventory.Presentation.Behaviors.NavigationViewHeader"
+    behaviors:NavigationViewHeaderBehavior.HeaderMode="Always"
     Style="{StaticResource PageStyle}">
 
     <interactivity:Interaction.Behaviors>

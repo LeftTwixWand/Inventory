@@ -1,28 +1,45 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Inventory.Application.Products.CreateNewProduct;
 using Inventory.Application.Services.Navigation;
-using Inventory.Application.ViewModels.BaseViewModels;
-using MediatR;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace Inventory.Application.ViewModels.MainViewModels;
 
-public partial class MainViewModel : BaseViewModel
+public partial class MainViewModel : ObservableObject
 {
-    [ObservableProperty]
-    private string buttonText = "Click me";
+    private readonly INavigationService _navigationService;
+    private readonly INavigationViewService _navigationViewService;
 
-    public MainViewModel(IMediator mediator, INavigationService navigationService)
-        : base(mediator, navigationService)
+    [ObservableProperty]
+    private bool isBackEnabled;
+
+    [ObservableProperty]
+    private object? selected;
+
+    public MainViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
     {
+        _navigationService = navigationService;
+        NavigationService.Navigated += OnNavigated;
+        _navigationViewService = navigationViewService;
     }
 
-    public override string HeaderText => base.HeaderText;
-
-    [ICommand]
-    private void ChangeText()
+    public INavigationService NavigationService
     {
-        Mediator.Send(new CreateNewProductCommand("My name"));
-        Mediator.Send(new CreateNewProductWithResultCommand("My name"));
+        get => _navigationService;
+    }
+
+    public INavigationViewService NavigationViewService
+    {
+        get => _navigationViewService;
+    }
+
+    private void OnNavigated(object sender, NavigationEventArgs e)
+    {
+        IsBackEnabled = NavigationService.CanGoBack;
+
+        var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
+        if (selectedItem is not null)
+        {
+            Selected = selectedItem;
+        }
     }
 }

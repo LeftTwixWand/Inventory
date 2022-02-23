@@ -4,7 +4,7 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Windows.Storage;
 
-namespace Inventory.Configuration;
+namespace Inventory.Configurations.Database;
 
 internal static class DatabaseConfiguration
 {

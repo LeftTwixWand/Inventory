@@ -2,7 +2,7 @@
 
 namespace Inventory.Application.Services.ThemeSelector;
 
-internal interface IThemeSelectorService
+public interface IThemeSelectorService
 {
     ElementTheme Theme { get; }
 
