@@ -73,7 +73,7 @@ public partial class NavigationViewService : INavigationViewService
     /// <returns>True, if it's possible to get a view type.</returns>
     private bool MenuItemHasViewType(NavigationViewItem menuItem, Type sourcePageType)
     {
-        var pageKey = menuItem.GetValue(NavigationExtension.NavigateToProperty).ToString();
+        var pageKey = menuItem.GetValue(NavigationExtension.NavigateToProperty) as string;
 
         if (pageKey is not null)
         {

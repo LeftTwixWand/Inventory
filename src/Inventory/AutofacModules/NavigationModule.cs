@@ -6,7 +6,6 @@ using Inventory.Application.ViewModels.ProductsViewModels;
 using Inventory.Application.ViewModels.ProductViewModels;
 using Inventory.Application.ViewModels.SettingsViewModels;
 using Inventory.Configurations.Navigation;
-using Inventory.Presentation.Views.DashboardViews;
 using Inventory.Presentation.Views.MainViews;
 using Inventory.Services.Navigation;
 using Microsoft.UI.Xaml;
