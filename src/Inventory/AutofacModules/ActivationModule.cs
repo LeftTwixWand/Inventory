@@ -1,7 +1,7 @@
 ﻿using Autofac;
-using AxisUNO.Shared.Services.Activation.Handlers;
 using BuildingBlocks.Application.Services.Activation.Handlers;
 using Inventory.Application.Services.Activation;
+using Inventory.Application.Services.Activation.Handlers;
 using Inventory.Services.Activation;
 using Microsoft.UI.Xaml;
 

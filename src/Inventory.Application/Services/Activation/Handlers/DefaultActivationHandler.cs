@@ -5,7 +5,7 @@ using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.DashboardViewModels;
 using Microsoft.UI.Xaml;
 
-namespace AxisUNO.Shared.Services.Activation.Handlers;
+namespace Inventory.Application.Services.Activation.Handlers;
 
 [Inject]
 public partial class DefaultActivationHandler : ActivationHandler<LaunchActivatedEventArgs>
