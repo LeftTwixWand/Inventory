@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Domain.Orders.Enums;
 
-public enum OrderStatus : byte
+public enum OrderStatus
 {
     Pending,
     Processing,

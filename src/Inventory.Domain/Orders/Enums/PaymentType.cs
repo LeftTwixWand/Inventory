@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Domain.Orders.Enums;
 
-public enum PaymentType : byte
+public enum PaymentType
 {
     CreditCard,
     ElectronicTransaction,

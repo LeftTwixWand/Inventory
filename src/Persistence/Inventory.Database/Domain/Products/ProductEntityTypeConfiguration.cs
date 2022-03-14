@@ -18,7 +18,7 @@ internal class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product
 
         builder.Property(product => product.Name)
             .HasColumnName(nameof(Product.Name))
-            .HasMaxLength(255)
+            .HasMaxLength(55)
             .IsRequired();
     }
 }

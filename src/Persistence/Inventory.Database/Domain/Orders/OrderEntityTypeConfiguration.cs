@@ -20,6 +20,12 @@ internal class OrderEntityTypeConfiguration : IEntityTypeConfiguration<Order>
 
         builder.Property(order => order.PaymentType)
             .HasColumnName(nameof(Order.PaymentType))
-            .HasConversion(new EnumToNumberConverter<PaymentType, byte>());
+            .HasConversion(new EnumToNumberConverter<PaymentType, int>());
+
+        builder.Property(order => order.Status)
+            .HasColumnName(nameof(OrderStatus))
+            .HasConversion(new EnumToNumberConverter<PaymentType, int>());
+
+        builder.Navigation(productGroup => productGroup.OrderItems).UsePropertyAccessMode(PropertyAccessMode.Field);
     }
 }
