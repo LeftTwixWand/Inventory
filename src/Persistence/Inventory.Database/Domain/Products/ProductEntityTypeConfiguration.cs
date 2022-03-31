@@ -15,10 +15,5 @@ internal class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product
         builder.Property(product => product.Id)
             .HasColumnName(nameof(Product.Id))
             .ValueGeneratedOnAdd();
-
-        builder.Property(product => product.Name)
-            .HasColumnName(nameof(Product.Name))
-            .HasMaxLength(255)
-            .IsRequired();
     }
 }

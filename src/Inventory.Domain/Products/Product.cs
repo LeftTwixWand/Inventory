@@ -9,18 +9,12 @@ public class Product : Entity
     private Product(
         int id,
         string name,
-        decimal listPrice,
-        decimal dealerPrice,
-        decimal discount,
         string? description,
         byte[]? picture)
     {
         Id = id;
         Name = name;
         Description = description;
-        ListPrice = listPrice;
-        DealerPrice = dealerPrice;
-        Discount = discount;
         Picture = picture;
         Category = default!;
     }
@@ -28,12 +22,6 @@ public class Product : Entity
     public int Id { get; private set; }
 
     public string Name { get; private set; }
-
-    public decimal ListPrice { get; private set; }
-
-    public decimal DealerPrice { get; private set; }
-
-    public decimal Discount { get; set; }
 
     public string? Description { get; private set; }
 
@@ -43,16 +31,13 @@ public class Product : Entity
 
     public static Product Create(
         string name,
-        decimal listPrice,
-        decimal dealerPrice,
         Category category,
-        decimal discount = 0,
         string? description = default,
         byte[]? picture = default)
     {
         CheckRule(new NameMustNotBeEmptyRyle(name));
 
-        return new Product(0, name, listPrice, dealerPrice, discount, description, picture)
+        return new Product(0, name, description, picture)
         {
             Category = category,
         };
