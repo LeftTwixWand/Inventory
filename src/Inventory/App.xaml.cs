@@ -1,17 +1,36 @@
 ﻿using System;
-using CommunityToolkit.Mvvm.DependencyInjection;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Inventory.Application.AutofacModules;
 using Inventory.Application.Services.Activation;
-using Inventory.Configurations;
-using Inventory.Prerequisite.Win32.WindowIconLoaders;
+using Inventory.AutofacModules;
+using Inventory.Configurations.Database;
+using Inventory.Database.AutofacModules;
+using Inventory.Infrastructure.AutofacModules;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 
 namespace Inventory;
 
 public partial class App : Microsoft.UI.Xaml.Application
 {
+    // The .NET Generic Host provides dependency injection, configuration, logging, and other services.
+    // https://docs.microsoft.com/dotnet/core/extensions/generic-host
+    // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
+    // https://docs.microsoft.com/dotnet/core/extensions/configuration
+    // https://docs.microsoft.com/dotnet/core/extensions/logging
+    private readonly IHost _host;
+
     public App()
     {
         InitializeComponent();
+
+        _host = Host
+            .CreateDefaultBuilder()
+            .UseContentRoot(AppContext.BaseDirectory)
+            .UseServiceProviderFactory(new AutofacServiceProviderFactory(ConfigureServices))
+            .Build();
 
         UnhandledException += App_UnhandledException;
     }
@@ -23,19 +42,26 @@ public partial class App : Microsoft.UI.Xaml.Application
     {
         base.OnLaunched(args);
 
-        Ioc.Default.ConfigureServices(Startup.ConfigureServices());
-
-        var activationService = Ioc.Default.GetRequiredService<IActivationService>();
-        await activationService.ActivateAsync(args);
-
-        InitializeWindow();
+        await _host.Services.GetRequiredService<IActivationService>().ActivateAsync(args);
     }
 
-    private static void InitializeWindow()
+    private void ConfigureServices(ContainerBuilder builder)
     {
-        WindowIconLoader.LoadIcon(MainWindow, @"Assets\Icons\WindowIcon.ico");
+        builder.RegisterModule<ActivationModule>();
 
-        // MainWindow.Content = new MainView();
+        builder.RegisterModule<NavigationModule>();
+
+        builder.RegisterModule<LoggingModule>();
+
+        builder.RegisterModule<MediatorModule>();
+
+        builder.RegisterModule<ProcessingModule>();
+
+        builder.RegisterModule<ApplicationServicesModule>();
+
+        builder.RegisterModule(
+            new DatabaseModule(
+                DatabaseConfiguration.GetOprions()));
     }
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)

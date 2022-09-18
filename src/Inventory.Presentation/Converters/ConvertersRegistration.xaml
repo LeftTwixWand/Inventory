@@ -3,11 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Inventory.Presentation.Converters">
 
-    <!-- All the сonverters in the Presentation layer must to be registered in this file. -->
+    <!--  All the сonverters in the Presentation layer must to be registered in this file.  -->
 
     <local:ObjectToImageConverter x:Key="ObjectToImageConverter" />
-    <local:DateTimeFormatConverter x:Key="DateTimeFormatConverter"/>
-    <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
-    <local:DecimalConverter x:Key="DecimalConverter"/>
-    
+    <local:DateTimeFormatConverter x:Key="DateTimeFormatConverter" />
+    <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    <local:DecimalToStringConverter x:Key="DecimalConverter" />
+
 </ResourceDictionary>

@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Data;
 
 namespace Inventory.Presentation.Converters;
 
-internal sealed class DecimalConverter : IValueConverter
+internal sealed class DecimalToStringConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
