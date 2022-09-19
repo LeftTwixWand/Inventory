@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -26,9 +25,7 @@ jobs:
         dotnet-version: 6.x
     
     - name: Setup Nuget
-      uses: NuGet/setup-nuget@v1.0.5
-      with: 
-         nuget-version: latest
+      uses: NuGet/setup-nuget@v1.0.7
 
     - name: Restore Nuget packages
       run: nuget restore Inventory.sln
@@ -38,5 +35,3 @@ jobs:
           -t:rebuild
           -verbosity:diag
           -property:Configuration=${{env.BuildConfiguration}}
-  
-  #  - name: Run Tests
