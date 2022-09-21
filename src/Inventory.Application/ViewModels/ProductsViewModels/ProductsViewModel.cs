@@ -32,7 +32,7 @@ public sealed partial class ProductsViewModel : GenericCollectionViewModel<Produ
     {
     }
 
-    [ICommand]
+    [RelayCommand]
     private async Task OnLoad()
     {
         await foreach (var item in Mediator.CreateStream(new GetProductsStream()))

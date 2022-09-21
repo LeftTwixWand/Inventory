@@ -1,4 +1,5 @@
 ﻿using System;
+using CommunityToolkit.Diagnostics;
 using HarabaSourceGenerators.Common.Attributes;
 using Inventory.Application.Services.Navigation;
 using Inventory.Services.Navigation.Extensions;
@@ -25,10 +26,10 @@ public partial class NavigationService : INavigationService
 
     public bool CanGoBack
     {
-        get => Frame.CanGoBack;
+        get => _frame.CanGoBack;
     }
 
-    public Frame Frame
+    public object? Frame
     {
         get
         {
@@ -44,17 +45,24 @@ public partial class NavigationService : INavigationService
         set
         {
             UnregisterFrameEvents();
-            _frame = value;
-            RegisterFrameEvents();
+            if (value is Frame frame)
+            {
+                _frame = frame;
+                RegisterFrameEvents();
+            }
+
+            ThrowHelper.ThrowArgumentException(nameof(value), "Value has to be of type Microsoft.UI.Xaml.Controls.Frame");
         }
     }
+
+    public bool IsFrameEmpty => _frame.Content is null;
 
     public bool GoBack()
     {
         if (CanGoBack)
         {
-            var vmBeforeNavigation = Frame.GetPageViewModel();
-            Frame.GoBack();
+            var vmBeforeNavigation = _frame.GetPageViewModel();
+            _frame.GoBack();
             if (vmBeforeNavigation is INavigationAware navigationAware)
             {
                 navigationAware.OnNavigatedFrom();
@@ -95,12 +103,12 @@ public partial class NavigationService : INavigationService
     {
         var viewType = _viewsService.GetViewType(viewModelName);
 
-        if (Frame.Content?.GetType() != viewType
+        if (_frame.Content?.GetType() != viewType
         || (parameter is not null &&
         parameter.Equals(_lastParameterUsed) == false))
         {
-            var vmBeforeNavigation = Frame.GetPageViewModel();
-            var navigated = Frame.Navigate(viewType, parameter);
+            var vmBeforeNavigation = _frame.GetPageViewModel();
+            var navigated = _frame.Navigate(viewType, parameter);
             if (navigated)
             {
                 _lastParameterUsed = parameter;
@@ -120,7 +128,7 @@ public partial class NavigationService : INavigationService
     {
         if (Frame is not null)
         {
-            Frame.Navigated += OnNavigated;
+            _frame.Navigated += OnNavigated;
         }
     }
 
@@ -128,7 +136,7 @@ public partial class NavigationService : INavigationService
     {
         if (Frame is not null)
         {
-            Frame.Navigated -= OnNavigated;
+            _frame.Navigated -= OnNavigated;
         }
     }
 

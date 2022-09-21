@@ -2,6 +2,6 @@
 
 namespace Inventory.Application.Products.CreateNewProduct;
 
-public record CreateNewProductCommand(string Name) : CommandBase;
+public sealed record CreateNewProductCommand(string Name) : CommandBase;
 
-public record CreateNewProductWithResultCommand(string Name) : CommandBase<string>;
+public sealed record CreateNewProductWithResultCommand(string Name) : CommandBase<string>;

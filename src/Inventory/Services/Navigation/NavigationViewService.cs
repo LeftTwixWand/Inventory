@@ -1,21 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HarabaSourceGenerators.Common.Attributes;
+using CommunityToolkit.Diagnostics;
 using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.SettingsViewModels;
 using Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions;
 using Microsoft.UI.Xaml.Controls;
 
-namespace Inventory.Configurations.Navigation;
+namespace Inventory.Services.Navigation;
 
-[Inject]
-public partial class NavigationViewService : INavigationViewService
+public sealed partial class NavigationViewService : INavigationViewService
 {
     private readonly INavigationService _navigationService;
     private readonly IViewsService _viewsService;
 
     private NavigationView _navigationView = new();
+
+    public NavigationViewService(INavigationService navigationService, IViewsService viewsService)
+    {
+        _navigationService = navigationService;
+        _viewsService = viewsService;
+    }
 
     public IList<object> MenuItems
     {
@@ -27,16 +32,22 @@ public partial class NavigationViewService : INavigationViewService
         get => _navigationView.SettingsItem;
     }
 
-    public NavigationViewItem? GetSelectedItem(Type pageType)
+    public object? GetSelectedItem(Type pageType)
     {
         return GetSelectedItem(_navigationView.MenuItems, pageType);
     }
 
-    public void Initialize(NavigationView navigationView)
+    public void Initialize(object navigationView)
     {
-        _navigationView = navigationView;
-        _navigationView.BackRequested += OnBackRequested;
-        _navigationView.ItemInvoked += OnItemInvoked;
+        if (navigationView is NavigationView navView)
+        {
+            _navigationView = navView;
+            _navigationView.BackRequested += OnBackRequested;
+            _navigationView.ItemInvoked += OnItemInvoked;
+            return;
+        }
+
+        ThrowHelper.ThrowArgumentException(nameof(navigationView), "The argument has to be of type Microsoft.UI.Xaml.Controls.NavigationView");
     }
 
     public void UnregisterEvents()
@@ -45,7 +56,7 @@ public partial class NavigationViewService : INavigationViewService
         _navigationView.ItemInvoked -= OnItemInvoked;
     }
 
-    private NavigationViewItem? GetSelectedItem(IEnumerable<object> menuItems, Type viewType)
+    private object? GetSelectedItem(IEnumerable<object> menuItems, Type viewType)
     {
         foreach (var item in menuItems.OfType<NavigationViewItem>())
         {

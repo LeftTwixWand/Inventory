@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Inventory.Application.ViewModels.ProductViewModels;
 
-public partial class ProductViewModel : GenericDetailsViewModel<ProductModel>
+public sealed partial class ProductViewModel : GenericDetailsViewModel<ProductModel>
 {
     [ObservableProperty]
     private object? newPictureSource = null;
@@ -52,7 +52,7 @@ public partial class ProductViewModel : GenericDetailsViewModel<ProductModel>
         throw new NotImplementedException();
     }
 
-    [ICommand]
+    [RelayCommand]
     private void EditPicture()
     {
         throw new NotImplementedException();

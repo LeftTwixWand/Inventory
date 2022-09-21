@@ -2,7 +2,7 @@
 
 namespace Inventory.Application.Customers.Models;
 
-public class CustomerModel : ObservableObject
+public sealed class CustomerModel : ObservableObject
 {
     public long CustomerID { get; set; }
 

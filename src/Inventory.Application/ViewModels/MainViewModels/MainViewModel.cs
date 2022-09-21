@@ -4,9 +4,8 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace Inventory.Application.ViewModels.MainViewModels;
 
-public partial class MainViewModel : ObservableObject
+public sealed partial class MainViewModel : ObservableObject
 {
-    private readonly INavigationService _navigationService;
     private readonly INavigationViewService _navigationViewService;
 
     [ObservableProperty]
@@ -17,15 +16,12 @@ public partial class MainViewModel : ObservableObject
 
     public MainViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
     {
-        _navigationService = navigationService;
+        NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
         _navigationViewService = navigationViewService;
     }
 
-    public INavigationService NavigationService
-    {
-        get => _navigationService;
-    }
+    public INavigationService NavigationService { get; }
 
     public INavigationViewService NavigationViewService
     {

@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Inventory.Application.Products.GetProducts;
 
-public record GetProductsStream : IStreamRequest<ProductModel>;
+public sealed record GetProductsStream : IStreamRequest<ProductModel>;

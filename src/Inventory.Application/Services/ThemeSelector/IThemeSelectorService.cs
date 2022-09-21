@@ -1,12 +1,14 @@
-﻿namespace Inventory.Application.Services.ThemeSelector;
+﻿using Microsoft.UI.Xaml;
+
+namespace Inventory.Application.Services.ThemeSelector;
 
 public interface IThemeSelectorService
 {
-    ApplicationTheme Theme { get; }
+    ElementTheme Theme { get; }
 
     Task InitializeAsync();
 
-    Task SetThemeAsync(ApplicationTheme theme);
+    Task SetThemeAsync(ElementTheme theme);
 
     Task SetRequestedThemeAsync();
 }

@@ -2,7 +2,7 @@
 
 namespace Inventory.Application.Products.Models;
 
-public class ProductModel : ObservableObject
+public sealed class ProductModel : ObservableObject
 {
     public long ProductID { get; set; }
 

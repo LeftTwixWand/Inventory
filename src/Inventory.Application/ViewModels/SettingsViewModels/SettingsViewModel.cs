@@ -2,6 +2,6 @@
 
 namespace Inventory.Application.ViewModels.SettingsViewModels;
 
-public class SettingsViewModel : ObservableObject
+public sealed class SettingsViewModel : ObservableObject
 {
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.Services.Activation.Handlers;
-using HarabaSourceGenerators.Common.Attributes;
 using Inventory.Application.Services.Activation;
 using Inventory.Application.Services.ThemeSelector;
 using Inventory.Presentation.Views.MainViews;
@@ -13,7 +12,6 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Services.Activation;
 
-[Inject]
 public sealed partial class ActivationService : IActivationService
 {
     private readonly ActivationHandler<LaunchActivatedEventArgs> _defaultHandler;
@@ -21,6 +19,13 @@ public sealed partial class ActivationService : IActivationService
     private readonly IThemeSelectorService _themeSelectorService;
 
     private UIElement? _shell = null;
+
+    public ActivationService(ActivationHandler<LaunchActivatedEventArgs> defaultHandler, IEnumerable<IActivationHandler> activationHandlers, IThemeSelectorService themeSelectorService)
+    {
+        _defaultHandler = defaultHandler;
+        _activationHandlers = activationHandlers;
+        _themeSelectorService = themeSelectorService;
+    }
 
     public async Task ActivateAsync(string activationArgs, IServiceProvider serviceProvider)
     {

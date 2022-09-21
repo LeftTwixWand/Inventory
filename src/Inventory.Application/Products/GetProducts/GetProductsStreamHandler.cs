@@ -1,5 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
-using HarabaSourceGenerators.Common.Attributes;
 using Inventory.Application.Products.Models;
 using Inventory.Domain.Products;
 using Mapster;
@@ -7,10 +6,14 @@ using MediatR;
 
 namespace Inventory.Application.Products.GetProducts;
 
-[Inject]
-public partial class GetProductsStreamHandler : IStreamRequestHandler<GetProductsStream, ProductModel>
+public sealed class GetProductsStreamHandler : IStreamRequestHandler<GetProductsStream, ProductModel>
 {
     private readonly IProductsRepository _repository;
+
+    public GetProductsStreamHandler(IProductsRepository repository)
+    {
+        _repository = repository;
+    }
 
     public async IAsyncEnumerable<ProductModel> Handle(GetProductsStream request, [EnumeratorCancellation] CancellationToken cancellationToken)
     {

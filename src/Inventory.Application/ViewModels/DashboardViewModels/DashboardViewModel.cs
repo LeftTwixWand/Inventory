@@ -5,12 +5,8 @@ using Inventory.Application.Products.Models;
 
 namespace Inventory.Application.ViewModels.DashboardViewModels;
 
-public class DashboardViewModel : ObservableObject
+public sealed class DashboardViewModel : ObservableObject
 {
-    public DashboardViewModel()
-    {
-    }
-
     public IList<CustomerModel> Customers { get; private set; } = new List<CustomerModel>()
     {
         new CustomerModel() { CustomerID = 1134234234, FirstName = "First", LastName = "LastName", EmailAddress = "wefwegrgergrgwrg@gmail.com" },

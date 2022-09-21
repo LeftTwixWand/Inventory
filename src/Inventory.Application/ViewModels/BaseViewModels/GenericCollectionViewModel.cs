@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Inventory.Application.Services.Navigation;
 using MediatR;
 
@@ -17,15 +18,15 @@ public abstract partial class GenericCollectionViewModel<TModel> : BaseViewModel
 
     public ObservableCollection<TModel> Items { get; set; } = new();
 
-    [ICommand]
+    [RelayCommand]
     protected abstract void ItemClick();
 
-    [ICommand]
+    [RelayCommand]
     protected abstract void AddNew();
 
-    [ICommand]
+    [RelayCommand]
     protected abstract void Refresh();
 
-    [ICommand]
+    [RelayCommand]
     protected abstract void DeleteSelection();
 }
