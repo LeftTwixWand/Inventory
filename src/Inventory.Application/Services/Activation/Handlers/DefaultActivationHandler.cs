@@ -1,28 +1,30 @@
 ﻿using BuildingBlocks.Application.Services.Activation.Handlers;
 using BuildingBlocks.Application.Services.DatabaseMigration;
-using HarabaSourceGenerators.Common.Attributes;
 using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.DashboardViewModels;
-using Microsoft.UI.Xaml;
 
 namespace Inventory.Application.Services.Activation.Handlers;
 
-[Inject]
-public partial class DefaultActivationHandler : ActivationHandler<LaunchActivatedEventArgs>
+public sealed partial class DefaultActivationHandler : IActivationHandler
 {
     private readonly INavigationService _navigationService;
     private readonly IDatabaseMigrationService _databaseMigrationService;
 
-    protected override async Task HandleInternalAsync(LaunchActivatedEventArgs? args)
+    public DefaultActivationHandler(INavigationService navigationService, IDatabaseMigrationService databaseMigrationService)
     {
-        _navigationService.Navigate<DashboardViewModel>(args?.Arguments);
-
-        await _databaseMigrationService.MigrateAsync();
+        _navigationService = navigationService;
+        _databaseMigrationService = databaseMigrationService;
     }
 
-    protected override bool CanHandleInternal(LaunchActivatedEventArgs? args)
+    public bool CanHandle(object args)
     {
-        // None of the ActivationHandlers has handled the app activation
         return _navigationService.Frame.Content == null;
+    }
+
+    public async Task HandleAsync(object args)
+    {
+        _navigationService.Navigate<DashboardViewModel>();
+
+        await _databaseMigrationService.MigrateAsync();
     }
 }

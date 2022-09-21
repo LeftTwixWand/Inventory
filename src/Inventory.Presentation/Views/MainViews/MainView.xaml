@@ -5,46 +5,45 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
-    xmlns:extensions="using:Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity" 
     xmlns:behaviors="using:Inventory.Presentation.Behaviors.NavigationViewHeader"
-    d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel, IsDesignTimeCreatable=True}" >
+    xmlns:extensions="using:Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
+    d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel,
+                                     IsDesignTimeCreatable=True}">
 
     <NavigationView
         x:Name="navigationView"
+        Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
         IsBackButtonVisible="Visible"
         IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
         SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
-        Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
-        Style="{StaticResource NavigationViewStyle}" >
+        Style="{StaticResource NavigationViewStyle}">
 
         <NavigationView.MenuItems>
-            <NavigationViewItem Content="Home" 
-                extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel" >
+            <NavigationViewItem extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel" Content="Home">
                 <NavigationViewItem.Icon>
-                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Home.png" ShowAsMonochrome="False"/>
+                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Home.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItem Content="Customers">
                 <NavigationViewItem.Icon>
-                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Customers.png" ShowAsMonochrome="False"/>
+                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Customers.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItem Content="Orders">
                 <NavigationViewItem.Icon>
-                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Order.png" ShowAsMonochrome="False"/>
+                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Order.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
-            <NavigationViewItem Content="Products"
-                extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.ProductsViewModels.ProductsViewModel" >
+            <NavigationViewItem extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.ProductsViewModels.ProductsViewModel" Content="Products">
                 <NavigationViewItem.Icon>
-                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Lamp.png" ShowAsMonochrome="False"/>
+                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Lamp.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
             <NavigationViewItem Content="Activity Log">
                 <NavigationViewItem.Icon>
-                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Warning.png" ShowAsMonochrome="False"/>
+                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Warning.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
         </NavigationView.MenuItems>
@@ -52,7 +51,7 @@
         <NavigationView.FooterMenuItems>
             <NavigationViewItem Content="Settings">
                 <NavigationViewItem.Icon>
-                    <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Settings.png" ShowAsMonochrome="False"/>
+                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Settings.png" />
                 </NavigationViewItem.Icon>
             </NavigationViewItem>
         </NavigationView.FooterMenuItems>
@@ -61,22 +60,22 @@
             <DataTemplate>
                 <Grid>
                     <TextBlock
-                        Text="{Binding}"
+                        Margin="{StaticResource SmallLeftRightMargin}"
                         Style="{ThemeResource TitleTextBlockStyle}"
-                        Margin="{StaticResource SmallLeftRightMargin}" />
+                        Text="{Binding}" />
                 </Grid>
             </DataTemplate>
         </NavigationView.HeaderTemplate>
 
         <interactivity:Interaction.Behaviors>
-            <behaviors:NavigationViewHeaderBehavior
-                DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+            <behaviors:NavigationViewHeaderBehavior DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
                 <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                     <DataTemplate>
                         <Grid>
-                            <TextBlock Text="{Binding}" 
-                                       Style="{ThemeResource TitleTextBlockStyle}"
-                                       Margin="{StaticResource SmallLeftRightMargin}"/>
+                            <TextBlock
+                                Margin="{StaticResource SmallLeftRightMargin}"
+                                Style="{ThemeResource TitleTextBlockStyle}"
+                                Text="{Binding}" />
                         </Grid>
                     </DataTemplate>
                 </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>

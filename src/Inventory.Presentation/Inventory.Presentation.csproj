@@ -1,172 +1,171 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
-    <RootNamespace>Inventory.Presentation</RootNamespace>
-    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <UseWinUI>true</UseWinUI>
-    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Assets\Icons\Add.png" />
-    <None Remove="Assets\Icons\Cancel.png" />
-    <None Remove="Assets\Icons\Customers.png" />
-    <None Remove="Assets\Icons\Delete.png" />
-    <None Remove="Assets\Icons\Edit.png" />
-    <None Remove="Assets\Icons\Home.png" />
-    <None Remove="Assets\Icons\Lamp.png" />
-    <None Remove="Assets\Icons\Order.png" />
-    <None Remove="Assets\Icons\Save.png" />
-    <None Remove="Assets\Icons\Settings.png" />
-    <None Remove="Assets\Icons\Warning.png" />
-    <None Remove="Controls\CustomCommandBars\CustomCommandBar.xaml" />
-    <None Remove="Converters\ConvertersRegistration.xaml" />
-    <None Remove="Styles\DashboardView\DashboardStyle.xaml" />
-    <None Remove="Styles\DashboardView\PaneStyle.xaml" />
-    <None Remove="Styles\FontSize\_FontSizes.xaml" />
-    <None Remove="Styles\Grid\PageGridStyle.xaml" />
-    <None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
-    <None Remove="Styles\Page\PageStyle.xaml" />
-    <None Remove="Styles\ProductView\ProductViewStyle.xaml" />
-    <None Remove="Styles\StylesRegistration.xaml" />
-    <None Remove="Styles\Thickness\_Thicknesses.xaml" />
-    <None Remove="Views\DashboardViews\DashboardView.xaml" />
-    <None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
-    <None Remove="Views\DashboardViews\Panes\OrdersPane.xaml" />
-    <None Remove="Views\MainViews\MainView.xaml" />
-    <None Remove="Views\ProductsViews\ProductsView.xaml" />
-    <None Remove="Views\ProductViews\Cards\ProductCard.xaml" />
-    <None Remove="Views\ProductViews\Details\ProductDetails.xaml" />
-    <None Remove="Views\ProductViews\ProductView.xaml" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
+		<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+		<RootNamespace>Inventory.Presentation</RootNamespace>
+		<RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+		<UseWinUI>true</UseWinUI>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="Assets\Icons\Add.png" />
+		<None Remove="Assets\Icons\Cancel.png" />
+		<None Remove="Assets\Icons\Customers.png" />
+		<None Remove="Assets\Icons\Delete.png" />
+		<None Remove="Assets\Icons\Edit.png" />
+		<None Remove="Assets\Icons\Home.png" />
+		<None Remove="Assets\Icons\Lamp.png" />
+		<None Remove="Assets\Icons\Order.png" />
+		<None Remove="Assets\Icons\Save.png" />
+		<None Remove="Assets\Icons\Settings.png" />
+		<None Remove="Assets\Icons\Warning.png" />
+		<None Remove="Controls\CustomCommandBars\CustomCommandBar.xaml" />
+		<None Remove="Converters\ConvertersRegistration.xaml" />
+		<None Remove="Styles\DashboardView\DashboardStyle.xaml" />
+		<None Remove="Styles\DashboardView\PaneStyle.xaml" />
+		<None Remove="Styles\FontSize\_FontSizes.xaml" />
+		<None Remove="Styles\Grid\PageGridStyle.xaml" />
+		<None Remove="Styles\NavigationView\NavigationViewStyle.xaml" />
+		<None Remove="Styles\Page\PageStyle.xaml" />
+		<None Remove="Styles\ProductView\ProductViewStyle.xaml" />
+		<None Remove="Styles\StylesRegistration.xaml" />
+		<None Remove="Styles\Thickness\_Thicknesses.xaml" />
+		<None Remove="Views\DashboardViews\DashboardView.xaml" />
+		<None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
+		<None Remove="Views\DashboardViews\Panes\OrdersPane.xaml" />
+		<None Remove="Views\MainViews\MainView.xaml" />
+		<None Remove="Views\ProductsViews\ProductsView.xaml" />
+		<None Remove="Views\ProductViews\Cards\ProductCard.xaml" />
+		<None Remove="Views\ProductViews\Details\ProductDetails.xaml" />
+		<None Remove="Views\ProductViews\ProductView.xaml" />
+	</ItemGroup>
 
-  <ItemGroup>
-      <PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
-      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
-      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
-      <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.8" />
-      <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
+		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.8" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Inventory.Application\Inventory.Application.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Inventory.Application\Inventory.Application.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\ProductView\ProductViewStyle.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Styles\Thickness\_Thickness.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\DashboardViews\Panes\OrdersPane.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\ProductView\ProductViewStyle.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Styles\Thickness\_Thickness.xaml">
+			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\DashboardViews\Panes\OrdersPane.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\DashboardView\DashboardStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\DashboardView\DashboardStyle.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Converters\ConvertersRegistration.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Converters\ConvertersRegistration.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\MainViews\MainView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\MainViews\MainView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\NavigationView\NavigationViewStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\NavigationView\NavigationViewStyle.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\StylesRegistration.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\StylesRegistration.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\DashboardViews\DashboardView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\DashboardViews\DashboardView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\Page\PageStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\Page\PageStyle.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\Grid\PageGridStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\Grid\PageGridStyle.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\DashboardViews\Parts\CustomerPane.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\DashboardViews\Parts\CustomerPane.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\DashboardView\PaneStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\DashboardView\PaneStyle.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Controls\CustomCommandBars\CustomCommandBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Controls\CustomCommandBars\CustomCommandBar.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\ProductsViews\ProductsView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\ProductsViews\ProductsView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\ProductViews\ProductView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\ProductViews\ProductView.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\ProductViews\Cards\ProductCard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\ProductViews\Cards\ProductCard.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Views\ProductViews\Details\ProductDetails.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Views\ProductViews\Details\ProductDetails.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\TextBlock\TextBlock.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\TextBlock\TextBlock.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Page Update="Styles\Thinck\Thick.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
+	<ItemGroup>
+		<Page Update="Styles\Thinck\Thick.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</Page>
+	</ItemGroup>
 </Project>

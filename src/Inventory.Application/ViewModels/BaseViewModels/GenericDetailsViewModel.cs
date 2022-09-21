@@ -22,15 +22,15 @@ public abstract partial class GenericDetailsViewModel<TModel> : BaseViewModel
     {
     }
 
-    [ICommand]
+    [RelayCommand]
     protected abstract Task Edit();
 
-    [ICommand]
+    [RelayCommand]
     protected abstract Task Delete();
 
-    [ICommand]
+    [RelayCommand]
     protected abstract Task Save();
 
-    [ICommand]
+    [RelayCommand]
     protected abstract Task Cancel();
 }

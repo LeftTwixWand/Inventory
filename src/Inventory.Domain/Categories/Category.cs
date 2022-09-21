@@ -2,7 +2,7 @@
 
 namespace Inventory.Domain.Categories;
 
-public class Category : Entity
+public sealed class Category : Entity
 {
     private Category(int id, string name, string? description, byte[]? picture, byte[]? pictureThumbnail)
     {

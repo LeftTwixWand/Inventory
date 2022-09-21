@@ -1,19 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.Services.Activation.Handlers;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using HarabaSourceGenerators.Common.Attributes;
 using Inventory.Application.Services.Activation;
 using Inventory.Application.Services.ThemeSelector;
 using Inventory.Presentation.Views.MainViews;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Services.Activation;
 
 [Inject]
-public partial class ActivationService : IActivationService
+public sealed partial class ActivationService : IActivationService
 {
     private readonly ActivationHandler<LaunchActivatedEventArgs> _defaultHandler;
     private readonly IEnumerable<IActivationHandler> _activationHandlers;
@@ -21,7 +22,7 @@ public partial class ActivationService : IActivationService
 
     private UIElement? _shell = null;
 
-    public async Task ActivateAsync(LaunchActivatedEventArgs activationArgs)
+    public async Task ActivateAsync(string activationArgs, IServiceProvider serviceProvider)
     {
         // Initialize services that you need before app activation
         // take into account that the splash screen is shown while this code runs.
@@ -29,7 +30,7 @@ public partial class ActivationService : IActivationService
 
         if (App.MainWindow.Content is null)
         {
-            _shell = Ioc.Default.GetService<MainView>();
+            _shell = serviceProvider.GetService<MainView>();
             App.MainWindow.Content = _shell ?? new Frame();
         }
 
@@ -47,7 +48,7 @@ public partial class ActivationService : IActivationService
     private async Task HandleActivationAsync(object activationArgs)
     {
         var activationHandler = _activationHandlers
-                                            .FirstOrDefault(h => h.CanHandle(activationArgs));
+                                            .FirstOrDefault(handler => handler.CanHandle(activationArgs));
 
         if (activationHandler is not null)
         {

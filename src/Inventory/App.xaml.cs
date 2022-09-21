@@ -13,36 +13,32 @@ using Microsoft.UI.Xaml;
 
 namespace Inventory;
 
-public partial class App : Microsoft.UI.Xaml.Application
+public sealed partial class App : Microsoft.UI.Xaml.Application
 {
-    // The .NET Generic Host provides dependency injection, configuration, logging, and other services.
-    // https://docs.microsoft.com/dotnet/core/extensions/generic-host
-    // https://docs.microsoft.com/dotnet/core/extensions/dependency-injection
-    // https://docs.microsoft.com/dotnet/core/extensions/configuration
-    // https://docs.microsoft.com/dotnet/core/extensions/logging
     private readonly IHost _host;
 
     public App()
     {
         InitializeComponent();
 
+        UnhandledException += App_UnhandledException;
+
         _host = Host
             .CreateDefaultBuilder()
             .UseContentRoot(AppContext.BaseDirectory)
             .UseServiceProviderFactory(new AutofacServiceProviderFactory(ConfigureServices))
             .Build();
-
-        UnhandledException += App_UnhandledException;
     }
 
-    // Windows must be static, because of WinAPI resources allocation.
+    // Window must be static, because of WinAPI resources allocation.
     public static Window MainWindow { get; private set; } = new Window() { Title = "Inventory", };
 
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
 
-        await _host.Services.GetRequiredService<IActivationService>().ActivateAsync(args);
+        var activationService = _host.Services.GetRequiredService<IActivationService>();
+        await activationService.ActivateAsync(args.Arguments, _host.Services);
     }
 
     private void ConfigureServices(ContainerBuilder builder)
