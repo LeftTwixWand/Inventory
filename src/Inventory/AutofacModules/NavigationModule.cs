@@ -26,7 +26,6 @@ internal class NavigationModule : Module
         builder.RegisterType<MainView>().InstancePerDependency();
 
         builder.RegisterType<DashboardViewModel>().InstancePerDependency();
-        //builder.RegisterType<DashboardView>().InstancePerDependency();
 
         builder.RegisterType<ProductsViewModel>().InstancePerDependency();
         builder.RegisterType<ProductViewModel>().InstancePerDependency();

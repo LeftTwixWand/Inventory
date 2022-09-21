@@ -4,28 +4,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:dashboardViewModels="using:Inventory.Application.ViewModels.DashboardViewModels"
     xmlns:panes="using:Inventory.Presentation.Views.DashboardViews.Panes"
-    xmlns:dashboardViewModels="using:Inventory.Application.ViewModels.DashboardViewModels" 
     d:DataContext="{d:DesignInstance Type=dashboardViewModels:DashboardViewModel}"
-    mc:Ignorable="d"    
     Style="{StaticResource PageStyle}">
 
-    <GridView 
-        ItemContainerStyle="{StaticResource SpasingGridViewItemStyle}" >
+    <GridView ItemContainerStyle="{StaticResource SpasingGridViewItemStyle}">
 
         <panes:CustomerPane
-            Height="270"
             Width="600"
+            Height="270"
             ItemsSource="{x:Bind ViewModel.Customers, Mode=OneWay}" />
 
         <panes:OrdersPane
-            Height="270"
             Width="600"
+            Height="270"
             ItemsSource="{x:Bind ViewModel.Orders, Mode=OneWay}" />
 
         <panes:ProductsPane
-            Height="270"
             Width="600"
+            Height="270"
             ItemsSource="{x:Bind ViewModel.Products, Mode=OneWay}" />
 
     </GridView>

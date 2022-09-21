@@ -4,41 +4,54 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     xmlns:productViewModels="using:Inventory.Application.ViewModels.ProductViewModels"
-    d:DataContext="{d:DesignInstance Type=productViewModels:ProductViewModel}"
-    mc:Ignorable="d">
+    d:DataContext="{d:DesignInstance Type=productViewModels:ProductViewModel}">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="12,6">
             <StackPanel Margin="0,12">
-                <Grid  Margin="6" Height="180">
+                <Grid Height="180" Margin="6">
                     <Grid Background="LightGray">
-                        <Image Source="{x:Bind ViewModel.Item.Picture, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" 
-                           Stretch="UniformToFill" 
-                           HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" />
+                        <Image
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Source="{x:Bind ViewModel.Item.Picture, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}"
+                            Stretch="UniformToFill" />
                     </Grid>
-                    <Button Padding="0" BorderThickness="1" BorderBrush="White" Background="Transparent" Command="{x:Bind ViewModel.EditPictureCommand}"
-                        HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
-                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    <Button
+                        Padding="0"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        HorizontalContentAlignment="Stretch"
+                        VerticalContentAlignment="Stretch"
+                        Background="Transparent"
+                        BorderBrush="White"
+                        BorderThickness="1"
+                        Command="{x:Bind ViewModel.EditPictureCommand}"
                         Visibility="{x:Bind ViewModel.IsEditMode, Mode=OneWay}">
                         <Grid>
                             <Rectangle Fill="White" Opacity="0.75" />
-                            <TextBlock Text="Edit Photo" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{x:Bind ViewModel.IsEditMode, Mode=OneWay}" />
-                            <Image Source="{x:Bind ViewModel.NewPictureSource, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" 
-                               Stretch="UniformToFill" 
-                               HorizontalAlignment="Center" 
-                               VerticalAlignment="Center"
-                               Visibility="{x:Bind ViewModel.NewPictureSource, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}}" />
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                Text="Edit Photo"
+                                Visibility="{x:Bind ViewModel.IsEditMode, Mode=OneWay}" />
+                            <Image
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Source="{x:Bind ViewModel.NewPictureSource, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}"
+                                Stretch="UniformToFill"
+                                Visibility="{x:Bind ViewModel.NewPictureSource, Mode=OneWay, Converter={StaticResource NullToVisibilityConverter}}" />
                         </Grid>
                     </Button>
                 </Grid>
-                <TextBlock Text="{x:Bind ViewModel.Item.Name, Mode=OneWay}" 
-                           TextAlignment="Center" />
+                <TextBlock Text="{x:Bind ViewModel.Item.Name, Mode=OneWay}" TextAlignment="Center" />
             </StackPanel>
 
 
-            <Rectangle Style="{StaticResource CardSeparator}"/>
+            <Rectangle Style="{StaticResource CardSeparator}" />
             <TextBlock Style="{StaticResource CardSection}" Text="General" />
 
             <TextBlock Style="{StaticResource CardHeader}" Text="Product ID" />
@@ -53,8 +66,8 @@
             <TextBlock Style="{StaticResource CardHeader}" Text="Last Update" />
             <TextBlock Style="{StaticResource CardText}" Text="{x:Bind ViewModel.Item.LastModifiedOn, Mode=OneWay, Converter={StaticResource DateTimeFormatConverter}}" />
 
-            <Rectangle Style="{StaticResource CardSeparator}"/>
-            <TextBlock Style="{StaticResource CardSection}" Text="Price"  />
+            <Rectangle Style="{StaticResource CardSeparator}" />
+            <TextBlock Style="{StaticResource CardSection}" Text="Price" />
 
             <TextBlock Style="{StaticResource CardHeader}" Text="List Price" />
             <TextBlock Style="{StaticResource CardText}" Text="{x:Bind ViewModel.Item.ListPrice, Mode=OneWay}" />
@@ -65,8 +78,8 @@
             <TextBlock Style="{StaticResource CardHeader}" Text="Discount" />
             <TextBlock Style="{StaticResource CardText}" Text="{x:Bind ViewModel.Item.Discount, Mode=OneWay}" />
 
-            <Rectangle Style="{StaticResource CardSeparator}"/>
-            <TextBlock Style="{StaticResource CardSection}" Text="Stock"  />
+            <Rectangle Style="{StaticResource CardSeparator}" />
+            <TextBlock Style="{StaticResource CardSection}" Text="Stock" />
 
             <TextBlock Style="{StaticResource CardHeader}" Text="Stock Units" />
             <TextBlock Style="{StaticResource CardText}" Text="{x:Bind ViewModel.Item.StockUnits, Mode=OneWay}" />

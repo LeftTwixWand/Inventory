@@ -4,15 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars" 
-    xmlns:productsViewModels="using:Inventory.Application.ViewModels.ProductsViewModels" 
-    xmlns:models="using:Inventory.Application.Products.Models" 
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity" 
-    xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
-    d:DataContext="{d:DesignInstance Type=productsViewModels:ProductsViewModel}"
     mc:Ignorable="d"
     xmlns:behaviors="using:Inventory.Presentation.Behaviors.NavigationViewHeader"
+    xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:models="using:Inventory.Application.Products.Models"
+    xmlns:productsViewModels="using:Inventory.Application.ViewModels.ProductsViewModels"
     behaviors:NavigationViewHeaderBehavior.HeaderMode="Always"
+    d:DataContext="{d:DesignInstance Type=productsViewModels:ProductsViewModel}"
     Style="{StaticResource PageStyle}">
 
     <interactivity:Interaction.Behaviors>
@@ -26,8 +26,11 @@
     <Page.Resources>
 
         <DataTemplate x:Name="ProductItemTemplate" x:DataType="models:ProductModel">
-   
-            <Grid Height="220" Width="200" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+
+            <Grid
+                Width="200"
+                Height="220"
+                Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*" />
                     <RowDefinition Height="3*" />
@@ -35,16 +38,20 @@
 
                 <Image
                     Grid.Row="0"
-                    Stretch="Uniform"
-                    HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Source="{x:Bind Picture, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}" />
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="{x:Bind Picture, Mode=OneWay, Converter={StaticResource ObjectToImageConverter}}"
+                    Stretch="Uniform" />
 
                 <StackPanel Grid.Row="1" Margin="6">
-                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" FontSize="12" FontWeight="SemiBold"/>
-                    <TextBlock Text="{x:Bind CategoryName, Mode=OneWay}" FontSize="12"/>
+                    <TextBlock
+                        FontSize="12"
+                        FontWeight="SemiBold"
+                        Text="{x:Bind Name, Mode=OneWay}" />
+                    <TextBlock FontSize="12" Text="{x:Bind CategoryName, Mode=OneWay}" />
                 </StackPanel>
             </Grid>
-        
+
         </DataTemplate>
 
     </Page.Resources>
@@ -55,15 +62,15 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <customCommandBars:CustomCommandBar Grid.Row="0"/>
+        <customCommandBars:CustomCommandBar Grid.Row="0" />
 
         <GridView
             Grid.Row="1"
             IsItemClickEnabled="True"
-            SelectionMode="Single"
             ItemTemplate="{StaticResource ProductItemTemplate}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=TwoWay}"
-            SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}">
+            SelectedItem="{x:Bind ViewModel.SelectedItem, Mode=TwoWay}"
+            SelectionMode="Single">
 
             <interactivity:Interaction.Behaviors>
                 <interactivityCore:EventTriggerBehavior EventName="ItemClick">

@@ -28,6 +28,7 @@
 		<None Remove="Styles\Page\PageStyle.xaml" />
 		<None Remove="Styles\ProductView\ProductViewStyle.xaml" />
 		<None Remove="Styles\StylesRegistration.xaml" />
+		<None Remove="Styles\TextBlock\TextBlocks.xaml" />
 		<None Remove="Styles\Thickness\_Thicknesses.xaml" />
 		<None Remove="Views\DashboardViews\DashboardView.xaml" />
 		<None Remove="Views\DashboardViews\Panes\CustomerPane.xaml" />
@@ -166,5 +167,11 @@
 		<Page Update="Styles\Thinck\Thick.xaml">
 			<Generator>MSBuild:Compile</Generator>
 		</Page>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Page Update="Styles\TextBlock\TextBlocks.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 </Project>

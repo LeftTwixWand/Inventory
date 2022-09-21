@@ -2,88 +2,101 @@
     x:Class="Inventory.Presentation.Views.MainViews.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     xmlns:behaviors="using:Inventory.Presentation.Behaviors.NavigationViewHeader"
-    xmlns:extensions="using:Inventory.Presentation.DependencyPropertyExtensions.NavigationViewItemExtensions"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:mainViewModels="using:Inventory.Application.ViewModels.MainViewModels"
-    d:DataContext="{d:DesignInstance Type=mainViewModels:MainViewModel,
-                                     IsDesignTimeCreatable=True}">
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    Loaded="OnLoaded">
 
-    <NavigationView
-        x:Name="navigationView"
-        Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
-        IsBackButtonVisible="Visible"
-        IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
-        SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}"
-        Style="{StaticResource NavigationViewStyle}">
+    <Grid>
 
-        <NavigationView.MenuItems>
-            <NavigationViewItem extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DashboardViewModels.DashboardViewModel" Content="Home">
-                <NavigationViewItem.Icon>
-                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Home.png" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem Content="Customers">
-                <NavigationViewItem.Icon>
-                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Customers.png" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem Content="Orders">
-                <NavigationViewItem.Icon>
-                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Order.png" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem extensions:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.ProductsViewModels.ProductsViewModel" Content="Products">
-                <NavigationViewItem.Icon>
-                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Lamp.png" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-            <NavigationViewItem Content="Activity Log">
-                <NavigationViewItem.Icon>
-                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Warning.png" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-        </NavigationView.MenuItems>
+        <Grid
+            x:Name="AppTitleBar"
+            Height="{Binding ElementName=NavigationViewControl, Path=CompactPaneLength}"
+            VerticalAlignment="Top"
+            Canvas.ZIndex="1"
+            IsHitTestVisible="True">
+            <Image
+                Width="16"
+                Height="16"
+                HorizontalAlignment="Left"
+                Source="/Assets/WindowIcon.ico" />
+            <TextBlock
+                x:Name="AppTitleBarText"
+                Margin="28,0,0,0"
+                VerticalAlignment="Center"
+                Style="{StaticResource CaptionTextBlockStyle}"
+                TextWrapping="NoWrap" />
+        </Grid>
 
-        <NavigationView.FooterMenuItems>
-            <NavigationViewItem Content="Settings">
-                <NavigationViewItem.Icon>
-                    <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Settings.png" />
-                </NavigationViewItem.Icon>
-            </NavigationViewItem>
-        </NavigationView.FooterMenuItems>
+        <NavigationView
+            x:Name="NavigationViewControl"
+            Canvas.ZIndex="0"
+            DisplayModeChanged="NavigationViewControl_DisplayModeChanged"
+            ExpandedModeThresholdWidth="1280"
+            Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
+            IsBackButtonVisible="Visible"
+            IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
+            IsSettingsVisible="True"
+            SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+            
+            <NavigationView.MenuItems>
+                <!--
+                TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
+                https://docs.microsoft.com/windows/uwp/app-resources/localize-strings-ui-manifest#refer-to-a-string-resource-identifier-from-xaml
 
-        <NavigationView.HeaderTemplate>
-            <DataTemplate>
-                <Grid>
-                    <TextBlock
-                        Margin="{StaticResource SmallLeftRightMargin}"
-                        Style="{ThemeResource TitleTextBlockStyle}"
-                        Text="{Binding}" />
-                </Grid>
-            </DataTemplate>
-        </NavigationView.HeaderTemplate>
-
-        <interactivity:Interaction.Behaviors>
-            <behaviors:NavigationViewHeaderBehavior DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
-                <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <TextBlock
-                                Margin="{StaticResource SmallLeftRightMargin}"
-                                Style="{ThemeResource TitleTextBlockStyle}"
-                                Text="{Binding}" />
-                        </Grid>
-                    </DataTemplate>
-                </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
-            </behaviors:NavigationViewHeaderBehavior>
-        </interactivity:Interaction.Behaviors>
-
-        <Frame x:Name="frame" />
-
-    </NavigationView>
+                TODO: Update item icons by updating FontIcon.Glyph properties.
+                https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
+                -->
+                <NavigationViewItem x:Uid="Shell_Main">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Shell_WebView">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe774;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Shell_DataGrid">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe80a;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Shell_ContentGrid">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf0e2;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem x:Uid="Shell_ListDetails">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xea37;" />
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+            
+            <NavigationView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding}" />
+                    </Grid>
+                </DataTemplate>
+            </NavigationView.HeaderTemplate>
+            <i:Interaction.Behaviors>
+                <behaviors:NavigationViewHeaderBehavior DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
+                    <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding}" />
+                            </Grid>
+                        </DataTemplate>
+                    </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
+                </behaviors:NavigationViewHeaderBehavior>
+            </i:Interaction.Behaviors>
+            
+            <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
+                <Frame x:Name="NavigationFrame" />
+            </Grid>
+            
+        </NavigationView>
+    </Grid>
 
 </Page>

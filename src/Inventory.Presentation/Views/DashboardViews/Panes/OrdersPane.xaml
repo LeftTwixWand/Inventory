@@ -4,22 +4,34 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:models="using:Inventory.Application.Orders.Models"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    xmlns:models="using:Inventory.Application.Orders.Models">
 
     <UserControl.Resources>
 
         <DataTemplate x:Key="HeaderTemplate" x:DataType="models:OrderModel">
-            <Border Margin="4" BorderBrush="{ThemeResource AppBarItemForegroundThemeBrush}" BorderThickness="0,0,0,1">
+            <Border
+                Margin="4"
+                BorderBrush="{ThemeResource AppBarItemForegroundThemeBrush}"
+                BorderThickness="0,0,0,1">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="10*"/>
-                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="8*" />
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Order ID" Style="{StaticResource DashboardPartColumnHeaderStyle}" />
-                    <TextBlock Grid.Column="1" Text="Customer ID" Style="{StaticResource DashboardPartColumnHeaderStyle}" />
-                    <TextBlock Grid.Column="2" Text="Order Date" Style="{StaticResource DashboardPartColumnHeaderStyle}" />
+                    <TextBlock
+                        Grid.Column="0"
+                        Style="{StaticResource DashboardPartColumnHeaderStyle}"
+                        Text="Order ID" />
+                    <TextBlock
+                        Grid.Column="1"
+                        Style="{StaticResource DashboardPartColumnHeaderStyle}"
+                        Text="Customer ID" />
+                    <TextBlock
+                        Grid.Column="2"
+                        Style="{StaticResource DashboardPartColumnHeaderStyle}"
+                        Text="Order Date" />
                 </Grid>
             </Border>
         </DataTemplate>
@@ -27,14 +39,23 @@
         <DataTemplate x:Key="ItemTemplate" x:DataType="models:OrderModel">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="8*" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Column="0" Text="{x:Bind OrderID}" Style="{StaticResource DashboardPartColumnValueStyle}" />
-                <TextBlock Grid.Column="1" Text="{x:Bind Customer.CustomerID}" Style="{StaticResource DashboardPartColumnValueStyle}" />
-                <TextBlock Grid.Column="2" Text="{x:Bind OrderDate, Converter={StaticResource DateTimeFormatConverter}}" Style="{StaticResource DashboardPartColumnValueStyle}" />
+                <TextBlock
+                    Grid.Column="0"
+                    Style="{StaticResource DashboardPartColumnValueStyle}"
+                    Text="{x:Bind OrderID}" />
+                <TextBlock
+                    Grid.Column="1"
+                    Style="{StaticResource DashboardPartColumnValueStyle}"
+                    Text="{x:Bind Customer.CustomerID}" />
+                <TextBlock
+                    Grid.Column="2"
+                    Style="{StaticResource DashboardPartColumnValueStyle}"
+                    Text="{x:Bind OrderDate, Converter={StaticResource DateTimeFormatConverter}}" />
             </Grid>
         </DataTemplate>
 
@@ -46,14 +67,18 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Latest orders" FontSize="18" Margin="6,0"/>
+        <TextBlock
+            Margin="6,0"
+            FontSize="18"
+            Text="Latest orders" />
 
-        <ListView Grid.Row="2"
-                  ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
-                  HeaderTemplate="{StaticResource HeaderTemplate}"
-                  ItemTemplate="{StaticResource ItemTemplate}"
-                  ItemContainerStyle="{StaticResource DashboardPartRowItemStyle}"
-                  IsHitTestVisible="False"/>
+        <ListView
+            Grid.Row="2"
+            HeaderTemplate="{StaticResource HeaderTemplate}"
+            IsHitTestVisible="False"
+            ItemContainerStyle="{StaticResource DashboardPartRowItemStyle}"
+            ItemTemplate="{StaticResource ItemTemplate}"
+            ItemsSource="{x:Bind ItemsSource, Mode=OneWay}" />
 
     </Grid>
 

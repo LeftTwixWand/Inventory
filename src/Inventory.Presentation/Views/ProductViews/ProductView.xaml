@@ -4,20 +4,20 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     xmlns:cards="using:Inventory.Presentation.Views.ProductViews.Cards"
-    xmlns:details="using:Inventory.Presentation.Views.ProductViews.Details" 
+    xmlns:details="using:Inventory.Presentation.Views.ProductViews.Details"
     xmlns:productViewModels="using:Inventory.Application.ViewModels.ProductViewModels"
     d:DataContext="{d:DesignInstance Type=productViewModels:ProductViewModel}"
-    mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="320"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <cards:ProductCard Grid.Column="0" ViewModel="{x:Bind ViewModel, Mode=OneWay}"/>
+        <cards:ProductCard Grid.Column="0" ViewModel="{x:Bind ViewModel, Mode=OneWay}" />
 
         <details:ProductDetails Grid.Column="1" ViewModel="{x:Bind ViewModel, Mode=OneWay}" />
     </Grid>

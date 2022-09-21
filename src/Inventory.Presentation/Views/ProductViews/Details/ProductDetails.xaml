@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
     xmlns:productViewModels="using:Inventory.Application.ViewModels.ProductViewModels"
-    d:DataContext="{d:DesignInstance Type=productViewModels:ProductViewModel}"
-    mc:Ignorable="d">
+    d:DataContext="{d:DesignInstance Type=productViewModels:ProductViewModel}">
 
     <UserControl.Resources>
 
@@ -22,7 +22,11 @@
         </Style>
 
         <DataTemplate x:Key="DetailsGridViewHeaderTemplate" x:DataType="x:String">
-            <TextBlock FontSize="22" FontWeight="SemiBold" Text="{Binding}" Margin="5"/>
+            <TextBlock
+                Margin="5"
+                FontSize="22"
+                FontWeight="SemiBold"
+                Text="{Binding}" />
         </DataTemplate>
 
     </UserControl.Resources>
@@ -32,20 +36,52 @@
 
         <customCommandBars:CustomCommandBar CommandBarMode="EditDelete" />
 
-        <GridView Style="{StaticResource DetailsGridViewStyle}" SelectionMode="None" Header="General" >
-            <TextBox Header="Name" Text="{x:Bind ViewModel.EditableItem.Name}" Width="160" />
+        <GridView
+            Header="General"
+            SelectionMode="None"
+            Style="{StaticResource DetailsGridViewStyle}">
+            <TextBox
+                Width="160"
+                Header="Name"
+                Text="{x:Bind ViewModel.EditableItem.Name}" />
             <!--<ComboBox Header="Category" ItemsSource="{x:Bind LookupTables.Categories}" SelectedValue="{x:Bind EditableItem.CategoryID, Mode=TwoWay}" SelectedValuePath="CategoryID" DisplayMemberPath="Name" />-->
         </GridView>
 
-        <GridView Style="{StaticResource DetailsGridViewStyle}" SelectionMode="None" Header="Price" >
-            <NumberBox Header="List Price" Text="{x:Bind ViewModel.EditableItem.ListPrice, Mode=TwoWay, Converter={StaticResource DecimalConverter}}" PlaceholderText="0.00" Width="160"/>
-            <NumberBox Header="Dealer Price" Text="{x:Bind ViewModel.EditableItem.DealerPrice, Mode=TwoWay, Converter={StaticResource DecimalConverter}}" PlaceholderText="0.00" Width="160"/>
-            <NumberBox Header="Discount" Text="{x:Bind ViewModel.EditableItem.Discount, Mode=TwoWay, Converter={StaticResource DecimalConverter}}" PlaceholderText="0.00" Width="160"/>
+        <GridView
+            Header="Price"
+            SelectionMode="None"
+            Style="{StaticResource DetailsGridViewStyle}">
+            <NumberBox
+                Width="160"
+                Header="List Price"
+                PlaceholderText="0.00"
+                Text="{x:Bind ViewModel.EditableItem.ListPrice, Mode=TwoWay, Converter={StaticResource DecimalConverter}}" />
+            <NumberBox
+                Width="160"
+                Header="Dealer Price"
+                PlaceholderText="0.00"
+                Text="{x:Bind ViewModel.EditableItem.DealerPrice, Mode=TwoWay, Converter={StaticResource DecimalConverter}}" />
+            <NumberBox
+                Width="160"
+                Header="Discount"
+                PlaceholderText="0.00"
+                Text="{x:Bind ViewModel.EditableItem.Discount, Mode=TwoWay, Converter={StaticResource DecimalConverter}}" />
         </GridView>
 
-        <GridView Style="{StaticResource DetailsGridViewStyle}" SelectionMode="None" Header="Stock" >
-            <NumberBox Header="Stock Units" Text="{x:Bind ViewModel.EditableItem.StockUnits, Mode=TwoWay}" SpinButtonPlacementMode="Compact" Width="160" />
-            <NumberBox Header="Safety Stock" Text="{x:Bind ViewModel.EditableItem.SafetyStockLevel, Mode=TwoWay}" SpinButtonPlacementMode="Compact" Width="160"/>
+        <GridView
+            Header="Stock"
+            SelectionMode="None"
+            Style="{StaticResource DetailsGridViewStyle}">
+            <NumberBox
+                Width="160"
+                Header="Stock Units"
+                SpinButtonPlacementMode="Compact"
+                Text="{x:Bind ViewModel.EditableItem.StockUnits, Mode=TwoWay}" />
+            <NumberBox
+                Width="160"
+                Header="Safety Stock"
+                SpinButtonPlacementMode="Compact"
+                Text="{x:Bind ViewModel.EditableItem.SafetyStockLevel, Mode=TwoWay}" />
         </GridView>
 
     </StackPanel>

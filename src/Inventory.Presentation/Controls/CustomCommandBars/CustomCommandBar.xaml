@@ -4,19 +4,67 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:triggers="using:CommunityToolkit.WinUI.UI.Triggers"
+    mc:Ignorable="d"
     xmlns:enums="using:Inventory.Presentation.Controls.CustomCommandBars.Enums"
-    mc:Ignorable="d">
+    xmlns:triggers="using:CommunityToolkit.WinUI.UI.Triggers">
 
-    <CommandBar
-        Height="46"
-        DefaultLabelPosition="Right">
+    <CommandBar Height="46" DefaultLabelPosition="Right">
+        
+        <AppBarButton
+            x:Name="addButton"
+            HorizontalAlignment="Left"
+            Command="{x:Bind AddCommand}"
+            Label="Add">
+            <AppBarButton.Icon>
+                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Add.png" />
+            </AppBarButton.Icon>
+        </AppBarButton>
+        
+        <AppBarButton
+            x:Name="editButton"
+            HorizontalAlignment="Left"
+            Command="{x:Bind EditCommand}"
+            Label="Edit">
+            <AppBarButton.Icon>
+                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Edit.png" />
+            </AppBarButton.Icon>
+        </AppBarButton>
+        
+        <AppBarButton
+            x:Name="cancelButton"
+            HorizontalAlignment="Left"
+            Command="{x:Bind CancelCommand}"
+            Label="Cancel">
+            <AppBarButton.Icon>
+                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Cancel.png" />
+            </AppBarButton.Icon>
+        </AppBarButton>
+        
+        <AppBarButton
+            x:Name="saveButton"
+            HorizontalAlignment="Left"
+            Command="{x:Bind CancelCommand}"
+            Label="Save">
+            <AppBarButton.Icon>
+                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Save.png" />
+            </AppBarButton.Icon>
+        </AppBarButton>
+        
+        <AppBarButton
+            x:Name="deleteButton"
+            HorizontalAlignment="Left"
+            Command="{x:Bind DeleteCommand}"
+            Label="Delete">
+            <AppBarButton.Icon>
+                <BitmapIcon ShowAsMonochrome="False" UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Delete.png" />
+            </AppBarButton.Icon>
+        </AppBarButton>
 
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup x:Name="CommandBarModeVisualState">
                 <VisualState x:Name="EditDeleteMode">
                     <VisualState.StateTriggers>
-                        <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}" >
+                        <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}">
                             <triggers:IsEqualStateTrigger.To>
                                 <enums:CommandBarMode>EditDelete</enums:CommandBarMode>
                             </triggers:IsEqualStateTrigger.To>
@@ -30,7 +78,7 @@
                 </VisualState>
                 <VisualState x:Name="AddEditDeleteMode">
                     <VisualState.StateTriggers>
-                        <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}" >
+                        <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}">
                             <triggers:IsEqualStateTrigger.To>
                                 <enums:CommandBarMode>AddEditDelete</enums:CommandBarMode>
                             </triggers:IsEqualStateTrigger.To>
@@ -43,7 +91,7 @@
                 </VisualState>
                 <VisualState x:Name="CancelSaveMode">
                     <VisualState.StateTriggers>
-                        <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}" >
+                        <triggers:IsEqualStateTrigger Value="{x:Bind CommandBarMode, Mode=OneWay}">
                             <triggers:IsEqualStateTrigger.To>
                                 <enums:CommandBarMode>CancelSave</enums:CommandBarMode>
                             </triggers:IsEqualStateTrigger.To>
@@ -57,32 +105,5 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-
-        <AppBarButton x:Name="addButton" Label="Add" HorizontalAlignment="Left" Command="{x:Bind AddCommand}">
-            <AppBarButton.Icon>
-                <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Add.png" ShowAsMonochrome="False"/>
-            </AppBarButton.Icon>
-        </AppBarButton>
-        <AppBarButton x:Name="editButton" Label="Edit" HorizontalAlignment="Left" Command="{x:Bind EditCommand}">
-            <AppBarButton.Icon>
-                <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Edit.png" ShowAsMonochrome="False"/>
-            </AppBarButton.Icon>
-        </AppBarButton>
-        <AppBarButton x:Name="cancelButton" Label="Cancel" HorizontalAlignment="Left" Command="{x:Bind CancelCommand}">
-            <AppBarButton.Icon>
-                <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Cancel.png" ShowAsMonochrome="False"/>
-            </AppBarButton.Icon>
-        </AppBarButton>
-        <AppBarButton x:Name="saveButton" Label="Save" HorizontalAlignment="Left" Command="{x:Bind CancelCommand}">
-            <AppBarButton.Icon>
-                <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Save.png" ShowAsMonochrome="False"/>
-            </AppBarButton.Icon>
-        </AppBarButton>
-        <AppBarButton x:Name="deleteButton" Label="Delete" HorizontalAlignment="Left" Command="{x:Bind DeleteCommand}">
-            <AppBarButton.Icon>
-                <BitmapIcon UriSource="ms-appx:///Inventory.Presentation/Assets/Icons/Delete.png" ShowAsMonochrome="False"/>
-            </AppBarButton.Icon>
-        </AppBarButton>
-
     </CommandBar>
 </UserControl>
