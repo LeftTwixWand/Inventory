@@ -3,7 +3,7 @@ using BuildingBlocks.Application.Validation;
 using FluentValidation;
 using MediatR.Pipeline;
 
-namespace Inventory.Infrastructure.Pipelines.Validation;
+namespace Inventory.Infrastructure.RequestProcessors.Validation;
 
 internal sealed class ValidationRequestPreProcessor<TRequest> : IRequestPreProcessor<TRequest>
     where TRequest : notnull

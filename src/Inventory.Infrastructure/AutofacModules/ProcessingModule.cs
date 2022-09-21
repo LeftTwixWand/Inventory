@@ -5,7 +5,7 @@ using BuildingBlocks.Infrastructure.Domain.UnitOfWorks.DomainEventsDispatching;
 using Inventory.Infrastructure.Decorators.Logging;
 using Inventory.Infrastructure.Decorators.QueryDiagnostics;
 using Inventory.Infrastructure.Decorators.UnitOfWork;
-using Inventory.Infrastructure.Pipelines.Validation;
+using Inventory.Infrastructure.RequestProcessors.Validation;
 using MediatR;
 using MediatR.Pipeline;
 
