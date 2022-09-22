@@ -2,12 +2,10 @@
 using Inventory.Infrastructure.Contracts.Services;
 using Inventory.Infrastructure.Core.Contracts.Services;
 using Inventory.Infrastructure.Core.Services;
-using Inventory.Infrastructure.Helpers;
 using Inventory.Infrastructure.Models;
 using Inventory.Infrastructure.Services;
 using Inventory.Infrastructure.ViewModels;
 using Inventory.Infrastructure.Views;
-
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
