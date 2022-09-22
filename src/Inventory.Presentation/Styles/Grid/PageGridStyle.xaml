@@ -1,7 +1,0 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <Style x:Key="PageGridStyle" TargetType="Grid">
-        <Setter Property="CornerRadius" Value="8,0,0,0" />
-    </Style>
-
-</ResourceDictionary>
