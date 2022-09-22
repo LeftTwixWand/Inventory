@@ -6,9 +6,32 @@
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Styles\FontSize\FontSizes.xaml" />
+    <None Remove="Styles\TextBlock\TextBlock.xaml" />
+    <None Remove="Styles\Thickness\Thickness.xaml" />
+  </ItemGroup>
 
   <ItemGroup>
       <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
       <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Styles\StylesRegistration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Styles\FontSize\FontSizes.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Styles\TextBlock\TextBlock.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+    <Page Update="Styles\Thickness\Thickness.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
   </ItemGroup>
 </Project>
