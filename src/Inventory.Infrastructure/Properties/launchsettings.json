@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "Inventory.Infrastructure (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "Inventory.Infrastructure (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
