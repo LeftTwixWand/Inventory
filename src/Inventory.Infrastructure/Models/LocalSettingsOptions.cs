@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Infrastructure.Models;
 
-public class LocalSettingsOptions
+internal sealed class LocalSettingsOptions
 {
     public string? ApplicationDataFolder
     {

@@ -9,12 +9,24 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<None Remove="Styles\FontSize\FontSizes.xaml" />
+		<None Remove="Styles\StylesRegistration.xaml" />
 		<None Remove="Styles\TextBlock\TextBlock.xaml" />
 		<None Remove="Styles\Thickness\Thickness.xaml" />
+		<None Remove="Views\ContentGridDetailPage.xaml" />
+		<None Remove="Views\ContentGridPage.xaml" />
+		<None Remove="Views\DataGridPage.xaml" />
+		<None Remove="Views\ListDetailsDetailControl.xaml" />
+		<None Remove="Views\ListDetailsPage.xaml" />
+		<None Remove="Views\MainPage.xaml" />
+		<None Remove="Views\SettingsPage.xaml" />
+		<None Remove="Views\WebViewPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI" Version="7.1.2" />
+		<PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" Version="7.1.2" />
+		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.1" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
@@ -37,11 +49,38 @@
 		<Page Update="Styles\FontSize\FontSizes.xaml">
 			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 		</Page>
+		<Page Update="Styles\StylesRegistration.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
 		<Page Update="Styles\TextBlock\TextBlock.xaml">
 			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 		</Page>
 		<Page Update="Styles\Thickness\Thickness.xaml">
 			<XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\ContentGridDetailPage.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\ContentGridPage.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\DataGridPage.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\ListDetailsDetailControl.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\ListDetailsPage.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\MainPage.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\SettingsPage.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+		</Page>
+		<Page Update="Views\WebViewPage.xaml">
+		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
 		</Page>
 	</ItemGroup>
 </Project>

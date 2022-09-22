@@ -1,6 +1,4 @@
-﻿using Inventory.Infrastructure.Core.Helpers;
-
-using Windows.Storage;
+﻿using Windows.Storage;
 using Windows.Storage.Streams;
 
 namespace Inventory.Infrastructure.Helpers;

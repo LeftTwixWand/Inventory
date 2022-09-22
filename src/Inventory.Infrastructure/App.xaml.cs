@@ -1,11 +1,28 @@
-﻿using Inventory.Infrastructure.Activation;
-using Inventory.Infrastructure.Contracts.Services;
-using Inventory.Infrastructure.Core.Contracts.Services;
-using Inventory.Infrastructure.Core.Services;
+﻿using BuildingBlocks.Application.Services.Activation.Handlers;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.Services.Activation;
+using Inventory.Application.Services.Files;
+using Inventory.Application.Services.LocalSettings;
+using Inventory.Application.Services.Navigation;
+using Inventory.Application.Services.SampleData;
+using Inventory.Application.Services.ThemeSelector;
+using Inventory.Application.Services.WebView;
+using Inventory.Application.ViewModels.ContentGrid;
+using Inventory.Application.ViewModels.DataGrid;
+using Inventory.Application.ViewModels.ListDetails;
+using Inventory.Application.ViewModels.Main;
+using Inventory.Application.ViewModels.Settings;
+using Inventory.Application.ViewModels.Shell;
+using Inventory.Application.ViewModels.WebView;
 using Inventory.Infrastructure.Models;
-using Inventory.Infrastructure.Services;
-using Inventory.Infrastructure.ViewModels;
-using Inventory.Infrastructure.Views;
+using Inventory.Infrastructure.Services.Activation;
+using Inventory.Infrastructure.Services.Files;
+using Inventory.Infrastructure.Services.LocalSettings;
+using Inventory.Infrastructure.Services.Navigation;
+using Inventory.Infrastructure.Services.SampleData;
+using Inventory.Infrastructure.Services.ThemeSelector;
+using Inventory.Infrastructure.Services.WebView;
+using Inventory.Presentation.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -13,7 +30,7 @@ using Microsoft.UI.Xaml;
 namespace Inventory.Infrastructure;
 
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
-public partial class App : Application
+public partial class App : Microsoft.UI.Xaml.Application
 {
     // The .NET Generic Host provides dependency injection, configuration, logging, and other services.
     // https://docs.microsoft.com/dotnet/core/extensions/generic-host
@@ -98,7 +115,7 @@ public partial class App : Application
         // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
     }
 
-    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
 
