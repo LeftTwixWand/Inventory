@@ -106,6 +106,8 @@ public partial class App : Microsoft.UI.Xaml.Application
         }).
         Build();
 
+        Ioc.Default.ConfigureServices(Host.Services);
+
         UnhandledException += App_UnhandledException;
     }
 

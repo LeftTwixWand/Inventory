@@ -1,13 +1,14 @@
-﻿using Inventory.Application.ViewModels.Main;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.ViewModels.Main;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Presentation.Views;
 
 public sealed partial class MainPage : Page
 {
-    public MainPage(MainViewModel viewModel)
+    public MainPage()
     {
-        ViewModel = viewModel;
+        ViewModel = Ioc.Default.GetRequiredService<MainViewModel>();
         InitializeComponent();
     }
 

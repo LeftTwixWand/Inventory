@@ -1,13 +1,14 @@
-﻿using Inventory.Application.ViewModels.ContentGrid;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.ViewModels.ContentGrid;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Presentation.Views;
 
 public sealed partial class ContentGridPage : Page
 {
-    public ContentGridPage(ContentGridViewModel contentGridViewModel)
+    public ContentGridPage()
     {
-        ViewModel = contentGridViewModel;
+        ViewModel = Ioc.Default.GetRequiredService<ContentGridViewModel>();
         InitializeComponent();
     }
 

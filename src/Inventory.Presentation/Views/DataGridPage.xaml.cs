@@ -1,4 +1,5 @@
-﻿using Inventory.Application.ViewModels.DataGrid;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.ViewModels.DataGrid;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Presentation.Views;
@@ -7,9 +8,9 @@ namespace Inventory.Presentation.Views;
 // For more details, see the documentation at https://docs.microsoft.com/windows/communitytoolkit/controls/datagrid.
 public sealed partial class DataGridPage : Page
 {
-    public DataGridPage(DataGridViewModel viewModel)
+    public DataGridPage()
     {
-        ViewModel = viewModel;
+        ViewModel = Ioc.Default.GetRequiredService<DataGridViewModel>();
         InitializeComponent();
     }
 

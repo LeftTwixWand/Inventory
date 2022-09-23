@@ -2,6 +2,7 @@
 
 using CommunityToolkit.WinUI.UI.Animations;
 using Inventory.Application.Services.Navigation;
+using Inventory.Application.ViewModels.Main;
 using Inventory.Infrastructure.Helpers;
 
 using Microsoft.UI.Xaml.Controls;
@@ -89,7 +90,7 @@ public class NavigationService : INavigationService
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
-            var navigated = _frame.Navigate(pageType, parameter);
+            var navigated = _frame.Navigate(pageType, parameter); // Error here usually it mens, that the page has no default donstructor.
             if (navigated)
             {
                 _lastParameterUsed = parameter;

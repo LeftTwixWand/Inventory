@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.WinUI.UI.Animations;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using CommunityToolkit.WinUI.UI.Animations;
 using Inventory.Application.ViewModels.ContentGrid;
 
 using Microsoft.UI.Xaml.Controls;
@@ -8,9 +9,9 @@ namespace Inventory.Presentation.Views;
 
 public sealed partial class ContentGridDetailPage : Page
 {
-    public ContentGridDetailPage(ContentGridDetailViewModel contentGridDetailViewModel)
+    public ContentGridDetailPage()
     {
-        ViewModel = contentGridDetailViewModel;
+        ViewModel = Ioc.Default.GetRequiredService<ContentGridDetailViewModel>();
         InitializeComponent();
     }
 

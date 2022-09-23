@@ -1,14 +1,16 @@
-﻿using CommunityToolkit.WinUI.UI.Controls;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using CommunityToolkit.WinUI.UI.Controls;
 using Inventory.Application.ViewModels.ListDetails;
+using Inventory.Application.ViewModels.WebView;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Presentation.Views;
 
 public sealed partial class ListDetailsPage : Page
 {
-    public ListDetailsPage(ListDetailsViewModel viewModel)
+    public ListDetailsPage()
     {
-        ViewModel = viewModel;
+        ViewModel = Ioc.Default.GetRequiredService<ListDetailsViewModel>();
         InitializeComponent();
     }
 

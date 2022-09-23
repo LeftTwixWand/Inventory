@@ -27,8 +27,6 @@ public sealed class NavigationViewHeaderBehavior : Behavior<NavigationView>
 
     private Page? _currentPage;
 
-    public INavigationService? NavigationService { private get; set; }
-
     public object DefaultHeader
     {
         get => GetValue(DefaultHeaderProperty);
@@ -71,8 +69,9 @@ public sealed class NavigationViewHeaderBehavior : Behavior<NavigationView>
     {
         base.OnAttached();
 
-        Guard.IsNotNull(NavigationService, nameof(NavigationService));
-        NavigationService.Navigated += OnNavigated;
+        // TODO: Inject INavigationService automatically, not using Ioc.
+        var navigationService = Ioc.Default.GetRequiredService<INavigationService>();
+        navigationService.Navigated += OnNavigated;
 
         _current = this;
     }
@@ -81,8 +80,9 @@ public sealed class NavigationViewHeaderBehavior : Behavior<NavigationView>
     {
         base.OnDetaching();
 
-        Guard.IsNotNull(NavigationService, nameof(NavigationService));
-        NavigationService.Navigated -= OnNavigated;
+        // TODO: Inject INavigationService automatically, not using Ioc.
+        var navigationService = Ioc.Default.GetRequiredService<INavigationService>();
+        navigationService.Navigated -= OnNavigated;
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
