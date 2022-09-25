@@ -1,8 +1,7 @@
 ﻿using BuildingBlocks.Application.Services.Activation.Handlers;
 using Inventory.Application.Services.Activation;
 using Inventory.Application.Services.ThemeSelector;
-using Inventory.Presentation.Views;
-
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
@@ -22,7 +21,7 @@ public class ActivationService : IActivationService
         _themeSelectorService = themeSelectorService;
     }
 
-    public async Task ActivateAsync(object activationArgs)
+    public async Task ActivateAsync(object activationArgs, IServiceProvider serviceProvider)
     {
         // Execute tasks before activation.
         await InitializeAsync();
@@ -30,7 +29,7 @@ public class ActivationService : IActivationService
         // Set the MainWindow Content.
         if (App.MainWindow.Content == null)
         {
-            _shell = App.GetService<ShellPage>();
+            _shell = serviceProvider.GetRequiredService<ShellPage>();
             App.MainWindow.Content = _shell ?? new Frame();
         }
 

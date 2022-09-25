@@ -1,4 +1,5 @@
-﻿using Windows.Storage;
+﻿using CommunityToolkit.Diagnostics;
+using Windows.Storage;
 using Windows.Storage.Streams;
 
 namespace Inventory.Infrastructure.Helpers;
@@ -16,6 +17,7 @@ public static class SettingsStorageExtensions
 
     public static async Task SaveAsync<T>(this StorageFolder folder, string name, T content)
     {
+        Guard.IsNotNull(content, nameof(content));
         var file = await folder.CreateFileAsync(GetFileName(name), CreationCollisionOption.ReplaceExisting);
         var fileContent = await Json.StringifyAsync(content);
 
@@ -37,6 +39,7 @@ public static class SettingsStorageExtensions
 
     public static async Task SaveAsync<T>(this ApplicationDataContainer settings, string key, T value)
     {
+        Guard.IsNotNull(value, nameof(value));
         settings.SaveString(key, await Json.StringifyAsync(value));
     }
 

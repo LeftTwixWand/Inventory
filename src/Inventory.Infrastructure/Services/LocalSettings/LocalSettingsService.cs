@@ -1,4 +1,5 @@
-﻿using Inventory.Application.Services.Files;
+﻿using CommunityToolkit.Diagnostics;
+using Inventory.Application.Services.Files;
 using Inventory.Application.Services.LocalSettings;
 using Inventory.Infrastructure.Helpers;
 using Inventory.Infrastructure.Models;
@@ -48,7 +49,7 @@ internal sealed class LocalSettingsService : ILocalSettingsService
         {
             await InitializeAsync();
 
-            if (_settings != null && _settings.TryGetValue(key, out var obj))
+            if (_settings is not null && _settings.TryGetValue(key, out var obj))
             {
                 return await Json.ToObjectAsync<T>((string)obj);
             }
@@ -59,6 +60,7 @@ internal sealed class LocalSettingsService : ILocalSettingsService
 
     public async Task SaveSettingAsync<T>(string key, T value)
     {
+        Guard.IsNotNull(value, nameof(value));
         if (RuntimeHelper.IsMSIX)
         {
             ApplicationData.Current.LocalSettings.Values[key] = await Json.StringifyAsync(value);

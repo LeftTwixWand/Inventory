@@ -40,9 +40,6 @@ public sealed partial class ListDetailsViewModel : ObservableObject, INavigation
 
     public void EnsureItemSelected()
     {
-        if (Selected == null)
-        {
-            Selected = SampleItems.First();
-        }
+        Selected ??= SampleItems.First();
     }
 }

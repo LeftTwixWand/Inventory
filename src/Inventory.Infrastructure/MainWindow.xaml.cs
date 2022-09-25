@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.WinUI;
-using Inventory.Infrastructure.Helpers;
 
 namespace Inventory.Infrastructure;
 
