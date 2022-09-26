@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.WinUI;
-using Inventory.Application.ViewModels.Shell;
+﻿using Inventory.Application.ViewModels.Shell;
 using Inventory.Infrastructure.Helpers;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
