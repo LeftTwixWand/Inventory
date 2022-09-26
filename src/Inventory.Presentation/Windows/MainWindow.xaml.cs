@@ -1,4 +1,8 @@
-﻿namespace Inventory.Infrastructure;
+﻿using System;
+using System.IO;
+using WinUIEx;
+
+namespace Inventory.Presentation.Windows;
 
 public sealed partial class MainWindow : WindowEx
 {

@@ -24,6 +24,7 @@ using Inventory.Infrastructure.Services.SampleData;
 using Inventory.Infrastructure.Services.ThemeSelector;
 using Inventory.Infrastructure.Services.WebView;
 using Inventory.Presentation.Views;
+using Inventory.Presentation.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
@@ -88,8 +89,8 @@ public partial class App : Microsoft.UI.Xaml.Application
 
                 // Configuration
                 services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-            }).
-        Build();
+            })
+            .Build();
 
         Ioc.Default.ConfigureServices(_host.Services);
 
