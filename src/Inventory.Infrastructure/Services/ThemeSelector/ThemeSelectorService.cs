@@ -1,7 +1,7 @@
-﻿using Inventory.Application.Services.LocalSettings;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Inventory.Application.Services.LocalSettings;
 using Inventory.Application.Services.ThemeSelector;
-using Inventory.Infrastructure.Helpers;
-
+using Inventory.Presentation.Helpers;
 using Microsoft.UI.Xaml;
 
 namespace Inventory.Infrastructure.Services.ThemeSelector;
@@ -10,14 +10,16 @@ public class ThemeSelectorService : IThemeSelectorService
 {
     private const string SettingsKey = "AppBackgroundRequestedTheme";
 
-    public ElementTheme Theme { get; set; } = ElementTheme.Default;
-
     private readonly ILocalSettingsService _localSettingsService;
+    private readonly Window _window;
 
-    public ThemeSelectorService(ILocalSettingsService localSettingsService)
+    public ThemeSelectorService(ILocalSettingsService localSettingsService, Window window)
     {
         _localSettingsService = localSettingsService;
+        _window = window;
     }
+
+    public ElementTheme Theme { get; set; } = ElementTheme.Default;
 
     public async Task InitializeAsync()
     {
@@ -35,11 +37,11 @@ public class ThemeSelectorService : IThemeSelectorService
 
     public async Task SetRequestedThemeAsync()
     {
-        if (App.MainWindow.Content is FrameworkElement rootElement)
+        if (_window.Content is FrameworkElement rootElement)
         {
             rootElement.RequestedTheme = Theme;
 
-            TitleBarHelper.UpdateTitleBar(Theme);
+            TitleBarHelper.UpdateTitleBar(Theme, Ioc.Default.GetRequiredService<Window>());
         }
 
         await Task.CompletedTask;

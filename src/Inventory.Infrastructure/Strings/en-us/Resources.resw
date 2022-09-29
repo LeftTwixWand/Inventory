@@ -123,34 +123,4 @@
   <data name="AppDescription" xml:space="preserve">
     <value>Inventory.Infrastructure</value>
   </data>
-  <data name="Shell_Main.Content" xml:space="preserve">
-    <value>Main</value>
-  </data>
-  <data name="WebView_Loading.Text" xml:space="preserve">
-    <value>Loading...</value>
-  </data>
-  <data name="WebView_FailedMessage.Text" xml:space="preserve">
-    <value>Page failed to load. Check connection and reload.</value>
-  </data>
-  <data name="WebView_Reload.Content" xml:space="preserve">
-    <value>Reload</value>
-  </data>
-  <data name="Shell_WebView.Content" xml:space="preserve">
-    <value>WebView</value>
-  </data>
-  <data name="Shell_ListDetails.Content" xml:space="preserve">
-    <value>ListDetails</value>
-  </data>
-  <data name="Shell_ContentGrid.Content" xml:space="preserve">
-    <value>ContentGrid</value>
-  </data>
-  <data name="Shell_DataGrid.Content" xml:space="preserve">
-    <value>DataGrid</value>
-  </data>
-  <data name="MainWindow.Title" xml:space="preserve">
-    <value>Inventory</value>
-  </data>
-  <data name="AppTitleBar.Text" xml:space="preserve">
-    <value>Inventory</value>
-  </data>
 </root>

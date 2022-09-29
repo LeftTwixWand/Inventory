@@ -1,11 +1,16 @@
 ﻿<Page
-    x:Class="Inventory.Infrastructure.ShellPage"
+    x:Class="Inventory.Presentation.Views.Shell.ShellView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
     xmlns:behaviors="using:Inventory.Presentation.Behaviors"
-    xmlns:helpers="using:Inventory.Infrastructure.Helpers"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
-    Loaded="OnLoaded">
+    xmlns:extension="using:Inventory.Presentation.Extensions"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:shell="using:Inventory.Application.ViewModels.Shell"
+    d:DataContext="{d:DesignInstance Type=shell:ShellViewModel}"
+    Loaded="Page_Loaded">
 
     <Grid>
         <Grid
@@ -27,6 +32,7 @@
                 Style="{StaticResource CaptionTextBlockStyle}"
                 TextWrapping="NoWrap" />
         </Grid>
+
         <NavigationView
             x:Name="NavigationViewControl"
             Canvas.ZIndex="0"
@@ -37,7 +43,9 @@
             IsBackEnabled="{x:Bind ViewModel.IsBackEnabled, Mode=OneWay}"
             IsSettingsVisible="True"
             SelectedItem="{x:Bind ViewModel.Selected, Mode=OneWay}">
+
             <NavigationView.MenuItems>
+
                 <!--
                 TODO: Update item titles by updating <x:Uid>.Content entries in Strings/en-us/Resources.resw.
                 https://docs.microsoft.com/windows/uwp/app-resources/localize-strings-ui-manifest#refer-to-a-string-resource-identifier-from-xaml
@@ -45,32 +53,34 @@
                 TODO: Update item icons by updating FontIcon.Glyph properties.
                 https://docs.microsoft.com/windows/apps/design/style/segoe-fluent-icons-font#icon-list
                 -->
-                <NavigationViewItem x:Uid="Shell_Main" helpers:NavigationHelper.NavigateTo="Inventory.Application.ViewModels.Main.MainViewModel">
+
+                <NavigationViewItem x:Uid="Shell_Main" extension:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.Main.MainViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Shell_WebView" helpers:NavigationHelper.NavigateTo="Inventory.Application.ViewModels.WebView.WebViewViewModel">
+                <NavigationViewItem x:Uid="Shell_WebView" extension:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.WebView.WebViewViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe774;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Shell_ListDetails" helpers:NavigationHelper.NavigateTo="Inventory.Application.ViewModels.ListDetails.ListDetailsViewModel">
+                <NavigationViewItem x:Uid="Shell_ListDetails" extension:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.ListDetails.ListDetailsViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xea37;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Shell_ContentGrid" helpers:NavigationHelper.NavigateTo="Inventory.Application.ViewModels.ContentGrid.ContentGridViewModel">
+                <NavigationViewItem x:Uid="Shell_ContentGrid" extension:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.ContentGrid.ContentGridViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xf0e2;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem x:Uid="Shell_DataGrid" helpers:NavigationHelper.NavigateTo="Inventory.Application.ViewModels.DataGrid.DataGridViewModel">
+                <NavigationViewItem x:Uid="Shell_DataGrid" extension:NavigationExtension.NavigateTo="Inventory.Application.ViewModels.DataGrid.DataGridViewModel">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe80a;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
+
             <NavigationView.HeaderTemplate>
                 <DataTemplate>
                     <Grid>
@@ -78,7 +88,8 @@
                     </Grid>
                 </DataTemplate>
             </NavigationView.HeaderTemplate>
-            <i:Interaction.Behaviors>
+
+            <interactivity:Interaction.Behaviors>
                 <behaviors:NavigationViewHeaderBehavior DefaultHeader="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}">
                     <behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                         <DataTemplate>
@@ -88,10 +99,14 @@
                         </DataTemplate>
                     </behaviors:NavigationViewHeaderBehavior.DefaultHeaderTemplate>
                 </behaviors:NavigationViewHeaderBehavior>
-            </i:Interaction.Behaviors>
+            </interactivity:Interaction.Behaviors>
+
             <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
                 <Frame x:Name="NavigationFrame" />
             </Grid>
+
         </NavigationView>
+
     </Grid>
+
 </Page>

@@ -1,6 +1,7 @@
 ﻿using BuildingBlocks.Application.Services.Activation.Handlers;
 using Inventory.Application.Services.Activation;
 using Inventory.Application.Services.ThemeSelector;
+using Inventory.Presentation.Views.Shell;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -12,13 +13,15 @@ public class ActivationService : IActivationService
     private readonly ActivationHandler<LaunchActivatedEventArgs> _defaultHandler;
     private readonly IEnumerable<IActivationHandler> _activationHandlers;
     private readonly IThemeSelectorService _themeSelectorService;
+    private readonly Window _window;
     private UIElement? _shell = null;
 
-    public ActivationService(ActivationHandler<LaunchActivatedEventArgs> defaultHandler, IEnumerable<IActivationHandler> activationHandlers, IThemeSelectorService themeSelectorService)
+    public ActivationService(ActivationHandler<LaunchActivatedEventArgs> defaultHandler, IEnumerable<IActivationHandler> activationHandlers, IThemeSelectorService themeSelectorService, Window window)
     {
         _defaultHandler = defaultHandler;
         _activationHandlers = activationHandlers;
         _themeSelectorService = themeSelectorService;
+        _window = window;
     }
 
     public async Task ActivateAsync(object activationArgs, IServiceProvider serviceProvider)
@@ -27,17 +30,17 @@ public class ActivationService : IActivationService
         await InitializeAsync();
 
         // Set the MainWindow Content.
-        if (App.MainWindow.Content == null)
+        if (_window.Content == null)
         {
-            _shell = serviceProvider.GetRequiredService<ShellPage>();
-            App.MainWindow.Content = _shell ?? new Frame();
+            _shell = serviceProvider.GetRequiredService<ShellView>();
+            _window.Content = _shell ?? new Frame();
         }
 
         // Handle activation via ActivationHandlers.
         await HandleActivationAsync(activationArgs);
 
         // Activate the MainWindow.
-        App.MainWindow.Activate();
+        _window.Activate();
 
         // Execute tasks after activation.
         await StartupAsync();

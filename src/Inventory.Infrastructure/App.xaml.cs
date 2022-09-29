@@ -24,6 +24,7 @@ using Inventory.Infrastructure.Services.SampleData;
 using Inventory.Infrastructure.Services.ThemeSelector;
 using Inventory.Infrastructure.Services.WebView;
 using Inventory.Presentation.Views;
+using Inventory.Presentation.Views.Shell;
 using Inventory.Presentation.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -69,6 +70,8 @@ public partial class App : Microsoft.UI.Xaml.Application
                 services.AddSingleton<ISampleDataService, SampleDataService>();
                 services.AddSingleton<IFileService, FileService>();
 
+                services.AddSingleton<Window, MainWindow>();
+
                 // Views and ViewModels
                 services.AddTransient<SettingsViewModel>();
                 services.AddTransient<SettingsPage>();
@@ -84,7 +87,7 @@ public partial class App : Microsoft.UI.Xaml.Application
                 services.AddTransient<WebViewPage>();
                 services.AddTransient<MainViewModel>();
                 services.AddTransient<MainPage>();
-                services.AddTransient<ShellPage>();
+                services.AddTransient<ShellView>();
                 services.AddTransient<ShellViewModel>();
 
                 // Configuration
@@ -96,8 +99,6 @@ public partial class App : Microsoft.UI.Xaml.Application
 
         UnhandledException += App_UnhandledException;
     }
-
-    public static WindowEx MainWindow { get; } = new MainWindow();
 
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {

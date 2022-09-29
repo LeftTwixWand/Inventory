@@ -19,6 +19,7 @@
     <None Remove="Views\ListDetailsPage.xaml" />
     <None Remove="Views\MainPage.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
+    <None Remove="Views\Shell\ShellView.xaml" />
     <None Remove="Views\WebViewPage.xaml" />
     <None Remove="Windows\MainWindow.xaml" />
   </ItemGroup>
@@ -45,6 +46,9 @@
     <None Update="Styles\StylesRegistration.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Shell\ShellView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

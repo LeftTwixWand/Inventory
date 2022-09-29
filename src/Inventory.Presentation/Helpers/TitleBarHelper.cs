@@ -1,25 +1,24 @@
-﻿using System.Runtime.InteropServices;
-
+﻿using System;
+using System.Runtime.InteropServices;
 using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Media;
-
 using Windows.UI;
 
-namespace Inventory.Infrastructure.Helpers;
+namespace Inventory.Presentation.Helpers;
 
 // Helper class to workaround custom title bar bugs.
 // DISCLAIMER: The resource key names and color values used below are subject to change. Do not depend on them.
 // https://github.com/microsoft/TemplateStudio/issues/4516
-internal class TitleBarHelper
+public sealed class TitleBarHelper
 {
     private const int WAINACTIVE = 0x00;
     private const int WAACTIVE = 0x01;
     private const int WMACTIVATE = 0x0006;
 
-    public static void UpdateTitleBar(ElementTheme theme)
+    public static void UpdateTitleBar(ElementTheme theme, Window window)
     {
-        if (App.MainWindow.ExtendsContentIntoTitleBar)
+        if (window.ExtendsContentIntoTitleBar)
         {
             if (theme != ElementTheme.Default)
             {
@@ -69,7 +68,7 @@ internal class TitleBarHelper
             Microsoft.UI.Xaml.Application.Current.Resources["WindowCaptionBackground"] = new SolidColorBrush(Colors.Transparent);
             Microsoft.UI.Xaml.Application.Current.Resources["WindowCaptionBackgroundDisabled"] = new SolidColorBrush(Colors.Transparent);
 
-            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(App.MainWindow);
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(window);
             if (hwnd == GetActiveWindow())
             {
                 SendMessage(hwnd, WMACTIVATE, WAINACTIVE, IntPtr.Zero);

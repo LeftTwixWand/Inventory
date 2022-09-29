@@ -1,10 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-
 using CommunityToolkit.WinUI.UI.Animations;
 using Inventory.Application.Services.Navigation;
-using Inventory.Application.ViewModels.Main;
-using Inventory.Infrastructure.Helpers;
-
+using Inventory.Presentation.Extensions;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
@@ -15,8 +13,15 @@ namespace Inventory.Infrastructure.Services.Navigation;
 public class NavigationService : INavigationService
 {
     private readonly IPageService _pageService;
+    private readonly Window _window;
     private object? _lastParameterUsed;
     private Frame? _frame;
+
+    public NavigationService(IPageService pageService, Window window)
+    {
+        _pageService = pageService;
+        _window = window;
+    }
 
     public event NavigatedEventHandler? Navigated;
 
@@ -24,9 +29,9 @@ public class NavigationService : INavigationService
     {
         get
         {
-            if (_frame == null)
+            if (_frame is null)
             {
-                _frame = App.MainWindow.Content as Frame;
+                _frame = _window.Content as Frame;
                 RegisterFrameEvents();
             }
 
@@ -42,28 +47,7 @@ public class NavigationService : INavigationService
     }
 
     [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
-    public bool CanGoBack => Frame != null && Frame.CanGoBack;
-
-    public NavigationService(IPageService pageService)
-    {
-        _pageService = pageService;
-    }
-
-    private void RegisterFrameEvents()
-    {
-        if (_frame != null)
-        {
-            _frame.Navigated += OnNavigated;
-        }
-    }
-
-    private void UnregisterFrameEvents()
-    {
-        if (_frame != null)
-        {
-            _frame.Navigated -= OnNavigated;
-        }
-    }
+    public bool CanGoBack => Frame is not null && Frame.CanGoBack;
 
     public bool GoBack()
     {
@@ -86,7 +70,8 @@ public class NavigationService : INavigationService
     {
         var pageType = _pageService.GetPageType(pageKey);
 
-        if (_frame != null && (_frame.Content?.GetType() != pageType || parameter != null && !parameter.Equals(_lastParameterUsed)))
+        if (_frame is not null && (_frame.Content?.GetType() != pageType ||
+            (parameter is not null && !parameter.Equals(_lastParameterUsed))))
         {
             _frame.Tag = clearNavigation;
             var vmBeforeNavigation = _frame.GetPageViewModel();
@@ -104,6 +89,27 @@ public class NavigationService : INavigationService
         }
 
         return false;
+    }
+
+    public void SetListDataItemForNextConnectedAnimation(object item)
+    {
+        Frame.SetListDataItemForNextConnectedAnimation(item);
+    }
+
+    private void RegisterFrameEvents()
+    {
+        if (_frame is not null)
+        {
+            _frame.Navigated += OnNavigated;
+        }
+    }
+
+    private void UnregisterFrameEvents()
+    {
+        if (_frame is not null)
+        {
+            _frame.Navigated -= OnNavigated;
+        }
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
@@ -124,6 +130,4 @@ public class NavigationService : INavigationService
             Navigated?.Invoke(sender, e);
         }
     }
-
-    public void SetListDataItemForNextConnectedAnimation(object item) => Frame.SetListDataItemForNextConnectedAnimation(item);
 }
