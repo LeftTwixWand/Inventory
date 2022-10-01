@@ -2,6 +2,7 @@
 using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.Settings;
 using Inventory.Presentation.Extensions;
+using Inventory.Presentation.Views;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Infrastructure.Services.Navigation;
@@ -24,6 +25,8 @@ public class NavigationViewService : INavigationViewService
 
     public object? SettingsItem => _navigationView?.SettingsItem;
 
+    public Type SettingsViewType => typeof(SettingsPage);
+
     [MemberNotNull(nameof(_navigationView))]
     public void Initialize(NavigationView navigationView)
     {
@@ -34,7 +37,7 @@ public class NavigationViewService : INavigationViewService
 
     public void UnregisterEvents()
     {
-        if (_navigationView != null)
+        if (_navigationView is not null)
         {
             _navigationView.BackRequested -= OnBackRequested;
             _navigationView.ItemInvoked -= OnItemInvoked;
@@ -43,7 +46,7 @@ public class NavigationViewService : INavigationViewService
 
     public NavigationViewItem? GetSelectedItem(Type pageType)
     {
-        if (_navigationView != null)
+        if (_navigationView is not null)
         {
             return GetSelectedItem(_navigationView.MenuItems, pageType) ?? GetSelectedItem(_navigationView.FooterMenuItems, pageType);
         }

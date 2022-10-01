@@ -16,6 +16,8 @@ public interface INavigationViewService
         get;
     }
 
+    Type SettingsViewType { get; }
+
     void Initialize(NavigationView navigationView);
 
     void UnregisterEvents();

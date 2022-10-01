@@ -27,15 +27,14 @@ public sealed partial class ShellViewModel : ObservableObject
     {
         IsBackEnabled = NavigationService.CanGoBack;
 
-        // TODO: Update the settings page verification
-        if (e.SourcePageType.FullName?.Contains("Settings") == true)
+        if (e.SourcePageType == NavigationViewService.SettingsViewType)
         {
             Selected = NavigationViewService.SettingsItem;
             return;
         }
 
         var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
-        if (selectedItem != null)
+        if (selectedItem is not null)
         {
             Selected = selectedItem;
         }
