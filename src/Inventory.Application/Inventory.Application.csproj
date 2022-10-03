@@ -21,5 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Application\BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\Inventory.Domain\Inventory.Domain.csproj" />
   </ItemGroup>
 </Project>
