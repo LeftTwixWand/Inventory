@@ -20,15 +20,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Autofac.Configuration" Version="6.0.0" />
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Animations" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls" Version="7.1.2" />
 		<PackageReference Include="CommunityToolkit.WinUI.UI.Controls.DataGrid" Version="7.1.2" />
+		<PackageReference Include="FluentValidation" Version="11.2.2" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
 		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
 		<PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.8" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
 		<PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
@@ -39,6 +43,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj" />
 		<ProjectReference Include="..\Inventory.Presentation\Inventory.Presentation.csproj" />
 	</ItemGroup>
 	<ItemGroup>
@@ -49,10 +54,6 @@
 
 	<ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
 		<ProjectCapability Include="Msix" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="AutofacModules\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
