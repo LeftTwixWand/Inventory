@@ -1,34 +1,17 @@
-﻿using BuildingBlocks.Application.Services.Activation.Handlers;
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using CommunityToolkit.Diagnostics;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Inventory.Application.Services.Activation;
-using Inventory.Application.Services.Files;
-using Inventory.Application.Services.LocalSettings;
-using Inventory.Application.Services.Navigation;
-using Inventory.Application.Services.SampleData;
-using Inventory.Application.Services.ThemeSelector;
-using Inventory.Application.Services.WebView;
-using Inventory.Application.ViewModels.ContentGrid;
-using Inventory.Application.ViewModels.DataGrid;
-using Inventory.Application.ViewModels.ListDetails;
-using Inventory.Application.ViewModels.Main;
-using Inventory.Application.ViewModels.Settings;
-using Inventory.Application.ViewModels.Shell;
-using Inventory.Application.ViewModels.WebView;
+using Inventory.Infrastructure.AutofacModules;
 using Inventory.Infrastructure.Models;
-using Inventory.Infrastructure.Services.Activation;
-using Inventory.Infrastructure.Services.Files;
-using Inventory.Infrastructure.Services.LocalSettings;
-using Inventory.Infrastructure.Services.Navigation;
-using Inventory.Infrastructure.Services.SampleData;
-using Inventory.Infrastructure.Services.ThemeSelector;
-using Inventory.Infrastructure.Services.WebView;
-using Inventory.Presentation.Views;
-using Inventory.Presentation.Views.Shell;
-using Inventory.Presentation.Windows;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Primitives;
 using Microsoft.UI.Xaml;
+using Serilog;
+using Serilog.Formatting.Compact;
 
 namespace Inventory.Infrastructure;
 
@@ -46,58 +29,37 @@ public partial class App : Microsoft.UI.Xaml.Application
     {
         InitializeComponent();
 
+        UnhandledException += App_UnhandledException;
+
         _host = Host
             .CreateDefaultBuilder()
             .UseContentRoot(AppContext.BaseDirectory)
-            .ConfigureServices((context, services) =>
-            {
-                // Default Activation Handler
-                services.AddTransient<ActivationHandler<LaunchActivatedEventArgs>, DefaultActivationHandler>();
-
-                // Other Activation Handlers
-
-                // Services
-                services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
-                services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
-                services.AddTransient<IWebViewService, WebViewService>();
-                services.AddTransient<INavigationViewService, NavigationViewService>();
-
-                services.AddSingleton<IActivationService, ActivationService>();
-                services.AddSingleton<IPageService, PageService>();
-                services.AddSingleton<INavigationService, NavigationService>();
-
-                // Core Services
-                services.AddSingleton<ISampleDataService, SampleDataService>();
-                services.AddSingleton<IFileService, FileService>();
-
-                services.AddSingleton<Window, MainWindow>();
-
-                // Views and ViewModels
-                services.AddTransient<SettingsViewModel>();
-                services.AddTransient<SettingsPage>();
-                services.AddTransient<DataGridViewModel>();
-                services.AddTransient<DataGridPage>();
-                services.AddTransient<ContentGridDetailViewModel>();
-                services.AddTransient<ContentGridDetailPage>();
-                services.AddTransient<ContentGridViewModel>();
-                services.AddTransient<ContentGridPage>();
-                services.AddTransient<ListDetailsViewModel>();
-                services.AddTransient<ListDetailsPage>();
-                services.AddTransient<WebViewViewModel>();
-                services.AddTransient<WebViewPage>();
-                services.AddTransient<MainViewModel>();
-                services.AddTransient<MainPage>();
-                services.AddTransient<ShellView>();
-                services.AddTransient<ShellViewModel>();
-
-                // Configuration
-                services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
-            })
+            .ConfigureServices(ConfigureServices)
+            .UseSerilog(ConfigureLogging)
+            .ConfigureAppConfiguration(CreateConfiguration)
             .Build();
 
-        Ioc.Default.ConfigureServices(_host.Services);
+        // Services
+        //        services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
+        //        services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
+        //        services.AddTransient<IWebViewService, WebViewService>();
+        //        services.AddTransient<INavigationViewService, NavigationViewService>();
 
-        UnhandledException += App_UnhandledException;
+        // Core Services
+        //        services.AddSingleton<ISampleDataService, SampleDataService>();
+        //        services.AddSingleton<IFileService, FileService>();
+
+        // Configuration
+        //        services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+
+        // We need the navigation service dependency in navigation Behaviors
+        // TODO: Improve dependency injection into navigation Behaviors
+        Ioc.Default.ConfigureServices(_host.Services);
+    }
+
+    private void CreateConfiguration(HostBuilderContext hostBuilderContext, IConfigurationBuilder configurationBuilder)
+    {
+        //configurationBuilder.Configure<LocalSettingsOptions>(hostBuilderContext.Configuration.GetSection(nameof(LocalSettingsOptions)));
     }
 
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
@@ -114,5 +76,34 @@ public partial class App : Microsoft.UI.Xaml.Application
     {
         // TODO: Log and handle exceptions as appropriate.
         // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+    }
+
+    private void ConfigureServices(IServiceCollection services)
+    {
+            services.Scan
+        //builder.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+        //.RegisterModule<ActivationModule>()
+        //.RegisterModule<NavigationModule>();
+
+    }
+
+    public static void RegisterAllTypes<T>(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Scoped)
+    {
+        services.Scan(
+            x =>
+            {
+                x.FromApplicationDependencies()
+                    .AddClasses(classes => classes.AssignableTo(typeof(T)))
+                        .AsImplementedInterfaces()
+                        .WithLifetime(lifetime);
+            });
+    }
+
+    private void ConfigureLogging(HostBuilderContext hostBuilderContext, LoggerConfiguration loggerConfiguration)
+    {
+        loggerConfiguration
+            .Enrich.FromLogContext()
+            .WriteTo.Debug(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{Context}] {Message:lj}{NewLine}{Exception}")
+            .CreateLogger();
     }
 }
