@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Autofac.Core;
 using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.ContentGrid;
 using Inventory.Application.ViewModels.DataGrid;
@@ -16,13 +15,13 @@ using Microsoft.UI.Xaml;
 
 namespace Inventory.Infrastructure.AutofacModules;
 
-internal class NavigationModule : Module
+internal sealed class NavigationModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
-        builder.RegisterType<PageService>().As<IPageService>().InstancePerLifetimeScope();
-        builder.RegisterType<NavigationViewService>().As<INavigationViewService>().InstancePerLifetimeScope();
-        builder.RegisterType<NavigationService>().As<INavigationService>().InstancePerLifetimeScope();
+        builder.RegisterType<PageService>().As<IPageService>().SingleInstance();
+        builder.RegisterType<NavigationViewService>().As<INavigationViewService>().SingleInstance();
+        builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 
         builder.RegisterType<MainWindow>().As<Window>().InstancePerDependency();
 
