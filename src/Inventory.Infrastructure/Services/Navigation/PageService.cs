@@ -1,13 +1,14 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.ContentGrid;
+using Inventory.Application.ViewModels.Dashboard;
 using Inventory.Application.ViewModels.DataGrid;
 using Inventory.Application.ViewModels.ListDetails;
 using Inventory.Application.ViewModels.Main;
 using Inventory.Application.ViewModels.Settings;
 using Inventory.Application.ViewModels.WebView;
 using Inventory.Presentation.Views;
-
+using Inventory.Presentation.Views.Dashboard;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Infrastructure.Services.Navigation;
@@ -25,6 +26,7 @@ public class PageService : IPageService
         Configure<ContentGridDetailViewModel, ContentGridDetailPage>();
         Configure<DataGridViewModel, DataGridPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        Configure<DashboardViewModel, DashboardView>();
     }
 
     public Type GetPageType(string key)
@@ -41,19 +43,19 @@ public class PageService : IPageService
         return pageType;
     }
 
-    private void Configure<VM, V>()
-        where VM : ObservableObject
-        where V : Page
+    private void Configure<TViewModel, TView>()
+        where TViewModel : ObservableObject
+        where TView : Page
     {
         lock (_pages)
         {
-            var key = typeof(VM).FullName!;
+            var key = typeof(TViewModel).FullName!;
             if (_pages.ContainsKey(key))
             {
                 throw new ArgumentException($"The key {key} is already configured in PageService");
             }
 
-            var type = typeof(V);
+            var type = typeof(TView);
             if (_pages.Any(p => p.Value == type))
             {
                 throw new ArgumentException($"This type is already configured with key {_pages.First(p => p.Value == type).Key}");

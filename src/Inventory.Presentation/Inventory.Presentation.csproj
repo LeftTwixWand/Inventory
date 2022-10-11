@@ -14,6 +14,7 @@
     <None Remove="Styles\Thickness\Thickness.xaml" />
     <None Remove="Views\ContentGridDetailPage.xaml" />
     <None Remove="Views\ContentGridPage.xaml" />
+    <None Remove="Views\Dashboard\DashboardView.xaml" />
     <None Remove="Views\DataGridPage.xaml" />
     <None Remove="Views\ListDetailsDetailControl.xaml" />
     <None Remove="Views\ListDetailsPage.xaml" />
@@ -46,12 +47,12 @@
     <None Update="Styles\StylesRegistration.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Dashboard\DashboardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Shell\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
     <Page Update="Styles\FontSize\FontSizes.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
