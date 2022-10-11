@@ -9,52 +9,36 @@ public class Product : Entity
     private Product(
         int id,
         string name,
-        decimal listPrice,
-        decimal dealerPrice,
-        decimal discount,
+        string category,
         string? description,
         byte[]? picture)
     {
         Id = id;
         Name = name;
         Description = description;
-        ListPrice = listPrice;
-        DealerPrice = dealerPrice;
-        Discount = discount;
+        Category = category;
         Picture = picture;
-        Category = default!;
     }
 
     public int Id { get; private set; }
 
     public string Name { get; private set; }
 
-    public decimal ListPrice { get; private set; }
-
-    public decimal DealerPrice { get; private set; }
-
-    public decimal Discount { get; set; }
+    public string Category { get; private set; }
 
     public string? Description { get; private set; }
 
     public byte[]? Picture { get; private set; }
 
-    public Category Category { get; private set; }
-
     public static Product Create(
         string name,
-        decimal listPrice,
-        decimal dealerPrice,
-        Category category,
-        decimal discount = 0,
+        string category,
         string? description = default,
         byte[]? picture = default)
     {
-        CheckRule(new NameMustNotBeEmptyRyle(name));
+        CheckRule(new NameMustNotBeEmptyRule(name));
+        CheckRule(new CategoryMustNotBeEmptyRule(name));
 
-        return new Product(0, name, listPrice, dealerPrice, discount, description, picture)
-        {
-            Category = category,
-        };
+        return new Product(0, name, category, description, picture);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Inventory.Domain.Products.Rules;
 
-internal class NameMustNotBeEmptyRyle : IBusinessRule
+internal class NameMustNotBeEmptyRule : IBusinessRule
 {
     private readonly string _name;
 
-    public NameMustNotBeEmptyRyle(string name)
+    public NameMustNotBeEmptyRule(string name)
     {
         _name = name;
     }
