@@ -12,13 +12,17 @@
     <None Remove="Styles\StylesRegistration.xaml" />
     <None Remove="Styles\TextBlock\TextBlock.xaml" />
     <None Remove="Styles\Thickness\Thickness.xaml" />
+    <None Remove="Views\ActivityLog\ActivityLogView.xaml" />
     <None Remove="Views\ContentGridDetailPage.xaml" />
     <None Remove="Views\ContentGridPage.xaml" />
+    <None Remove="Views\Customers\CustomersView.xaml" />
     <None Remove="Views\Dashboard\DashboardView.xaml" />
     <None Remove="Views\DataGridPage.xaml" />
     <None Remove="Views\ListDetailsDetailControl.xaml" />
     <None Remove="Views\ListDetailsPage.xaml" />
     <None Remove="Views\MainPage.xaml" />
+    <None Remove="Views\Orders\OrdersView.xaml" />
+    <None Remove="Views\Products\ProductsView.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
     <None Remove="Views\Shell\ShellView.xaml" />
     <None Remove="Views\WebViewPage.xaml" />
@@ -47,6 +51,18 @@
     <None Update="Styles\StylesRegistration.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <Page Update="Views\Products\ProductsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Orders\OrdersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\Customers\CustomersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\ActivityLog\ActivityLogView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\Dashboard\DashboardView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

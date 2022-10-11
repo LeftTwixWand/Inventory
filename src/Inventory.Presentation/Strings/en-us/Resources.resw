@@ -204,4 +204,16 @@
   <data name="Shell_Dashboard.Content" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="Shell_Customers.Content" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="Shell_Orders.Content" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="Shell_Products.Content" xml:space="preserve">
+    <value>Products</value>
+  </data>
+  <data name="Shell_ActivityLog.Content" xml:space="preserve">
+    <value>Activity Log</value>
+  </data>
 </root>

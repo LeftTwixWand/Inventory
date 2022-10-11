@@ -1,14 +1,22 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Inventory.Application.Services.Navigation;
+using Inventory.Application.ViewModels.ActivityLog;
 using Inventory.Application.ViewModels.ContentGrid;
+using Inventory.Application.ViewModels.Customers;
 using Inventory.Application.ViewModels.Dashboard;
 using Inventory.Application.ViewModels.DataGrid;
 using Inventory.Application.ViewModels.ListDetails;
 using Inventory.Application.ViewModels.Main;
+using Inventory.Application.ViewModels.Orders;
+using Inventory.Application.ViewModels.Products;
 using Inventory.Application.ViewModels.Settings;
 using Inventory.Application.ViewModels.WebView;
 using Inventory.Presentation.Views;
+using Inventory.Presentation.Views.ActivityLog;
+using Inventory.Presentation.Views.Customers;
 using Inventory.Presentation.Views.Dashboard;
+using Inventory.Presentation.Views.Orders;
+using Inventory.Presentation.Views.Products;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Infrastructure.Services.Navigation;
@@ -27,6 +35,10 @@ public class PageService : IPageService
         Configure<DataGridViewModel, DataGridPage>();
         Configure<SettingsViewModel, SettingsPage>();
         Configure<DashboardViewModel, DashboardView>();
+        Configure<CustomersViewModel, CustomersView>();
+        Configure<ProductsViewModel, ProductsView>();
+        Configure<OrdersViewModel, OrdersView>();
+        Configure<ActivityLogViewModel, ActivityLogView>();
     }
 
     public Type GetPageType(string key)
