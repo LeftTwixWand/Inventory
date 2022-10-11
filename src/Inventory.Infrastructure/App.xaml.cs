@@ -67,6 +67,8 @@ public partial class App : Microsoft.UI.Xaml.Application
 
             .RegisterModule<ProcessingModule>()
 
+            .RegisterModule<MappingModule>()
+
             .RegisterModule<DatabaseModule>();
     }
 

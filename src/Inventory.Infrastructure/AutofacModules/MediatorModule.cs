@@ -16,6 +16,7 @@ internal sealed class MediatorModule : Module
         {
             typeof(IRequestHandler<,>),
             typeof(INotificationHandler<>),
+            typeof(IStreamRequestHandler<,>),
             typeof(IValidator<>),
         };
 
