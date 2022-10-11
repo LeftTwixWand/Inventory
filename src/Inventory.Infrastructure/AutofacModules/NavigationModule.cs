@@ -23,7 +23,7 @@ internal sealed class NavigationModule : Module
         builder.RegisterType<NavigationViewService>().As<INavigationViewService>().SingleInstance();
         builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 
-        builder.RegisterType<MainWindow>().As<Window>().InstancePerDependency();
+        builder.RegisterType<MainWindow>().As<Window>().SingleInstance();
 
         builder.RegisterType<ShellViewModel>().InstancePerDependency();
         builder.RegisterType<ShellView>().InstancePerDependency();
