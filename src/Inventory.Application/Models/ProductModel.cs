@@ -1,3 +1,19 @@
-﻿namespace Inventory.Application.Models;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml.Media;
 
-public sealed record ProductModel(string Name, decimal Price);
+namespace Inventory.Application.Models;
+
+public sealed partial class ProductModel : ObservableObject
+{
+    [ObservableProperty]
+    private int id;
+
+    [ObservableProperty]
+    private string name = string.Empty;
+
+    [ObservableProperty]
+    private string category = string.Empty;
+
+    [ObservableProperty]
+    private ImageSource? imageSource = null;
+}

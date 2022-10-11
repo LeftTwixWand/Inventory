@@ -5,9 +5,48 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:viewModels="using:Inventory.Application.ViewModels.Products"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:viewModels="using:Inventory.Application.ViewModels.Products" 
+    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
+    xmlns:models="using:Inventory.Application.Models"
     d:DataContext="{d:DesignInstance Type=viewModels:ProductsViewModel}">
 
-    <TextBlock Text="{x:Bind ViewModel.MyText}"/>
+    <interactivity:Interaction.Behaviors>
+        <interactivityCore:EventTriggerBehavior EventName="Loaded">
+            <interactivityCore:EventTriggerBehavior.Actions>
+                <interactivityCore:InvokeCommandAction Command="{x:Bind ViewModel.LoadedCommand}" />
+            </interactivityCore:EventTriggerBehavior.Actions>
+        </interactivityCore:EventTriggerBehavior>
+    </interactivity:Interaction.Behaviors>
 
+    <controls:AdaptiveGridView
+            animations:Connected.ListItemElementName="itemThumbnail"
+            animations:Connected.ListItemKey="animationKeyContentGrid"
+            DesiredWidth="180"
+            IsItemClickEnabled="True"
+            ItemClickCommand="{x:Bind ViewModel.ItemClickCommand}"
+            ItemHeight="160"
+            ItemsSource="{x:Bind ViewModel.Products, Mode=OneWay}"
+            SelectionMode="None"
+            StretchContentForSingleRow="False">
+
+        <controls:AdaptiveGridView.ItemTemplate>
+            <DataTemplate x:DataType="models:ProductModel">
+                <Grid x:Name="itemThumbnail" Padding="{StaticResource XSmallLeftTopRightBottomMargin}">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Image Source="{x:Bind ImageSource, Mode=OneWay}" />
+                        <TextBlock
+                                Margin="{StaticResource XXSmallTopMargin}"
+                                HorizontalAlignment="Center"
+                                Style="{ThemeResource BodyTextStyle}"
+                                Text="{x:Bind Name}" />
+                    </StackPanel>
+                </Grid>
+            </DataTemplate>
+
+        </controls:AdaptiveGridView.ItemTemplate>
+
+    </controls:AdaptiveGridView>
 </Page>
