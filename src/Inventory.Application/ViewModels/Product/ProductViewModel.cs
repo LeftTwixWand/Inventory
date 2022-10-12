@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Inventory.Application.DomainOperations.Product.GetProduct;
+using Inventory.Application.DomainOperations.Product.GetProductById;
 using Inventory.Application.Models;
 using Inventory.Application.Services.Navigation;
 using MediatR;
