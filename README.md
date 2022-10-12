@@ -1,6 +1,6 @@
 # Inventory
 
-Inventory is a new version of [Microsoft Inventory sample](https://github.com/microsoft/inventorysample), built on WinUI 3, using DDD and Clean Architecture approach.
+Inventory is a new version of [Microsoft Inventory sample](https://github.com/microsoft/inventorysample), built on WinUI 3 with enterprise architecture.
 
 The purpose of this repository is to demonstrate, how to build a modern desktop app, using latest technologies and architecture approaches.
 
@@ -8,19 +8,13 @@ Readme structure:
 
 - [1. The app](#1-the-app)
 - [2. Architecture](#2-architecture)
-  - [2.1. Domain layer](#21-domain-layer)
-  - [2.2. Application layer](#22-application-layer)
-  - [2.3. Infrastructure layer](#23-infrastructure-layer)
-  - [2.4. Presentation layer](#24-presentation-layer)
-  - [2.5. Database layer](#25-database-layer)
-  - [2.6. Building Blocks](#26-building-blocks)
-    - [2.6.1. Building Blocks - Domain](#261-building-blocks---domain)
-    - [2.6.1. Building Blocks - Application](#262-building-blocks---application)
-    - [2.6.1. Building Blocks - Infrastructure](#263-building-blocks---infrastructure)
 - [3. Technologies](#3-technologies)
 - [4. Inspirations](#4-inspirations)
+- [5. Contributing](#5-contributing)
 
 ## 1. The app
+![App Light](https://user-images.githubusercontent.com/50652041/195396886-5d8a03ed-aa19-4d40-83d8-56d7e00c2995.png)
+![App Dark](https://user-images.githubusercontent.com/50652041/195396891-f5ced73f-49b8-4666-a402-1e364c7e9b69.png)
 
 ## 2. Architecture
 
@@ -39,3 +33,5 @@ Readme structure:
 ## 3. Technologies
 
 ## 4. Inspirations
+
+## 5. Contributing
