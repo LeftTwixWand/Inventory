@@ -7,9 +7,9 @@ public interface IThemeSelectorService
 {
     ElementTheme Theme { get; }
 
-    Task InitializeAsync();
+    void Initialize();
 
-    Task SetThemeAsync(ElementTheme theme);
+    void SetTheme(ElementTheme theme);
 
-    Task SetRequestedThemeAsync();
+    void SetRequestedTheme();
 }

@@ -26,31 +26,30 @@ public sealed partial class SettingsViewModel : ObservableObject
         _versionDescription = GetVersionDescription();
     }
 
-    [RelayCommand]
-    private async Task SwitchTheme(ElementTheme theme)
-    {
-        if (ElementTheme != theme)
-        {
-            ElementTheme = theme;
-            await _themeSelectorService.SetThemeAsync(theme);
-        }
-    }
-
     private static string GetVersionDescription()
     {
         var version = new Version(0, 1, 890, 3);
 
-        //if (RuntimeHelper.IsMSIX)
-        //{
-        //    var packageVersion = Package.Current.Id.Version;
-
-        //    version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
-        //}
-        //else
-        //{
-        //    version = Assembly.GetExecutingAssembly().GetName().Version!;
-        //}
+        // if (RuntimeHelper.IsMSIX)
+        // {
+        //     var packageVersion = Package.Current.Id.Version;
+        //     version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
+        // }
+        // else
+        // {
+        //     version = Assembly.GetExecutingAssembly().GetName().Version!;
+        // }
 
         return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+    }
+
+    [RelayCommand]
+    private void SwitchTheme(ElementTheme theme)
+    {
+        if (ElementTheme != theme)
+        {
+            ElementTheme = theme;
+            _themeSelectorService.SetTheme(theme);
+        }
     }
 }
