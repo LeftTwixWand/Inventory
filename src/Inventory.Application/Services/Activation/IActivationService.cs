@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Microsoft.UI.Xaml;
 
 namespace Inventory.Application.Services.Activation;
 
 public interface IActivationService
 {
-    Task ActivateAsync(object activationArgs, IServiceProvider serviceProvider);
+    Task ActivateAsync(UIElement shellView, object activationArgs);
 }

@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Inventory.Application.DomainOperations.Product.GetProducts;
 using Inventory.Application.Models;
 using Inventory.Application.Services.Navigation;
-using Inventory.Application.ViewModels.ContentGrid;
+using Inventory.Application.ViewModels.Product;
 using MediatR;
 
 namespace Inventory.Application.ViewModels.Products;
@@ -37,7 +37,7 @@ public sealed partial class ProductsViewModel : ObservableObject
         if (clickedItem is not null)
         {
             _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
-            _navigationService.NavigateTo(typeof(ContentGridDetailViewModel).FullName!, clickedItem.Id);
+            _navigationService.NavigateTo(typeof(ProductViewModel).FullName!, clickedItem.Id);
         }
     }
 }

@@ -19,7 +19,7 @@ internal sealed class GetProductsStreamQueryHandler : IStreamRequestHandler<GetP
 
     public async IAsyncEnumerable<ProductModel> Handle(GetProductsStreamQuery query, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        await foreach (var product in _productsRepository.GetProductsAsync(cancellationToken))
+        await foreach (var product in _productsRepository.GetAllAsync(cancellationToken))
         {
             yield return new ProductModel
             {

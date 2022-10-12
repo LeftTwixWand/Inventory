@@ -19,16 +19,21 @@ internal sealed class ProductsRepository : IProductsRepository
             Product.Create("Rechargeable Lamp", "Outdoor Lamp", "", Resources.Lamp5),
         });
 
-    public async IAsyncEnumerable<Product> GetProductsAsync([EnumeratorCancellation] CancellationToken cancellationToken)
+    public async IAsyncEnumerable<Product> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
         for (int i = 0; i < 10; i++)
         {
             foreach (var product in _products)
             {
-                await Task.CompletedTask;
-                //await Task.Delay(100, cancellationToken);
                 yield return product;
             }
         }
+    }
+
+    public Task<Product?> GetByIdAsync(int id)
+    {
+        var product = _products.FirstOrDefault(product => product.Id == id);
+        return Task.FromResult(product);
     }
 }

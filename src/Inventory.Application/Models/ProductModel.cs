@@ -15,5 +15,8 @@ public sealed partial class ProductModel : ObservableObject
     private string category = string.Empty;
 
     [ObservableProperty]
-    private ImageSource? imageSource = null;
+    private string? description;
+
+    [ObservableProperty]
+    private ImageSource? imageSource;
 }
