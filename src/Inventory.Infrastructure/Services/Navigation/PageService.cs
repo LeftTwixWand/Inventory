@@ -8,6 +8,7 @@ using Inventory.Application.ViewModels.DataGrid;
 using Inventory.Application.ViewModels.ListDetails;
 using Inventory.Application.ViewModels.Main;
 using Inventory.Application.ViewModels.Orders;
+using Inventory.Application.ViewModels.Product;
 using Inventory.Application.ViewModels.Products;
 using Inventory.Application.ViewModels.Settings;
 using Inventory.Application.ViewModels.WebView;
@@ -16,6 +17,7 @@ using Inventory.Presentation.Views.ActivityLog;
 using Inventory.Presentation.Views.Customers;
 using Inventory.Presentation.Views.Dashboard;
 using Inventory.Presentation.Views.Orders;
+using Inventory.Presentation.Views.Product;
 using Inventory.Presentation.Views.Products;
 using Microsoft.UI.Xaml.Controls;
 
@@ -39,6 +41,7 @@ public class PageService : IPageService
         Configure<ProductsViewModel, ProductsView>();
         Configure<OrdersViewModel, OrdersView>();
         Configure<ActivityLogViewModel, ActivityLogView>();
+        Configure<ProductViewModel, ProductView>();
     }
 
     public Type GetPageType(string key)

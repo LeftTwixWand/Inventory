@@ -25,7 +25,6 @@
 		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="9.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
 		<PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
 		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">

@@ -8,6 +8,7 @@ using Inventory.Application.ViewModels.DataGrid;
 using Inventory.Application.ViewModels.ListDetails;
 using Inventory.Application.ViewModels.Main;
 using Inventory.Application.ViewModels.Orders;
+using Inventory.Application.ViewModels.Product;
 using Inventory.Application.ViewModels.Products;
 using Inventory.Application.ViewModels.Settings;
 using Inventory.Application.ViewModels.Shell;
@@ -34,7 +35,6 @@ internal sealed class NavigationModule : Module
         builder.RegisterType<DashboardViewModel>().InstancePerDependency();
         builder.RegisterType<CustomersViewModel>().InstancePerDependency();
         builder.RegisterType<OrdersViewModel>().InstancePerDependency();
-        builder.RegisterType<ProductsViewModel>().InstancePerDependency();
         builder.RegisterType<ActivityLogViewModel>().InstancePerDependency();
         builder.RegisterType<MainViewModel>().InstancePerDependency();
         builder.RegisterType<SettingsViewModel>().InstancePerDependency();
@@ -43,5 +43,7 @@ internal sealed class NavigationModule : Module
         builder.RegisterType<ContentGridViewModel>().InstancePerDependency();
         builder.RegisterType<ListDetailsViewModel>().InstancePerDependency();
         builder.RegisterType<WebViewViewModel>().InstancePerDependency();
+        builder.RegisterType<ProductsViewModel>().InstancePerDependency();
+        builder.RegisterType<ProductViewModel>().InstancePerDependency();
     }
 }

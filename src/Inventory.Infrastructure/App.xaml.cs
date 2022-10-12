@@ -4,58 +4,41 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 using Inventory.Application.Services.Activation;
 using Inventory.Infrastructure.AutofacModules;
 using Inventory.Persistence.Database.AutofacModules;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Inventory.Presentation.Views.Shell;
 using Microsoft.UI.Xaml;
-using Serilog;
 
 namespace Inventory.Infrastructure;
 
 public partial class App : Microsoft.UI.Xaml.Application
 {
-    private readonly IHost _host;
-
     public App()
     {
         InitializeComponent();
 
         UnhandledException += App_UnhandledException;
 
-        _host = Host
-            .CreateDefaultBuilder()
-            .UseContentRoot(AppContext.BaseDirectory)
-            .UseServiceProviderFactory(new AutofacServiceProviderFactory(ConfigureServices))
-            .ConfigureLogging(ConfigureLogging)
-            .Build();
-
         // Configuration
         // TODO: Update Configure method to use IHostBuilder.ConfigureAppConfiguration
         // Add Autofac.Configuration provider
         // services.Configure<LocalSettingsOptions>(hostBuilderContext.Configuration.GetSection(nameof(LocalSettingsOptions)));
-
-        // We need the navigation service dependency in navigation Behaviors
-        // TODO: Improve dependency injection into navigation Behaviors
-        Ioc.Default.ConfigureServices(_host.Services);
+        var serviceProvider = CreateServiceProfider();
+        Ioc.Default.ConfigureServices(serviceProvider);
     }
 
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
 
-        var activationService = _host.Services.GetRequiredService<IActivationService>();
+        var shellView = Ioc.Default.GetRequiredService<ShellView>();
+        var activationService = Ioc.Default.GetRequiredService<IActivationService>();
 
-        await activationService.ActivateAsync(args, _host.Services);
+        await activationService.ActivateAsync(shellView, args);
     }
 
-    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+    private static AutofacServiceProvider CreateServiceProfider()
     {
-        // TODO: Log and handle exceptions as appropriate.
-        // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
-    }
+        var builder = new ContainerBuilder();
 
-    private void ConfigureServices(ContainerBuilder builder)
-    {
         builder
             .RegisterModule<ActivationModule>()
 
@@ -69,16 +52,17 @@ public partial class App : Microsoft.UI.Xaml.Application
 
             .RegisterModule<MappingModule>()
 
+            .RegisterModule<LoggingModule>()
+
             .RegisterModule<DatabaseModule>();
+
+        var container = builder.Build();
+        return new AutofacServiceProvider(container);
     }
 
-    private void ConfigureLogging(ILoggingBuilder builder)
+    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
-        var logger = new LoggerConfiguration()
-                    .Enrich.FromLogContext()
-                    .WriteTo.Debug(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{Context}] {Message:lj}{NewLine}{Exception}")
-                    .CreateLogger();
-
-        builder.AddSerilog(logger);
+        // TODO: Log and handle exceptions as appropriate.
+        // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
     }
 }
