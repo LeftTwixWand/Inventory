@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using System.Reflection;
+using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Presentation.Extensions;
 
@@ -6,6 +7,11 @@ public static class FrameExtensions
 {
     public static object? GetPageViewModel(this Frame frame)
     {
-        return frame?.Content?.GetType().GetProperty("ViewModel")?.GetValue(frame.Content, null);
+        var content = frame.Content;
+        var contentType = content?.GetType();
+        var viewModelProperty = contentType?.GetProperty("ViewModel", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        var viewModel = viewModelProperty?.GetValue(content);
+
+        return viewModel;
     }
 }
