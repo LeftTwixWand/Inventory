@@ -1,5 +1,4 @@
 ﻿using BuildingBlocks.Domain.Entities;
-using Inventory.Domain.Categories;
 using Inventory.Domain.Products.Rules;
 
 namespace Inventory.Domain.Products;

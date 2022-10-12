@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
-using Inventory.Application.ViewModels.Main;
 using Inventory.Application.ViewModels.Settings;
 using Microsoft.UI.Xaml.Controls;
 

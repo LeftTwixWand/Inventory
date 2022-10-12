@@ -30,11 +30,20 @@ public class WebViewService : IWebViewService
         _webView.NavigationCompleted += OnWebViewNavigationCompleted;
     }
 
-    public void GoBack() => _webView?.GoBack();
+    public void GoBack()
+    {
+        _webView?.GoBack();
+    }
 
-    public void GoForward() => _webView?.GoForward();
+    public void GoForward()
+    {
+        _webView?.GoForward();
+    }
 
-    public void Reload() => _webView?.Reload();
+    public void Reload()
+    {
+        _webView?.Reload();
+    }
 
     public void UnregisterEvents()
     {
@@ -44,5 +53,8 @@ public class WebViewService : IWebViewService
         }
     }
 
-    private void OnWebViewNavigationCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs args) => NavigationCompleted?.Invoke(this, args.WebErrorStatus);
+    private void OnWebViewNavigationCompleted(WebView2 sender, CoreWebView2NavigationCompletedEventArgs args)
+    {
+        NavigationCompleted?.Invoke(this, args.WebErrorStatus);
+    }
 }

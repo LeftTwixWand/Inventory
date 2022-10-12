@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.WinUI.UI.Controls;
 using Inventory.Application.ViewModels.ListDetails;
-using Inventory.Application.ViewModels.WebView;
 using Microsoft.UI.Xaml.Controls;
 
 namespace Inventory.Presentation.Views;

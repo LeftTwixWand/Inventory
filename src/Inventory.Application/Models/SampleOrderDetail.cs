@@ -8,7 +8,7 @@ public class SampleOrderDetail
         get; set;
     }
 
-    public string ProductName
+    public string? ProductName
     {
         get; set;
     }
@@ -23,7 +23,7 @@ public class SampleOrderDetail
         get; set;
     }
 
-    public string QuantityPerUnit
+    public string? QuantityPerUnit
     {
         get; set;
     }
@@ -33,12 +33,12 @@ public class SampleOrderDetail
         get; set;
     }
 
-    public string CategoryName
+    public string? CategoryName
     {
         get; set;
     }
 
-    public string CategoryDescription
+    public string? CategoryDescription
     {
         get; set;
     }

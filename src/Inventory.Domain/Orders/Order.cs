@@ -62,10 +62,7 @@ public class Order : Entity, IAggregateRoot
 
     public Customer Customer { get; private set; }
 
-    public IReadOnlyCollection<OrderItem> OrderItems
-    {
-        get => _orderItems;
-    }
+    public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
 
     public static Order Create(
         string shipAddress,

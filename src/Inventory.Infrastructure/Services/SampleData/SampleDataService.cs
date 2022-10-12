@@ -70,7 +70,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 45.60,
                                 CategoryName = "Produce",
                                 CategoryDescription = "Dried fruit and bean curd",
-                                Total = 513.00
+                                Total = 513.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -82,7 +82,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 18.0,
                                 CategoryName = "Beverages",
                                 CategoryDescription = "Soft drinks, coffees, teas, beers, and ales",
-                                Total = 283.50
+                                Total = 283.50,
                             },
                             new SampleOrderDetail()
                             {
@@ -94,9 +94,9 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 12.0,
                                 CategoryName = "Seafood",
                                 CategoryDescription = "Seaweed and fish",
-                                Total = 18.00
-                            }
-                        }
+                                Total = 18.00,
+                            },
+                        },
                     },
                     new SampleOrder()
                     {
@@ -125,7 +125,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 55.00,
                                 CategoryName = "Dairy Products",
                                 CategoryDescription = "Cheeses",
-                                Total = 825.00
+                                Total = 825.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -137,9 +137,9 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 13.0,
                                 CategoryName = "Condiments",
                                 CategoryDescription = "Sweet and savory sauces, relishes, spreads, and seasonings",
-                                Total = 20.80
-                            }
-                        }
+                                Total = 20.80,
+                            },
+                        },
                     },
                     new SampleOrder()
                     {
@@ -168,7 +168,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 25.0,
                                 CategoryName = "Condiments",
                                 CategoryDescription = "Sweet and savory sauces, relishes, spreads, and seasonings",
-                                Total = 380.00
+                                Total = 380.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -180,11 +180,11 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 45.60,
                                 CategoryName = "Produce",
                                 CategoryDescription = "Dried fruit and bean curd",
-                                Total = 91.20
-                            }
-                        }
-                    }
-                }
+                                Total = 91.20,
+                            },
+                        },
+                    },
+                },
             },
             new SampleCompany()
             {
@@ -227,7 +227,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 23.25,
                                 CategoryName = "Produce",
                                 CategoryDescription = "Dried fruit and bean curd",
-                                Total = 69.75
+                                Total = 69.75,
                             },
                             new SampleOrderDetail()
                             {
@@ -239,7 +239,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 14.0,
                                 CategoryName = "Grains/Cereals",
                                 CategoryDescription = "Breads, crackers, pasta, and cereal",
-                                Total = 70.00
+                                Total = 70.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -251,9 +251,9 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 34.00,
                                 CategoryName = "Dairy Products",
                                 CategoryDescription = "Cheeses",
-                                Total = 340.00
-                            }
-                        }
+                                Total = 340.00,
+                            },
+                        },
                     },
                     new SampleOrder()
                     {
@@ -282,7 +282,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 21.0,
                                 CategoryName = "Dairy Products",
                                 CategoryDescription = "Cheeses",
-                                Total = 42.00
+                                Total = 42.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -294,7 +294,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 6.0,
                                 CategoryName = "Seafood",
                                 CategoryDescription = "Seaweed and fish",
-                                Total = 60.00
+                                Total = 60.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -306,7 +306,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 9.20,
                                 CategoryName = "Confections",
                                 CategoryDescription = "Desserts, candies, and sweet breads",
-                                Total = 64.40
+                                Total = 64.40,
                             },
                             new SampleOrderDetail()
                             {
@@ -318,11 +318,11 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 34.80,
                                 CategoryName = "Dairy Products",
                                 CategoryDescription = "Cheeses",
-                                Total = 340.80
-                            }
-                        }
-                    }
-                }
+                                Total = 340.80,
+                            },
+                        },
+                    },
+                },
             },
             new SampleCompany()
             {
@@ -365,7 +365,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 46.0,
                                 CategoryName = "Beverages",
                                 CategoryDescription = "Soft drinks, coffees, teas, beers, and ales",
-                                Total = 816.00
+                                Total = 816.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -377,9 +377,9 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 12.75,
                                 CategoryName = "Confections",
                                 CategoryDescription = "Desserts, candies, and sweet breads",
-                                Total = 162.50
-                            }
-                        }
+                                Total = 162.50,
+                            },
+                        },
                     },
                     new SampleOrder()
                     {
@@ -408,7 +408,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 39.00,
                                 CategoryName = "Meat/Poultry",
                                 CategoryDescription = "Prepared meats",
-                                Total = 702.00
+                                Total = 702.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -420,7 +420,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 14.0,
                                 CategoryName = "Beverages",
                                 CategoryDescription = "Soft drinks, coffees, teas, beers, and ales",
-                                Total = 560.00
+                                Total = 560.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -432,9 +432,9 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 32.80,
                                 CategoryName = "Meat/Poultry",
                                 CategoryDescription = "Prepared meats",
-                                Total = 820.00
-                            }
-                        }
+                                Total = 820.00,
+                            },
+                        },
                     },
                     new SampleOrder()
                     {
@@ -463,7 +463,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 2.50,
                                 CategoryName = "Dairy Products",
                                 CategoryDescription = "Cheeses",
-                                Total = 75.00
+                                Total = 75.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -475,7 +475,7 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 17.00,
                                 CategoryName = "Condiments",
                                 CategoryDescription = "Sweet and savory sauces, relishes, spreads, and seasonings",
-                                Total = 68.00
+                                Total = 68.00,
                             },
                             new SampleOrderDetail()
                             {
@@ -487,12 +487,12 @@ public class SampleDataService : ISampleDataService
                                 UnitPrice = 7.75,
                                 CategoryName = "Beverages",
                                 CategoryDescription = "Soft drinks, coffees, teas, beers, and ales",
-                                Total = 232.50
-                            }
-                        }
-                    }
-                }
-            }
+                                Total = 232.50,
+                            },
+                        },
+                    },
+                },
+            },
         };
     }
 

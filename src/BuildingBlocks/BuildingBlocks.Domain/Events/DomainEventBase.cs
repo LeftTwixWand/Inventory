@@ -6,8 +6,5 @@
 public record DomainEventBase : IDomainEvent
 {
     /// <inheritdoc/>
-    public DateTime OccurredOn
-    {
-        get => DateTime.Now;
-    }
+    public DateTime OccurredOn => DateTime.Now;
 }

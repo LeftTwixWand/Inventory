@@ -1,6 +1,4 @@
-﻿using BuildingBlocks.Application.Queries;
-using CommunityToolkit.Diagnostics;
-using CommunityToolkit.Mvvm.DependencyInjection;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using Inventory.Application.Services.Navigation;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;

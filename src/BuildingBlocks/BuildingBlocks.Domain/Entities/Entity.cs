@@ -13,10 +13,7 @@ public abstract class Entity
     /// <summary>
     /// Occurred domain events.
     /// </summary>
-    public IReadOnlyCollection<IDomainEvent> DomainEvents
-    {
-        get => _domainEvents.AsReadOnly();
-    }
+    public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
 
     /// <summary>
     /// Clear list of domain events for current entity object.

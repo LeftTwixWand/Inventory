@@ -8,6 +8,6 @@
     xmlns:viewModels="using:Inventory.Application.ViewModels.Orders"
     d:DataContext="{d:DesignInstance Type=viewModels:OrdersViewModel}">
 
-    <TextBlock Text="{x:Bind ViewModel.MyText}"/>
+    <TextBlock Text="{x:Bind ViewModel.MyText}" />
 
 </Page>

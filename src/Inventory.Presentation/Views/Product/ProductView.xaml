@@ -39,7 +39,7 @@
 
                     <StackPanel x:Name="propertiesGroup1" RelativePanel.Below="itemHero">
 
-                        <TextBlock Text="{x:Bind ViewModel.Product.Name}"/>
+                        <TextBlock Text="{x:Bind ViewModel.Product.Name}" />
 
                         <StackPanel x:Name="statusGroup" Margin="{StaticResource SmallTopMargin}">
                             <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Status" />
@@ -101,5 +101,5 @@
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
     </Grid>
-        
+
 </Page>
