@@ -9,12 +9,12 @@ internal sealed class ProductsRepository : IProductsRepository
     private readonly List<Product> _products = new(
         new[]
         {
-            Product.Create("Gray Mini Lamp", "Dasktop Lamp", "", Resources.Lamp1),
-            Product.Create("Modern LED Lamp", "Dasktop Lamp", "", Resources.Lamp2),
-            Product.Create("15\" Table Lamp", "Dasktop Lamp", "", Resources.Lamp3),
+            Product.Create("Gray Mini Lamp", "Desktop Lamp", "", Resources.Lamp1),
+            Product.Create("Modern LED Lamp", "Desktop Lamp", "", Resources.Lamp2),
+            Product.Create("15\" Table Lamp", "Desktop Lamp", "", Resources.Lamp3),
             Product.Create("Matte Balck Lamp", "Floor Lamp", "", Resources.Lamp6),
-            Product.Create("Geometric Lamp", "Dasktop Lamp", "", Resources.Lamp7),
-            Product.Create("Gray 20\" Lamp", "Dasktop Lamp", "", Resources.Lamp8),
+            Product.Create("Geometric Lamp", "Desktop Lamp", "", Resources.Lamp7),
+            Product.Create("Gray 20\" Lamp", "Desktop Lamp", "", Resources.Lamp8),
             Product.Create("70\" Shared Lamp", "Floor Lamp", "", Resources.Lamp4),
             Product.Create("Rechargeable Lamp", "Outdoor Lamp", "", Resources.Lamp5),
         });
