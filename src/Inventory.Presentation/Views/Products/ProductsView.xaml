@@ -25,7 +25,7 @@
         animations:Connected.ListItemElementName="itemThumbnail"
         animations:Connected.ListItemKey="animationKeyContentGrid"
         IsItemClickEnabled="True"
-        ItemClickCommand="{x:Bind ViewModel.ItemClickCommand}"
+        ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
         ItemsSource="{x:Bind ViewModel.Products, Mode=OneWay}"
         SelectionMode="None"
         StretchContentForSingleRow="False">
