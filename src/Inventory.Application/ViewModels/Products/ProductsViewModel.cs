@@ -32,7 +32,7 @@ public sealed partial class ProductsViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void ItemClick(ProductModel? clickedItem)
+    private void ItemClicked(ProductModel? clickedItem)
     {
         if (clickedItem is not null)
         {
