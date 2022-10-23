@@ -1,4 +1,4 @@
-﻿using BuildingBlocks.Application.Requests;
+﻿using BuildingBlocks.Application.CQRS.Requests;
 using MediatR;
 using Serilog;
 using Serilog.Context;

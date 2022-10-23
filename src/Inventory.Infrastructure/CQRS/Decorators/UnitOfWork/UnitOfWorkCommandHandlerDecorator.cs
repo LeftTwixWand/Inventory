@@ -1,4 +1,4 @@
-﻿using BuildingBlocks.Application.Commands;
+﻿using BuildingBlocks.Application.CQRS.Commands;
 using BuildingBlocks.Domain.UnitOfWorks;
 using MediatR;
 

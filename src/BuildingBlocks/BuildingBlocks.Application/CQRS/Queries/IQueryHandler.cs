@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace BuildingBlocks.Application.Queries;
+namespace BuildingBlocks.Application.CQRS.Queries;
 
 /// <summary>
 /// Base interface, for all query handlers.

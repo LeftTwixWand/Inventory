@@ -1,6 +1,6 @@
-﻿using BuildingBlocks.Application.Requests;
+﻿using BuildingBlocks.Application.CQRS.Requests;
 
-namespace BuildingBlocks.Application.Queries;
+namespace BuildingBlocks.Application.CQRS.Queries;
 
 /// <summary>
 /// Abstract record, that encapsulate functionality of <see cref="IQuery{TResult}"/> and adding request identity.

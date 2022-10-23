@@ -1,7 +1,7 @@
-﻿using BuildingBlocks.Application.Requests;
+﻿using BuildingBlocks.Application.CQRS.Requests;
 using MediatR;
 
-namespace BuildingBlocks.Application.Commands;
+namespace BuildingBlocks.Application.CQRS.Commands;
 
 /// <inheritdoc/>
 public record CommandBase : CommandBase<Unit>, ICommand

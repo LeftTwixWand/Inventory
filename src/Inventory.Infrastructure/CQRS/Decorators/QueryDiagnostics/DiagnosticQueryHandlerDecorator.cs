@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics;
-using BuildingBlocks.Application.Queries;
+using BuildingBlocks.Application.CQRS.Queries;
 
 namespace Inventory.Infrastructure.CQRS.Decorators.QueryDiagnostics;
 

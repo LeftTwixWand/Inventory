@@ -1,4 +1,4 @@
-﻿using BuildingBlocks.Application.Queries;
+﻿using BuildingBlocks.Application.CQRS.Queries;
 using Inventory.Application.Models;
 
 namespace Inventory.Application.DomainOperations.Product.GetProductById;

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace BuildingBlocks.Application.Requests;
+namespace BuildingBlocks.Application.CQRS.Requests;
 
 /// <summary>
 /// Adds unique identifyier for request.

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace BuildingBlocks.Application.Commands;
+namespace BuildingBlocks.Application.CQRS.Commands;
 
 /// <summary>
 /// Base interface, for all command handlers.
