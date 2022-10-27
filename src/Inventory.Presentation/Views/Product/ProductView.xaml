@@ -11,6 +11,9 @@
     <Grid x:Name="ContentArea">
         <ScrollViewer IsTabStop="True">
             <StackPanel x:Name="contentPanel">
+                
+                <Button Content="Save" Command="{x:Bind ViewModel.SaveCommand}"/>
+
                 <RelativePanel>
                     <Grid
                         x:Name="itemHero"
@@ -26,7 +29,7 @@
                         <Image
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Source="{x:Bind ViewModel.Product.ImageSource, Mode=OneWay}" />
+                            Source="{x:Bind ViewModel.Item.ImageSource, Mode=OneWay}" />
                     </Grid>
 
                     <TextBlock
@@ -35,11 +38,11 @@
                         RelativePanel.AlignTopWithPanel="True"
                         RelativePanel.RightOf="itemHero"
                         Style="{ThemeResource TitleTextBlockStyle}"
-                        Text="{x:Bind ViewModel.Product.Category, Mode=OneWay}" />
+                        Text="{x:Bind ViewModel.Item.Category, Mode=OneWay}" />
 
                     <StackPanel x:Name="propertiesGroup1" RelativePanel.Below="itemHero">
 
-                        <TextBlock Text="{x:Bind ViewModel.Product.Name}" />
+                        <TextBlock Text="{x:Bind ViewModel.Item.Name}" />
 
                         <StackPanel x:Name="statusGroup" Margin="{StaticResource SmallTopMargin}">
                             <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Status" />

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using BuildingBlocks.Application.ViewModels;
+using CommunityToolkit.Mvvm.Messaging;
 using Inventory.Application.DomainOperations.Product.GetProductById;
 using Inventory.Application.Models;
 using Inventory.Application.Services.Navigation;
@@ -6,14 +7,12 @@ using MediatR;
 
 namespace Inventory.Application.ViewModels.Product;
 
-public sealed partial class ProductViewModel : ObservableObject, INavigationAware
+public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel>, INavigationAware
 {
     private readonly IMediator _mediator;
 
-    [ObservableProperty]
-    private ProductModel? product;
-
-    public ProductViewModel(IMediator mediator)
+    public ProductViewModel(IMediator mediator, IMessenger messenger)
+        : base(messenger)
     {
         _mediator = mediator;
     }
@@ -29,6 +28,7 @@ public sealed partial class ProductViewModel : ObservableObject, INavigationAwar
             return;
         }
 
-        Product = await _mediator.Send(new GetProductByIdQuery(productId));
+        var product = await _mediator.Send(new GetProductByIdQuery(productId));
+        Item = product ?? new ProductModel() { Name = "Product name" };
     }
 }

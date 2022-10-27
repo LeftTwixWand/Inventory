@@ -43,7 +43,7 @@ internal sealed class NavigationModule : Module
         builder.RegisterType<ContentGridViewModel>().InstancePerDependency();
         builder.RegisterType<ListDetailsViewModel>().InstancePerDependency();
         builder.RegisterType<WebViewViewModel>().InstancePerDependency();
-        builder.RegisterType<ProductsViewModel>().InstancePerDependency();
+        builder.RegisterType<ProductsViewModel>().SingleInstance();
         builder.RegisterType<ProductViewModel>().InstancePerDependency();
     }
 }

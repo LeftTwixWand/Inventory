@@ -1,6 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Threading.Tasks;
 using BuildingBlocks.Application.ViewModels;
-using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Inventory.Application.DomainOperations.Product.GetProducts;
 using Inventory.Application.Models;
@@ -19,6 +18,7 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
     {
         _mediator = mediator;
         _navigationService = navigationService;
+        IsActive = true;
     }
 
     protected override void OnCreateNewItem()
@@ -27,7 +27,7 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
     }
 
     [RelayCommand]
-    private async void Loaded()
+    private async Task Loaded()
     {
         await foreach (var item in _mediator.CreateStream(new GetProductsStreamQuery()))
         {
