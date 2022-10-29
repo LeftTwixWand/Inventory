@@ -6,7 +6,10 @@ using CommunityToolkit.Mvvm.Messaging;
 
 namespace BuildingBlocks.Application.ViewModels;
 
-public abstract partial class GenericListViewModel<TModel> : ObservableRecipient, IRecipient<NewGenericItemCreatedMessage<TModel>>
+public abstract partial class GenericListViewModel<TModel> : ObservableRecipient,
+    IRecipient<NewGenericItemCreatedMessage<TModel>>,
+    IRecipient<GenericItemUpdatedMessage<TModel>>,
+    IRecipient<GenericItemDeletedMessage<TModel>>
     where TModel : ObservableObject, new()
 {
     public ObservableCollection<TModel> Items { get; } = new();
@@ -14,6 +17,17 @@ public abstract partial class GenericListViewModel<TModel> : ObservableRecipient
     public virtual void Receive(NewGenericItemCreatedMessage<TModel> message)
     {
         Items.Add(message.Value);
+    }
+
+    public virtual void Receive(GenericItemDeletedMessage<TModel> message)
+    {
+        Items.Remove(message.Value);
+    }
+
+    public virtual void Receive(GenericItemUpdatedMessage<TModel> message)
+    {
+        var itemIndex = Items.IndexOf(message.Value);
+        Items[itemIndex] = message.Value;
     }
 
     [RelayCommand]
