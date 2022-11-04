@@ -11,6 +11,7 @@
     <Grid x:Name="ContentArea">
         <ScrollViewer IsTabStop="True">
             <StackPanel x:Name="contentPanel">
+
                 <RelativePanel>
                     <Grid
                         x:Name="itemHero"
@@ -35,11 +36,17 @@
                         RelativePanel.AlignTopWithPanel="True"
                         RelativePanel.RightOf="itemHero"
                         Style="{ThemeResource TitleTextBlockStyle}"
-                        Text="{x:Bind ViewModel.Item.Category, Mode=OneWay}" />
+                        Text="{x:Bind ViewModel.Item.Name, Mode=OneWay}" />
 
-                    <StackPanel x:Name="propertiesGroup1" RelativePanel.Below="itemHero">
+                    <StackPanel
+                        x:Name="propertiesGroup1"
+                        RelativePanel.Below="itemHero">
 
-                        <TextBlock Text="{x:Bind ViewModel.Item.Name}" />
+                        <StackPanel x:Name="categoryGroup" Margin="{StaticResource SmallTopMargin}">
+                            <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Category" />
+                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.Item.Category, Mode=OneWay}" />
+                        </StackPanel>
+
 
                         <StackPanel x:Name="statusGroup" Margin="{StaticResource SmallTopMargin}">
                             <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Status" />
@@ -53,11 +60,17 @@
                     </StackPanel>
 
                     <StackPanel x:Name="propertiesGroup2" RelativePanel.Below="propertiesGroup1">
+
+                        <StackPanel x:Name="priceGroup" Margin="{StaticResource SmallTopMargin}">
+                            <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Price" />
+                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="{x:Bind ViewModel.Item.Price, Mode=OneWay}" />
+                        </StackPanel>
+
                         <StackPanel x:Name="shipToGroup" Margin="{StaticResource SmallTopMargin}">
                             <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Ship to" />
                             <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="Prague, Czech Republic" />
                         </StackPanel>
-
+                                               
                         <StackPanel x:Name="orderTotalGroup" Margin="{StaticResource SmallTopMargin}">
                             <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" Text="Order total" />
                             <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="22" />

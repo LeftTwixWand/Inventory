@@ -20,6 +20,6 @@ public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel
     public async void OnNavigatedTo(int productId)
     {
         var product = await _mediator.Send(new GetProductByIdQuery(productId));
-        Item = product ?? new ProductModel() { Name = "Product name" };
+        Item = product ?? new ProductModel() { Name = "Product doesn't exist: Default product name" };
     }
 }

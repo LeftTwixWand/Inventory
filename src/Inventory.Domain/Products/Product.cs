@@ -3,7 +3,7 @@ using Inventory.Domain.Products.Rules;
 
 namespace Inventory.Domain.Products;
 
-public class Product : Entity
+public sealed class Product : Entity
 {
     private Product(
         int id,

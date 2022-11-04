@@ -19,4 +19,7 @@ public sealed partial class ProductModel : ObservableObject
 
     [ObservableProperty]
     private ImageSource? imageSource;
+
+    [ObservableProperty]
+    private decimal price;
 }

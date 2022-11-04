@@ -20,15 +20,25 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
     {
         var product = await _productsRepository.GetByIdAsync(query.ProductId);
 
-        return product is null
-            ? null
-            : new ProductModel
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Category = product.Category,
-                Description = product.Description,
-                ImageSource = await ImageConverter.GetBitmapAsync(product.Picture),
-            };
+        if (product is null)
+        {
+            return null;
+        }
+
+        // TODO: Load product price from some service here
+        decimal prodcutPrice = 50;
+
+        // TODO: Use mapping here
+        var productModel = new ProductModel
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Category = product.Category,
+            Description = product.Description,
+            Price = prodcutPrice,
+            ImageSource = await ImageConverter.GetBitmapAsync(product.Picture),
+        };
+
+        return productModel;
     }
 }

@@ -30,11 +30,6 @@ public abstract class Entity
     /// <exception cref="BusinessRuleValidationException">Exception can be thrown on invalid business rule.</exception>
     protected static void CheckRule(IBusinessRule rule)
     {
-        if (rule == null)
-        {
-            throw new ArgumentNullException(nameof(rule));
-        }
-
         if (rule.BrokenWhen())
         {
             throw new BusinessRuleValidationException(rule);
@@ -48,11 +43,6 @@ public abstract class Entity
     /// <exception cref="ArgumentNullException">The domain event must not be empty.</exception>
     protected void AddDomainEvent(IDomainEvent domainEvent)
     {
-        if (domainEvent is null)
-        {
-            throw new ArgumentNullException(nameof(domainEvent));
-        }
-
         _domainEvents.Add(domainEvent);
     }
 }
