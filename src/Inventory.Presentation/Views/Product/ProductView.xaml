@@ -11,9 +11,6 @@
     <Grid x:Name="ContentArea">
         <ScrollViewer IsTabStop="True">
             <StackPanel x:Name="contentPanel">
-                
-                <Button Content="Save" Command="{x:Bind ViewModel.SaveCommand}"/>
-
                 <RelativePanel>
                     <Grid
                         x:Name="itemHero"

@@ -6,7 +6,7 @@ using Inventory.Application.Services.SampleData;
 
 namespace Inventory.Application.ViewModels.DataGrid;
 
-public class DataGridViewModel : ObservableObject, INavigationAware
+public class DataGridViewModel : ObservableObject, INavigatedTo
 {
     private readonly ISampleDataService _sampleDataService;
 
@@ -17,7 +17,7 @@ public class DataGridViewModel : ObservableObject, INavigationAware
 
     public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
 
-    public async void OnNavigatedTo(object parameter)
+    public async void OnNavigatedTo(object _)
     {
         Source.Clear();
 
@@ -28,9 +28,5 @@ public class DataGridViewModel : ObservableObject, INavigationAware
         {
             Source.Add(item);
         }
-    }
-
-    public void OnNavigatedFrom()
-    {
     }
 }

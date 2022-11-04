@@ -1,8 +1,6 @@
 ﻿namespace Inventory.Application.Services.Navigation;
 
-public interface INavigationAware
+public interface INavigatedFrom
 {
-    void OnNavigatedTo(object parameter);
-
     void OnNavigatedFrom();
 }

@@ -6,7 +6,7 @@ using Inventory.Application.Services.SampleData;
 
 namespace Inventory.Application.ViewModels.ContentGrid;
 
-public sealed partial class ContentGridDetailViewModel : ObservableObject, INavigationAware
+public sealed partial class ContentGridDetailViewModel : ObservableObject, INavigatedTo<long>
 {
     private readonly ISampleDataService _sampleDataService;
 
@@ -21,16 +21,9 @@ public sealed partial class ContentGridDetailViewModel : ObservableObject, INavi
 
     public INavigationService NavigationService { get; }
 
-    public async void OnNavigatedTo(object parameter)
+    public async void OnNavigatedTo(long orderId)
     {
-        if (parameter is long orderID)
-        {
-            var data = await _sampleDataService.GetContentGridDataAsync();
-            Item = data.First(i => i.OrderID == orderID);
-        }
-    }
-
-    public void OnNavigatedFrom()
-    {
+        var data = await _sampleDataService.GetContentGridDataAsync();
+        Item = data.First(i => i.OrderID == orderId);
     }
 }

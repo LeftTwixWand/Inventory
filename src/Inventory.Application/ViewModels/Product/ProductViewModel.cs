@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Inventory.Application.ViewModels.Product;
 
-public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel>, INavigationAware
+public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel>, INavigatedTo<int>
 {
     private readonly IMediator _mediator;
 
@@ -17,17 +17,8 @@ public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel
         _mediator = mediator;
     }
 
-    public void OnNavigatedFrom()
+    public async void OnNavigatedTo(int productId)
     {
-    }
-
-    public async void OnNavigatedTo(object parameter)
-    {
-        if (parameter is not int productId)
-        {
-            return;
-        }
-
         var product = await _mediator.Send(new GetProductByIdQuery(productId));
         Item = product ?? new ProductModel() { Name = "Product name" };
     }

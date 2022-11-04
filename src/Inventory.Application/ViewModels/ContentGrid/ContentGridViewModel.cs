@@ -7,7 +7,7 @@ using Inventory.Application.Services.SampleData;
 
 namespace Inventory.Application.ViewModels.ContentGrid;
 
-public sealed partial class ContentGridViewModel : ObservableObject, INavigationAware
+public sealed partial class ContentGridViewModel : ObservableObject, INavigatedTo
 {
     private readonly INavigationService _navigationService;
     private readonly ISampleDataService _sampleDataService;
@@ -18,9 +18,9 @@ public sealed partial class ContentGridViewModel : ObservableObject, INavigation
         _sampleDataService = sampleDataService;
     }
 
-    public ObservableCollection<SampleOrder> Source { get; } = new ObservableCollection<SampleOrder>();
+    public ObservableCollection<SampleOrder> Source { get; } = new();
 
-    public async void OnNavigatedTo(object parameter)
+    public async void OnNavigatedTo(object _)
     {
         Source.Clear();
 
@@ -30,10 +30,6 @@ public sealed partial class ContentGridViewModel : ObservableObject, INavigation
         {
             Source.Add(item);
         }
-    }
-
-    public void OnNavigatedFrom()
-    {
     }
 
     [RelayCommand]

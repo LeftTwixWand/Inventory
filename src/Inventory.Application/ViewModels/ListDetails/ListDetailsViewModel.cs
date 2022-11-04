@@ -7,7 +7,7 @@ using Inventory.Application.Services.SampleData;
 
 namespace Inventory.Application.ViewModels.ListDetails;
 
-public sealed partial class ListDetailsViewModel : ObservableObject, INavigationAware
+public sealed partial class ListDetailsViewModel : ObservableObject, INavigatedTo
 {
     private readonly ISampleDataService _sampleDataService;
 
@@ -21,7 +21,7 @@ public sealed partial class ListDetailsViewModel : ObservableObject, INavigation
 
     public ObservableCollection<SampleOrder> SampleItems { get; private set; } = new ObservableCollection<SampleOrder>();
 
-    public async void OnNavigatedTo(object parameter)
+    public async void OnNavigatedTo(object _)
     {
         SampleItems.Clear();
 
@@ -32,10 +32,6 @@ public sealed partial class ListDetailsViewModel : ObservableObject, INavigation
         {
             SampleItems.Add(item);
         }
-    }
-
-    public void OnNavigatedFrom()
-    {
     }
 
     public void EnsureItemSelected()

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Reflection;
+using CommunityToolkit.Diagnostics;
 using CommunityToolkit.WinUI.UI.Animations;
 using Inventory.Application.Services.Navigation;
 using Inventory.Presentation.Extensions;
@@ -46,18 +47,17 @@ public class NavigationService : INavigationService
         }
     }
 
-    [MemberNotNullWhen(true, nameof(Frame), nameof(_frame))]
     public bool CanGoBack => Frame is not null && Frame.CanGoBack;
 
     public bool GoBack()
     {
         if (CanGoBack)
         {
-            var vmBeforeNavigation = _frame.GetPageViewModel();
-            _frame.GoBack();
-            if (vmBeforeNavigation is INavigationAware navigationAware)
+            object? vmBeforeNavigation = _frame?.GetPageViewModel();
+            _frame?.GoBack();
+            if (vmBeforeNavigation is INavigatedFrom navigatedFrom)
             {
-                navigationAware.OnNavigatedFrom();
+                navigatedFrom.OnNavigatedFrom();
             }
 
             return true;
@@ -68,20 +68,20 @@ public class NavigationService : INavigationService
 
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
     {
-        var pageType = _pageService.GetPageType(pageKey);
+        Type pageType = _pageService.GetPageType(pageKey);
 
         if (_frame is not null && (_frame.Content?.GetType() != pageType ||
             (parameter is not null && !parameter.Equals(_lastParameterUsed))))
         {
             _frame.Tag = clearNavigation;
-            var vmBeforeNavigation = _frame.GetPageViewModel();
-            var navigated = _frame.Navigate(pageType, parameter); // Error here usually it mens, that the page has no default donstructor.
+            object? vmBeforeNavigation = _frame.GetPageViewModel();
+            bool navigated = _frame.Navigate(pageType, parameter); // Error here usually means, that the page has no default donstructor.
             if (navigated)
             {
                 _lastParameterUsed = parameter;
-                if (vmBeforeNavigation is INavigationAware navigationAware)
+                if (vmBeforeNavigation is INavigatedFrom navigatedFrom)
                 {
-                    navigationAware.OnNavigatedFrom();
+                    navigatedFrom.OnNavigatedFrom();
                 }
             }
 
@@ -116,18 +116,58 @@ public class NavigationService : INavigationService
     {
         if (sender is Frame frame)
         {
-            var clearNavigation = (bool)frame.Tag;
-            if (clearNavigation)
-            {
-                frame.BackStack.Clear();
-            }
+            TryClearNavigationHistory(frame.Tag);
 
-            if (frame.GetPageViewModel() is INavigationAware navigationAware)
-            {
-                navigationAware.OnNavigatedTo(e.Parameter);
-            }
+            AddNavigarionParameter(e.Parameter);
 
             Navigated?.Invoke(sender, e);
         }
+    }
+
+    private void TryClearNavigationHistory(object tag)
+    {
+        bool clearNavigation = (bool)tag;
+        if (clearNavigation)
+        {
+            _frame?.BackStack.Clear();
+        }
+    }
+
+    private void AddNavigarionParameter(object navigationParameter)
+    {
+        object? viewModel = _frame?.GetPageViewModel();
+
+        if (viewModel is null)
+        {
+            return;
+        }
+
+        Type? navigationGenericInterface = viewModel
+            .GetType()
+            .GetInterfaces()
+            .FirstOrDefault(implementedInterface => implementedInterface.IsGenericType
+            && implementedInterface.GetGenericTypeDefinition() == typeof(INavigatedTo<>));
+
+        if (navigationGenericInterface is null)
+        {
+            return;
+        }
+
+        Type[] genericParameters = navigationGenericInterface.GetGenericArguments();
+        Type? parameterType = genericParameters.FirstOrDefault(genericParameterType => genericParameterType == navigationParameter.GetType());
+
+        if (parameterType is null)
+        {
+            ThrowHelper.ThrowInvalidOperationException(
+                $"Parameter, that you're passing into {nameof(INavigationService)}.{nameof(INavigationService.NavigateTo)} has type: ({navigationParameter.GetType()}) " +
+                $"but {viewModel.GetType().Name} implements generic interface of type {nameof(INavigatedTo)}<{genericParameters.First()}>." +
+                $"Make sure, that you're passing a correct parameter to the {nameof(INavigationService)}.{nameof(INavigationService.NavigateTo)} method. " +
+                $"Also, make sure, that {viewModel.GetType().Name} expects correct type in {nameof(INavigatedTo)} interface.");
+        }
+
+        object value = Convert.ChangeType(navigationParameter, parameterType);
+
+        MethodInfo? onNavigatedToMethod = navigationGenericInterface.GetMethod(nameof(INavigatedTo.OnNavigatedTo));
+        _ = onNavigatedToMethod?.Invoke(viewModel, new object[] { value });
     }
 }

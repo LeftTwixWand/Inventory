@@ -13,7 +13,7 @@ namespace Inventory.Application.ViewModels.WebView;
 // https://docs.microsoft.com/microsoft-edge/webview2/get-started/winui
 // https://docs.microsoft.com/microsoft-edge/webview2/concepts/developer-guide
 // https://docs.microsoft.com/microsoft-edge/webview2/concepts/distribution
-public sealed partial class WebViewViewModel : ObservableObject, INavigationAware
+public sealed partial class WebViewViewModel : ObservableObject, INavigatedTo, INavigatedFrom
 {
     // TODO: Set the default URL to display.
     [ObservableProperty]
@@ -60,7 +60,7 @@ public sealed partial class WebViewViewModel : ObservableObject, INavigationAwar
         get;
     }
 
-    public void OnNavigatedTo(object parameter)
+    public void OnNavigatedTo(object _)
     {
         WebViewService.NavigationCompleted += OnNavigationCompleted;
     }
