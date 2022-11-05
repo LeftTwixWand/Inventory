@@ -1,11 +1,10 @@
-﻿using System.Reflection;
-using CommunityToolkit.Diagnostics;
-using CommunityToolkit.WinUI.UI.Animations;
+﻿using CommunityToolkit.WinUI.UI.Animations;
 using Inventory.Application.Services.Navigation;
 using Inventory.Presentation.Extensions;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System.Reflection;
 
 namespace Inventory.Infrastructure.Services.Navigation;
 
@@ -15,7 +14,7 @@ public class NavigationService : INavigationService
 {
     private readonly IPageService _pageService;
     private readonly Window _window;
-    private object? _lastParameterUsed;
+    private object _lastParameterUsed = string.Empty;
     private Frame? _frame;
 
     public NavigationService(IPageService pageService, Window window)
@@ -118,6 +117,7 @@ public class NavigationService : INavigationService
         {
             TryClearNavigationHistory(frame.Tag);
 
+            // TODO: Use lastParameterUsed to prevent navigation to the same page with the same arguments
             AddNavigarionParameter(e.Parameter);
 
             Navigated?.Invoke(sender, e);
@@ -142,32 +142,44 @@ public class NavigationService : INavigationService
             return;
         }
 
-        Type? navigationGenericInterface = viewModel
+        IEnumerable<Type> navigationInterfaces = viewModel
             .GetType()
             .GetInterfaces()
-            .FirstOrDefault(implementedInterface => implementedInterface.IsGenericType
+            .Where(implementedInterface => implementedInterface.IsGenericType
             && implementedInterface.GetGenericTypeDefinition() == typeof(INavigatedTo<>));
 
-        if (navigationGenericInterface is null)
+        if (!navigationInterfaces.Any())
         {
             return;
         }
 
-        Type[] genericParameters = navigationGenericInterface.GetGenericArguments();
-        Type? parameterType = genericParameters.FirstOrDefault(genericParameterType => genericParameterType == navigationParameter.GetType());
+        _lastParameterUsed = navigationParameter;
+
+        // TODO: Throw an error, if navigation has failed
+        _ = navigationInterfaces.Any(i => HandleNavigation(i, viewModel));
+    }
+
+    private bool HandleNavigation(Type navigationInterface, object viewModel)
+    {
+        Type[] genericParameters = navigationInterface.GetGenericArguments();
+        Type? parameterType = genericParameters.FirstOrDefault(genericParameterType => genericParameterType == _lastParameterUsed.GetType());
 
         if (parameterType is null)
         {
-            ThrowHelper.ThrowInvalidOperationException(
-                $"Parameter, that you're passing into {nameof(INavigationService)}.{nameof(INavigationService.NavigateTo)} has type: ({navigationParameter.GetType()}) " +
-                $"but {viewModel.GetType().Name} implements generic interface of type {nameof(INavigatedTo)}<{genericParameters.First()}>." +
-                $"Make sure, that you're passing a correct parameter to the {nameof(INavigationService)}.{nameof(INavigationService.NavigateTo)} method. " +
-                $"Also, make sure, that {viewModel.GetType().Name} expects correct type in {nameof(INavigatedTo)} interface.");
+            // ThrowHelper.ThrowInvalidOperationException(
+            //    $"Parameter, that you're passing into {nameof(INavigationService)}.{nameof(INavigationService.NavigateTo)} has type: ({_lastParameterUsed.GetType()}) " +
+            //    $"but {viewModel.GetType().Name} implements generic interface of type {nameof(INavigatedTo)}<{genericParameters.First()}>." +
+            //    $"Make sure, that you're passing a correct parameter to the {nameof(INavigationService)}.{nameof(INavigationService.NavigateTo)} method. " +
+            //    $"Also, make sure, that {viewModel.GetType().Name} expects correct type in {nameof(INavigatedTo)} interface.");
+
+            return false;
         }
 
-        object value = Convert.ChangeType(navigationParameter, parameterType);
+        object value = Convert.ChangeType(_lastParameterUsed, parameterType);
 
-        MethodInfo? onNavigatedToMethod = navigationGenericInterface.GetMethod(nameof(INavigatedTo.OnNavigatedTo));
+        MethodInfo? onNavigatedToMethod = navigationInterface.GetMethod(nameof(INavigatedTo.OnNavigatedTo));
         _ = onNavigatedToMethod?.Invoke(viewModel, new object[] { value });
+
+        return true;
     }
 }
