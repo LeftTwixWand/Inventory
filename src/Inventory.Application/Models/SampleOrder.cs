@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Inventory.Application.Models;
 
-// Model for the SampleDataService. Replace with your own model.
 public class SampleOrder
 {
     public long OrderID { get; set; }
