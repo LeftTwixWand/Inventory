@@ -6,15 +6,9 @@ namespace Inventory.Application.Services.Navigation;
 
 public interface INavigationViewService
 {
-    IList<object>? MenuItems
-    {
-        get;
-    }
+    IList<object> MenuItems { get; }
 
-    object? SettingsItem
-    {
-        get;
-    }
+    object SettingsItem { get; }
 
     Type SettingsViewType { get; }
 

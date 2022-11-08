@@ -1,10 +1,10 @@
-﻿using CommunityToolkit.WinUI.UI.Animations;
+﻿using System.Reflection;
+using CommunityToolkit.WinUI.UI.Animations;
 using Inventory.Application.Services.Navigation;
 using Inventory.Presentation.Extensions;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
-using System.Reflection;
 
 namespace Inventory.Infrastructure.Services.Navigation;
 

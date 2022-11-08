@@ -9,6 +9,7 @@ public sealed partial class MainWindow : WindowEx
     {
         InitializeComponent();
 
+        ExtendsContentIntoTitleBar = true;
         AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/WindowIcon.ico"));
         Content = null;
     }

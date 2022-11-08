@@ -9,8 +9,7 @@
     xmlns:extension="using:Inventory.Presentation.Extensions"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:shell="using:Inventory.Application.ViewModels.Shell"
-    d:DataContext="{d:DesignInstance Type=shell:ShellViewModel}"
-    Loaded="Page_Loaded">
+    d:DataContext="{d:DesignInstance Type=shell:ShellViewModel}">
 
     <Grid>
         <Grid
