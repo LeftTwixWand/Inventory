@@ -14,9 +14,9 @@ public sealed partial class ShellViewModel : ObservableObject
 
     public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
     {
+        NavigationViewService = navigationViewService;
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
-        NavigationViewService = navigationViewService;
     }
 
     public INavigationService NavigationService { get; }
