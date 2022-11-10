@@ -22,6 +22,8 @@ jobs:
   
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3.0.3
+      with:
+        dotnet-version: latest
     
     - name: Setup NuGet.exe for use with actions
       uses: NuGet/setup-nuget@v1.1.1
