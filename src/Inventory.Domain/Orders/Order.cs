@@ -4,6 +4,7 @@ using Inventory.Domain.Customers;
 using Inventory.Domain.OrderItems;
 using Inventory.Domain.Orders.Enums;
 using Inventory.Domain.Orders.Rules;
+using Inventory.Domain.Shipments;
 
 namespace Inventory.Domain.Orders;
 
@@ -13,42 +14,20 @@ public class Order : Entity, IAggregateRoot
 
     private Order(
         int id,
-        string shipAddress,
-        string shipCity,
-        string shipRegion,
-        string shipCountryCode,
-        string shipPostalCode,
         OrderStatus status,
         DateTimeOffset orderDate,
         PaymentType? paymentType,
-        DateTimeOffset? shippedDate,
-        DateTimeOffset? deliveredDate)
+        Shipment? shipment)
     {
         Id = id;
-        ShipAddress = shipAddress;
-        ShipCity = shipCity;
-        ShipRegion = shipRegion;
-        ShipCountryCode = shipCountryCode;
-        ShipPostalCode = shipPostalCode;
         Status = status;
         OrderDate = orderDate;
         PaymentType = paymentType;
-        ShippedDate = shippedDate;
-        DeliveredDate = deliveredDate;
+        Shipment = shipment;
         Customer = default!;
     }
 
     public int Id { get; private set; }
-
-    public string ShipAddress { get; private set; }
-
-    public string ShipCity { get; private set; }
-
-    public string ShipRegion { get; private set; }
-
-    public string ShipCountryCode { get; private set; }
-
-    public string ShipPostalCode { get; private set; }
 
     public OrderStatus Status { get; private set; }
 
@@ -56,43 +35,29 @@ public class Order : Entity, IAggregateRoot
 
     public PaymentType? PaymentType { get; private set; }
 
-    public DateTimeOffset? ShippedDate { get; set; }
-
-    public DateTimeOffset? DeliveredDate { get; set; }
+    public Shipment? Shipment { get; private set; }
 
     public Customer Customer { get; private set; }
 
-    public IReadOnlyCollection<OrderItem> OrderItems => _orderItems;
+    public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
     public static Order Create(
-        string shipAddress,
-        string shipCity,
-        string shipRegion,
-        string shipCountryCode,
-        string shipPostalCode,
         OrderStatus status,
         DateTimeOffset orderDate,
         Customer customer,
-        IEnumerable<OrderItem> orderItems,
+        Shipment? shipment,
         PaymentType? paymentType = default,
-        DateTimeOffset? shippedDate = default,
-        DateTimeOffset? deliveredDate = default)
+        params OrderItem[] orderItems)
     {
-        CheckRule(new ShippingInformationCanNotBeEmptyRule(shipAddress, shipCity, shipRegion, shipCountryCode, shipPostalCode));
+        // CheckRule(new ShippingInformationCanNotBeEmptyRule(shipAddress, shipCity, shipRegion, shipCountryCode, shipPostalCode));
 
-        var order = new Order(0, shipAddress, shipCity, shipRegion, shipCountryCode, shipPostalCode, status, orderDate, paymentType, shippedDate, deliveredDate)
+        var order = new Order(0, status, orderDate, paymentType, shipment)
         {
             Customer = customer,
         };
 
-        order.SetOrderItems(orderItems);
+        order._orderItems.AddRange(orderItems);
 
         return order;
-    }
-
-    public void SetOrderItems(IEnumerable<OrderItem> orderItems)
-    {
-        _orderItems.Clear();
-        _orderItems.AddRange(orderItems);
     }
 }
