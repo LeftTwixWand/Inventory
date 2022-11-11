@@ -2,8 +2,6 @@
 using BuildingBlocks.Domain.Entities;
 using Inventory.Domain.Customers;
 using Inventory.Domain.OrderItems;
-using Inventory.Domain.Orders.Enums;
-using Inventory.Domain.Orders.Rules;
 using Inventory.Domain.Shipments;
 
 namespace Inventory.Domain.Orders;
@@ -12,15 +10,9 @@ public class Order : Entity, IAggregateRoot
 {
     private readonly List<OrderItem> _orderItems = new();
 
-    private Order(
-        int id,
-        OrderStatus status,
-        DateTimeOffset orderDate,
-        PaymentType? paymentType,
-        Shipment? shipment)
+    private Order(int id, DateTimeOffset orderDate, PaymentType? paymentType, Shipment? shipment)
     {
         Id = id;
-        Status = status;
         OrderDate = orderDate;
         PaymentType = paymentType;
         Shipment = shipment;
@@ -28,8 +20,6 @@ public class Order : Entity, IAggregateRoot
     }
 
     public int Id { get; private set; }
-
-    public OrderStatus Status { get; private set; }
 
     public DateTimeOffset OrderDate { get; set; }
 
@@ -41,17 +31,9 @@ public class Order : Entity, IAggregateRoot
 
     public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-    public static Order Create(
-        OrderStatus status,
-        DateTimeOffset orderDate,
-        Customer customer,
-        Shipment? shipment,
-        PaymentType? paymentType = default,
-        params OrderItem[] orderItems)
+    public static Order Create(DateTimeOffset orderDate, Customer customer, Shipment? shipment, PaymentType? paymentType = default, params OrderItem[] orderItems)
     {
-        // CheckRule(new ShippingInformationCanNotBeEmptyRule(shipAddress, shipCity, shipRegion, shipCountryCode, shipPostalCode));
-
-        var order = new Order(0, status, orderDate, paymentType, shipment)
+        var order = new Order(0, orderDate, paymentType, shipment)
         {
             Customer = customer,
         };

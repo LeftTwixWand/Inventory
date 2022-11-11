@@ -11,7 +11,7 @@ public record class ValueObject
     /// <exception cref="BusinessRuleValidationException">Exception can be thrown on invalid business rule.</exception>
     protected static void CheckRule(IBusinessRule rule)
     {
-        if (rule.BrokenWhen())
+        if (rule.BrokenWhen)
         {
             throw new BusinessRuleValidationException(rule);
         }

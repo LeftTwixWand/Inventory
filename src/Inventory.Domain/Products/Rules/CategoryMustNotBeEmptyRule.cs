@@ -2,19 +2,9 @@
 
 namespace Inventory.Domain.Products.Rules;
 
-internal class CategoryMustNotBeEmptyRule : IBusinessRule
+internal sealed record CategoryMustNotBeEmptyRule(string Category) : IBusinessRule
 {
-    private readonly string _category;
+    public string Message => "Product name must not be empty.";
 
-    public CategoryMustNotBeEmptyRule(string category)
-    {
-        _category = category;
-    }
-
-    public string Message => "Product name must not be empty!";
-
-    public bool BrokenWhen()
-    {
-        return string.IsNullOrEmpty(_category);
-    }
+    public bool BrokenWhen => string.IsNullOrWhiteSpace(Category);
 }

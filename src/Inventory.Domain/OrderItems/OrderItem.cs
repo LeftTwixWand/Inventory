@@ -6,7 +6,7 @@ namespace Inventory.Domain.OrderItems;
 
 public class OrderItem : Entity
 {
-    private OrderItem(int id, int quantity, decimal unitPrice, decimal discount)
+    private OrderItem(int id, decimal quantity, decimal unitPrice, decimal discount)
     {
         Id = id;
         Quantity = quantity;
@@ -17,7 +17,7 @@ public class OrderItem : Entity
 
     public int Id { get; private set; }
 
-    public int Quantity { get; private set; }
+    public decimal Quantity { get; private set; }
 
     public decimal UnitPrice { get; private set; }
 
@@ -25,9 +25,12 @@ public class OrderItem : Entity
 
     public Product Product { get; private set; }
 
-    public static OrderItem Create(Product product, int quantity, decimal unitPrice, decimal discount = 0)
+    public static OrderItem Create(Product product, decimal quantity, decimal unitPrice, decimal discount = 0)
     {
-        CheckRule(new DiscountCanNotBeMoreThanHundredPercentRule(discount));
+        CheckRule(new QuantityCanNotBeLessThanZeroRule(quantity));
+        CheckRule(new PriceCanNotBeLessThanZeroRule(quantity));
+        CheckRule(new DiscountCanNotBeLessThanZeroPercentsRule(discount));
+        CheckRule(new DiscountCanNotBeMoreThanHundredPercentsRule(discount));
 
         return new OrderItem(0, quantity, unitPrice, discount)
         {
