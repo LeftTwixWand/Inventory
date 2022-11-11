@@ -19,6 +19,9 @@ jobs:
   
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1.3
+      with:
+        msbuild-architecture: x64
+        vs-prerelease: true
   
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3.0.3
