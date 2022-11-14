@@ -31,7 +31,7 @@ internal sealed class ProductsRepository : IProductsRepository
         }
     }
 
-    public Task<Product?> GetByIdAsync(int id)
+    public Task<Product?> GetByIdAsync(ProductId id)
     {
         var product = _products.FirstOrDefault(product => product.Id == id);
         return Task.FromResult(product);

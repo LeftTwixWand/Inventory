@@ -23,7 +23,7 @@ internal sealed class GetProductsStreamQueryHandler : IStreamRequestHandler<GetP
         {
             yield return new ProductModel
             {
-                Id = product.Id,
+                Id = product.Id.Value,
                 Name = product.Name,
                 Category = product.Category,
                 ImageSource = await ImageConverter.GetBitmapAsync(product.Picture),

@@ -4,5 +4,5 @@ public interface IProductsRepository
 {
     IAsyncEnumerable<Product> GetAllAsync(CancellationToken cancellationToken);
 
-    Task<Product?> GetByIdAsync(int id);
+    Task<Product?> GetByIdAsync(ProductId id);
 }

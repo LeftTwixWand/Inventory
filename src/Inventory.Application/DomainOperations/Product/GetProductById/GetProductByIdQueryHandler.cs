@@ -18,7 +18,7 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
 
     public async Task<ProductModel?> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
     {
-        var product = await _productsRepository.GetByIdAsync(query.ProductId);
+        var product = await _productsRepository.GetByIdAsync(new ProductId(query.ProductId));
 
         if (product is null)
         {
@@ -31,7 +31,7 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
         // TODO: Use mapping here
         var productModel = new ProductModel
         {
-            Id = product.Id,
+            Id = product.Id.Value,
             Name = product.Name,
             Category = product.Category,
             Description = product.Description,
