@@ -1,12 +1,13 @@
-﻿using BuildingBlocks.Domain.ValueObjects;
+﻿using BuildingBlocks.Domain.Entities;
 using Inventory.Domain.Shipments.Rules;
 
 namespace Inventory.Domain.Shipments;
 
-public record Shipment : ValueObject
+public sealed class Shipment : Entity
 {
-    private Shipment(string address, string city, string region, Country country, string postalCode, Status status, DateTimeOffset? shippedDate, DateTimeOffset? deliveredDate)
+    private Shipment(ShipmentId id, string address, string city, string region, Country country, string postalCode, Status status, DateTimeOffset? shippedDate, DateTimeOffset? deliveredDate) 
     {
+        Id = id;
         Address = address;
         City = city;
         Region = region;
@@ -16,6 +17,8 @@ public record Shipment : ValueObject
         ShippedDate = shippedDate;
         DeliveredDate = deliveredDate;
     }
+
+    public ShipmentId Id { get; private set; }
 
     public string Address { get; private set; }
 
@@ -27,7 +30,7 @@ public record Shipment : ValueObject
 
     public string PostalCode { get; private set; }
 
-    public Status Status { get; set; } = Status.Processing;
+    public Status Status { get; private set; }
 
     public DateTimeOffset? ShippedDate { get; private set; }
 
@@ -41,7 +44,7 @@ public record Shipment : ValueObject
         CheckRule(new ShipmentPostalCodeMustNotBeEmptyRule(postalCode));
         CheckRule(new ShipmentPostalCodeMustContainsOnlyNumbersRule(postalCode));
 
-        return new Shipment(address, city, region, country, postalCode, Status.Processing, shippedDate, deliveredDate);
+        return new Shipment(ShipmentId.Default, address, city, region, country, postalCode, Status.Processing, shippedDate, deliveredDate);
     }
 
     public void Ship(DateTimeOffset shippedDate)

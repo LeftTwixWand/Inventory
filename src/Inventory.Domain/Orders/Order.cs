@@ -2,6 +2,7 @@
 using BuildingBlocks.Domain.Entities;
 using Inventory.Domain.Customers;
 using Inventory.Domain.OrderItems;
+using Inventory.Domain.Orders.Rules;
 using Inventory.Domain.Shipments;
 
 namespace Inventory.Domain.Orders;
@@ -10,7 +11,7 @@ public class Order : Entity, IAggregateRoot
 {
     private readonly List<OrderItem> _orderItems = new();
 
-    private Order(int id, DateTimeOffset orderDate, PaymentType? paymentType, Shipment? shipment)
+    private Order(OrderId id, DateTimeOffset orderDate, PaymentType paymentType, Shipment? shipment)
     {
         Id = id;
         OrderDate = orderDate;
@@ -19,21 +20,24 @@ public class Order : Entity, IAggregateRoot
         Customer = default!;
     }
 
-    public int Id { get; private set; }
+    public OrderId Id { get; private set; }
 
     public DateTimeOffset OrderDate { get; set; }
 
-    public PaymentType? PaymentType { get; private set; }
-
-    public Shipment? Shipment { get; private set; }
+    public PaymentType PaymentType { get; private set; }
 
     public Customer Customer { get; private set; }
 
+    public Shipment? Shipment { get; private set; }
+
     public IReadOnlyCollection<OrderItem> OrderItems => _orderItems.AsReadOnly();
 
-    public static Order Create(DateTimeOffset orderDate, Customer customer, Shipment? shipment, PaymentType? paymentType = default, params OrderItem[] orderItems)
+    public static Order Create(DateTimeOffset orderDate, PaymentType paymentType, Customer customer, Shipment? shipment, params OrderItem[] orderItems)
     {
-        var order = new Order(0, orderDate, paymentType, shipment)
+        CheckRule(new OrderMustHaveAtLeastOneOrderItemRule(orderItems));
+        CheckRule(new ShipmentMustNotBeEmptyIfPaymentTypeIsOnDeliveryRule(paymentType, shipment));
+
+        var order = new Order(OrderId.Default, orderDate, paymentType, shipment)
         {
             Customer = customer,
         };

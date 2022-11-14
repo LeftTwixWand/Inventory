@@ -5,12 +5,7 @@ namespace Inventory.Domain.Products;
 
 public sealed class Product : Entity
 {
-    private Product(
-        int id,
-        string name,
-        string category,
-        string? description,
-        byte[]? picture)
+    private Product(ProductId id, string name, string category, string? description, byte[]? picture)
     {
         Id = id;
         Name = name;
@@ -19,7 +14,7 @@ public sealed class Product : Entity
         Picture = picture;
     }
 
-    public int Id { get; private set; }
+    public ProductId Id { get; private set; }
 
     public string Name { get; private set; }
 
@@ -29,15 +24,11 @@ public sealed class Product : Entity
 
     public byte[]? Picture { get; private set; }
 
-    public static Product Create(
-        string name,
-        string category,
-        string? description = default,
-        byte[]? picture = default)
+    public static Product Create(string name, string category, string? description = default, byte[]? picture = default)
     {
         CheckRule(new NameMustNotBeEmptyRule(name));
         CheckRule(new CategoryMustNotBeEmptyRule(name));
 
-        return new Product(0, name, category, description, picture);
+        return new Product(ProductId.Default, name, category, description, picture);
     }
 }

@@ -5,4 +5,5 @@ public enum PaymentType
     CreditCard,
     ElectronicTransaction,
     DirectDeposit,
+    OnDelivery,
 }
