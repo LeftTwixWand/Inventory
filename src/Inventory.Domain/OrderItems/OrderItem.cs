@@ -4,9 +4,9 @@ using Inventory.Domain.Products;
 
 namespace Inventory.Domain.OrderItems;
 
-public class OrderItem : Entity
+public sealed class OrderItem : Entity
 {
-    private OrderItem(int id, decimal quantity, decimal unitPrice, decimal discount)
+    private OrderItem(OrderItemId id, decimal quantity, decimal unitPrice, decimal discount)
     {
         Id = id;
         Quantity = quantity;
@@ -15,7 +15,7 @@ public class OrderItem : Entity
         Product = default!;
     }
 
-    public int Id { get; private set; }
+    public OrderItemId Id { get; private set; }
 
     public decimal Quantity { get; private set; }
 
@@ -32,7 +32,7 @@ public class OrderItem : Entity
         CheckRule(new DiscountCanNotBeLessThanZeroPercentsRule(discount));
         CheckRule(new DiscountCanNotBeMoreThanHundredPercentsRule(discount));
 
-        return new OrderItem(0, quantity, unitPrice, discount)
+        return new OrderItem(OrderItemId.Default, quantity, unitPrice, discount)
         {
             Product = product,
         };

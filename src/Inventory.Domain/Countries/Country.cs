@@ -1,7 +1,7 @@
 ﻿using BuildingBlocks.Domain.Enumerations;
 using Inventory.Domain.Shipments.Rules;
 
-namespace Inventory.Domain.Shipments;
+namespace Inventory.Domain.Countries;
 
 public sealed record Country(string Name, string ISO) : Enumeration<Country>
 {
@@ -78,6 +78,8 @@ public sealed record Country(string Name, string ISO) : Enumeration<Country>
         CheckRule(new CountryNameMustNotBeEmptyRule(name));
         CheckRule(new CountryISOMustNotBeEmptyRule(iso));
         CheckRule(new CountryISOMustHaveTwoSignsRule(iso));
+        CheckRule(new CountryISOMustContainsOnlyLettersRule(iso));
+        CheckRule(new CountryISOMustBeInUppercaseRule(iso));
 
         return new(name, iso);
     }

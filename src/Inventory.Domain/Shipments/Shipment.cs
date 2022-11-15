@@ -1,4 +1,5 @@
 ﻿using BuildingBlocks.Domain.Entities;
+using Inventory.Domain.Countries;
 using Inventory.Domain.Shipments.Events;
 using Inventory.Domain.Shipments.Rules;
 
@@ -6,7 +7,7 @@ namespace Inventory.Domain.Shipments;
 
 public sealed class Shipment : Entity
 {
-    private Shipment(ShipmentId id, string address, string city, string region, Country country, string postalCode, Status status, DateTimeOffset? shippedDate, DateTimeOffset? deliveredDate)
+    private Shipment(ShipmentId id, string address, string city, string region, Country country, string postalCode, Status status, DateTimeOffset? shippedDate, DateTimeOffset? deliveredDate) 
     {
         Id = id;
         Address = address;
