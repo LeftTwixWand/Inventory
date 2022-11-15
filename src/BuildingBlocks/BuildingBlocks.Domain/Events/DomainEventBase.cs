@@ -7,4 +7,6 @@ public record DomainEventBase : IDomainEvent
 {
     /// <inheritdoc/>
     public DateTime OccurredOn => DateTime.Now;
+
+    // TODO: Add unique guid identifier for the future idempotence retrying mechanism.
 }

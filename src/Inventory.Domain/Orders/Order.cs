@@ -22,7 +22,7 @@ public class Order : Entity, IAggregateRoot
 
     public OrderId Id { get; private set; }
 
-    public DateTimeOffset OrderDate { get; set; }
+    public DateTimeOffset OrderDate { get; private set; }
 
     public PaymentType PaymentType { get; private set; }
 
@@ -35,7 +35,7 @@ public class Order : Entity, IAggregateRoot
     public static Order Create(DateTimeOffset orderDate, PaymentType paymentType, Customer customer, Shipment? shipment, params OrderItem[] orderItems)
     {
         CheckRule(new OrderMustHaveAtLeastOneOrderItemRule(orderItems));
-        CheckRule(new ShipmentMustNotBeEmptyIfPaymentTypeIsOnDeliveryRule(paymentType, shipment));
+        CheckRule(new ShipmentMustNotBeEmptyIfOrderHasPaymentOnDeliveryRule(paymentType, shipment));
 
         var order = new Order(OrderId.Default, orderDate, paymentType, shipment)
         {
