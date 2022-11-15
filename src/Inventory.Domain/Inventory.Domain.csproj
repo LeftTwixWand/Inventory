@@ -17,8 +17,4 @@
     <ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Shipments\Events\" />
-  </ItemGroup>
-
 </Project>
