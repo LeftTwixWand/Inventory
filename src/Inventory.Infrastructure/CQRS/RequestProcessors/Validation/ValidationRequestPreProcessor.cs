@@ -1,6 +1,6 @@
 ﻿using System.Text;
-using BuildingBlocks.Application.Validation;
 using FluentValidation;
+using FluentValidation.Results;
 using MediatR.Pipeline;
 
 namespace Inventory.Infrastructure.CQRS.RequestProcessors.Validation;
@@ -17,21 +17,21 @@ internal sealed class ValidationRequestPreProcessor<TRequest> : IRequestPreProce
 
     public Task Process(TRequest request, CancellationToken cancellationToken)
     {
-        var errors = _validators
+        List<ValidationFailure> errors = _validators
             .Select(validator => validator.Validate(request))
             .SelectMany(validationResult => validationResult.Errors)
-            .Where(error => error != null)
+            .Where(error => error is not null)
             .ToList();
 
         if (errors.Any())
         {
-            var errorBuilder = new StringBuilder();
+            StringBuilder errorBuilder = new();
 
-            errorBuilder.AppendLine("Invalid command, reason: ");
+            _ = errorBuilder.AppendLine("Invalid command, reason: ");
 
             errors.ForEach(error => errorBuilder.AppendLine(error.ErrorMessage));
 
-            throw new InvalidCommandException(errorBuilder.ToString());
+            throw new ValidationException(errorBuilder.ToString());
         }
 
         return Task.CompletedTask;
