@@ -13,20 +13,13 @@
     <None Remove="Styles\TextBlock\TextBlock.xaml" />
     <None Remove="Styles\Thickness\Thickness.xaml" />
     <None Remove="Views\ActivityLog\ActivityLogView.xaml" />
-    <None Remove="Views\ContentGridDetailPage.xaml" />
-    <None Remove="Views\ContentGridPage.xaml" />
     <None Remove="Views\Customers\CustomersView.xaml" />
     <None Remove="Views\Dashboard\DashboardView.xaml" />
-    <None Remove="Views\DataGridPage.xaml" />
-    <None Remove="Views\ListDetailsDetailControl.xaml" />
-    <None Remove="Views\ListDetailsPage.xaml" />
-    <None Remove="Views\MainPage.xaml" />
     <None Remove="Views\Orders\OrdersView.xaml" />
     <None Remove="Views\Products\ProductsView.xaml" />
     <None Remove="Views\Product\ProductView.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
     <None Remove="Views\Shell\ShellView.xaml" />
-    <None Remove="Views\WebViewPage.xaml" />
     <None Remove="Windows\MainWindow.xaml" />
   </ItemGroup>
 
@@ -83,32 +76,15 @@
     <Page Update="Styles\Thickness\Thickness.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
-    <Page Update="Views\ContentGridDetailPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\ContentGridPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\DataGridPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\ListDetailsDetailControl.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\ListDetailsPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\MainPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
     <Page Update="Views\SettingsPage.xaml">
-      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-    </Page>
-    <Page Update="Views\WebViewPage.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
     <Page Update="Windows\MainWindow.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Settings\" />
   </ItemGroup>
 </Project>

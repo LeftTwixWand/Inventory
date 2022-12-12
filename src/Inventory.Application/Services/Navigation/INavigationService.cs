@@ -7,15 +7,9 @@ public interface INavigationService
 {
     event NavigatedEventHandler Navigated;
 
-    bool CanGoBack
-    {
-        get;
-    }
+    bool CanGoBack { get; }
 
-    Frame? Frame
-    {
-        get; set;
-    }
+    Frame? Frame { get; set; }
 
     bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false);
 

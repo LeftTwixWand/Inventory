@@ -4,12 +4,8 @@ using Microsoft.UI.Xaml.Data;
 
 namespace Inventory.Presentation.Converters;
 
-public class EnumToBooleanConverter : IValueConverter
+public sealed class EnumToBooleanConverter : IValueConverter
 {
-    public EnumToBooleanConverter()
-    {
-    }
-
     public object Convert(object value, Type targetType, object parameter, string language)
     {
         if (parameter is string enumString)
