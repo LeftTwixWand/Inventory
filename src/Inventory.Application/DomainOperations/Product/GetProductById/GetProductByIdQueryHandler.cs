@@ -36,7 +36,7 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
             Category = product.Category,
             Description = product.Description,
             Price = prodcutPrice,
-            ImageSource = await ImageConverter.GetBitmapAsync(product.Picture),
+            ImageSource = await ImageConverter.GetBitmapAsync(product.Image),
         };
 
         return productModel;

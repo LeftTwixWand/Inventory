@@ -26,7 +26,7 @@ internal sealed class GetProductsStreamQueryHandler : IStreamRequestHandler<GetP
                 Id = product.Id.Value,
                 Name = product.Name,
                 Category = product.Category,
-                ImageSource = await ImageConverter.GetBitmapAsync(product.Picture),
+                ImageSource = await ImageConverter.GetBitmapAsync(product.Image),
             };
         }
     }
