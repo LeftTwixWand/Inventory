@@ -22,4 +22,8 @@
     <Folder Include="Features\Products\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Inventory.Domain\Inventory.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

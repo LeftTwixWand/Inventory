@@ -3,7 +3,8 @@
 A short summary of the feature
 
 @tag1
-Scenario: Create a product
-	Given product name is "Product 1"
-	When I create the product
+Scenario: I can create a new product
+	Given product name is "Lamp"
+	And product category is "Desktop"
+	When I create a new product
 	Then the product is created
