@@ -38,3 +38,6 @@ jobs:
           -targets:rebuild
           -verbosity:normal
           -property:Configuration=${{env.BuildConfiguration}}
+          
+    - name: Run tests
+      run: dotnet test
