@@ -27,7 +27,7 @@ public sealed class Product : Entity
     public static Product Create(string name, string category, string? description = default, byte[]? image = default)
     {
         CheckRule(new NameMustNotBeEmptyRule(name));
-        CheckRule(new CategoryMustNotBeEmptyRule(name));
+        CheckRule(new CategoryMustNotBeEmptyRule(category));
 
         return new Product(ProductId.Default, name, category, description, image);
     }

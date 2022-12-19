@@ -1,37 +1,63 @@
+using BuildingBlocks.Domain.BusinessRules;
 using FluentAssertions;
 using Inventory.Domain.Products;
 
-namespace Inventory.Domain.UnitTest.StepDefinitions
+namespace Inventory.Domain.UnitTest.StepDefinitions;
+
+[Binding]
+public sealed class CreateProductStepDefinitions
 {
-    [Binding]
-    public sealed class CreateProductStepDefinitions
+    private string name = string.Empty;
+    private string category = string.Empty;
+    private Product product = default!;
+    private Exception? exception;
+
+    [Given(@"product name is '([^']*)'")]
+    public void GivenProductNameIs(string name)
     {
-        private string name = string.Empty;
-        private string category = string.Empty;
-        private Product product = default!;
+        this.name = name;
+    }
 
-        [Given(@"product name is ""([^""]*)""")]
-        public void GivenProductNameIs(string name)
-        {
-            this.name = name;
-        }
+    [Given(@"product category is '([^']*)'")]
+    public void GivenProductCategoryIs(string category)
+    {
+        this.category = category;
+    }
 
-        [Given(@"product category is ""([^""]*)""")]
-        public void GivenProductCategoryIs(string category)
-        {
-            this.category = category;
-        }
-
-        [When(@"I create a new product")]
-        public void WhenICreateANewProduct()
+    [When(@"I create a new product")]
+    public void WhenICreateANewProduct()
+    {
+        try
         {
             product = Product.Create(name, category);
         }
-
-        [Then(@"the product is created")]
-        public void ThenTheProductIsCreated()
+        catch (Exception ex)
         {
-            product.Should().NotBeNull();
+            exception = ex;
         }
+    }
+
+    [Then(@"product is created")]
+    public void ThenProductIsCreated()
+    {
+        product.Should().NotBeNull();
+    }
+
+    [Then(@"the product is not created")]
+    public void ThenTheProductIsNotCreated()
+    {
+        product.Should().BeNull();
+    }
+
+    [Then(@"the BusinessRuleValidationException was thrown")]
+    public void ThenTheBusinessRuleValidationExceptionBeingThrown()
+    {
+        exception.Should().BeOfType<BusinessRuleValidationException>();
+    }
+
+    [Then(@"the error message is '([^']*)'")]
+    public void ThenTheErrorMessageIs(string message)
+    {
+        exception?.Message.Should().Be(message);
     }
 }
