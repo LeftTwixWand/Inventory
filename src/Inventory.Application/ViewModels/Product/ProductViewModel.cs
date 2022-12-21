@@ -1,4 +1,5 @@
-﻿using BuildingBlocks.Application.ViewModels;
+﻿using System.Threading.Tasks;
+using BuildingBlocks.Application.ViewModels;
 using CommunityToolkit.Mvvm.Messaging;
 using Inventory.Application.DomainOperations.Product.GetProductById;
 using Inventory.Application.Models;
@@ -17,9 +18,9 @@ public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel
         _mediator = mediator;
     }
 
-    public async void OnNavigatedTo(int productId)
+    public async Task OnNavigatedTo(int productId)
     {
-        var product = await _mediator.Send(new GetProductByIdQuery(productId));
+        ProductModel? product = await _mediator.Send(new GetProductByIdQuery(productId));
         Item = product ?? new ProductModel() { Name = "Product doesn't exist: Default product name" };
     }
 }
