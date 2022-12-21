@@ -1,7 +1,7 @@
 ﻿Feature: Create Product
 
 As a customer I want to create a new product.
-The domain specific requirements says, that the name and category are mandatory.
+The domain specific requirements say, that the name and category are mandatory.
 
 Scenario: I can create a product
 	Given product name is 'Lamp'

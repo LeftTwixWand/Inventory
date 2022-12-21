@@ -9,7 +9,7 @@ public sealed class CreateProductStepDefinitions
 {
     private string name = string.Empty;
     private string category = string.Empty;
-    private Product product = default!;
+    private Product? product;
     private Exception? exception;
 
     [Given(@"product name is '([^']*)'")]
@@ -41,12 +41,6 @@ public sealed class CreateProductStepDefinitions
     public void ThenProductIsCreated()
     {
         product.Should().NotBeNull();
-    }
-
-    [Then(@"the product is not created")]
-    public void ThenTheProductIsNotCreated()
-    {
-        product.Should().BeNull();
     }
 
     [Then(@"the BusinessRuleValidationException was thrown")]
