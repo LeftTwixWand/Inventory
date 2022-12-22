@@ -2,10 +2,10 @@
 
 namespace Inventory.Application.Services.Navigation;
 
-public interface INavigatedTo<TParameter>
-    where TParameter : notnull
+public interface INavigatedTo<T>
+    where T : notnull
 {
-    Task OnNavigatedTo(TParameter parameter);
+    Task OnNavigatedTo(T parameter);
 }
 
 public interface INavigatedTo : INavigatedTo<object>

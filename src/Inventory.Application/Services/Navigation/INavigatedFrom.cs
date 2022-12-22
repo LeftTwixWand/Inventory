@@ -1,6 +1,8 @@
-﻿namespace Inventory.Application.Services.Navigation;
+﻿using System.Threading.Tasks;
+
+namespace Inventory.Application.Services.Navigation;
 
 public interface INavigatedFrom
 {
-    void OnNavigatedFrom();
+    Task OnNavigatedFrom();
 }
