@@ -2,7 +2,7 @@ using BuildingBlocks.Domain.BusinessRules;
 using FluentAssertions;
 using Inventory.Domain.Products;
 
-namespace Inventory.Domain.UnitTest.StepDefinitions;
+namespace Inventory.Domain.UnitTests.StepDefinitions;
 
 [Binding]
 public sealed class CreateProductStepDefinitions
