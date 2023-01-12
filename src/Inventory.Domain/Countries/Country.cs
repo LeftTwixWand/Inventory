@@ -1,5 +1,5 @@
 ﻿using BuildingBlocks.Domain.Enumerations;
-using Inventory.Domain.Shipments.Rules;
+using Inventory.Domain.Countries.Rules;
 
 namespace Inventory.Domain.Countries;
 

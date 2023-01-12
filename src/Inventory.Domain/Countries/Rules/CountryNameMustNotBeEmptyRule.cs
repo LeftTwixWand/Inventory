@@ -1,6 +1,6 @@
 ﻿using BuildingBlocks.Domain.BusinessRules;
 
-namespace Inventory.Domain.Shipments.Rules;
+namespace Inventory.Domain.Countries.Rules;
 
 internal sealed record CountryNameMustNotBeEmptyRule(string Name) : IBusinessRule
 {
