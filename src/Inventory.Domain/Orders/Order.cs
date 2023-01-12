@@ -37,7 +37,7 @@ public class Order : Entity, IAggregateRoot
         CheckRule(new OrderMustHaveAtLeastOneOrderItemRule(orderItems));
         CheckRule(new ShipmentMustNotBeEmptyIfOrderHasPaymentOnDeliveryRule(paymentType, shipment));
 
-        var order = new Order(OrderId.Default, orderDate, paymentType, shipment)
+        var order = new Order(OrderId.New, orderDate, paymentType, shipment)
         {
             Customer = customer,
         };

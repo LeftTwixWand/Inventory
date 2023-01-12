@@ -29,6 +29,6 @@ public sealed class Product : Entity
         CheckRule(new NameMustNotBeEmptyRule(name));
         CheckRule(new CategoryMustNotBeEmptyRule(category));
 
-        return new Product(ProductId.Default, name, category, description, image);
+        return new Product(ProductId.New, name, category, description, image);
     }
 }

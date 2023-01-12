@@ -2,7 +2,7 @@
 
 namespace Inventory.Domain.Products;
 
-public sealed record ProductId(int Value) : TypedIdValueBase<int>(Value)
+public sealed record ProductId(Guid Value) : TypedIdValueBase<Guid>(Value)
 {
-    public static ProductId Default => new(0);
+    public static ProductId New => new(Guid.NewGuid());
 }
