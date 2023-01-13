@@ -2,6 +2,6 @@
 
 namespace BuildingBlocks.Domain.Notifications;
 
-public interface IDomainEventNotification : INotification
+public interface IDomainNotification : INotification
 {
 }

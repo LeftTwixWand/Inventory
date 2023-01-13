@@ -3,43 +3,67 @@ using Autofac.Extensions.DependencyInjection;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Inventory.Application.Services.Activation;
 using Inventory.Infrastructure.AutofacModules;
+using Inventory.Persistence.Database;
 using Inventory.Persistence.Database.AutofacModules;
 using Inventory.Presentation.Views.Shell;
+using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using Serilog;
 
 namespace Inventory.Infrastructure;
 
-public partial class App : Microsoft.UI.Xaml.Application
+public sealed partial class App : Microsoft.UI.Xaml.Application
 {
+    private readonly IHost _host;
+
     public App()
     {
         InitializeComponent();
 
+        _host = new HostBuilder()
+            .UseServiceProviderFactory(new AutofacServiceProviderFactory(CreateContainer))
+            .ConfigureServices(ConfigureServices)
+            .UseSerilog(ConfigureLogging)
+            .Build();
+
         UnhandledException += App_UnhandledException;
 
-        // Configuration
-        // TODO: Update Configure method to use IHostBuilder.ConfigureAppConfiguration
-        // Add Autofac.Configuration provider
-        // services.Configure<LocalSettingsOptions>(hostBuilderContext.Configuration.GetSection(nameof(LocalSettingsOptions)));
-        var serviceProvider = CreateServiceProfider();
-        Ioc.Default.ConfigureServices(serviceProvider);
+        Ioc.Default.ConfigureServices(_host.Services);
     }
 
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
 
-        var shellView = Ioc.Default.GetRequiredService<ShellView>();
-        var activationService = Ioc.Default.GetRequiredService<IActivationService>();
+        ShellView shellView = Ioc.Default.GetRequiredService<ShellView>();
+        IActivationService activationService = Ioc.Default.GetRequiredService<IActivationService>();
 
         await activationService.ActivateAsync(shellView, args);
     }
 
-    private static AutofacServiceProvider CreateServiceProfider()
+    private void ConfigureLogging(HostBuilderContext hostBuilderContext, LoggerConfiguration loggerConfiguration)
     {
-        var builder = new ContainerBuilder();
+        _ = loggerConfiguration
+            .Enrich.FromLogContext()
+            .WriteTo.Debug(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{Context}] {Message:lj}{NewLine}{Exception}");
+    }
 
-        builder
+    private void ConfigureServices(HostBuilderContext hostBuilderContext, IServiceCollection serviceCollection)
+    {
+        SqliteConnectionStringBuilder connectionStringBuilder = new()
+        {
+            DataSource = "Database.db",
+        };
+
+        _ = serviceCollection.AddDbContext<DatabaseContext>(options => options.UseSqlite(connectionStringBuilder.ToString()));
+    }
+
+    private void CreateContainer(ContainerBuilder builder)
+    {
+        _ = builder
             .RegisterModule<ActivationModule>()
 
             .RegisterModule<NavigationModule>()
@@ -52,12 +76,7 @@ public partial class App : Microsoft.UI.Xaml.Application
 
             .RegisterModule<MappingModule>()
 
-            .RegisterModule<LoggingModule>()
-
             .RegisterModule<DatabaseModule>();
-
-        var container = builder.Build();
-        return new AutofacServiceProvider(container);
     }
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
