@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Inventory.Persistence.Database;
 
-internal sealed class DatabaseContext : DbContext
+public sealed class DatabaseContext : DbContext
 {
     private readonly ILoggerFactory _loggerFactory;
 
