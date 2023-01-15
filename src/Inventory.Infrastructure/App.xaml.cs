@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Inventory.Application.Services.Activation;
 using Inventory.Infrastructure.AutofacModules;
+using Inventory.Persistence.Database;
 using Inventory.Persistence.Database.AutofacModules;
 using Inventory.Presentation.Views.Shell;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,7 @@ using Serilog;
 
 namespace Inventory.Infrastructure;
 
-public partial class App : Microsoft.UI.Xaml.Application
+public sealed partial class App : Microsoft.UI.Xaml.Application
 {
     private readonly IHost _host;
 

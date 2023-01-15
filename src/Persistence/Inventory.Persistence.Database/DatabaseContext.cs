@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Inventory.Persistence.Database;
 
-internal sealed class DatabaseContext : DbContext
+public sealed class DatabaseContext : DbContext
 {
     public DatabaseContext(DbContextOptions<DatabaseContext> options)
         : base(options)

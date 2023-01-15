@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using BuildingBlocks.Application.ViewModels;
 using CommunityToolkit.Mvvm.Messaging;
 using Inventory.Application.DomainOperations.Product.GetProductById;
@@ -8,7 +9,7 @@ using MediatR;
 
 namespace Inventory.Application.ViewModels.Product;
 
-public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel>, INavigatedTo<int>
+public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel>, INavigatedTo<Guid>
 {
     private readonly IMediator _mediator;
 
@@ -18,7 +19,7 @@ public sealed partial class ProductViewModel : GenericItemViewModel<ProductModel
         _mediator = mediator;
     }
 
-    public async Task OnNavigatedTo(int productId)
+    public async Task OnNavigatedTo(Guid productId)
     {
         ProductModel? product = await _mediator.Send(new GetProductByIdQuery(productId));
         Item = product ?? new ProductModel() { Name = "Product doesn't exist: Default product name" };

@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Media;
 
 namespace Inventory.Application.Models;
@@ -6,7 +7,7 @@ namespace Inventory.Application.Models;
 public sealed partial class ProductModel : ObservableObject
 {
     [ObservableProperty]
-    private int id;
+    private Guid id;
 
     [ObservableProperty]
     private string name = string.Empty;
