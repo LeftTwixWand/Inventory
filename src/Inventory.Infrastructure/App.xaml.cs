@@ -5,59 +5,67 @@ using Inventory.Application.Services.Activation;
 using Inventory.Infrastructure.AutofacModules;
 using Inventory.Persistence.Database.AutofacModules;
 using Inventory.Presentation.Views.Shell;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using Serilog;
 
 namespace Inventory.Infrastructure;
 
 public partial class App : Microsoft.UI.Xaml.Application
 {
+    private readonly IHost _host;
+
     public App()
     {
         InitializeComponent();
 
+        _host = new HostBuilder()
+            .UseContentRoot(AppContext.BaseDirectory)
+            .UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuilder =>
+            {
+                _ = containerBuilder
+                .RegisterModule<ActivationModule>()
+
+                .RegisterModule<NavigationModule>()
+
+                .RegisterModule<ServicesModule>()
+
+                .RegisterModule<MediatorModule>()
+
+                .RegisterModule<ProcessingModule>()
+
+                .RegisterModule<MappingModule>()
+
+                .RegisterModule<DatabaseModule>();
+            }))
+            .UseSerilog((hostBuilderContext, loggerConfiguration) =>
+            {
+                _ = loggerConfiguration
+                .Enrich.FromLogContext()
+                .WriteTo.Debug(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{Context}] {Message:lj}{NewLine}{Exception}");
+            })
+            .ConfigureAppConfiguration((hostBuilderContext, configurationBuilder) =>
+            {
+                _ = configurationBuilder.AddJsonFile("appsettings.json", optional: true);
+                _ = configurationBuilder.AddJsonFile($"appsettings.{hostBuilderContext.HostingEnvironment.EnvironmentName}.json", optional: true);
+                _ = configurationBuilder.AddEnvironmentVariables();
+            })
+            .Build();
+
         UnhandledException += App_UnhandledException;
 
-        // Configuration
-        // TODO: Update Configure method to use IHostBuilder.ConfigureAppConfiguration
-        // Add Autofac.Configuration provider
-        // services.Configure<LocalSettingsOptions>(hostBuilderContext.Configuration.GetSection(nameof(LocalSettingsOptions)));
-        var serviceProvider = CreateServiceProfider();
-        Ioc.Default.ConfigureServices(serviceProvider);
+        Ioc.Default.ConfigureServices(_host.Services);
     }
 
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
 
-        var shellView = Ioc.Default.GetRequiredService<ShellView>();
-        var activationService = Ioc.Default.GetRequiredService<IActivationService>();
+        ShellView shellView = Ioc.Default.GetRequiredService<ShellView>();
+        IActivationService activationService = Ioc.Default.GetRequiredService<IActivationService>();
 
         await activationService.ActivateAsync(shellView, args);
-    }
-
-    private static AutofacServiceProvider CreateServiceProfider()
-    {
-        var builder = new ContainerBuilder();
-
-        builder
-            .RegisterModule<ActivationModule>()
-
-            .RegisterModule<NavigationModule>()
-
-            .RegisterModule<ServicesModule>()
-
-            .RegisterModule<MediatorModule>()
-
-            .RegisterModule<ProcessingModule>()
-
-            .RegisterModule<MappingModule>()
-
-            .RegisterModule<LoggingModule>()
-
-            .RegisterModule<DatabaseModule>();
-
-        var container = builder.Build();
-        return new AutofacServiceProvider(container);
     }
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
