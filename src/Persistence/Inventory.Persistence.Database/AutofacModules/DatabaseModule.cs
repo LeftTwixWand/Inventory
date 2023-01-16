@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Inventory.Persistence.Database.AutofacModules;
 
-internal sealed class DatabaseModule : Module
+public sealed class DatabaseModule : Module
 {
     protected override void Load(ContainerBuilder builder)
     {
