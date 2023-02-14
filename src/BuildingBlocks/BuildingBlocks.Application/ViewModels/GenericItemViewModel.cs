@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.Messaging;
 
 namespace BuildingBlocks.Application.ViewModels;
 
-public partial class GenericItemViewModel<TModel> : ObservableObject
+public abstract partial class GenericItemViewModel<TModel> : ObservableObject
     where TModel : ObservableObject, new()
 {
     private readonly IMessenger _messenger;
@@ -21,7 +21,7 @@ public partial class GenericItemViewModel<TModel> : ObservableObject
     [RelayCommand]
     protected virtual void Create()
     {
-        _ = _messenger.Send(new NewGenericItemCreatedMessage<TModel>(item));
+        _ = _messenger.Send(new GenericItemCreatedMessage<TModel>(item));
     }
 
     [RelayCommand]

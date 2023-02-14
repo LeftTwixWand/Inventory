@@ -2,9 +2,9 @@
 
 namespace BuildingBlocks.Application.ViewModels.Messages;
 
-public sealed class NewGenericItemCreatedMessage<TModel> : ValueChangedMessage<TModel>
+public sealed class GenericItemCreatedMessage<TModel> : ValueChangedMessage<TModel>
 {
-    public NewGenericItemCreatedMessage(TModel value)
+    public GenericItemCreatedMessage(TModel value)
         : base(value)
     {
     }

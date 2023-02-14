@@ -7,14 +7,14 @@ using CommunityToolkit.Mvvm.Messaging;
 namespace BuildingBlocks.Application.ViewModels;
 
 public abstract partial class GenericListViewModel<TModel> : ObservableRecipient,
-    IRecipient<NewGenericItemCreatedMessage<TModel>>,
+    IRecipient<GenericItemCreatedMessage<TModel>>,
     IRecipient<GenericItemUpdatedMessage<TModel>>,
     IRecipient<GenericItemDeletedMessage<TModel>>
     where TModel : ObservableObject, new()
 {
     public ObservableCollection<TModel> Items { get; } = new();
 
-    public virtual void Receive(NewGenericItemCreatedMessage<TModel> message)
+    public virtual void Receive(GenericItemCreatedMessage<TModel> message)
     {
         Items.Add(message.Value);
     }
