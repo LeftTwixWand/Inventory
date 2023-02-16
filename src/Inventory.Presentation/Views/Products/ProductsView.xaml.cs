@@ -9,8 +9,7 @@ public sealed partial class ProductsView : Page
     public ProductsView()
     {
         InitializeComponent();
-        ViewModel = Ioc.Default.GetRequiredService<ProductsViewModel>();
     }
 
-    private ProductsViewModel ViewModel { get; }
+    private ProductsViewModel ViewModel { get; } = Ioc.Default.GetRequiredService<ProductsViewModel>();
 }

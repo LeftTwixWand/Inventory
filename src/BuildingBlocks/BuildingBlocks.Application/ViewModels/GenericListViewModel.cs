@@ -31,5 +31,5 @@ public abstract partial class GenericListViewModel<TModel> : ObservableRecipient
     }
 
     [RelayCommand]
-    protected abstract void OnCreateNewItem();
+    protected abstract void CreateNewItem();
 }

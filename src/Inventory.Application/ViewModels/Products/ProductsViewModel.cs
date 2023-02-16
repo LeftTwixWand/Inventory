@@ -21,7 +21,7 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
         IsActive = true;
     }
 
-    protected override void OnCreateNewItem()
+    protected override void CreateNewItem()
     {
         _navigationService.NavigateTo(typeof(ProductViewModel).FullName!);
     }

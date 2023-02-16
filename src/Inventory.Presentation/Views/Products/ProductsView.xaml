@@ -7,6 +7,7 @@
     mc:Ignorable="d"
     xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:Inventory.Application.Models"
@@ -30,6 +31,10 @@
         SelectionMode="None"
         StretchContentForSingleRow="False">
 
+        <controls:AdaptiveGridView.Header>
+            <customCommandBars:CustomCommandBar CommandBarMode="AddEditDelete"/>
+        </controls:AdaptiveGridView.Header>
+        
         <controls:AdaptiveGridView.ItemTemplate>
             <DataTemplate x:DataType="models:ProductModel">
                 <Grid
