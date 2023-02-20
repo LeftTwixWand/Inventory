@@ -7,7 +7,7 @@ using Inventory.Domain.Shipments;
 
 namespace Inventory.Domain.Orders;
 
-public class Order : Entity, IAggregateRoot
+public sealed class Order : Entity, IAggregateRoot
 {
     private readonly List<OrderItem> _orderItems = new();
 

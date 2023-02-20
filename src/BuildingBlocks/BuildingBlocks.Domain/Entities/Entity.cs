@@ -3,17 +3,22 @@ using BuildingBlocks.Domain.Events;
 
 namespace BuildingBlocks.Domain.Entities;
 
+public abstract class Entity : Entity<IDomainEvent>
+{
+}
+
 /// <summary>
 /// Base class for entity in the domain layer.
 /// </summary>
-public abstract class Entity
+public abstract class Entity<T>
+    where T : IDomainEvent
 {
-    private readonly List<IDomainEvent> _domainEvents = new();
+    private readonly List<T> _domainEvents = new();
 
     /// <summary>
     /// Occurred domain events.
     /// </summary>
-    public IReadOnlyCollection<IDomainEvent> DomainEvents => _domainEvents.AsReadOnly();
+    public IReadOnlyCollection<T> DomainEvents => _domainEvents.AsReadOnly();
 
     /// <summary>
     /// Clear list of domain events for current entity object.
@@ -41,7 +46,7 @@ public abstract class Entity
     /// </summary>
     /// <param name="domainEvent">Occurred domain event.</param>
     /// <exception cref="ArgumentNullException">The domain event must not be empty.</exception>
-    protected void AddDomainEvent(IDomainEvent domainEvent)
+    protected void AddDomainEvent(T domainEvent)
     {
         _domainEvents.Add(domainEvent);
     }

@@ -46,7 +46,9 @@ public sealed class Shipment : Entity
         CheckRule(new ShipmentPostalCodeMustNotBeEmptyRule(postalCode));
         CheckRule(new ShipmentPostalCodeMustContainsOnlyNumbersRule(postalCode));
 
-        return new Shipment(ShipmentId.Default, address, city, region, country, postalCode, Status.Processing, shippedDate, deliveredDate);
+        var shipment = new Shipment(ShipmentId.Default, address, city, region, country, postalCode, Status.Processing, shippedDate, deliveredDate);
+        //shipment.AddDomainEvent(new ShipmentCreatedDomainEvent() )
+        return shipment;
     }
 
     public void Ship(DateTimeOffset shippedDate)
@@ -57,7 +59,7 @@ public sealed class Shipment : Entity
         AddDomainEvent(new ShipmentSentDomainEvent(Id));
     }
 
-    public void Deviver(DateTimeOffset deliveredDate)
+    public void Deliver(DateTimeOffset deliveredDate)
     {
         Status = Status.Delivered;
         DeliveredDate = deliveredDate;

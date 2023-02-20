@@ -6,18 +6,17 @@ namespace Inventory.Persistence.Database.Domain.Products;
 
 internal sealed class ProductsRepository : IProductsRepository
 {
-    private readonly List<Product> _products = new(
-        new[]
-        {
-            Product.Create("Gray Mini Lamp", "Desktop Lamp", string.Empty, Resources.Lamp1),
-            Product.Create("Modern LED Lamp", "Desktop Lamp", string.Empty, Resources.Lamp2),
-            Product.Create("15\" Table Lamp", "Desktop Lamp", string.Empty, Resources.Lamp3),
-            Product.Create("Matte Balck Lamp", "Floor Lamp", string.Empty, Resources.Lamp6),
-            Product.Create("Geometric Lamp", "Desktop Lamp", string.Empty, Resources.Lamp7),
-            Product.Create("Gray 20\" Lamp", "Desktop Lamp", string.Empty, Resources.Lamp8),
-            Product.Create("70\" Shared Lamp", "Floor Lamp", string.Empty, Resources.Lamp4),
-            Product.Create("Rechargeable Lamp", "Outdoor Lamp", string.Empty, Resources.Lamp5),
-        });
+    private readonly List<Product> _products = new(new[]
+    {
+        Product.Create("Gray Mini Lamp", "Desktop Lamp", string.Empty, Resources.Lamp1),
+        Product.Create("Modern LED Lamp", "Desktop Lamp", string.Empty, Resources.Lamp2),
+        Product.Create("15\" Table Lamp", "Desktop Lamp", string.Empty, Resources.Lamp3),
+        Product.Create("Matte Black Lamp", "Floor Lamp", string.Empty, Resources.Lamp6),
+        Product.Create("Geometric Lamp", "Desktop Lamp", string.Empty, Resources.Lamp7),
+        Product.Create("Gray 20\" Lamp", "Desktop Lamp", string.Empty, Resources.Lamp8),
+        Product.Create("70\" Shared Lamp", "Floor Lamp", string.Empty, Resources.Lamp4),
+        Product.Create("Rechargeable Lamp", "Outdoor Lamp", string.Empty, Resources.Lamp5),
+    });
 
     public async IAsyncEnumerable<Product> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
@@ -25,9 +24,10 @@ internal sealed class ProductsRepository : IProductsRepository
         {
             foreach (Product product in _products)
             {
-                await Task.Delay(100, cancellationToken);
                 yield return product;
             }
+
+            await Task.Delay(1000, cancellationToken);
         }
     }
 

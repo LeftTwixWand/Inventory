@@ -5,10 +5,10 @@ namespace Inventory.Domain.Warehouses.Projections;
 
 internal sealed class CurrentStateProjection
 {
-    private readonly IReadOnlyCollection<IDomainEvent> _domainEvents;
+    private readonly IReadOnlyCollection<WarehouseEventBase> _domainEvents;
     private int quantity = 0;
 
-    public CurrentStateProjection(IReadOnlyCollection<IDomainEvent> domainEvents)
+    public CurrentStateProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents)
     {
         _domainEvents = domainEvents;
     }
@@ -20,9 +20,9 @@ internal sealed class CurrentStateProjection
             quantity = domainEvent switch
             {
                 WarehouseCreatedEvent @event => Apply(@event),
-                ProductShippedEvent @event => Apply(@event),
-                ProductReceivedEvent @event => Apply(@event),
-                ProductMissedEvent @event => Apply(@event),
+                ProductsShippedEvent @event => Apply(@event),
+                ProductsReceivedEvent @event => Apply(@event),
+                ProductsMissedEvent @event => Apply(@event),
                 _ => throw new UnknownEventException(domainEvent)
             };
         }
@@ -35,17 +35,17 @@ internal sealed class CurrentStateProjection
         return 0;
     }
 
-    private int Apply(ProductReceivedEvent @event)
+    private int Apply(ProductsReceivedEvent @event)
     {
         return quantity + @event.Count;
     }
 
-    private int Apply(ProductShippedEvent @event)
+    private int Apply(ProductsShippedEvent @event)
     {
         return quantity - @event.Count;
     }
 
-    private int Apply(ProductMissedEvent @event)
+    private int Apply(ProductsMissedEvent @event)
     {
         return quantity - @event.Count;
     }

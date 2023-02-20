@@ -7,7 +7,7 @@ using Inventory.Domain.Warehouses.Rules;
 
 namespace Inventory.Domain.Warehouses;
 
-public sealed class Warehouse : Entity, IAggregateRoot
+public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
 {
     private readonly CurrentStateProjection _currentState;
 
@@ -25,16 +25,31 @@ public sealed class Warehouse : Entity, IAggregateRoot
     {
         var warehouse = new Warehouse(productId);
 
-        warehouse.AddDomainEvent(new WarehouseCreatedEvent(productId));
+        warehouse.AddDomainEvent(new WarehouseCreatedEvent());
 
         return warehouse;
     }
 
-    public void ShipProduct(int count)
+    public void ShipProducts(int count)
     {
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
         CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(_currentState, count));
 
-        AddDomainEvent(new ProductShippedEvent(ProductId, count));
+        AddDomainEvent(new ProductsShippedEvent(count));
+    }
+
+    public void ReceiveProducts(int count)
+    {
+        CheckRule(new CountMustBeGreaterThanZeroRule(count));
+
+        AddDomainEvent(new ProductsReceivedEvent(count));
+    }
+
+    public void DeclareMissedProducts(int count, string reason)
+    {
+        CheckRule(new CountMustBeGreaterThanZeroRule(count));
+        CheckRule(new ReasonMustNotBeEmptyRule(reason));
+
+        AddDomainEvent(new ProductsMissedEvent(count, reason));
     }
 }
