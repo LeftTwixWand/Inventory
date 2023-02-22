@@ -25,7 +25,7 @@ public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
     {
         var warehouse = new Warehouse(productId);
 
-        warehouse.AddDomainEvent(new WarehouseCreatedEvent());
+        warehouse.AddDomainEvent(new WarehouseCreatedEvent(productId));
 
         return warehouse;
     }
@@ -35,14 +35,14 @@ public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
         CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(_currentState, count));
 
-        AddDomainEvent(new ProductsShippedEvent(count));
+        AddDomainEvent(new ProductsShippedEvent(ProductId, count));
     }
 
     public void ReceiveProducts(int count)
     {
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
 
-        AddDomainEvent(new ProductsReceivedEvent(count));
+        AddDomainEvent(new ProductsReceivedEvent(ProductId, count));
     }
 
     public void DeclareMissedProducts(int count, string reason)
@@ -50,6 +50,6 @@ public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
         CheckRule(new ReasonMustNotBeEmptyRule(reason));
 
-        AddDomainEvent(new ProductsMissedEvent(count, reason));
+        AddDomainEvent(new ProductsMissedEvent(ProductId, count, reason));
     }
 }

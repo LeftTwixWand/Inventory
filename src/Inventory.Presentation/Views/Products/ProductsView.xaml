@@ -6,13 +6,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:animations="using:CommunityToolkit.WinUI.UI.Animations"
+    xmlns:behaviors="using:Inventory.Presentation.Behaviors"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:Inventory.Application.Models"
     xmlns:viewModels="using:Inventory.Application.ViewModels.Products"
-    d:DataContext="{d:DesignInstance Type=viewModels:ProductsViewModel}">
+    d:DataContext="{d:DesignInstance Type=viewModels:ProductsViewModel}"
+    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+    behaviors:NavigationViewHeaderBehavior.HeaderMode="Minimal">
 
     <interactivity:Interaction.Behaviors>
         <interactivityCore:EventTriggerBehavior EventName="Loaded">
@@ -22,52 +25,59 @@
         </interactivityCore:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
 
-    <controls:AdaptiveGridView
-        animations:Connected.ListItemElementName="itemThumbnail"
-        animations:Connected.ListItemKey="animationKeyContentGrid"
-        IsItemClickEnabled="True"
-        ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
-        ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-        SelectionMode="None"
-        StretchContentForSingleRow="False">
+    <Grid>
+        <Grid.RowDefinitions>
 
-        <controls:AdaptiveGridView.Header>
-            <customCommandBars:CustomCommandBar CommandBarMode="AddEditDelete"/>
-        </controls:AdaptiveGridView.Header>
-        
-        <controls:AdaptiveGridView.ItemTemplate>
-            <DataTemplate x:DataType="models:ProductModel">
-                <Grid
-                    x:Name="itemThumbnail"
-                    Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
-                    Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <customCommandBars:CustomCommandBar CommandBarMode="AddEditDelete" />
 
-                        <controls:ImageEx
-                            Width="160"
-                            Height="160"
-                            CornerRadius="20"
-                            Source="{x:Bind ImageSource, Mode=OneWay}"
-                            Stretch="Fill" />
+        <controls:AdaptiveGridView
+            Grid.Row="1"
+            animations:Connected.ListItemElementName="itemThumbnail"
+            animations:Connected.ListItemKey="animationKeyContentGrid"
+            IsItemClickEnabled="True"
+            ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
+            ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+            SelectionMode="None"
+            StretchContentForSingleRow="False">
 
-                        <TextBlock
-                            Margin="{StaticResource XXSmallTopMargin}"
-                            HorizontalAlignment="Left"
-                            Style="{ThemeResource BodyTextStyle}"
-                            Text="{x:Bind Name}" />
+            <controls:AdaptiveGridView.ItemTemplate>
+                <DataTemplate x:DataType="models:ProductModel">
+                    <Grid
+                        x:Name="itemThumbnail"
+                        Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
+                        Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
 
-                        <TextBlock
-                            Margin="{StaticResource XXSmallTopMargin}"
-                            HorizontalAlignment="Left"
-                            Style="{ThemeResource DetailBodyBaseMediumStyle}"
-                            Text="{x:Bind Category}" />
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                    </StackPanel>
-                </Grid>
-            </DataTemplate>
+                            <controls:ImageEx
+                                Width="160"
+                                Height="160"
+                                CornerRadius="20"
+                                Source="{x:Bind ImageSource, Mode=OneWay}"
+                                Stretch="Fill" />
 
-        </controls:AdaptiveGridView.ItemTemplate>
+                            <TextBlock
+                                Margin="{StaticResource XXSmallTopMargin}"
+                                HorizontalAlignment="Left"
+                                Style="{ThemeResource BodyTextStyle}"
+                                Text="{x:Bind Name}" />
 
-    </controls:AdaptiveGridView>
+                            <TextBlock
+                                Margin="{StaticResource XXSmallTopMargin}"
+                                HorizontalAlignment="Left"
+                                Style="{ThemeResource DetailBodyBaseMediumStyle}"
+                                Text="{x:Bind Category}" />
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+
+            </controls:AdaptiveGridView.ItemTemplate>
+
+        </controls:AdaptiveGridView>
+    </Grid>
 </Page>

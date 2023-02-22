@@ -1,3 +1,5 @@
-﻿namespace Inventory.Domain.Warehouses.Events;
+﻿using Inventory.Domain.Products;
 
-public sealed record ProductsShippedEvent(int Count) : WarehouseEventBase(Count);
+namespace Inventory.Domain.Warehouses.Events;
+
+public sealed record ProductsShippedEvent(ProductId ProductId, int Count) : WarehouseEventBase(ProductId, Count);

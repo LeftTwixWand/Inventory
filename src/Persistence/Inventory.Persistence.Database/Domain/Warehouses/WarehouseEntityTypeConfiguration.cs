@@ -1,5 +1,6 @@
 ﻿using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses;
+using Inventory.Domain.Warehouses.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,10 +18,7 @@ internal sealed class WarehouseEntityTypeConfiguration : IEntityTypeConfiguratio
             .HasColumnName(nameof(Product.Id))
             .HasConversion(id => id.Value, value => new ProductId(value));
 
-        builder.OwnsMany(warehouse => warehouse.DomainEvents, navigationBuilder =>
-        {
-            navigationBuilder.UsePropertyAccessMode(PropertyAccessMode.Field);
-        });
+        builder.HasMany(warehouse => warehouse.DomainEvents);
     }
 }
 
@@ -30,14 +28,20 @@ internal sealed class WarehouseEntityTypeConfiguration : IEntityTypeConfiguratio
 // Now it's impossible to have TPH (Table Per Hierarchy) with owned types.
 // Related issue: https://github.com/dotnet/efcore/issues/9630
 
-// internal sealed class WarehouseEventBaseTypeConfiguration : IEntityTypeConfiguration<WarehouseEventBase>
-// {
-//     public void Configure(EntityTypeBuilder<WarehouseEventBase> builder)
-//     {
-//         builder.HasDiscriminator<string>(nameof(WarehouseEventBase))
-//             .HasValue<WarehouseCreatedEvent>(nameof(WarehouseCreatedEvent))
-//             .HasValue<ProductsShippedEvent>(nameof(ProductsShippedEvent))
-//             .HasValue<ProductsMissedEvent>(nameof(ProductsMissedEvent))
-//             .HasValue<ProductsReceivedEvent>(nameof(ProductsReceivedEvent));
-//     }
-// }
+//internal sealed class WarehouseEventBaseTypeConfiguration : IEntityTypeConfiguration<WarehouseEventBase>
+//{
+//    public void Configure(EntityTypeBuilder<WarehouseEventBase> builder)
+//    {
+//        builder.HasKey(@event => @event.ProductId);
+
+//        builder.Property(@event => @event.ProductId)
+//            .HasColumnName(nameof(Product.Id))
+//            .HasConversion(id => id.Value, value => new ProductId(value));
+
+//        builder.HasDiscriminator<string>(nameof(WarehouseEventBase))
+//            .HasValue<WarehouseCreatedEvent>(nameof(WarehouseCreatedEvent))
+//            .HasValue<ProductsShippedEvent>(nameof(ProductsShippedEvent))
+//            .HasValue<ProductsMissedEvent>(nameof(ProductsMissedEvent))
+//            .HasValue<ProductsReceivedEvent>(nameof(ProductsReceivedEvent));
+//    }
+//}

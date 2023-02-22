@@ -25,32 +25,27 @@ public sealed partial class App : Microsoft.UI.Xaml.Application
             .UseContentRoot(AppContext.BaseDirectory)
             .UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuilder =>
             {
-                _ = containerBuilder
-                .RegisterModule<ActivationModule>()
-
-                .RegisterModule<NavigationModule>()
-
-                .RegisterModule<ServicesModule>()
-
-                .RegisterModule<MediatorModule>()
-
-                .RegisterModule<ProcessingModule>()
-
-                .RegisterModule<MappingModule>()
-
-                .RegisterModule<DatabaseModule>();
+                containerBuilder
+                    .RegisterModule<ActivationModule>()
+                    .RegisterModule<NavigationModule>()
+                    .RegisterModule<ServicesModule>()
+                    .RegisterModule<MediatorModule>()
+                    .RegisterModule<ProcessingModule>()
+                    .RegisterModule<MappingModule>()
+                    .RegisterModule<DatabaseModule>();
             }))
             .UseSerilog((hostBuilderContext, loggerConfiguration) =>
             {
-                _ = loggerConfiguration
-                .Enrich.FromLogContext()
-                .WriteTo.Debug(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{Context}] {Message:lj}{NewLine}{Exception}");
+                loggerConfiguration
+                    .Enrich.FromLogContext()
+                    .WriteTo.Debug(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] [{Context}] {Message:lj}{NewLine}{Exception}");
             })
             .ConfigureAppConfiguration((hostBuilderContext, configurationBuilder) =>
             {
-                _ = configurationBuilder.AddJsonFile("appsettings.json", optional: true);
-                _ = configurationBuilder.AddJsonFile($"appsettings.{hostBuilderContext.HostingEnvironment.EnvironmentName}.json", optional: true);
-                _ = configurationBuilder.AddEnvironmentVariables();
+                configurationBuilder
+                    .AddJsonFile("appsettings.json", optional: true)
+                    .AddJsonFile($"appsettings.{hostBuilderContext.HostingEnvironment.EnvironmentName}.json", optional: true)
+                    .AddEnvironmentVariables();
             })
             .Build();
 

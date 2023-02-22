@@ -1,3 +1,5 @@
-﻿namespace Inventory.Domain.Warehouses.Events;
+﻿using Inventory.Domain.Products;
 
-public sealed record WarehouseCreatedEvent() : WarehouseEventBase(0);
+namespace Inventory.Domain.Warehouses.Events;
+
+public sealed record WarehouseCreatedEvent(ProductId ProductId) : WarehouseEventBase(ProductId, 0);

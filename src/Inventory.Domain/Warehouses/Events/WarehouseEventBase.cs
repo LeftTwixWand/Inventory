@@ -3,4 +3,4 @@ using Inventory.Domain.Products;
 
 namespace Inventory.Domain.Warehouses.Events;
 
-public abstract record WarehouseEventBase(int Count, string? Reason = default) : DomainEventBase;
+public abstract record WarehouseEventBase(ProductId ProductId, int Count, string? Reason = default) : DomainEventBase;
