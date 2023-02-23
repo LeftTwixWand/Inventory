@@ -21,12 +21,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
-		<PackageReference Include="FluentValidation" Version="11.4.0" />
+		<PackageReference Include="FluentValidation" Version="11.5.1" />
 		<PackageReference Include="Mapster" Version="7.3.0" />
 		<PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
-		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="9.1.0" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
 		<PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
 		<PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
@@ -54,4 +54,8 @@
 	<PropertyGroup Condition="'$(DisableHasPackageAndPublishMenuAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
 		<HasPackageAndPublishMenu>true</HasPackageAndPublishMenu>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <EditorConfigFiles Remove="D:\Projects\Inventory\src\Inventory.Infrastructure\.editorconfig" />
+	</ItemGroup>
 </Project>
