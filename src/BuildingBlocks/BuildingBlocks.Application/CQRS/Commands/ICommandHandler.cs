@@ -7,7 +7,7 @@ namespace BuildingBlocks.Application.CQRS.Commands;
 /// </summary>
 /// <typeparam name="TCommand">Type of the command, that will be handled.</typeparam>
 public interface ICommandHandler<in TCommand> : IRequestHandler<TCommand>
-        where TCommand : ICommand
+    where TCommand : ICommand
 {
 }
 

@@ -3,7 +3,6 @@ using Autofac.Extensions.DependencyInjection;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Inventory.Application.Services.Activation;
 using Inventory.Infrastructure.AutofacModules;
-using Inventory.Persistence.Database;
 using Inventory.Persistence.Database.AutofacModules;
 using Inventory.Presentation.Views.Shell;
 using Microsoft.Extensions.Configuration;
@@ -30,7 +29,6 @@ public sealed partial class App : Microsoft.UI.Xaml.Application
                     .RegisterModule<NavigationModule>()
                     .RegisterModule<ServicesModule>()
                     .RegisterModule<MediatorModule>()
-                    .RegisterModule<ProcessingModule>()
                     .RegisterModule<MappingModule>()
                     .RegisterModule<DatabaseModule>();
             }))

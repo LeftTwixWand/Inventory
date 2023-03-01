@@ -6,6 +6,4 @@ namespace BuildingBlocks.Application.CQRS.Queries;
 /// Abstract record, that encapsulate functionality of <see cref="IQuery{TResult}"/> and adding request identity.
 /// </summary>
 /// <typeparam name="TResult"><inheritdoc cref="RequestBase{TResult}" path="/typeparam"/></typeparam>
-public record QueryBase<TResult> : RequestBase<TResult>, IQuery<TResult>
-{
-}
+public abstract record QueryBase<TResult> : RequestBase<TResult>, IQuery<TResult>;

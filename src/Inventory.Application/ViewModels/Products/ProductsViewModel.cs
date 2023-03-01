@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using BuildingBlocks.Application.ViewModels;
 using CommunityToolkit.Mvvm.Input;
 using Inventory.Application.DomainOperations.Product.GetProducts;
@@ -27,9 +28,9 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
     }
 
     [RelayCommand]
-    private async Task Loaded()
+    private async Task Loaded(CancellationToken cancellationToken)
     {
-        await foreach (var item in _mediator.CreateStream(new GetProductsStreamQuery()))
+        await foreach (var item in _mediator.CreateStream(new GetProductsStreamQuery(), cancellationToken))
         {
             Items.Add(item);
         }
