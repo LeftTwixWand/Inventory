@@ -13,9 +13,9 @@
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:Inventory.Application.Models"
     xmlns:viewModels="using:Inventory.Application.ViewModels.Products"
+    behaviors:NavigationViewHeaderBehavior.HeaderMode="Minimal"
     d:DataContext="{d:DesignInstance Type=viewModels:ProductsViewModel}"
-    ScrollViewer.VerticalScrollBarVisibility="Disabled"
-    behaviors:NavigationViewHeaderBehavior.HeaderMode="Minimal">
+    ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
     <interactivity:Interaction.Behaviors>
         <interactivityCore:EventTriggerBehavior EventName="Loaded">
@@ -27,12 +27,14 @@
 
     <Grid>
         <Grid.RowDefinitions>
-
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <customCommandBars:CustomCommandBar CommandBarMode="AddEditDelete" />
+        <customCommandBars:CustomCommandBar
+            Title="{x:Bind ViewModel.Items.Count, Mode=OneWay}"
+            Grid.Column="1"
+            CommandBarMode="AddEditDelete" />
 
         <controls:AdaptiveGridView
             Grid.Row="1"

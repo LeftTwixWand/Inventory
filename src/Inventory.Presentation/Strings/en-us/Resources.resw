@@ -192,9 +192,6 @@
   <data name="WebView_Loading.Text" xml:space="preserve">
     <value>Loading...</value>
   </data>
-  <data name="WebView_Reload.Content" xml:space="preserve">
-    <value>Reload</value>
-  </data>
   <data name="MainWindow.Title" xml:space="preserve">
     <value>Inventory</value>
   </data>

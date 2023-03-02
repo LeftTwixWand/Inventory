@@ -24,10 +24,10 @@ internal sealed class ProductsRepository : IProductsRepository
         {
             foreach (Product product in _products)
             {
+                await Task.Delay(100, cancellationToken);
+
                 yield return product;
             }
-
-            await Task.Delay(1000, cancellationToken);
         }
     }
 

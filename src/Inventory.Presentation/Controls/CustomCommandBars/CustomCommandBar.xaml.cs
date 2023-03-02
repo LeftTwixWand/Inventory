@@ -10,6 +10,9 @@ internal sealed partial class CustomCommandBar : UserControl
     public static readonly DependencyProperty CommandBarModeProperty =
         DependencyProperty.Register(nameof(CommandBarMode), typeof(CommandBarMode), typeof(CustomCommandBar), new PropertyMetadata(CommandBarMode.AddEditDelete));
 
+    public static readonly DependencyProperty TitleProperty =
+        DependencyProperty.Register(nameof(Title), typeof(string), typeof(CustomCommandBar), new PropertyMetadata(string.Empty));
+
     public static readonly DependencyProperty AddCommandProperty =
         DependencyProperty.Register(nameof(AddCommand), typeof(ICommand), typeof(CustomCommandBar), new PropertyMetadata(null));
 
@@ -28,6 +31,12 @@ internal sealed partial class CustomCommandBar : UserControl
     public CustomCommandBar()
     {
         InitializeComponent();
+    }
+
+    public string Title
+    {
+        get => (string)GetValue(TitleProperty); 
+        set => SetValue(TitleProperty, value); 
     }
 
     public CommandBarMode CommandBarMode

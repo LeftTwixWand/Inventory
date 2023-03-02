@@ -8,48 +8,56 @@
     xmlns:enums="using:Inventory.Presentation.Controls.CustomCommandBars.Enums"
     xmlns:triggers="using:CommunityToolkit.WinUI.UI.Triggers">
 
-    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-        <CommandBar OverflowButtonVisibility="Collapsed" DefaultLabelPosition="Right">
- 
+        <TextBlock Grid.Column="0" Text="{x:Bind Title, Mode=OneWay}" />
+
+        <CommandBar
+            Grid.Column="1"
+            DefaultLabelPosition="Right"
+            OverflowButtonVisibility="Collapsed">
+            
             <AppBarButton
-            x:Name="addButton"
-            HorizontalAlignment="Left"
-            Command="{x:Bind AddCommand}"
-            Label="Add"
-            Icon="Add"/>
+                x:Name="addButton"
+                HorizontalAlignment="Left"
+                Command="{x:Bind AddCommand}"
+                Icon="Add"
+                Label="Add" />
 
             <AppBarButton
-            x:Name="editButton"
-            HorizontalAlignment="Left"
-            Command="{x:Bind EditCommand}"
-            Label="Edit"
-            Icon="Edit"/>
+                x:Name="editButton"
+                HorizontalAlignment="Left"
+                Command="{x:Bind EditCommand}"
+                Icon="Edit"
+                Label="Edit" />
 
             <AppBarButton
-            x:Name="cancelButton"
-            HorizontalAlignment="Left"
-            Command="{x:Bind CancelCommand}"
-            Label="Cancel"
-            Icon="Cancel"/>
+                x:Name="cancelButton"
+                HorizontalAlignment="Left"
+                Command="{x:Bind CancelCommand}"
+                Icon="Cancel"
+                Label="Cancel" />
 
             <AppBarButton
                 x:Name="saveButton"
                 HorizontalAlignment="Left"
                 Command="{x:Bind SaveCommand}"
-                Label="Save"
-                Icon="Save"/>
+                Icon="Save"
+                Label="Save" />
 
             <AppBarButton
                 x:Name="deleteButton"
                 HorizontalAlignment="Left"
                 Command="{x:Bind DeleteCommand}"
-                Label="Delete"
-                Icon="Delete"/>
+                Icon="Delete"
+                Label="Delete" />
 
-            <AppBarToggleButton 
-                Icon="SelectAll" 
-                Label="Select" />
+            <AppBarToggleButton Icon="SelectAll" Label="Select" />
 
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommandBarModeVisualState">
@@ -98,10 +106,13 @@
             </VisualStateManager.VisualStateGroups>
         </CommandBar>
 
-        <AutoSuggestBox Height="38" Width="200"
+        <AutoSuggestBox
+            Grid.Column="2"
+            Width="200"
+            Height="38"
             PlaceholderText="Search"
-            QueryIcon="Find"/>
+            QueryIcon="Find" />
 
-    </StackPanel>
+    </Grid>
 
 </UserControl>
