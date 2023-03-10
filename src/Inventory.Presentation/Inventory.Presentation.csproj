@@ -8,6 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Controls\CustomCommandBars\MultipleItemsCommandBar.xaml" />
+    <None Remove="Controls\CustomCommandBars\SingleItemCommandBar.xaml" />
     <None Remove="Styles\FontSize\FontSizes.xaml" />
     <None Remove="Styles\StylesRegistration.xaml" />
     <None Remove="Styles\TextBlock\TextBlock.xaml" />
@@ -40,6 +42,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Update="Controls\CustomCommandBars\MultipleItemsCommandBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Controls\CustomCommandBars\SingleItemCommandBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <None Update="Styles\StylesRegistration.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -85,6 +93,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Themes\" />
     <Folder Include="Views\Settings\" />
   </ItemGroup>
 </Project>

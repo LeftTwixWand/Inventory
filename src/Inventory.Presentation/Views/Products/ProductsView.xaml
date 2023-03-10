@@ -31,19 +31,20 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <customCommandBars:CustomCommandBar
-            Title="{x:Bind ViewModel.Items.Count, Mode=OneWay}"
+        <customCommandBars:MultipleItemsCommandBar
             Grid.Column="1"
-            CommandBarMode="AddEditDelete" />
+            IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}"
+            Title="{x:Bind ViewModel.Items.Count, Mode=OneWay}"
+            AddCommand="{x:Bind ViewModel.CreateNewItemCommand}"/>
 
         <controls:AdaptiveGridView
             Grid.Row="1"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
-            IsItemClickEnabled="True"
+            IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Mode=OneWay}"
             ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-            SelectionMode="None"
+            SelectionMode="Multiple"
             StretchContentForSingleRow="False">
 
             <controls:AdaptiveGridView.ItemTemplate>
