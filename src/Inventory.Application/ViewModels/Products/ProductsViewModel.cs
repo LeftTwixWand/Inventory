@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.ViewModels;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Inventory.Application.DomainOperations.Product.GetProducts;
 using Inventory.Application.Models;
@@ -15,6 +16,9 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
     private readonly IMediator _mediator;
     private readonly INavigationService _navigationService;
 
+    [ObservableProperty]
+    private bool isSelectionMode = false;
+
     public ProductsViewModel(IMediator mediator, INavigationService navigationService)
     {
         _mediator = mediator;
@@ -24,12 +28,17 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
 
     protected override void CreateNewItem()
     {
-        _navigationService.NavigateTo(typeof(ProductViewModel).FullName!);
+        _navigationService.Navigate<ProductViewModel>();
     }
 
     [RelayCommand]
     private async Task Loaded(CancellationToken cancellationToken)
     {
+        if (Items.Count > 0)
+        {
+            return;
+        }
+
         await foreach (var item in _mediator.CreateStream(new GetProductsStreamQuery(), cancellationToken))
         {
             Items.Add(item);
@@ -40,6 +49,6 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
     private void ItemClicked(ProductModel clickedItem)
     {
         _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
-        _navigationService.NavigateTo(typeof(ProductViewModel).FullName!, clickedItem.Id);
+        _navigationService.Navigate<ProductViewModel>(clickedItem.Id);
     }
 }

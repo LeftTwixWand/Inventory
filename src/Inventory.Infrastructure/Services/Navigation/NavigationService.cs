@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.WinUI.UI.Animations;
 using Inventory.Application.Services.Navigation;
 using Inventory.Presentation.Extensions;
@@ -63,6 +64,12 @@ public class NavigationService : INavigationService
         }
 
         return false;
+    }
+
+    public void Navigate<TViewModel>(object? parameter = null, bool clearNavigation = false)
+        where TViewModel : ObservableObject
+    {
+        _ = NavigateTo(typeof(TViewModel).FullName!, parameter, clearNavigation);
     }
 
     public bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false)
@@ -162,7 +169,7 @@ public class NavigationService : INavigationService
     private bool HandleNavigation(Type navigationInterface, object viewModel)
     {
         Type[] genericParameters = navigationInterface.GetGenericArguments();
-        Type? parameterType = genericParameters.FirstOrDefault(genericParameterType => genericParameterType == _lastParameterUsed.GetType());
+        Type? parameterType = genericParameters.FirstOrDefault(genericParameterType => genericParameterType == _lastParameterUsed?.GetType());
 
         if (parameterType is null)
         {

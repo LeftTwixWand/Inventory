@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 
 namespace Inventory.Application.Services.Navigation;
@@ -12,6 +13,9 @@ public interface INavigationService
     Frame? Frame { get; set; }
 
     bool NavigateTo(string pageKey, object? parameter = null, bool clearNavigation = false);
+
+    void Navigate<TViewModel>(object? parameter = null, bool clearNavigation = false)
+        where TViewModel : ObservableObject;
 
     bool GoBack();
 
