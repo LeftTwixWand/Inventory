@@ -5,7 +5,7 @@ namespace Inventory.Domain.Countries;
 
 public sealed record Country(string Name, string ISO) : Enumeration<Country>
 {
-    public static Country Ukranie => Create(nameof(Ukranie), "UA");
+    public static Country Ukraine => Create(nameof(Ukraine), "UA");
 
     public static Country Poland => Create(nameof(Poland), "PL");
 

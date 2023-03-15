@@ -1,6 +1,5 @@
 ﻿using BuildingBlocks.Domain.Entities;
 using Inventory.Domain.Countries;
-using Inventory.Domain.Shipments.Events;
 using Inventory.Domain.Shipments.Rules;
 
 namespace Inventory.Domain.Shipments;
@@ -46,22 +45,6 @@ public sealed class Shipment : Entity
         CheckRule(new ShipmentPostalCodeMustNotBeEmptyRule(postalCode));
         CheckRule(new ShipmentPostalCodeMustContainsOnlyNumbersRule(postalCode));
 
-        var shipment = new Shipment(ShipmentId.Default, address, city, region, country, postalCode, Status.Processing, shippedDate, deliveredDate);
-        //shipment.AddDomainEvent(new ShipmentCreatedDomainEvent() )
-        return shipment;
-    }
-
-    public void Ship(DateTimeOffset shippedDate)
-    {
-        Status = Status.Shipped;
-        ShippedDate = shippedDate;
-
-        AddDomainEvent(new ShipmentSentDomainEvent(Id));
-    }
-
-    public void Deliver(DateTimeOffset deliveredDate)
-    {
-        Status = Status.Delivered;
-        DeliveredDate = deliveredDate;
+        return new Shipment(ShipmentId.New, address, city, region, country, postalCode, Status.Processing, shippedDate, deliveredDate);
     }
 }

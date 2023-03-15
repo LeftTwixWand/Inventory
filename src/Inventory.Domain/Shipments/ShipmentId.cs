@@ -1,6 +1,6 @@
 ﻿namespace Inventory.Domain.Shipments;
 
-public sealed record ShipmentId(Guid Value)
+public readonly record struct ShipmentId(Guid Value)
 {
-    public static ShipmentId Default => new(Guid.Empty);
+    public static ShipmentId New => new(Guid.NewGuid());
 }
