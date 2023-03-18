@@ -5,5 +5,7 @@
     <!--  All the custom converters in the Presentation layer must to be registered in this file.  -->
 
     <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+    <local:SelectionModeToBooleanConverter x:Key="SelectionModeToBooleanConverter"/>
+    <local:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
 
 </ResourceDictionary>

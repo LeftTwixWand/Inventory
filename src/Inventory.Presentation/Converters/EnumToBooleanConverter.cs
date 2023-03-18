@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Data;
 
 namespace Inventory.Presentation.Converters;
 
-public sealed class EnumToBooleanConverter : IValueConverter
+internal sealed class EnumToBooleanConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
