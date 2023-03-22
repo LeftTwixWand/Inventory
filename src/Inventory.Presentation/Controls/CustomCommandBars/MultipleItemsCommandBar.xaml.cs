@@ -18,6 +18,9 @@ internal sealed partial class MultipleItemsCommandBar : UserControl
     public static readonly DependencyProperty DeleteCommandProperty =
         DependencyProperty.Register(nameof(DeleteCommand), typeof(ICommand), typeof(MultipleItemsCommandBar), new PropertyMetadata(null));
 
+    public static readonly DependencyProperty DeleteCommandParameterProperty =
+        DependencyProperty.Register(nameof(DeleteCommandParameter), typeof(object), typeof(MultipleItemsCommandBar), new PropertyMetadata(null));
+
     public MultipleItemsCommandBar()
     {
         InitializeComponent();
@@ -45,5 +48,11 @@ internal sealed partial class MultipleItemsCommandBar : UserControl
     {
         get => (ICommand)GetValue(DeleteCommandProperty);
         set => SetValue(DeleteCommandProperty, value);
+    }
+
+    public object DeleteCommandParameter
+    {
+        get => GetValue(DeleteCommandParameterProperty);
+        set => SetValue(DeleteCommandParameterProperty, value);
     }
 }

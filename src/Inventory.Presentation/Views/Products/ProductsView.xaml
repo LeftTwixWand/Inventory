@@ -32,12 +32,15 @@
         </Grid.RowDefinitions>
 
         <customCommandBars:MultipleItemsCommandBar
-            Grid.Column="1"
-            IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}"
             Title="{x:Bind ViewModel.Items.Count, Mode=OneWay}"
-            AddCommand="{x:Bind ViewModel.CreateNewItemCommand}"/>
+            Grid.Column="1"
+            AddCommand="{x:Bind ViewModel.CreateNewItemCommand}"
+            DeleteCommandParameter="{x:Bind gridView.SelectedItems}"
+            DeleteCommand="{x:Bind ViewModel.DeleteItemsCommand}"
+            IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}" />
 
         <controls:AdaptiveGridView
+            x:Name="gridView"
             Grid.Row="1"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"

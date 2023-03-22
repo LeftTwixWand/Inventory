@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -26,9 +27,19 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
         IsActive = true;
     }
 
+    protected override void ItemClicked(ProductModel clickedItem)
+    {
+        _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
+        _navigationService.Navigate<ProductViewModel>(clickedItem.Id);
+    }
+
     protected override void CreateNewItem()
     {
         _navigationService.Navigate<ProductViewModel>();
+    }
+
+    protected override void DeleteItems(IList<object> selectedItems)
+    {
     }
 
     [RelayCommand]
@@ -43,12 +54,5 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
         {
             Items.Add(item);
         }
-    }
-
-    [RelayCommand]
-    private void ItemClicked(ProductModel clickedItem)
-    {
-        _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
-        _navigationService.Navigate<ProductViewModel>(clickedItem.Id);
     }
 }

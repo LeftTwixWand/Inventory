@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:converters="using:CommunityToolkit.WinUI.UI.Converters"
     mc:Ignorable="d">
 
     <Grid>
@@ -31,6 +30,7 @@
             <AppBarButton
                 x:Name="deleteButton"
                 HorizontalAlignment="Left"
+                CommandParameter="{x:Bind DeleteCommandParameter, Mode=OneWay}"
                 Command="{x:Bind DeleteCommand}"
                 Icon="Delete"
                 Label="Delete"
@@ -42,7 +42,7 @@
                 Icon="SelectAll"
                 IsChecked="{x:Bind IsSelectionMode, Mode=TwoWay}"
                 Label="Select" />
-            
+
         </CommandBar>
 
         <AutoSuggestBox
