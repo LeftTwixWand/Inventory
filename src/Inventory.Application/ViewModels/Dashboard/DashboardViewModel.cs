@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Inventory.Application.Services.Navigation;
 
 namespace Inventory.Application.ViewModels.Dashboard;
 

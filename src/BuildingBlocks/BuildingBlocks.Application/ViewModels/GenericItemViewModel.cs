@@ -21,18 +21,18 @@ public abstract partial class GenericItemViewModel<TModel> : ObservableObject
     [RelayCommand]
     protected virtual void Create()
     {
-        _ = _messenger.Send(new GenericItemCreatedMessage<TModel>(item));
+        _messenger.Send(new GenericItemCreatedMessage<TModel>(Item));
     }
 
     [RelayCommand]
     protected virtual void Delete()
     {
-        _ = _messenger.Send(new GenericItemDeletedMessage<TModel>(item));
+        _messenger.Send(new GenericItemDeletedMessage<TModel>(Item));
     }
 
     [RelayCommand]
     protected virtual void Update()
     {
-        _ = _messenger.Send(new GenericItemUpdatedMessage<TModel>(item));
+        _messenger.Send(new GenericItemUpdatedMessage<TModel>(Item));
     }
 }

@@ -86,11 +86,7 @@ public sealed class NavigationViewService : INavigationViewService
 
     private bool IsMenuItemForPageType(NavigationViewItem menuItem, Type sourcePageType)
     {
-        if (menuItem.GetValue(NavigationExtension.NavigateToProperty) is string pageKey)
-        {
-            return _pageService.GetPageType(pageKey) == sourcePageType;
-        }
-
-        return false;
+        return menuItem.GetValue(NavigationExtension.NavigateToProperty) is string pageKey
+            && _pageService.GetPageType(pageKey) == sourcePageType;
     }
 }

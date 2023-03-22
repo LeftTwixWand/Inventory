@@ -29,15 +29,15 @@ public sealed partial class SettingsViewModel : ObservableObject
     {
         var version = new Version(0, 1, 890, 3);
 
-        // if (RuntimeHelper.IsMSIX)
-        // {
-        //     var packageVersion = Package.Current.Id.Version;
-        //     version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
-        // }
-        // else
-        // {
-        //     version = Assembly.GetExecutingAssembly().GetName().Version!;
-        // }
+        /* if (RuntimeHelper.IsMSIX)
+        {
+            var packageVersion = Package.Current.Id.Version;
+            version = new(packageVersion.Major, packageVersion.Minor, packageVersion.Build, packageVersion.Revision);
+        }
+        else
+        {
+            version = Assembly.GetExecutingAssembly().GetName().Version!;
+        }*/
 
         return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
     }
