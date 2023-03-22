@@ -41,10 +41,10 @@
             Grid.Row="1"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
-            IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Mode=OneWay}"
+            IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource InvertBooleanConverter}, Mode=OneWay}"
             ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-            SelectionMode="Multiple"
+            SelectionMode="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource SelectionModeToBooleanConverter}, Mode=OneWay}"
             StretchContentForSingleRow="False">
 
             <controls:AdaptiveGridView.ItemTemplate>
