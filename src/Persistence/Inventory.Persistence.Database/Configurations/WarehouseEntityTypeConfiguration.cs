@@ -4,7 +4,7 @@ using Inventory.Domain.Warehouses.Events;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Inventory.Persistence.Database.Domain.Warehouses;
+namespace Inventory.Persistence.Database.Configurations;
 
 internal sealed class WarehouseEntityTypeConfiguration : IEntityTypeConfiguration<Warehouse>
 {

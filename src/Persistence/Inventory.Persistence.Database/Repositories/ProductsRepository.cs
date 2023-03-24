@@ -1,8 +1,9 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Inventory.Domain.Products;
 using Inventory.Persistence.Database.Properties;
 
-namespace Inventory.Persistence.Database.Domain.Products;
+namespace Inventory.Persistence.Database.Repositories;
 
 internal sealed class ProductsRepository : IProductsRepository
 {
@@ -18,11 +19,19 @@ internal sealed class ProductsRepository : IProductsRepository
         Product.Create("Rechargeable Lamp", "Outdoor Lamp", string.Empty, Resources.Lamp5),
     });
 
+    public Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        int index = _products.FindIndex(product => product.Id.Value == id);
+        _products.RemoveAt(index);
+
+        return Task.CompletedTask;
+    }
+
     public async IAsyncEnumerable<Product> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        for (int i = 0; i < 10; i++)
+        for (var i = 0; i < 2; i++)
         {
-            foreach (Product product in _products)
+            foreach (var product in _products)
             {
                 await Task.Delay(100, cancellationToken);
 
@@ -31,7 +40,7 @@ internal sealed class ProductsRepository : IProductsRepository
         }
     }
 
-    public Task<Product?> GetByIdAsync(ProductId id)
+    public Task<Product?> GetByIdAsync(ProductId id, CancellationToken cancellationToken)
     {
         Product? product = _products.FirstOrDefault(product => product.Id == id);
         return Task.FromResult(product);

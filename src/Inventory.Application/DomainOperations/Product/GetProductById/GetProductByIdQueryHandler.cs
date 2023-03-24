@@ -18,7 +18,7 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
 
     public async Task<ProductModel?> Handle(GetProductByIdQuery query, CancellationToken cancellationToken)
     {
-        var product = await _productsRepository.GetByIdAsync(new ProductId(query.ProductId));
+        var product = await _productsRepository.GetByIdAsync(new ProductId(query.ProductId), cancellationToken);
 
         if (product is null)
         {

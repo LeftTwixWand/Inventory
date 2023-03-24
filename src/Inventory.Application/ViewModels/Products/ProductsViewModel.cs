@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Inventory.Application.DomainOperations.Product.DeleteProducts;
 using Inventory.Application.DomainOperations.Product.GetProducts;
 using Inventory.Application.Models;
 using Inventory.Application.Services.Navigation;
@@ -38,8 +40,18 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
         _navigationService.Navigate<ProductViewModel>();
     }
 
-    protected override void DeleteItems(IList<object> selectedItems)
+    protected override async Task DeleteItems(IList<object> selectedItems, CancellationToken cancellationToken)
     {
+        var selectedProducts = selectedItems.Cast<ProductModel>().ToArray();
+
+        for (int i = 0; i < selectedProducts.Length; i++)
+        {
+            Items.Remove(selectedProducts[i]);
+        }
+
+        await _mediator.Send(new DeleteProductsCommand(selectedProducts), cancellationToken);
+
+        IsSelectionMode = false;
     }
 
     [RelayCommand]

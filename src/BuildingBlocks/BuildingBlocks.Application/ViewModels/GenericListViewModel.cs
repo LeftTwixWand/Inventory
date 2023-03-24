@@ -31,11 +31,11 @@ public abstract partial class GenericListViewModel<TModel> : ObservableRecipient
     }
 
     [RelayCommand]
+    protected abstract void ItemClicked(TModel clickedItem);
+
+    [RelayCommand]
     protected abstract void CreateNewItem();
 
     [RelayCommand]
-    protected abstract void DeleteItems(IList<object> selectedItems);
-
-    [RelayCommand]
-    protected abstract void ItemClicked(TModel clickedItem);
+    protected abstract Task DeleteItems(IList<object> selectedItems, CancellationToken cancellationToken);
 }

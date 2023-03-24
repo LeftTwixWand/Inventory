@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Inventory.Persistence.Database.Domain.Products;
+namespace Inventory.Persistence.Database.Configurations;
 
 internal sealed class ProductEntityTypeConfiguration : IEntityTypeConfiguration<Product>
 {
