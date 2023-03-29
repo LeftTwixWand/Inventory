@@ -2,27 +2,27 @@
 using Inventory.Application.Services.ThemeSelector;
 using Inventory.Presentation.Helpers;
 using Microsoft.UI.Xaml;
+using Windows.Storage;
 
 namespace Inventory.Infrastructure.Services.ThemeSelector;
 
-public class ThemeSelectorService : IThemeSelectorService
+public sealed class ThemeSelectorService : IThemeSelectorService
 {
     private const string SettingsKey = "AppBackgroundRequestedTheme";
+    private readonly ApplicationDataStorageHelper _applicationDataStorage = new(ApplicationData.Current);
 
-    private readonly ApplicationDataStorageHelper _applicationDataStorage;
     private readonly Window _window;
 
-    public ThemeSelectorService(ApplicationDataStorageHelper applicationDataStorage, Window window)
+    public ThemeSelectorService(Window window)
     {
-        _applicationDataStorage = applicationDataStorage;
         _window = window;
     }
 
-    public ElementTheme Theme { get; set; } = ElementTheme.Default;
+    public ElementTheme Theme { get; private set; } = ElementTheme.Default;
 
     public void Initialize()
     {
-        Theme = LoadThemeFromSettingsAsync();
+        Theme = LoadThemeFromSettings();
     }
 
     public void SetTheme(ElementTheme theme)
@@ -30,7 +30,7 @@ public class ThemeSelectorService : IThemeSelectorService
         Theme = theme;
 
         SetRequestedTheme();
-        SaveThemeInSettingsAsync(Theme);
+        SaveThemeInSettings(Theme);
     }
 
     public void SetRequestedTheme()
@@ -43,7 +43,7 @@ public class ThemeSelectorService : IThemeSelectorService
         }
     }
 
-    private ElementTheme LoadThemeFromSettingsAsync()
+    private ElementTheme LoadThemeFromSettings()
     {
         if (_applicationDataStorage.TryRead<string>(SettingsKey, out var themeName))
         {
@@ -56,7 +56,7 @@ public class ThemeSelectorService : IThemeSelectorService
         return ElementTheme.Default;
     }
 
-    private void SaveThemeInSettingsAsync(ElementTheme theme)
+    private void SaveThemeInSettings(ElementTheme theme)
     {
         _applicationDataStorage.Save(SettingsKey, theme.ToString());
     }
