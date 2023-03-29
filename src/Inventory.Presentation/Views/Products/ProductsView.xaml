@@ -44,7 +44,7 @@
             Grid.Row="1"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
-            IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource InvertBooleanConverter}, Mode=OneWay}"
+            IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
             ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
             SelectionMode="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource SelectionModeToBooleanConverter}, Mode=OneWay}"

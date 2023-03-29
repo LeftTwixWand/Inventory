@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="using:Inventory.Presentation.Converters">
+                    xmlns:local="using:Inventory.Presentation.Converters"
+                    xmlns:communityToolkit="using:CommunityToolkit.WinUI.UI.Converters">
 
     <!--  All the custom converters in the Presentation layer must to be registered in this file.  -->
 
     <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
     <local:SelectionModeToBooleanConverter x:Key="SelectionModeToBooleanConverter"/>
-    <local:InvertBooleanConverter x:Key="InvertBooleanConverter"/>
+    <communityToolkit:BoolNegationConverter x:Key="BoolNegationConverter"/>
 
 </ResourceDictionary>
