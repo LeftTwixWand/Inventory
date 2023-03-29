@@ -6,11 +6,12 @@ using Microsoft.Extensions.Logging;
 
 namespace Inventory.Persistence.Database.AutofacModules;
 
-public sealed class DatabaseModule : Module {
-
-    protected override void Load(ContainerBuilder builder) {
-
-        builder.Register(componentContext => {
+public sealed class DatabaseModule : Module
+{
+    protected override void Load(ContainerBuilder builder)
+    {
+        builder.Register(componentContext =>
+        {
             ILoggerFactory loggerFactory = componentContext.Resolve<ILoggerFactory>();
 
             var builder = new DbContextOptionsBuilder<DatabaseContext>();
@@ -20,7 +21,8 @@ public sealed class DatabaseModule : Module {
             return builder.Options;
         });
 
-        builder.Register<DatabaseContext>(componentContext => {
+        builder.Register<DatabaseContext>(componentContext =>
+        {
             DbContextOptions<DatabaseContext> options = componentContext.Resolve<DbContextOptions<DatabaseContext>>();
             return new(options);
         }).SingleInstance();

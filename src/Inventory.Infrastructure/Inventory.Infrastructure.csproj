@@ -24,7 +24,7 @@
 		<PackageReference Include="FluentValidation" Version="11.5.1" />
 		<PackageReference Include="Mapster" Version="7.3.0" />
 		<PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
-		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="10.0.0" />
+		<PackageReference Include="MediatR.Extensions.Autofac.DependencyInjection" Version="11.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Options" Version="7.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
