@@ -7,6 +7,12 @@
 
     <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
     <local:SelectionModeToBooleanConverter x:Key="SelectionModeToBooleanConverter"/>
+
+    <local:ValueConverterGroup x:Key="InvertBoolToVisibilityConverter">
+        <communityToolkit:BoolNegationConverter />
+        <communityToolkit:BoolToVisibilityConverter />
+    </local:ValueConverterGroup>
+
     <communityToolkit:BoolNegationConverter x:Key="BoolNegationConverter"/>
 
 </ResourceDictionary>

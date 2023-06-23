@@ -6,10 +6,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:viewModels="using:Inventory.Application.ViewModels.Product"
+    xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
     d:DataContext="{d:DesignInstance Type=viewModels:ProductViewModel}">
 
     <Grid x:Name="ContentArea">
-        <ScrollViewer IsTabStop="True">
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <customCommandBars:SingleItemCommandBar IsEditMode="False"/>
+
+        <ScrollViewer IsTabStop="True" Grid.Row="1">
             <StackPanel x:Name="contentPanel">
 
                 <RelativePanel>

@@ -6,32 +6,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
+    <StackPanel Orientation="Horizontal">
 
-        <TextBlock Grid.Column="0" Text="{x:Bind Title, Mode=OneWay}" />
-
-        <CommandBar
-            Grid.Column="1"
-            DefaultLabelPosition="Right"
-            OverflowButtonVisibility="Collapsed">
+        <CommandBar DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed">
 
             <AppBarButton
                 x:Name="addButton"
-                HorizontalAlignment="Left"
                 Command="{x:Bind AddCommand}"
                 Icon="Add"
-                Label="Add" />
+                Label="Add" 
+                Visibility="{x:Bind IsSelectionMode, Mode=OneWay, Converter={StaticResource InvertBoolToVisibilityConverter}}"/>
+
+            <AppBarButton
+                x:Name="createOrderButton"
+                Command="{x:Bind CreateOrderCommand}"
+                CommandParameter="{x:Bind SelectedItems, Mode=OneWay}"
+                Icon="Shop"
+                Label="Create order"
+                Visibility="{x:Bind IsSelectionMode, Mode=OneWay}" />
 
             <AppBarButton
                 x:Name="deleteButton"
-                HorizontalAlignment="Left"
-                CommandParameter="{x:Bind DeleteCommandParameter, Mode=OneWay}"
                 Command="{x:Bind DeleteCommand}"
+                CommandParameter="{x:Bind SelectedItems, Mode=OneWay}"
                 Icon="Delete"
                 Label="Delete"
                 Visibility="{x:Bind IsSelectionMode, Mode=OneWay}" />
@@ -39,6 +36,7 @@
             <AppBarSeparator />
 
             <AppBarToggleButton
+                Name="selectButton"
                 Icon="SelectAll"
                 IsChecked="{x:Bind IsSelectionMode, Mode=TwoWay}"
                 Label="Select" />
@@ -46,12 +44,11 @@
         </CommandBar>
 
         <AutoSuggestBox
-            Grid.Column="2"
             Width="200"
-            Height="38"
+            Height="36"
             PlaceholderText="Search"
             QueryIcon="Find" />
 
-    </Grid>
+    </StackPanel>
 
 </UserControl>

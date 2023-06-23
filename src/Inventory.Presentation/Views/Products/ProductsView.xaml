@@ -24,24 +24,29 @@
             </interactivityCore:EventTriggerBehavior.Actions>
         </interactivityCore:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
-
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
         <customCommandBars:MultipleItemsCommandBar
-            Title="{x:Bind ViewModel.Items.Count, Mode=OneWay}"
             Grid.Column="1"
             AddCommand="{x:Bind ViewModel.CreateNewItemCommand}"
-            DeleteCommandParameter="{x:Bind gridView.SelectedItems}"
+            SelectedItems="{x:Bind gridView.SelectedItems}"
             DeleteCommand="{x:Bind ViewModel.DeleteItemsCommand}"
             IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}" />
 
         <controls:AdaptiveGridView
             x:Name="gridView"
             Grid.Row="1"
+            Grid.ColumnSpan="2"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
             IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"

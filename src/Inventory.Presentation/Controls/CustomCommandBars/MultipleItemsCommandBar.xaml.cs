@@ -6,9 +6,6 @@ namespace Inventory.Presentation.Controls.CustomCommandBars;
 
 internal sealed partial class MultipleItemsCommandBar : UserControl
 {
-    public static readonly DependencyProperty TitleProperty =
-        DependencyProperty.Register(nameof(Title), typeof(string), typeof(MultipleItemsCommandBar), new PropertyMetadata(string.Empty));
-
     public static readonly DependencyProperty IsSelectionModeProperty =
         DependencyProperty.Register(nameof(IsSelectionMode), typeof(bool), typeof(MultipleItemsCommandBar), new PropertyMetadata(false));
 
@@ -18,18 +15,15 @@ internal sealed partial class MultipleItemsCommandBar : UserControl
     public static readonly DependencyProperty DeleteCommandProperty =
         DependencyProperty.Register(nameof(DeleteCommand), typeof(ICommand), typeof(MultipleItemsCommandBar), new PropertyMetadata(null));
 
-    public static readonly DependencyProperty DeleteCommandParameterProperty =
-        DependencyProperty.Register(nameof(DeleteCommandParameter), typeof(object), typeof(MultipleItemsCommandBar), new PropertyMetadata(null));
+    public static readonly DependencyProperty CreateOrderCommandProperty =
+    DependencyProperty.Register(nameof(CreateOrderCommand), typeof(ICommand), typeof(MultipleItemsCommandBar), new PropertyMetadata(null));
+
+    public static readonly DependencyProperty SelectedItemsProperty =
+        DependencyProperty.Register(nameof(SelectedItems), typeof(object), typeof(MultipleItemsCommandBar), new PropertyMetadata(null));
 
     public MultipleItemsCommandBar()
     {
         InitializeComponent();
-    }
-
-    public string Title
-    {
-        get => (string)GetValue(TitleProperty);
-        set => SetValue(TitleProperty, value);
     }
 
     public bool IsSelectionMode
@@ -50,9 +44,15 @@ internal sealed partial class MultipleItemsCommandBar : UserControl
         set => SetValue(DeleteCommandProperty, value);
     }
 
-    public object DeleteCommandParameter
+    public ICommand CreateOrderCommand
     {
-        get => GetValue(DeleteCommandParameterProperty);
-        set => SetValue(DeleteCommandParameterProperty, value);
+        get => (ICommand)GetValue(CreateOrderCommandProperty);
+        set => SetValue(CreateOrderCommandProperty, value);
+    }
+
+    public object SelectedItems
+    {
+        get => GetValue(SelectedItemsProperty);
+        set => SetValue(SelectedItemsProperty, value);
     }
 }
