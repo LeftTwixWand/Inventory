@@ -16,9 +16,9 @@ internal sealed class UnitOfWorkCommandHandlerDecorator<TCommand> : ICommandHand
         _unitOfWork = unitOfWork;
     }
 
-    public async Task Handle(TCommand comamnd, CancellationToken cancellationToken)
+    public async Task Handle(TCommand command, CancellationToken cancellationToken)
     {
-        await _decorated.Handle(comamnd, cancellationToken);
+        await _decorated.Handle(command, cancellationToken);
 
         await _unitOfWork.CommitAsync(cancellationToken);
     }
@@ -36,9 +36,9 @@ internal sealed class UnitOfWorkCommandHandlerDecorator<TCommand, TResult> : ICo
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<TResult> Handle(TCommand comamnd, CancellationToken cancellationToken)
+    public async Task<TResult> Handle(TCommand command, CancellationToken cancellationToken)
     {
-        var result = await _decorated.Handle(comamnd, cancellationToken);
+        var result = await _decorated.Handle(command, cancellationToken);
 
         await _unitOfWork.CommitAsync(cancellationToken);
 
