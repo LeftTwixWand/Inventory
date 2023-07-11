@@ -9,17 +9,12 @@ namespace Inventory.Domain.Warehouses;
 
 public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
 {
-    private readonly CurrentStateProjection _currentState;
-
     private Warehouse(ProductId productId)
     {
         ProductId = productId;
-        _currentState = new(DomainEvents);
     }
 
     public ProductId ProductId { get; init; }
-
-    public int Quantity => _currentState.GetQuantity();
 
     public static Warehouse Create(ProductId productId)
     {
@@ -33,7 +28,9 @@ public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
     public void ShipProducts(int count)
     {
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
-        CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(_currentState, count));
+
+        var currentState = new CurrentStateProjection(DomainEvents);
+        CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(currentState, count));
 
         AddDomainEvent(new ProductsShippedEvent(ProductId, count));
     }

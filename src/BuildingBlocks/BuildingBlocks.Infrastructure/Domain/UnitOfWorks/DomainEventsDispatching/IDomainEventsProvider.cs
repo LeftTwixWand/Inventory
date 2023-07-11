@@ -4,7 +4,7 @@ namespace BuildingBlocks.Infrastructure.Domain.UnitOfWorks.DomainEventsDispatchi
 
 public interface IDomainEventsProvider
 {
-    IReadOnlyCollection<IDomainEvent> GetAllDomainEvents();
+    IReadOnlyCollection<IDomainEventBase> GetAllDomainEvents();
 
     void ClearAllDomainEvents();
 }

@@ -3,7 +3,7 @@
 /// <summary>
 /// Domain event abstraction, that stores information, when the event was occurred on.
 /// </summary>
-public abstract record DomainEventBase : IDomainEvent
+public abstract record DomainEventBase : IDomainEventBase
 {
     /// <inheritdoc/>
     public DateTimeOffset OccurredOn => DateTimeOffset.Now;

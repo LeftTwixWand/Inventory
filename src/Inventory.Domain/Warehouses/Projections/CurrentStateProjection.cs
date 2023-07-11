@@ -3,12 +3,12 @@ using Inventory.Domain.Warehouses.Events;
 
 namespace Inventory.Domain.Warehouses.Projections;
 
-internal sealed class CurrentStateProjection
+public sealed class CurrentStateProjection
 {
     private readonly IReadOnlyCollection<WarehouseEventBase> _domainEvents;
     private int quantity = 0;
 
-    public CurrentStateProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents)
+    public CurrentStateProjection(Warehouse warehouse, Snaphotx domainEvents)
     {
         _domainEvents = domainEvents;
     }
@@ -30,7 +30,7 @@ internal sealed class CurrentStateProjection
         return quantity;
     }
 
-    private static int Apply(WarehouseCreatedEvent @event)
+    private static int Apply(WarehouseCreatedEvent _)
     {
         return 0;
     }

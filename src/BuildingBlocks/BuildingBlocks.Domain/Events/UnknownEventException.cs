@@ -2,13 +2,13 @@
 
 public class UnknownEventException : Exception
 {
-    public UnknownEventException(IDomainEvent unknownEvent)
+    public UnknownEventException(IDomainEventBase unknownEvent)
         : base($"No handler found for event {unknownEvent.GetType().FullName}")
     {
         UnknownEvent = unknownEvent;
     }
 
-    public IDomainEvent UnknownEvent { get; }
+    public IDomainEventBase UnknownEvent { get; }
 
     /// <inheritdoc/>
     public override string ToString()
