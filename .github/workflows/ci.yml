@@ -1,4 +1,4 @@
-name: CI
+name: CI Build
 
 on:
   push:
@@ -31,6 +31,14 @@ jobs:
     
     - name: Setup NuGet.exe for use with actions
       uses: NuGet/setup-nuget@v1.1.1
+ 
+    - name: Cache NuGet packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/Directory.Packages.props') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
  
     - name: Restore Nuget packages
       run: nuget restore Inventory.sln
