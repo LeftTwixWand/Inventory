@@ -1,25 +1,20 @@
 ﻿using BuildingBlocks.Domain.AggregateRoots;
 using BuildingBlocks.Domain.Entities;
+using Inventory.Domain.Documents;
 using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses.Events;
-using Inventory.Domain.Warehouses.Projections;
 using Inventory.Domain.Warehouses.Rules;
 
 namespace Inventory.Domain.Warehouses;
 
 public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
 {
-    private readonly CurrentStateProjection _currentState;
-
     private Warehouse(ProductId productId)
     {
         ProductId = productId;
-        _currentState = new(DomainEvents);
     }
 
     public ProductId ProductId { get; init; }
-
-    public int Quantity => _currentState.GetQuantity();
 
     public static Warehouse Create(ProductId productId)
     {
@@ -30,26 +25,27 @@ public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
         return warehouse;
     }
 
-    public void ShipProducts(int count)
+    public void ShipProducts(int count, IWarehouseAccountant warehouseAccountant, DocumentId documentId)
     {
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
-        CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(_currentState, count));
+        CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(count, warehouseAccountant, ProductId));
 
-        AddDomainEvent(new ProductsShippedEvent(ProductId, count));
+        AddDomainEvent(new ProductsShippedEvent(ProductId, count, documentId));
     }
 
-    public void ReceiveProducts(int count)
+    public void ReceiveProducts(int count, DocumentId documentId)
     {
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
+        CheckRule(new AttachedDocumentIdMustNotBeEmptyRule(documentId));
 
-        AddDomainEvent(new ProductsReceivedEvent(ProductId, count));
+        AddDomainEvent(new ProductsReceivedEvent(ProductId, count, documentId));
     }
 
-    public void DeclareMissedProducts(int count, string reason)
+    public void DeclareMissedProducts(int count, DocumentId documentId)
     {
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
-        CheckRule(new ReasonMustNotBeEmptyRule(reason));
+        CheckRule(new AttachedDocumentIdMustNotBeEmptyRule(documentId));
 
-        AddDomainEvent(new ProductsMissedEvent(ProductId, count, reason));
+        AddDomainEvent(new ProductsMissedEvent(ProductId, count, documentId));
     }
 }

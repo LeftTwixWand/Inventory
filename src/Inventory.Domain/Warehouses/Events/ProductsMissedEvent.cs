@@ -1,5 +1,6 @@
-﻿using Inventory.Domain.Products;
+﻿using Inventory.Domain.Documents;
+using Inventory.Domain.Products;
 
 namespace Inventory.Domain.Warehouses.Events;
 
-public sealed record ProductsMissedEvent(ProductId ProductId, int Count, string Reason) : WarehouseEventBase(ProductId, Count, Reason);
+public sealed record ProductsMissedEvent(ProductId ProductId, int Count, DocumentId DocumentId) : WarehouseEventBase(ProductId, Count, DocumentId);

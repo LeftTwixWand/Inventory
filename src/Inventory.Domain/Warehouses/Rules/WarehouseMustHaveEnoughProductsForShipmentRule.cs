@@ -1,11 +1,13 @@
 ﻿using BuildingBlocks.Domain.BusinessRules;
-using Inventory.Domain.Warehouses.Projections;
+using Inventory.Domain.Products;
 
 namespace Inventory.Domain.Warehouses.Rules;
 
-internal sealed record WarehouseMustHaveEnoughProductsForShipmentRule(CurrentStateProjection CurrentState, int QuantityForShipment) : IBusinessRule
+internal sealed record WarehouseMustHaveEnoughProductsForShipmentRule(int QuantityForShipment, IWarehouseAccountant WarehouseAccountant, ProductId ProductId) : IBusinessRule
 {
+    private readonly int actualProductsQuantity = WarehouseAccountant.GetActualProductQuantity(ProductId);
+
     public string Message => "There are not enough products in warehouse to perform shipment.";
 
-    public bool BrokenWhen => CurrentState.GetQuantity() < QuantityForShipment;
+    public bool BrokenWhen => actualProductsQuantity < QuantityForShipment;
 }
