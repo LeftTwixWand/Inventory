@@ -4,5 +4,5 @@ namespace Inventory.Domain.Warehouses;
 
 public interface IWarehouseAccountant
 {
-    int GetActualProductQuantity(ProductId productId);
+    int GetActualProductQuantity();
 }
