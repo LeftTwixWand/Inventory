@@ -1,6 +1,8 @@
-﻿using BuildingBlocks.Domain.AggregateRoots;
+﻿using System.Reflection.Metadata;
+using BuildingBlocks.Domain.AggregateRoots;
 using BuildingBlocks.Domain.Entities;
 using Inventory.Domain.Documents;
+using Inventory.Domain.Orders;
 using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses.Events;
 using Inventory.Domain.Warehouses.Rules;
@@ -47,5 +49,12 @@ public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
         CheckRule(new AttachedDocumentIdMustNotBeEmptyRule(documentId));
 
         AddDomainEvent(new ProductsMissedEvent(ProductId, count, documentId));
+    }
+
+    public void DeleteProduct(IProductsRepository productsRepository, IOrdersRepository ordersRepository)
+    {
+        bool productsIsUsed = ordersRepository.IsProductsUsed(ProductId)
+
+        AddDomainEvent(new ProductDeactivatedEvent(ProductId, DocumentId.Empty));
     }
 }

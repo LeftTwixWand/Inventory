@@ -6,5 +6,5 @@ public interface IProductsRepository
 
     Task<Product?> GetByIdAsync(ProductId id, CancellationToken cancellationToken);
 
-    Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task DeleteByIdAsync(ProductId id, CancellationToken cancellationToken);
 }

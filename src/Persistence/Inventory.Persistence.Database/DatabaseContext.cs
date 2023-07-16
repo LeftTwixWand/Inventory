@@ -1,4 +1,5 @@
-﻿using Inventory.Domain.Products;
+﻿using Inventory.Domain.Orders;
+using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,8 @@ internal sealed class DatabaseContext : DbContext
     internal DbSet<Product> Products => Set<Product>();
 
     internal DbSet<Warehouse> Warehouses => Set<Warehouse>();
+
+    internal DbSet<Order> Orders => Set<Order>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
