@@ -1,6 +1,4 @@
-﻿using Inventory.Domain.Products;
-
-namespace Inventory.Domain.Warehouses;
+﻿namespace Inventory.Domain.Warehouses;
 
 public interface IWarehouseAccountant
 {
