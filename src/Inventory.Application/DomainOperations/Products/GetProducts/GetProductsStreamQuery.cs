@@ -1,6 +1,6 @@
 ﻿using Inventory.Application.Models;
 using MediatR;
 
-namespace Inventory.Application.DomainOperations.Product.GetProducts;
+namespace Inventory.Application.DomainOperations.Products.GetProducts;
 
 internal sealed record GetProductsStreamQuery : IStreamRequest<ProductModel>;

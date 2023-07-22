@@ -5,7 +5,7 @@ using Inventory.Application.Helpers;
 using Inventory.Application.Models;
 using Inventory.Domain.Products;
 
-namespace Inventory.Application.DomainOperations.Product.GetProductById;
+namespace Inventory.Application.DomainOperations.Products.GetProductById;
 
 internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQuery, ProductModel?>
 {
