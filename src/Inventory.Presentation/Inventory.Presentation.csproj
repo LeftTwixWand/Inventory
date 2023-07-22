@@ -30,10 +30,6 @@
     <PackageReference Include="CommunityToolkit.WinUI.UI.Behaviors" />
     <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
-    <PackageReference Include="StyleCop.Analyzers">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="WinUIEx" />
   </ItemGroup>
 

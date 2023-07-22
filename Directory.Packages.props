@@ -3,10 +3,12 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
+  
   <!--Global Packages must be included in every project-->
   <ItemGroup>
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
   </ItemGroup>
+  
   <ItemGroup>
     <PackageVersion Include="Autofac" Version="7.0.1" />
     <PackageVersion Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
