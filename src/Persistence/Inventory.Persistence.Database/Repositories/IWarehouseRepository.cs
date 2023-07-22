@@ -6,5 +6,5 @@ namespace Inventory.Persistence.Database.Repositories;
 
 public interface IWarehouseRepository
 {
-    Task<Warehouse> GetByIdAsync(ProductId productId, Snapshot snapshot);
+    Task<Warehouse> GetByIdAsync(ProductId productId, Snapshot snapshot, CancellationToken cancellationToken);
 }

@@ -18,10 +18,10 @@ internal class WarehouseAccountantService : IWarehouseAccountantService
         _snapshotsRepository = snapshotsRepository;
     }
 
-    public async Task<IWarehouseAccountant> GetActualProductQuantityAccountant(ProductId productId)
+    public async Task<IWarehouseAccountant> GetActualProductQuantityAccountant(ProductId productId, CancellationToken cancellationToken)
     {
-        var snapshot = await _snapshotsRepository.GetLatestAsync(productId);
-        var warehouse = await _warehouseRepository.GetByIdAsync(productId, snapshot);
+        var snapshot = await _snapshotsRepository.GetLatestAsync(productId, cancellationToken);
+        var warehouse = await _warehouseRepository.GetByIdAsync(productId, snapshot, cancellationToken);
 
         return new ActualProductQuantityProjection(warehouse.DomainEvents, snapshot);
     }

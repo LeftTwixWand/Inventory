@@ -3,7 +3,7 @@ using Inventory.Domain.Warehouses;
 
 namespace Inventory.Persistence.Database.Repositories;
 
-public interface IWarehouseRepository
+public interface IWarehousesRepository
 {
     Task<Warehouse> GetByIdAsync(ProductId productId, CancellationToken cancellationToken);
 

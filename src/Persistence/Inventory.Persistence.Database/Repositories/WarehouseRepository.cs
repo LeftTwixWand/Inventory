@@ -6,7 +6,7 @@ namespace Inventory.Persistence.Database.Repositories;
 
 internal sealed class WarehouseRepository : IWarehouseRepository
 {
-    public Task<Warehouse> GetByIdAsync(ProductId productId, Snapshot snapshot)
+    public Task<Warehouse> GetByIdAsync(ProductId productId, Snapshot snapshot, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

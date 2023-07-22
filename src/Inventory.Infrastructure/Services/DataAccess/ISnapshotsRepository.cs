@@ -5,5 +5,5 @@ namespace Inventory.Infrastructure.Services.DataAccess;
 
 internal interface ISnapshotsRepository
 {
-    Task<Snapshot> GetLatestAsync(ProductId productId);
+    Task<Snapshot> GetLatestAsync(ProductId productId, CancellationToken cancellationToken);
 }
