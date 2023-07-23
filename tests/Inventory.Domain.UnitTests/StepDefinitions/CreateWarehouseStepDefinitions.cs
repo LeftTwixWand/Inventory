@@ -1,4 +1,4 @@
-using FluentAssertions;
+﻿using FluentAssertions;
 using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses;
 using Inventory.Domain.Warehouses.Events;
@@ -28,12 +28,6 @@ public sealed class CreateWarehouseStepDefinitions
     {
         warehouse.Should().NotBeNull();
         warehouse?.ProductId.Value.Should().Be(productId);
-    }
-
-    [Then(@"products quantity is (.*)")]
-    public void ThenProductsQuantityIs(int quantity)
-    {
-        warehouse?.Quantity.Should().Be(quantity);
     }
 
     [Then(@"new WarehouseCreatedEvent is created")]

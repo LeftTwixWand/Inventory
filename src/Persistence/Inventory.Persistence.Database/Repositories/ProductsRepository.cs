@@ -19,12 +19,17 @@ internal sealed class ProductsRepository : IProductsRepository
         Product.Create("Rechargeable Lamp", "Outdoor Lamp", string.Empty, Resources.Lamp5),
     });
 
-    public Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken)
+    public Task DeleteByIdAsync(ProductId id, CancellationToken cancellationToken)
     {
-        int index = _products.FindIndex(product => product.Id.Value == id);
+        int index = _products.FindIndex(product => product.Id == id);
         _products.RemoveAt(index);
 
         return Task.CompletedTask;
+    }
+
+    public Task DeleteManyByIdAsync(ProductId productId, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 
     public async IAsyncEnumerable<Product> GetAllAsync([EnumeratorCancellation] CancellationToken cancellationToken)

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using BuildingBlocks.Application.ViewModels;
 using CommunityToolkit.Mvvm.Messaging;
-using Inventory.Application.DomainOperations.Product.GetProductById;
+using Inventory.Application.DomainOperations.Products.GetProductById;
 using Inventory.Application.Models;
 using Inventory.Application.Services.Navigation;
 using MediatR;
