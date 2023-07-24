@@ -14,7 +14,7 @@ public sealed class DomainEventsDispatcher : IDomainEventsDispatcher
         _domainEventsProvider = domainEventsProvider;
     }
 
-    public async Task DispatchEventsAsync(CancellationToken cancellationToken = default)
+    public async Task DispatchEventsAsync(CancellationToken cancellationToken)
     {
         var domainEvents = _domainEventsProvider.GetAllDomainEvents();
         _domainEventsProvider.ClearAllDomainEvents();

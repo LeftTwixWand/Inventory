@@ -43,13 +43,12 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
     protected override async Task DeleteItems(IList<object> selectedItems, CancellationToken cancellationToken)
     {
         var selectedProducts = selectedItems.Cast<ProductModel>().ToArray();
-
-        for (int i = 0; i < selectedProducts.Length; i++)
-        {
-            Items.Remove(selectedProducts[i]);
-        }
-
         await _mediator.Send(new DeleteProductsCommand(selectedProducts), cancellationToken);
+
+        foreach (var product in selectedProducts)
+        {
+            Items.Remove(product);
+        }
 
         IsSelectionMode = false;
     }
