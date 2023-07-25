@@ -13,7 +13,7 @@ public sealed partial class SettingsViewModel : ObservableObject
     private readonly IThemeSelectorService _themeSelectorService;
 
     [ObservableProperty]
-    private ElementTheme _elementTheme;
+    private ElementTheme _currentTheme;
 
     [ObservableProperty]
     private string _versionDescription;
@@ -21,7 +21,7 @@ public sealed partial class SettingsViewModel : ObservableObject
     public SettingsViewModel(IThemeSelectorService themeSelectorService)
     {
         _themeSelectorService = themeSelectorService;
-        _elementTheme = _themeSelectorService.Theme;
+        _currentTheme = _themeSelectorService.Theme;
         _versionDescription = GetVersionDescription();
     }
 
@@ -45,9 +45,9 @@ public sealed partial class SettingsViewModel : ObservableObject
     [RelayCommand]
     private void SwitchTheme(ElementTheme theme)
     {
-        if (ElementTheme != theme)
+        if (CurrentTheme != theme)
         {
-            ElementTheme = theme;
+            CurrentTheme = theme;
             _themeSelectorService.SetTheme(theme);
         }
     }

@@ -26,7 +26,7 @@
                         Command="{x:Bind ViewModel.SwitchThemeCommand}"
                         FontSize="15"
                         GroupName="AppTheme"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}">
+                        IsChecked="{x:Bind ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <xaml:ElementTheme>Light</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
@@ -36,7 +36,7 @@
                         Command="{x:Bind ViewModel.SwitchThemeCommand}"
                         FontSize="15"
                         GroupName="AppTheme"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}">
+                        IsChecked="{x:Bind ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <xaml:ElementTheme>Dark</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
@@ -46,7 +46,7 @@
                         Command="{x:Bind ViewModel.SwitchThemeCommand}"
                         FontSize="15"
                         GroupName="AppTheme"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}">
+                        IsChecked="{x:Bind ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}">
                         <RadioButton.CommandParameter>
                             <xaml:ElementTheme>Default</xaml:ElementTheme>
                         </RadioButton.CommandParameter>
