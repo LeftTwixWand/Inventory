@@ -1,18 +1,17 @@
 ﻿using Inventory.Application.Services.Domain;
 using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses;
-using Inventory.Domain.Warehouses.Projections;
 using Inventory.Infrastructure.Services.DataAccess;
-using Inventory.Persistence.Database.Repositories;
+using Inventory.Persistence.Database.Projections;
 
 namespace Inventory.Infrastructure.Services.Domain;
 
-internal class WarehouseAccountantService : IWarehouseAccountantService
+internal sealed class WarehouseAccountantService : IWarehouseAccountantService
 {
-    private readonly IWarehouseRepository _warehouseRepository;
+    private readonly IWarehousesRepository _warehouseRepository;
     private readonly ISnapshotsRepository _snapshotsRepository;
 
-    public WarehouseAccountantService(IWarehouseRepository warehouseRepository, ISnapshotsRepository snapshotsRepository)
+    public WarehouseAccountantService(IWarehousesRepository warehouseRepository, ISnapshotsRepository snapshotsRepository)
     {
         _warehouseRepository = warehouseRepository;
         _snapshotsRepository = snapshotsRepository;
@@ -21,7 +20,7 @@ internal class WarehouseAccountantService : IWarehouseAccountantService
     public async Task<IWarehouseAccountant> GetActualProductQuantityAccountant(ProductId productId, CancellationToken cancellationToken)
     {
         var snapshot = await _snapshotsRepository.GetLatestAsync(productId, cancellationToken);
-        var warehouse = await _warehouseRepository.GetByIdAsync(productId, snapshot, cancellationToken);
+        var warehouse = await _warehouseRepository.GetByIdAsync(productId, cancellationToken);
 
         return new ActualProductQuantityProjection(warehouse.DomainEvents, snapshot);
     }

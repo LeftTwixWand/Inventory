@@ -6,7 +6,7 @@ using Inventory.Application.Services.Domain;
 using Inventory.Domain.Documents;
 using Inventory.Domain.Orders;
 using Inventory.Domain.Products;
-using Inventory.Persistence.Database.Repositories;
+using Inventory.Domain.Warehouses;
 
 namespace Inventory.Application.DomainOperations.Products.DeleteProducts;
 

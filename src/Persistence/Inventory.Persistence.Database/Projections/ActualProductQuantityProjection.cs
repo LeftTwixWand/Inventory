@@ -1,8 +1,9 @@
 ﻿using BuildingBlocks.Domain.Events;
+using Inventory.Domain.Warehouses;
 using Inventory.Domain.Warehouses.Events;
 using Inventory.Persistence.Database.Snapshots;
 
-namespace Inventory.Domain.Warehouses.Projections;
+namespace Inventory.Persistence.Database.Projections;
 
 public sealed class ActualProductQuantityProjection : IWarehouseAccountant
 {

@@ -1,6 +1,10 @@
-﻿using Inventory.Domain.Products;
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Inventory.Domain.Products;
+using Inventory.Domain.Warehouses;
 
-namespace Inventory.Domain.Warehouses;
+namespace Inventory.Application.Contracts.Repositories;
 
 public interface IWarehousesRepository
 {
