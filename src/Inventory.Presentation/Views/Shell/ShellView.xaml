@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:behaviors="using:Inventory.Presentation.Behaviors"
-    xmlns:extension="using:Inventory.Presentation.Extensions"
+    xmlns:extension="using:Inventory.Presentation.Helpers.Extensions"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:shell="using:Inventory.Application.ViewModels.Shell"
     d:DataContext="{d:DesignInstance Type=shell:ShellViewModel}">

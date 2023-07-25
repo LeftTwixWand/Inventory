@@ -1,7 +1,7 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-namespace Inventory.Presentation.Extensions;
+namespace Inventory.Presentation.Helpers.Extensions;
 
 // Extension class to set the navigation target for a NavigationViewItem.
 //

@@ -1,6 +1,6 @@
 ﻿using Inventory.Application.Services.Navigation;
 using Inventory.Application.ViewModels.Settings;
-using Inventory.Presentation.Extensions;
+using Inventory.Presentation.Helpers.Extensions;
 using Inventory.Presentation.Views.Settings;
 using Microsoft.UI.Xaml.Controls;
 

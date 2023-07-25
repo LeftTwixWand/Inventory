@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.UI.Xaml.Controls;
 
-namespace Inventory.Presentation.Extensions;
+namespace Inventory.Presentation.Helpers.Extensions;
 
 public static class FrameExtensions
 {

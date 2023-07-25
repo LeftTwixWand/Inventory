@@ -96,44 +96,32 @@ public sealed class NavigationViewHeaderBehavior : Behavior<NavigationView>
 
     private void UpdateHeader()
     {
-        if (_currentPage != null)
+        if (_currentPage is null)
         {
-            var headerMode = GetHeaderMode(_currentPage);
-            if (headerMode == NavigationViewHeaderMode.Never)
-            {
-                AssociatedObject.Header = null;
-                AssociatedObject.AlwaysShowHeader = false;
-            }
-            else
-            {
-                var headerFromPage = GetHeaderContext(_currentPage);
-                if (headerFromPage != null)
-                {
-                    AssociatedObject.Header = headerFromPage;
-                }
-                else
-                {
-                    AssociatedObject.Header = DefaultHeader;
-                }
-
-                if (headerMode == NavigationViewHeaderMode.Always)
-                {
-                    AssociatedObject.AlwaysShowHeader = true;
-                }
-                else
-                {
-                    AssociatedObject.AlwaysShowHeader = false;
-                }
-            }
+            return;
         }
+
+        var headerMode = GetHeaderMode(_currentPage);
+
+        if (headerMode == NavigationViewHeaderMode.Never)
+        {
+            AssociatedObject.Header = null;
+            AssociatedObject.AlwaysShowHeader = false;
+            return;
+        }
+
+        AssociatedObject.Header = GetHeaderContext(_currentPage) ?? DefaultHeader;
+        AssociatedObject.AlwaysShowHeader = headerMode is NavigationViewHeaderMode.Always;
     }
 
     private void UpdateHeaderTemplate()
     {
-        if (_currentPage != null)
+        if (_currentPage is null)
         {
-            var headerTemplate = GetHeaderTemplate(_currentPage);
-            AssociatedObject.HeaderTemplate = headerTemplate ?? DefaultHeaderTemplate;
+            return;
         }
+
+        var headerTemplate = GetHeaderTemplate(_currentPage);
+        AssociatedObject.HeaderTemplate = headerTemplate ?? DefaultHeaderTemplate;
     }
 }
