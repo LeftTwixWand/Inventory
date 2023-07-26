@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using Inventory.Application.Contracts.Repositories;
 using Inventory.Domain.Products;
 using Inventory.Persistence.Database.Properties;
 

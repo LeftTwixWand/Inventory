@@ -1,4 +1,5 @@
-﻿using Inventory.Domain.Products;
+﻿using Inventory.Application.Contracts.Repositories;
+using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses;
 
 namespace Inventory.Persistence.Database.Repositories;

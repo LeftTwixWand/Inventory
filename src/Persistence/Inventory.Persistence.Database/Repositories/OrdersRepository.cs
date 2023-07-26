@@ -1,4 +1,4 @@
-﻿using Inventory.Domain.Orders;
+﻿using Inventory.Application.Contracts.Repositories;
 using Inventory.Domain.Products;
 using Microsoft.EntityFrameworkCore;
 

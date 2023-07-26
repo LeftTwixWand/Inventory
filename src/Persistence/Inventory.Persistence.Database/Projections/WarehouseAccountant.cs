@@ -1,4 +1,5 @@
-﻿using Inventory.Application.Services.Domain;
+﻿using Inventory.Application.Contracts.Repositories;
+using Inventory.Application.Services.Domain;
 using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses;
 using Inventory.Infrastructure.Services.DataAccess;
