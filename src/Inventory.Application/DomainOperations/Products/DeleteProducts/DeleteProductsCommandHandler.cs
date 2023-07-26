@@ -2,11 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.CQRS.Commands;
+using Inventory.Application.Contracts.Repositories;
 using Inventory.Application.Services.Domain;
 using Inventory.Domain.Documents;
-using Inventory.Domain.Orders;
 using Inventory.Domain.Products;
-using Inventory.Domain.Warehouses;
 
 namespace Inventory.Application.DomainOperations.Products.DeleteProducts;
 

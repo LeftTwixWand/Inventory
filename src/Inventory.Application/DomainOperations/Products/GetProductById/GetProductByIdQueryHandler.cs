@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.CQRS.Queries;
+using Inventory.Application.Contracts.Repositories;
 using Inventory.Application.Helpers;
 using Inventory.Application.Models;
 using Inventory.Domain.Products;
@@ -26,7 +27,7 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
         }
 
         // TODO: Load product price from some service here
-        decimal prodcutPrice = 50;
+        decimal productPrice = 50;
 
         // TODO: Use mapping here
         var productModel = new ProductModel
@@ -35,7 +36,7 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
             Name = product.Name,
             Category = product.Category,
             Description = product.Description,
-            Price = prodcutPrice,
+            Price = productPrice,
             ImageSource = await ImageConverter.GetBitmapAsync(product.Image),
         };
 
