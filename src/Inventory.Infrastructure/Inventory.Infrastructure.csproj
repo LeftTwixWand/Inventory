@@ -34,8 +34,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\BuildingBlocks\BuildingBlocks.Infrastructure\BuildingBlocks.Infrastructure.csproj" />
+		<ProjectReference Include="..\Inventory.Persistence\Inventory.Persistence.Database\Inventory.Persistence.Database.csproj" />
 		<ProjectReference Include="..\Inventory.Presentation\Inventory.Presentation.csproj" />
-		<ProjectReference Include="..\Persistence\Inventory.Persistence.Database\Inventory.Persistence.Database.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
