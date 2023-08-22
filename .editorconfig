@@ -164,6 +164,8 @@ dotnet_diagnostic.SA1601.severity = silent
 dotnet_diagnostic.SA1602.severity = silent
 dotnet_diagnostic.SA1633.severity = silent
 dotnet_diagnostic.SA1309.severity = silent
+csharp_style_prefer_primary_constructors = true:suggestion
+dotnet_diagnostic.SA1011.severity = silent
 ###############################
 # VB Coding Conventions       #
 ###############################
