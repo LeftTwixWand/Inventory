@@ -28,7 +28,7 @@ public sealed class Warehouse : Entity<WarehouseEventBase>, IAggregateRoot
     public void ShipProducts(int count, IWarehouseAccountant warehouseAccountant, DocumentId documentId)
     {
         CheckRule(new CountMustBeGreaterThanZeroRule(count));
-        CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(count, warehouseAccountant, ProductId));
+        CheckRule(new WarehouseMustHaveEnoughProductsForShipmentRule(count, warehouseAccountant, ProductId)); // TODO: Move it to the Order stage
 
         AddDomainEvent(new ProductsShippedEvent(ProductId, count, documentId));
     }
