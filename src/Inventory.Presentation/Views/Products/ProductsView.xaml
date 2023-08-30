@@ -24,7 +24,7 @@
             </interactivityCore:EventTriggerBehavior.Actions>
         </interactivityCore:EventTriggerBehavior>
     </interactivity:Interaction.Behaviors>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -35,13 +35,15 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        
+
+        <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Items.Count, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='Products ({0})'}" />
+
         <customCommandBars:MultipleItemsCommandBar
             Grid.Column="1"
             AddCommand="{x:Bind ViewModel.CreateNewItemCommand}"
-            SelectedItems="{x:Bind gridView.SelectedItems}"
             DeleteCommand="{x:Bind ViewModel.DeleteItemsCommand}"
-            IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}" />
+            IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}"
+            SelectedItems="{x:Bind gridView.SelectedItems}" />
 
         <controls:AdaptiveGridView
             x:Name="gridView"

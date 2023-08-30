@@ -14,5 +14,6 @@
     </local:ValueConverterGroup>
 
     <communityToolkit:BoolNegationConverter x:Key="BoolNegationConverter"/>
+    <communityToolkit:StringFormatConverter x:Key="StringFormatConverter"/>
 
 </ResourceDictionary>
