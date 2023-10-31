@@ -25,7 +25,7 @@
     <PackageVersion Include="MediatR" Version="12.1.1" />
     <PackageVersion Include="MediatR.Extensions.Autofac.DependencyInjection" Version="11.2.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.11" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.13" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Options" Version="7.0.1" />
