@@ -45,7 +45,6 @@ jobs:
               
     - name: Build
       run: msbuild Inventory.sln
-          -targets:rebuild
           -verbosity:normal
           -property:Configuration=${{env.BuildConfiguration}}
           
