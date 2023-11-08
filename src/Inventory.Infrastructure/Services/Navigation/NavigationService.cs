@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.WinUI.UI.Animations;
+using CommunityToolkit.WinUI.Animations;
 using Inventory.Application.Services.Navigation;
 using Inventory.Presentation.Helpers.Extensions;
 using Microsoft.UI.Xaml;
