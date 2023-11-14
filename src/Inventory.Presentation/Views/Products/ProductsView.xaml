@@ -7,7 +7,6 @@
     mc:Ignorable="d"
     xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     xmlns:behaviors="using:Inventory.Presentation.Behaviors"
-    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
@@ -45,19 +44,23 @@
             IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}"
             SelectedItems="{x:Bind gridView.SelectedItems}" />
 
-        <controls:AdaptiveGridView
+        <GridView
             x:Name="gridView"
             Grid.Row="1"
             Grid.ColumnSpan="2"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
             IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
-            ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
-            SelectionMode="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource SelectionModeToBooleanConverter}, Mode=OneWay}"
-            StretchContentForSingleRow="False">
+            SelectionMode="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource SelectionModeToBooleanConverter}, Mode=OneWay}">
 
-            <controls:AdaptiveGridView.ItemTemplate>
+            <interactivity:Interaction.Behaviors>
+                <interactivityCore:EventTriggerBehavior EventName="ItemClick">
+                    <interactivityCore:InvokeCommandAction Command="{x:Bind ViewModel.ItemClickedCommand}" CommandParameter="{x:Bind gridView.SelectedValue}" />
+                </interactivityCore:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+
+            <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:ProductModel">
                     <Grid
                         x:Name="itemThumbnail"
@@ -66,12 +69,13 @@
 
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                            <controls:ImageEx
-                                Width="160"
-                                Height="160"
-                                CornerRadius="20"
-                                Source="{x:Bind ImageSource, Mode=OneWay}"
-                                Stretch="Fill" />
+                            <Border CornerRadius="20">
+                                <Image
+                                    Width="160"
+                                    Height="160"
+                                    Source="{x:Bind ImageSource, Mode=OneWay}"
+                                    Stretch="Fill" />
+                            </Border>
 
                             <TextBlock
                                 Margin="{StaticResource XXSmallTopMargin}"
@@ -89,8 +93,8 @@
                     </Grid>
                 </DataTemplate>
 
-            </controls:AdaptiveGridView.ItemTemplate>
+            </GridView.ItemTemplate>
 
-        </controls:AdaptiveGridView>
+        </GridView>
     </Grid>
 </Page>

@@ -28,8 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Behaviors" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI" />
-    <PackageReference Include="CommunityToolkit.WinUI.UI.Controls" />
+    <PackageReference Include="CommunityToolkit.WinUI.Converters" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" />
     <PackageReference Include="WinUIEx" />
   </ItemGroup>
