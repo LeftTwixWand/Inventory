@@ -9,7 +9,7 @@ namespace Inventory.Infrastructure.Services.ThemeSelector;
 public sealed class ThemeSelectorService : IThemeSelectorService
 {
     private const string SettingsKey = "AppBackgroundRequestedTheme";
-    private readonly ApplicationDataStorageHelper _applicationDataStorage = new(ApplicationData.Current);
+    //private readonly ApplicationDataStorageHelper _applicationDataStorage = new(ApplicationData.Current);
 
     private readonly Window _window;
 
@@ -45,19 +45,19 @@ public sealed class ThemeSelectorService : IThemeSelectorService
 
     private ElementTheme LoadThemeFromSettings()
     {
-        if (_applicationDataStorage.TryRead<string>(SettingsKey, out var themeName))
-        {
-            if (Enum.TryParse(themeName, out ElementTheme cacheTheme))
-            {
-                return cacheTheme;
-            }
-        }
+        //if (_applicationDataStorage.TryRead<string>(SettingsKey, out var themeName))
+        //{
+        //    if (Enum.TryParse(themeName, out ElementTheme cacheTheme))
+        //    {
+        //        return cacheTheme;
+        //    }
+        //}
 
         return ElementTheme.Default;
     }
 
     private void SaveThemeInSettings(ElementTheme theme)
     {
-        _applicationDataStorage.Save(SettingsKey, theme.ToString());
+        //_applicationDataStorage.Save(SettingsKey, theme.ToString());
     }
 }
