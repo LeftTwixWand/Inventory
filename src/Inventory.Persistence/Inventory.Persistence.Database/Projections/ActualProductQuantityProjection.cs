@@ -5,13 +5,20 @@ using Inventory.Persistence.Database.Snapshots;
 
 namespace Inventory.Persistence.Database.Projections;
 
-public sealed class ActualProductQuantityProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents, Snapshot snapshot) : IWarehouseAccountant
+public sealed class ActualProductQuantityProjection : IWarehouseAccountant
 {
-    private int quantity = snapshot.Quantity;
+    private readonly IReadOnlyCollection<WarehouseEventBase> _domainEvents;
+    private int quantity;
+
+    public ActualProductQuantityProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents, Snapshot snapshot)
+    {
+        _domainEvents = domainEvents;
+        quantity = snapshot.Quantity;
+    }
 
     public int GetActualProductQuantity()
     {
-        foreach (var domainEvent in domainEvents)
+        foreach (var domainEvent in _domainEvents)
         {
             quantity = domainEvent switch
             {
