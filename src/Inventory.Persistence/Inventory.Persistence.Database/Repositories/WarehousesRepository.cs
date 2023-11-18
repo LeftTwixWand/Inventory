@@ -12,7 +12,7 @@ internal sealed class WarehousesRepository : IWarehousesRepository
         throw new NotImplementedException();
     }
 
-    public Task<IReadOnlyCollection<Warehouse>> GetManyByIdsAsync(List<ProductId> usedProducts, CancellationToken cancellationToken)
+    public Task<IReadOnlyCollection<Warehouse>> GetManyByIdAsync(List<ProductId> usedProducts, CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
     }

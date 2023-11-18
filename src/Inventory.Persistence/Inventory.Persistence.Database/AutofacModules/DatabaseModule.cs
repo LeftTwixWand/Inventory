@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Inventory.Application.Contracts.Repositories;
+using Inventory.Domain.Products;
 using Inventory.Persistence.Database.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

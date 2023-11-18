@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.CQRS.Queries;
-using Inventory.Application.Contracts.Repositories;
 using Inventory.Application.Helpers;
 using Inventory.Application.Models;
 using Inventory.Domain.Products;

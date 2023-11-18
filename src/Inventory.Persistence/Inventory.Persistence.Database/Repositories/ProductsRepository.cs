@@ -1,5 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
-using Inventory.Application.Contracts.Repositories;
 using Inventory.Domain.Products;
 using Inventory.Persistence.Database.Properties;
 

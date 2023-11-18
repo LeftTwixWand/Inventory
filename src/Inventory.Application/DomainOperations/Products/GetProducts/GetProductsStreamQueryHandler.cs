@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Inventory.Application.Contracts.Repositories;
 using Inventory.Application.Helpers;
 using Inventory.Application.Models;
+using Inventory.Domain.Products;
 using MediatR;
 
 namespace Inventory.Application.DomainOperations.Products.GetProducts;

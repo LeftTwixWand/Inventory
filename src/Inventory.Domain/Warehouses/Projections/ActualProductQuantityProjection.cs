@@ -1,24 +1,16 @@
 ﻿using BuildingBlocks.Domain.Events;
-using Inventory.Domain.Warehouses;
 using Inventory.Domain.Warehouses.Events;
-using Inventory.Persistence.Database.Snapshots;
+using Inventory.Domain.Warehouses.Snapshots;
 
-namespace Inventory.Persistence.Database.Projections;
+namespace Inventory.Domain.Warehouses.Projections;
 
-public sealed class ActualProductQuantityProjection : IWarehouseAccountant
+public sealed class ActualProductQuantityProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents, Snapshot snapshot)
 {
-    private readonly IReadOnlyCollection<WarehouseEventBase> _domainEvents;
-    private int quantity;
-
-    public ActualProductQuantityProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents, Snapshot snapshot)
-    {
-        _domainEvents = domainEvents;
-        quantity = snapshot.Quantity;
-    }
+    private int quantity = snapshot.Quantity;
 
     public int GetActualProductQuantity()
     {
-        foreach (var domainEvent in _domainEvents)
+        foreach (var domainEvent in domainEvents)
         {
             quantity = domainEvent switch
             {

@@ -2,10 +2,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.CQRS.Commands;
-using Inventory.Application.Contracts.Repositories;
 using Inventory.Application.Services.Domain;
 using Inventory.Domain.Documents;
+using Inventory.Domain.Orders;
 using Inventory.Domain.Products;
+using Inventory.Domain.Warehouses;
 
 namespace Inventory.Application.DomainOperations.Products.DeleteProducts;
 
@@ -29,7 +30,7 @@ internal sealed class DeleteProductsCommandHandler : ICommandHandler<DeleteProdu
         var productIds = command.Products.Select(productModel => new ProductId(productModel.Id)).ToArray();
 
         var usedProducts = await _ordersRepository.GetListOfUsedProducts(productIds, cancellationToken);
-        var warehouses = await _warehousesRepository.GetManyByIdsAsync(usedProducts, cancellationToken);
+        var warehouses = await _warehousesRepository.GetManyByIdAsync(usedProducts, cancellationToken);
 
         foreach (var warehouse in warehouses)
         {

@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Inventory.Domain.Products;
-
-namespace Inventory.Application.Contracts.Repositories;
+﻿namespace Inventory.Domain.Products;
 
 public interface IProductsRepository
 {
