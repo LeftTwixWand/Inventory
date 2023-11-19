@@ -23,6 +23,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.1.3
       with:
         msbuild-architecture: x64
+        vs-version: 16.8
   
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3.0.3
