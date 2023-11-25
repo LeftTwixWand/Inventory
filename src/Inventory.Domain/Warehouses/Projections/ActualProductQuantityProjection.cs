@@ -4,13 +4,20 @@ using Inventory.Domain.Warehouses.Snapshots;
 
 namespace Inventory.Domain.Warehouses.Projections;
 
-public sealed class ActualProductQuantityProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents, Snapshot snapshot)
+public sealed class ActualProductQuantityProjection
 {
-    private int quantity = snapshot.Quantity;
+    private readonly IReadOnlyCollection<WarehouseEventBase> _domainEvents;
+    private int quantity;
+
+    public ActualProductQuantityProjection(IReadOnlyCollection<WarehouseEventBase> domainEvents, Snapshot snapshot)
+    {
+        quantity = snapshot.Quantity;
+        _domainEvents = domainEvents;
+    }
 
     public int GetActualProductQuantity()
     {
-        foreach (var domainEvent in domainEvents)
+        foreach (var domainEvent in _domainEvents)
         {
             quantity = domainEvent switch
             {
@@ -25,7 +32,7 @@ public sealed class ActualProductQuantityProjection(IReadOnlyCollection<Warehous
         return quantity;
     }
 
-    private static int Apply(WarehouseCreatedEvent @event)
+    private static int Apply(WarehouseCreatedEvent _)
     {
         return 0;
     }
