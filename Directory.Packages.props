@@ -25,7 +25,7 @@
     <PackageVersion Include="Mapster" Version="7.4.0" />
     <PackageVersion Include="Mapster.DependencyInjection" Version="1.0.1" />
     <PackageVersion Include="MediatR" Version="12.2.0" />
-    <PackageVersion Include="MediatR.Extensions.Autofac.DependencyInjection" Version="11.2.0" />
+    <PackageVersion Include="MediatR.Extensions.Autofac.DependencyInjection" Version="11.3.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
