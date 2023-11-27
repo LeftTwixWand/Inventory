@@ -1,7 +1,6 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.WinUI;
 using Inventory.Application.Services.ThemeSelector;
 
 using Microsoft.UI.Xaml;
@@ -39,7 +38,7 @@ public sealed partial class SettingsViewModel : ObservableObject
             version = Assembly.GetExecutingAssembly().GetName().Version!;
         }*/
 
-        return $"{"AppDisplayName".GetLocalized()} - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+        return $"AppDisplayName - {version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
     }
 
     [RelayCommand]
