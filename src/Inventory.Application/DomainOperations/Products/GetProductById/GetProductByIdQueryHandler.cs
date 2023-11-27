@@ -1,7 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 using BuildingBlocks.Application.CQRS.Queries;
-using Inventory.Application.Helpers;
 using Inventory.Application.Models;
 using Inventory.Domain.Products;
 
@@ -36,7 +35,7 @@ internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQ
             Category = product.Category,
             Description = product.Description,
             Price = productPrice,
-            ImageSource = await ImageConverter.GetBitmapAsync(product.Image),
+            ImageSource = product.Image,
         };
 
         return productModel;

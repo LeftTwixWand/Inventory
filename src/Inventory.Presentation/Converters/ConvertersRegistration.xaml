@@ -7,6 +7,7 @@
 
     <local:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
     <local:SelectionModeToBooleanConverter x:Key="SelectionModeToBooleanConverter"/>
+    <local:ImageConverter x:Key="ImageConverter"/>
 
     <local:ValueConverterGroup x:Key="InvertBoolToVisibilityConverter">
         <communityToolkit:BoolNegationConverter />

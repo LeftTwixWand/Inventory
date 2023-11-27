@@ -1,6 +1,5 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.UI.Xaml.Media;
 
 namespace Inventory.Application.Models;
 
@@ -19,7 +18,7 @@ public sealed partial class ProductModel : ObservableObject
     private string? description;
 
     [ObservableProperty]
-    private ImageSource? imageSource;
+    private byte[]? imageSource;
 
     [ObservableProperty]
     private decimal price;

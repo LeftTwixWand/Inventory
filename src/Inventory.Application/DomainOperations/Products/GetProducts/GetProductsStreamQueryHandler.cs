@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using Inventory.Application.Helpers;
 using Inventory.Application.Models;
 using Inventory.Domain.Products;
 using MediatR;
@@ -26,7 +25,7 @@ internal sealed class GetProductsStreamQueryHandler : IStreamRequestHandler<GetP
                 Id = product.Id.Value,
                 Name = product.Name,
                 Category = product.Category,
-                ImageSource = await ImageConverter.GetBitmapAsync(product.Image),
+                ImageSource = product.Image,
             };
         }
     }

@@ -69,7 +69,7 @@
                                 <Image
                                     Width="160"
                                     Height="160"
-                                    Source="{x:Bind ImageSource, Mode=OneWay}"
+                                    Source="{x:Bind ImageSource, Mode=OneWay, Converter={StaticResource ImageConverter}}"
                                     Stretch="Fill" />
                             </Border>
 
