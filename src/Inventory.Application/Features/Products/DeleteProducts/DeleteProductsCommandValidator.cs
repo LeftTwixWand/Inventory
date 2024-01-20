@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Inventory.Application.DomainOperations.Products.DeleteProducts;
+namespace Inventory.Application.Features.Products.DeleteProducts;
 
 internal sealed class DeleteProductsCommandValidator : AbstractValidator<DeleteProductsCommand>
 {

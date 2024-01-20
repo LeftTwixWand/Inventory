@@ -4,7 +4,7 @@ using BuildingBlocks.Application.CQRS.Queries;
 using Inventory.Application.Models;
 using Inventory.Domain.Products;
 
-namespace Inventory.Application.DomainOperations.Products.GetProductById;
+namespace Inventory.Application.Features.Products.GetProductById;
 
 internal sealed class GetProductByIdQueryHandler : IQueryHandler<GetProductByIdQuery, ProductModel?>
 {

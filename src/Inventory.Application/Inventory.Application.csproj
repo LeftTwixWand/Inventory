@@ -7,15 +7,7 @@
     <UseWinUI>true</UseWinUI>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="DomainOperations\Shipments\**" />
-    <Content Remove="DomainOperations\Shipments\**" />
-    <EmbeddedResource Remove="DomainOperations\Shipments\**" />
-    <None Remove="DomainOperations\Shipments\**" />
-    <Page Remove="DomainOperations\Shipments\**" />
-    <PRIResource Remove="DomainOperations\Shipments\**" />
-  </ItemGroup>
-
+ 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Diagnostics" />
     <PackageReference Include="FluentValidation" />

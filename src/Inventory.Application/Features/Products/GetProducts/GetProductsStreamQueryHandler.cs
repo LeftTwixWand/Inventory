@@ -5,7 +5,7 @@ using Inventory.Application.Models;
 using Inventory.Domain.Products;
 using MediatR;
 
-namespace Inventory.Application.DomainOperations.Products.GetProducts;
+namespace Inventory.Application.Features.Products.GetProducts;
 
 internal sealed class GetProductsStreamQueryHandler : IStreamRequestHandler<GetProductsStreamQuery, ProductModel>
 {

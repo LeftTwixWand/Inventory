@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Inventory.Domain.Warehouses.Events;
 using MediatR;
 
-namespace Inventory.Application.DomainOperations.Products.ProductDeactivated;
+namespace Inventory.Application.Features.Products.ProductDeactivated;
 
 internal sealed class ProductDeactivatedNotificationHandler : INotificationHandler<ProductDeactivatedEvent>
 {

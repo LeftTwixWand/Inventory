@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Inventory.Application.DomainOperations.Products.GetProductById;
+namespace Inventory.Application.Features.Products.GetProductById;
 
 internal sealed class GetProductByIdQueryValidator : AbstractValidator<GetProductByIdQuery>
 {

@@ -7,7 +7,7 @@ using Inventory.Domain.Orders;
 using Inventory.Domain.Products;
 using Inventory.Domain.Warehouses;
 
-namespace Inventory.Application.DomainOperations.Products.DeleteProducts;
+namespace Inventory.Application.Features.Products.DeleteProducts;
 
 internal sealed class DeleteProductsCommandHandler(
     IProductsRepository productsRepository,
