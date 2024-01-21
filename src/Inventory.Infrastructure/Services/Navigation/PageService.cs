@@ -20,7 +20,7 @@ namespace Inventory.Infrastructure.Services.Navigation;
 
 internal sealed class PageService : IPageService
 {
-    private readonly Dictionary<string, Type> _pages = new();
+    private readonly Dictionary<string, Type> _pages = [];
 
     public PageService()
     {
@@ -30,7 +30,7 @@ internal sealed class PageService : IPageService
         Configure<ProductsViewModel, ProductsView>();
         Configure<OrdersViewModel, OrdersView>();
         Configure<ActivityLogViewModel, ActivityLogView>();
-        Configure<ProductViewModel, ProductView>();
+        Configure<ProductViewModel, ProductView2>();
     }
 
     public Type GetPageType(string key)

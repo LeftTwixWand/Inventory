@@ -21,6 +21,7 @@
     <None Remove="Views\Orders\OrdersView.xaml" />
     <None Remove="Views\Products\ProductsView.xaml" />
     <None Remove="Views\Product\ProductView.xaml" />
+    <None Remove="Views\Product\ProductView2.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
     <None Remove="Views\Shell\ShellView.xaml" />
     <None Remove="Windows\MainWindow.xaml" />
@@ -97,5 +98,13 @@
 
   <ItemGroup>
     <Folder Include="Views\Settings\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <CustomAdditionalCompileInputs Remove="Views\Product\ProductView2.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Remove="Views\Product\ProductView2.xaml" />
   </ItemGroup>
 </Project>
