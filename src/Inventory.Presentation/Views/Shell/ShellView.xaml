@@ -22,7 +22,8 @@
                 Width="16"
                 Height="16"
                 HorizontalAlignment="Left"
-                Source="/Assets/WindowIcon.ico" />
+                Source="/Assets/StoreLogo.scale-400.png" />
+
             <TextBlock
                 x:Name="AppTitleBarText"
                 x:Uid="AppTitleBar"
