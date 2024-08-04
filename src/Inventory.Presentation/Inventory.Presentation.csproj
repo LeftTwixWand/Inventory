@@ -20,8 +20,6 @@
     <None Remove="Views\Dashboard\DashboardView.xaml" />
     <None Remove="Views\Orders\OrdersView.xaml" />
     <None Remove="Views\Products\ProductsView.xaml" />
-    <None Remove="Views\Product\ProductView.xaml" />
-    <None Remove="Views\Product\ProductView2.xaml" />
     <None Remove="Views\SettingsPage.xaml" />
     <None Remove="Views\Shell\ShellView.xaml" />
     <None Remove="Windows\MainWindow.xaml" />
@@ -30,6 +28,7 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Animations" />
     <PackageReference Include="CommunityToolkit.WinUI.Behaviors" />
+    <PackageReference Include="CommunityToolkit.WinUI.Controls.HeaderedControls" />
     <PackageReference Include="CommunityToolkit.WinUI.Converters" />
     <PackageReference Include="CommunityToolkit.WinUI.Extensions" />
     <PackageReference Include="CommunityToolkit.WinUI.Triggers" />
@@ -55,9 +54,6 @@
     <None Update="Styles\StylesRegistration.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <Page Update="Views\Product\ProductView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Update="Views\Products\ProductsView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,13 +94,5 @@
 
   <ItemGroup>
     <Folder Include="Views\Settings\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <CustomAdditionalCompileInputs Remove="Views\Product\ProductView2.xaml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Remove="Views\Product\ProductView2.xaml" />
   </ItemGroup>
 </Project>

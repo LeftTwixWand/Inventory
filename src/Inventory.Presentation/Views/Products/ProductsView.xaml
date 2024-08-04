@@ -13,9 +13,9 @@
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
     xmlns:models="using:Inventory.Application.Models"
     xmlns:viewModels="using:Inventory.Application.ViewModels.Products"
-    behaviors:NavigationViewHeaderBehavior.HeaderMode="Minimal"
     d:DataContext="{d:DesignInstance Type=viewModels:ProductsViewModel}"
-    ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    ScrollViewer.VerticalScrollBarVisibility="Disabled"
+    behaviors:NavigationViewHeaderBehavior.HeaderContext="{x:Bind ViewModel.Items.Count, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='Products ({0})'}">
 
     <interactivity:Interaction.Behaviors>
         <interactivityCore:EventTriggerBehavior EventName="Loaded">
@@ -35,8 +35,6 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-
-        <TextBlock Style="{ThemeResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Items.Count, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='Products ({0})'}" />
 
         <customCommandBars:MultipleItemsCommandBar
             Grid.Column="1"
