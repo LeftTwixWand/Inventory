@@ -30,7 +30,7 @@ internal sealed class PageService : IPageService
         Configure<ProductsViewModel, ProductsView>();
         Configure<OrdersViewModel, OrdersView>();
         Configure<ActivityLogViewModel, ActivityLogView>();
-        Configure<ProductViewModel, ProductView2>();
+        Configure<ProductViewModel, ProductView>();
     }
 
     public Type GetPageType(string key)
