@@ -12,7 +12,7 @@
     <PackageVersion Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageVersion Include="CommunityToolkit.Common" Version="8.2.2" />
     <PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
-    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.3.0" />
     <PackageVersion Include="CommunityToolkit.WinUI.Animations" Version="8.0.240109" />
     <PackageVersion Include="CommunityToolkit.WinUI.Behaviors" Version="8.0.240109" />
     <PackageVersion Include="CommunityToolkit.WinUI.Controls.HeaderedControls" Version="8.0.240109" />
