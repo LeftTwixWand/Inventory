@@ -24,7 +24,7 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: '[MSBuildVersion)'
+        vs-version: '[${{env.MSBuildVersion}})'
         msbuild-architecture: x64
         vs-prerelease: true
   
