@@ -24,9 +24,8 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: '[${{env.MSBuildVersion}})'
-        msbuild-architecture: x64
         vs-prerelease: true
+        msbuild-architecture: x64
   
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v4
