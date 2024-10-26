@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
-		<TargetFramework>net8.0-windows10.0.22621.0</TargetFramework>
-		<TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+		<TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
+		<SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
 		<RootNamespace>Inventory.Infrastructure</RootNamespace>
 		<ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
@@ -54,5 +54,16 @@
 
 	<ItemGroup>
 	  <EditorConfigFiles Remove="D:\Projects\Inventory\src\Inventory.Infrastructure\.editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageVersion Update="StyleCop.Analyzers" Version="1.2.0-beta.556" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="StyleCop.Analyzers">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
 	</ItemGroup>
 </Project>
