@@ -10,6 +10,7 @@ on:
 
 env:
   BuildConfiguration: Release
+  MSBuildVersion: 17.12.3.50401
   
 jobs:
   build:
@@ -23,6 +24,7 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
       with:
+        vs-version: '[MSBuildVersion)'
         msbuild-architecture: x64
         vs-prerelease: true
   
