@@ -23,6 +23,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
         msbuild-architecture: x64
+        vs-prerelease: true
   
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v4
