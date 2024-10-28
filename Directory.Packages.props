@@ -4,9 +4,9 @@
     <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
   </PropertyGroup>
   <!--Global Packages must be included in every project-->
-  <ItemGroup>
+  <!--<ItemGroup>
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
-  </ItemGroup>
+  </ItemGroup>-->
   <ItemGroup>
     <PackageVersion Include="Autofac" Version="8.1.1" />
     <PackageVersion Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />

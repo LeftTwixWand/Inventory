@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageVersion Update="StyleCop.Analyzers" Version="1.2.0-beta.556" />
   </ItemGroup>
 
