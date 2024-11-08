@@ -1,4 +1,6 @@
-﻿namespace eShopOnWinUI.Application.Services.Activation.Handlers;
+﻿using System.Threading.Tasks;
+
+namespace eShopOnWinUI.Infrastructure.Services.Activation.Handlers;
 
 /// <summary>
 /// Parent class for all the ActivationHandlers with typed parameter.

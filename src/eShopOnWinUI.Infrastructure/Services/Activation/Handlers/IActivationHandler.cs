@@ -1,4 +1,6 @@
-﻿namespace eShopOnWinUI.Application.Services.Activation.Handlers;
+﻿using System.Threading.Tasks;
+
+namespace eShopOnWinUI.Infrastructure.Services.Activation.Handlers;
 
 /// <summary>
 /// An abstractions for all the activation handlers.
