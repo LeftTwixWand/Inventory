@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BuildingBlocks.Domain\BuildingBlocks.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageVersion Update="StyleCop.Analyzers" Version="1.2.0-beta.556" />
   </ItemGroup>
 
