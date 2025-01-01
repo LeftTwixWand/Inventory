@@ -1,4 +1,4 @@
-﻿using BuildingBlocks.Domain.Events;
+﻿using eShopOnWinUI.Domain.SeedWork.Events;
 
 namespace eShopOnWinUI.Infrastructure.UnitOfWorks.DomainEventsDispatching;
 
