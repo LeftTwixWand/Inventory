@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="using:Inventory.Presentation.Converters"
+                    xmlns:local="using:eShopOnWinUI.Presentation.Converters"
                     xmlns:communityToolkit="using:CommunityToolkit.WinUI.Converters">
 
     <!--  All the custom converters in the Presentation layer must to be registered in this file.  -->

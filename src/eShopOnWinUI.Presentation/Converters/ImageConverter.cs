@@ -1,13 +1,11 @@
-﻿using System;
-using System.IO;
-using Microsoft.UI.Xaml.Data;
+﻿using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace eShopOnWinUI.Presentation.Converters;
 
-internal sealed class ImageConverter : IValueConverter
+internal sealed partial class ImageConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, string language)
+    public object? Convert(object value, Type targetType, object parameter, string language)
     {
         if (value is byte[] byteArray && byteArray.Length > 0)
         {

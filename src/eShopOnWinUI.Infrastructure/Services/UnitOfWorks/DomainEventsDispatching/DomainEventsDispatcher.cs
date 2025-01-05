@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using eShopOnWinUI.Domain.SeedWork.Events;
+using MediatR;
 
-namespace eShopOnWinUI.Infrastructure.UnitOfWorks.DomainEventsDispatching;
+namespace eShopOnWinUI.Infrastructure.Services.UnitOfWorks.DomainEventsDispatching;
 
 /// <inheritdoc cref="IDomainEventsDispatcher"/>
 public sealed class DomainEventsDispatcher(IMediator mediator, IDomainEventsProvider domainEventsProvider) : IDomainEventsDispatcher

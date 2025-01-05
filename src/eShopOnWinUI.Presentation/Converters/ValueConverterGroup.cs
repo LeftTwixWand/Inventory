@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.UI.Xaml.Data;
+﻿using Microsoft.UI.Xaml.Data;
 
 namespace eShopOnWinUI.Presentation.Converters;
 
-internal sealed class ValueConverterGroup : List<IValueConverter>, IValueConverter
+internal sealed partial class ValueConverterGroup : List<IValueConverter>, IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {

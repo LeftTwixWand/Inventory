@@ -1,4 +1,4 @@
-﻿namespace eShopOnWinUI.Infrastructure.UnitOfWorks.DomainEventsDispatching;
+﻿namespace eShopOnWinUI.Domain.SeedWork.Events;
 
 /// <summary>
 /// Responsible for <see cref="BuildingBlocks.Domain.Entities.Entity.DomainEvents"/> forwarding from the Domain to the Application layer.

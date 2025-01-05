@@ -1,33 +1,52 @@
-﻿using Microsoft.UI.Xaml;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+﻿using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using eShopOnWinUI.Application.Services.Activation;
+using eShopOnWinUI.Infrastructure.AutofacModules;
+using eShopOnWinUI.Presentation.Views.Shell;
+using eShopOnWinUI.Infrastructure.AutofacModules;
+using Microsoft.Extensions.Hosting;
+using Microsoft.UI.Xaml;
 
 namespace eShopOnWinUI.Infrastructure;
 
-/// <summary>
-/// Provides application-specific behavior to supplement the default Application class.
-/// </summary>
-public partial class App : Application
+public sealed partial class App : Microsoft.UI.Xaml.Application
 {
-    /// <summary>
-    /// Initializes the singleton application object.  This is the first line of authored code
-    /// executed, and as such is the logical equivalent of main() or WinMain().
-    /// </summary>
+    private readonly IHost _host;
+
     public App()
     {
-        this.InitializeComponent();
+        InitializeComponent();
+
+        _host = new HostBuilder()
+            .UseContentRoot(AppContext.BaseDirectory)
+            .UseServiceProviderFactory(new AutofacServiceProviderFactory(containerBuilder =>
+            {
+                containerBuilder
+                    .RegisterModule<NavigationModule>()
+                    .RegisterModule<ServicesModule>()
+                    .RegisterModule<MediatorModule>();
+            }))
+            .Build();
+
+        UnhandledException += App_UnhandledException;
+
+        Ioc.Default.ConfigureServices(_host.Services);
     }
 
-    /// <summary>
-    /// Invoked when the application is launched.
-    /// </summary>
-    /// <param name="args">Details about the launch request and process.</param>
-    protected override void OnLaunched(LaunchActivatedEventArgs args)
+    protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
-        m_window = new MainWindow();
-        m_window.Activate();
+        base.OnLaunched(args);
+
+        ShellView shellView = Ioc.Default.GetRequiredService<ShellView>();
+        IActivationService activationService = Ioc.Default.GetRequiredService<IActivationService>();
+
+        await activationService.ActivateAsync(shellView, args);
     }
 
-    private Window? m_window;
+    private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+    {
+        // TODO: Log and handle exceptions as appropriate.
+        // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+    }
 }

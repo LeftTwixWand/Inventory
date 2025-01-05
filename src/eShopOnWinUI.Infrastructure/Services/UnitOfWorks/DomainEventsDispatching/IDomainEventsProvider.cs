@@ -1,6 +1,6 @@
 ﻿using eShopOnWinUI.Domain.SeedWork.Events;
 
-namespace eShopOnWinUI.Infrastructure.UnitOfWorks.DomainEventsDispatching;
+namespace eShopOnWinUI.Infrastructure.Services.UnitOfWorks.DomainEventsDispatching;
 
 public interface IDomainEventsProvider
 {

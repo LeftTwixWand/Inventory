@@ -1,18 +1,18 @@
 ﻿<Page
-    x:Class="Inventory.Presentation.Views.Products.ProductsView"
+    x:Class="eShopOnWinUI.Presentation.Views.Products.ProductsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:animations="using:CommunityToolkit.WinUI.Animations"
-    xmlns:behaviors="using:Inventory.Presentation.Behaviors"
+    xmlns:behaviors="using:eShopOnWinUI.Presentation.Behaviors"
     xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
-    xmlns:customCommandBars="using:Inventory.Presentation.Controls.CustomCommandBars"
+    xmlns:customCommandBars="using:eShopOnWinUI.Presentation.Controls.CustomCommandBars"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:models="using:Inventory.Application.Models"
-    xmlns:viewModels="using:Inventory.Application.ViewModels.Products"
+    xmlns:models="using:eShopOnWinUI.Application.Models"
+    xmlns:viewModels="using:eShopOnWinUI.Application.ViewModels.Products"
     d:DataContext="{d:DesignInstance Type=viewModels:ProductsViewModel}"
     ScrollViewer.VerticalScrollBarVisibility="Disabled"
     behaviors:NavigationViewHeaderBehavior.HeaderContext="{x:Bind ViewModel.Items.Count, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter='Products ({0})'}">
@@ -43,13 +43,13 @@
             IsSelectionMode="{x:Bind ViewModel.IsSelectionMode, Mode=TwoWay}"
             SelectedItems="{x:Bind gridView.SelectedItems}" />
 
-        <controls:AdaptiveGridView
+        <ItemsView
             x:Name="gridView"
             Grid.Row="1"
             Grid.ColumnSpan="2"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
-            IsItemClickEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
+            IsItemInvokedEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
             ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
             SelectionMode="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource SelectionModeToBooleanConverter}, Mode=OneWay}">
@@ -89,6 +89,6 @@
 
             </controls:AdaptiveGridView.ItemTemplate>
 
-        </controls:AdaptiveGridView>
+        </ItemsView>
     </Grid>
 </Page>

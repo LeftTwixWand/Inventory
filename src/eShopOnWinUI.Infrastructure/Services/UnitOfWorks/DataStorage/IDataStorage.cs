@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace eShopOnWinUI.Infrastructure.UnitOfWorks.DataStorage;
+namespace eShopOnWinUI.Infrastructure.Services.UnitOfWorks.DataStorage;
 
 /// <summary>
 /// Encapsulation of the current data storage.

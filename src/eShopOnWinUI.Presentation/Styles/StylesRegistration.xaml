@@ -4,9 +4,9 @@
 
     <ResourceDictionary.MergedDictionaries>
 
-        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/Thickness/Thickness.xaml" />
-        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/TextBlock/TextBlock.xaml" />
-        <ResourceDictionary Source="ms-appx:///Inventory.Presentation/Styles/FontSize/FontSizes.xaml" />
+        <ResourceDictionary Source="ms-appx:///eShopOnWinUI.Presentation/Styles/Thickness/Thickness.xaml" />
+        <ResourceDictionary Source="ms-appx:///eShopOnWinUI.Presentation/Styles/TextBlock/TextBlock.xaml" />
+        <ResourceDictionary Source="ms-appx:///eShopOnWinUI.Presentation/Styles/FontSize/FontSizes.xaml" />
 
     </ResourceDictionary.MergedDictionaries>
 
