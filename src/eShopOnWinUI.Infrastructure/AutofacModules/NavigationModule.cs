@@ -10,6 +10,7 @@ using eShopOnWinUI.Application.ViewModels.Settings;
 using eShopOnWinUI.Application.ViewModels.Shell;
 using eShopOnWinUI.Infrastructure.Services.Navigation;
 using eShopOnWinUI.Presentation.Views.Shell;
+using eShopOnWinUI.Presentation.Windows;
 using Microsoft.UI.Xaml;
 
 namespace eShopOnWinUI.Infrastructure.AutofacModules;

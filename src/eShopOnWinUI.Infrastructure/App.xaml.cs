@@ -4,7 +4,6 @@ using CommunityToolkit.Mvvm.DependencyInjection;
 using eShopOnWinUI.Application.Services.Activation;
 using eShopOnWinUI.Infrastructure.AutofacModules;
 using eShopOnWinUI.Presentation.Views.Shell;
-using eShopOnWinUI.Infrastructure.AutofacModules;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 
