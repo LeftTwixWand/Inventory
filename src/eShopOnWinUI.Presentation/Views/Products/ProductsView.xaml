@@ -7,7 +7,6 @@
     mc:Ignorable="d"
     xmlns:animations="using:CommunityToolkit.WinUI.Animations"
     xmlns:behaviors="using:eShopOnWinUI.Presentation.Behaviors"
-    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:customCommandBars="using:eShopOnWinUI.Presentation.Controls.CustomCommandBars"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:interactivityCore="using:Microsoft.Xaml.Interactions.Core"
@@ -50,11 +49,19 @@
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
             IsItemInvokedEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
-            ItemClickCommand="{x:Bind ViewModel.ItemClickedCommand}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
             SelectionMode="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource SelectionModeToBooleanConverter}, Mode=OneWay}">
 
-            <controls:AdaptiveGridView.ItemTemplate>
+            <interactivity:Interaction.Behaviors>
+                <interactivityCore:EventTriggerBehavior EventName="ItemInvoked">
+                    <interactivityCore:EventTriggerBehavior.Actions>
+                        <interactivityCore:InvokeCommandAction Command="{x:Bind ViewModel.ItemClickedCommand}" />
+                    </interactivityCore:EventTriggerBehavior.Actions>
+                </interactivityCore:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+
+            <ItemsView.ItemTemplate>
+
                 <DataTemplate x:DataType="models:ProductModel">
                     <Grid
                         x:Name="itemThumbnail"
@@ -87,8 +94,7 @@
                     </Grid>
                 </DataTemplate>
 
-            </controls:AdaptiveGridView.ItemTemplate>
-
+            </ItemsView.ItemTemplate>
         </ItemsView>
     </Grid>
 </Page>
