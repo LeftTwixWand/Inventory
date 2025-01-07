@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using eShopOnWinUI.Application.ViewModels.Generic.Messages;
+using Microsoft.UI.Xaml.Controls;
 
 namespace eShopOnWinUI.Application.ViewModels.Generic;
 
@@ -31,11 +32,11 @@ public abstract partial class GenericListViewModel<TModel> : ObservableRecipient
     }
 
     [RelayCommand]
-    protected abstract void ItemClicked(TModel clickedItem);
+    protected abstract void ItemClicked(ItemsViewItemInvokedEventArgs clickedItem);
 
     [RelayCommand]
     protected abstract void CreateNewItem();
 
     [RelayCommand]
-    protected abstract Task DeleteItems(IList<object> selectedItems, CancellationToken cancellationToken);
+    protected abstract Task DeleteItems(IReadOnlyList<object> selectedItems, CancellationToken cancellationToken);
 }

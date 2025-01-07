@@ -6,6 +6,7 @@ using eShopOnWinUI.Application.Services.Navigation;
 using eShopOnWinUI.Application.ViewModels.Generic;
 using eShopOnWinUI.Application.ViewModels.Product;
 using MediatR;
+using Microsoft.UI.Xaml.Controls;
 
 namespace eShopOnWinUI.Application.ViewModels.Products;
 
@@ -24,8 +25,10 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
         IsActive = true;
     }
 
-    protected override void ItemClicked(ProductModel clickedItem)
+    protected override void ItemClicked(ItemsViewItemInvokedEventArgs args)
     {
+        var clickedItem = args.InvokedItem as ProductModel;
+
         _navigationService.SetListDataItemForNextConnectedAnimation(clickedItem);
         _navigationService.Navigate<ProductViewModel>(clickedItem.Id);
     }
@@ -35,7 +38,7 @@ public sealed partial class ProductsViewModel : GenericListViewModel<ProductMode
         _navigationService.Navigate<ProductViewModel>();
     }
 
-    protected override async Task DeleteItems(IList<object> selectedItems, CancellationToken cancellationToken)
+    protected override async Task DeleteItems(IReadOnlyList<object> selectedItems, CancellationToken cancellationToken)
     {
         var selectedProducts = selectedItems.Cast<ProductModel>().ToArray();
         await _mediator.Send(new DeleteProductsCommand(selectedProducts), cancellationToken);

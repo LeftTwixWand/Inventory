@@ -48,8 +48,8 @@
             Grid.ColumnSpan="2"
             animations:Connected.ListItemElementName="itemThumbnail"
             animations:Connected.ListItemKey="animationKeyContentGrid"
-            IsItemInvokedEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
             ItemsSource="{x:Bind ViewModel.Items, Mode=OneWay}"
+            IsItemInvokedEnabled="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource BoolNegationConverter}, Mode=OneWay}"
             SelectionMode="{x:Bind ViewModel.IsSelectionMode, Converter={StaticResource SelectionModeToBooleanConverter}, Mode=OneWay}">
 
             <interactivity:Interaction.Behaviors>
@@ -63,35 +63,37 @@
             <ItemsView.ItemTemplate>
 
                 <DataTemplate x:DataType="models:ProductModel">
-                    <Grid
+                    <ItemContainer>
+                        <Grid
                         x:Name="itemThumbnail"
                         Padding="{StaticResource XSmallLeftTopRightBottomMargin}"
                         Background="{ThemeResource CardBackgroundFillColorDefaultBrush}">
 
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                            <Border CornerRadius="20">
-                                <Image
+                                <Border CornerRadius="20">
+                                    <Image
                                     Width="160"
                                     Height="160"
                                     Source="{x:Bind ImageSource, Mode=OneWay, Converter={StaticResource ImageConverter}}"
                                     Stretch="Fill" />
-                            </Border>
+                                </Border>
 
-                            <TextBlock
+                                <TextBlock
                                 Margin="{StaticResource XXSmallTopMargin}"
                                 HorizontalAlignment="Left"
                                 Style="{ThemeResource BodyTextStyle}"
                                 Text="{x:Bind Name}" />
 
-                            <TextBlock
+                                <TextBlock
                                 Margin="{StaticResource XXSmallTopMargin}"
                                 HorizontalAlignment="Left"
                                 Style="{ThemeResource DetailBodyBaseMediumStyle}"
                                 Text="{x:Bind Category}" />
 
-                        </StackPanel>
-                    </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </ItemContainer>
                 </DataTemplate>
 
             </ItemsView.ItemTemplate>
