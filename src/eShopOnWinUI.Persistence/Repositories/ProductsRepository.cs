@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using eShopOnWinUI.Domain.Products;
-using Inventory.Persistence.Database.Properties;
+using eShopOnWinUI.Persistence.Properties;
 
 namespace eShopOnWinUI.Persistence.Repositories;
 
